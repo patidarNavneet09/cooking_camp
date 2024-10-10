@@ -14,7 +14,7 @@ class Registredscr extends StatefulWidget {
 }
 
 class _RegistredscrState extends State<Registredscr> {
-  // <<<<<<<Controller >>>>>>ghfgh
+  // <<<<<<<Controller >>>>>>
 
   TextEditingController fullnameController = TextEditingController();
   TextEditingController lastnameController = TextEditingController();
