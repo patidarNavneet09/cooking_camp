@@ -54,11 +54,11 @@ class _RegistredscrState extends State<Registredscr> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(
-                      height: size.height * 0.05,
+                      height: size.height * 0.06,
                     ),
                     Image.asset(
-                      width: size.width * 0.30,
-                      height: size.height * 0.10,
+                      width: 110,
+                      height: 60,
                       ImageAsset.antapanta,
                       fit: BoxFit.contain,
                     ),
@@ -109,38 +109,43 @@ class _RegistredscrState extends State<Registredscr> {
                             children: [
                               selectedImage1 == null
                                   ? SizedBox(
-                                      height: size.height * 0.12,
-                                      width: size.width * 0.40,
+                                      // height: size.height * 0.12,
+                                      // width: size.width * 0.40,
                                       // color: Colors.amber,
                                       child: CircleAvatar(
                                         backgroundColor: Colors.white,
-                                        radius: 66,
+                                        radius: 50,
                                         backgroundImage: Image.asset(
+                                          // height: 20,
+                                          // width: 20,
                                           ImageAsset.demoPerson,
                                           fit: BoxFit.contain,
                                         ).image,
                                       ),
                                     )
                                   : SizedBox(
-                                      height: size.height * 0.12,
-                                      width: size.width * 0.40,
+                                      // height: size.height * 0.12,
+                                      // width: size.width * 0.40,
                                       // color: Colors.amber,
                                       child: CircleAvatar(
                                         backgroundColor: Colors.white,
-                                        radius: 20,
+                                        radius: 50,
                                         backgroundImage: Image.file(
+                                          // height: size.height * 0.12,
+                                          // width: 10,
                                           selectedImage1!,
                                           fit: BoxFit.contain,
                                         ).image,
                                       ),
                                     ),
                               Positioned(
-                                left: 60,
-                                top: size.height * 0.08,
+                                left: 70,
+                                top: 60,
                                 child: Image.asset(
-                                  ImageAsset.camera,
-                                  height: size.height * 0.035,
-                                  width: size.width * 0.30,
+                                  ImageAsset.cameraimage,
+                                  height: 30,
+                                  width: 30,
+                                  fit: BoxFit.contain,
                                 ),
                               ),
                             ],
