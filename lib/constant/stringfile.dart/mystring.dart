@@ -20,7 +20,7 @@ abstract class MyStrings {
   String get enterEmail;
   String get emailstar;
   String get passwordstar;
-  String get enterpassword;
+  String get enterpasswordstar;
   String get repeatpassword;
   String get atleast5;
   String get register;
@@ -35,4 +35,13 @@ abstract class MyStrings {
   String get verification;
   String get enterOTPCode;
   String get submit;
+  String get oTPVerified;
+  String get yourOTPhasbeensuccessfullyverified;
+  String get resetPassword;
+  String get confirmnewPassword;
+  String get newPassword;
+  String get enterpassword;
+  String get passwordchanged;
+  String get yourpasswordhasbeensuccessfullyreset;
+  String get gotoLogin;
 }

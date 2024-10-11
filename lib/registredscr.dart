@@ -636,7 +636,7 @@ class _RegistredscrState extends State<Registredscr> {
                           // obscureText: _obscureTextpassword,
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: Language().enterpassword.toString(),
+                            hintText: Language().enterpasswordstar.toString(),
                             // suffixIcon: Padding(
                             //   padding: const EdgeInsets.only(bottom: 2),
                             //   child: IconButton(
@@ -748,7 +748,7 @@ class _RegistredscrState extends State<Registredscr> {
                           // obscureText: _obscureTextpassword,
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: Language().enterpassword.toString(),
+                            hintText: Language().enterpasswordstar.toString(),
                             // suffixIcon: Padding(
                             //   padding: const EdgeInsets.only(bottom: 2),
                             //   child: IconButton(

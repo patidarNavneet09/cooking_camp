@@ -39,8 +39,12 @@ class Language extends MyStrings {
 
   @override
   String get passwordstar => "Password: *";
+
   @override
-  String get enterpassword => "Enter Password: *";
+  String get enterpassword => "Enter Password";
+
+  @override
+  String get enterpasswordstar => "Enter Password: *";
 
   @override
   String get repeatpassword => "Repeat Password: *";
@@ -84,4 +88,30 @@ class Language extends MyStrings {
 
   @override
   String get submit => "Submit";
+
+  @override
+  String get oTPVerified => "OTP Verified!";
+
+  @override
+  String get yourOTPhasbeensuccessfullyverified =>
+      "Your OTP has been successfully verified. Please enter your new password to complete the reset.";
+
+  @override
+  String get resetPassword => "Reset Password";
+
+  @override
+  String get newPassword => "New Password";
+
+  @override
+  String get confirmnewPassword => "Confirm New Password";
+
+  @override
+  String get passwordchanged => "Password Changed!";
+
+  @override
+  String get yourpasswordhasbeensuccessfullyreset =>
+      "Your password has been successfully reset. You can now log in with your new password.";
+
+  @override
+  String get gotoLogin => "Go to Login";
 }

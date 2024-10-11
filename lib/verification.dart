@@ -1,3 +1,4 @@
+import 'package:cooking_champs/resetpassword.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:cooking_champs/constant/mycolor.dart';
@@ -166,21 +167,19 @@ class _VerificationScrState extends State<VerificationScr> {
                           builder: (_) => AlertDialog(
                               shape: const RoundedRectangleBorder(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(10.0))),
+                                      BorderRadius.all(Radius.circular(25.0))),
                               content: Builder(builder: (context) {
                                 // Get available height and width of the build area of this widget. Make a choice depending on the size.
                                 var size = MediaQuery.of(context).size;
 
                                 return SizedBox(
-                                  height: size.height * 0.40,
+                                  height: size.height * 0.42,
                                   width: size.width * 0.90,
                                   child: Column(
                                     children: [
                                       Container(
-                                        margin:
-                                            const EdgeInsets.only(bottom: 20),
                                         child: Lottie.asset(
-                                          'assets/jsonfile/CookingChamp.json',
+                                          'assets/images/CookingChamp.json',
                                           height: MediaQuery.of(context)
                                                   .size
                                                   .height *
@@ -188,6 +187,78 @@ class _VerificationScrState extends State<VerificationScr> {
                                           width:
                                               MediaQuery.of(context).size.width,
                                         ),
+                                      ),
+                                      Text(
+                                        Language().oTPVerified,
+                                        style: const TextStyle(
+                                          color: MyColor.black,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 20,
+                                          fontFamily: Fonts.vietna,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: size.height * 0.01,
+                                      ),
+                                      Text(
+                                        Language()
+                                            .yourOTPhasbeensuccessfullyverified,
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                          color: MyColor.black,
+                                          fontWeight: FontWeight.w300,
+                                          fontSize: 15,
+                                          fontFamily: Fonts.vietna,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: size.height * 0.03,
+                                      ),
+                                      SizedBox(
+                                        width: size.width * 0.95,
+                                        height: 55,
+                                        child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor: MyColor.blue,
+                                              // surfaceTintColor: MyColor.white,
+                                              overlayColor: MyColor.liteyellow,
+                                              enableFeedback: true,
+
+                                              enabledMouseCursor:
+                                                  MouseCursor.defer,
+                                              // Background color
+                                              // Text color (alternative)
+                                              elevation:
+                                                  5, // Optional: elevation (shadow)
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 20,
+                                                      vertical:
+                                                          10), // Custom padding
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        34), // Custom shape
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          ResetPasswordScr(
+                                                            email: widget.email,
+                                                          )));
+                                            },
+                                            child: Text(
+                                              Language().continuee.toString(),
+                                              style: const TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w500,
+                                                fontFamily: Fonts.vietna,
+                                                color: MyColor.white,
+                                              ),
+                                            )),
                                       ),
                                     ],
                                   ),
