@@ -25,6 +25,7 @@ abstract class MyStrings {
   String get atleast5;
   String get register;
   String get login;
+  String get logout;
   String get dontworryEnteryouremail;
   String get email;
   String get continuee;
@@ -48,4 +49,13 @@ abstract class MyStrings {
   String get recipe;
   String get save;
   String get menu;
+  String get explore;
+  String get kidLearning;
+  String get ourStories;
+  String get aboutUs;
+  String get editProfile;
+  String get changePassword;
+  String get helpSupport;
+  String get deleteAccount;
+  String get support;
 }

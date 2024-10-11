@@ -59,6 +59,9 @@ class Language extends MyStrings {
   String get login => "Login";
 
   @override
+  String get logout => "Log Out";
+
+  @override
   String get dontworryEnteryouremail =>
       "Don't worry. \nEnter your email, and we'll \nsend you a one-time  (OTP)\nto reset your password";
 
@@ -123,6 +126,34 @@ class Language extends MyStrings {
 
   @override
   String get save => "Save";
+
   @override
   String get menu => "Menu";
+
+  @override
+  String get explore => "Explore";
+
+  @override
+  String get kidLearning => "Kid Learning";
+
+  @override
+  String get ourStories => "Our Stories";
+
+  @override
+  String get aboutUs => "About Us";
+
+  @override
+  String get editProfile => "Edit Profile";
+
+  @override
+  String get changePassword => "Change Password";
+
+  @override
+  String get helpSupport => "Help & Support";
+
+  @override
+  String get deleteAccount => "Delete Account";
+
+  @override
+  String get support => "Support";
 }

@@ -16,6 +16,8 @@ class MyColor {
   static const liteyellowbottom = Color(0xffEEE9D9);
   static const bottomiconcolor = Color(0xff8A8576);
   static const litegrayB5B5B5 = Color(0xffB5B5B5);
+  static const yellowF6F1E1 = Color(0xffF6F1E1);
+  static const colorDADADA = Color(0xffDADADA);
 }
 
 class Fonts {

@@ -9,4 +9,14 @@ class ImageAsset {
   static const String savepng = "assets/images/save.png";
   static const String recipepng = "assets/images/recipe.png";
   static const String menu = "assets/images/menu.png";
+  static const String image = "assets/images/image.png";
+  static const String logout = "assets/images/logout.png";
+
+  static const String delete = "assets/images/delete.png";
+  static const String changepassword = "assets/images/changepassword.png";
+  static const String person = "assets/images/person.png";
+  static const String overstories = "assets/images/overstories.png";
+  static const String help = "assets/images/help.png";
+  static const String aboutus = "assets/images/aboutus.png";
+  static const String editprofile = "assets/images/editprofile.png";
 }
