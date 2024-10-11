@@ -1,6 +1,7 @@
 import 'package:cooking_champs/constant/imagepoint.dart';
 import 'package:cooking_champs/constant/mycolor.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
+import 'package:cooking_champs/dashboard.dart';
 import 'package:cooking_champs/forgot.dart';
 import 'package:cooking_champs/registredscr.dart';
 import 'package:flutter/material.dart';
@@ -230,7 +231,14 @@ class _LoginscrState extends State<Loginscr> {
                                   BorderRadius.circular(34), // Custom shape
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                    builder: (context) => const DashBoardScr(
+                                          pageIndex: 0,
+                                        )),
+                                (Route<dynamic> route) => false);
+                          },
                           child: Text(
                             Language().login.toString(),
                             style: const TextStyle(

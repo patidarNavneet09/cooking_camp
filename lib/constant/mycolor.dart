@@ -13,6 +13,9 @@ class MyColor {
   static const graylite1 = Color(0xff878787);
   static const otpcolr = Color(0xffDDDDDD);
   static const liteyellowotp = Color(0xffFCF8EB);
+  static const liteyellowbottom = Color(0xffEEE9D9);
+  static const bottomiconcolor = Color(0xff8A8576);
+  static const litegrayB5B5B5 = Color(0xffB5B5B5);
 }
 
 class Fonts {

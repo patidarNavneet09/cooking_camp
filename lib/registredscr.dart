@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:cooking_champs/dashboard.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cooking_champs/constant/imagepoint.dart';
 import 'package:cooking_champs/constant/mycolor.dart';
@@ -808,7 +809,14 @@ class _RegistredscrState extends State<Registredscr> {
                                     BorderRadius.circular(34), // Custom shape
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(
+                                      builder: (context) => const DashBoardScr(
+                                            pageIndex: 0,
+                                          )),
+                                  (Route<dynamic> route) => false);
+                            },
                             child: Text(
                               Language().register.toString(),
                               style: const TextStyle(

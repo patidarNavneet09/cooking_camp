@@ -13,13 +13,17 @@ class ResetPasswordScr extends StatefulWidget {
 }
 
 class _ResetPasswordScrState extends State<ResetPasswordScr> {
+  
   final formKey = GlobalKey<FormState>();
 
   // <<<<<<<Controller >>>>>>
 
   TextEditingController passwordController = TextEditingController();
   TextEditingController confrimpasswordController = TextEditingController();
+
   dynamic _isFocusedcolor = '';
+
+  
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;

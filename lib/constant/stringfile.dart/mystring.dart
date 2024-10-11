@@ -44,4 +44,8 @@ abstract class MyStrings {
   String get passwordchanged;
   String get yourpasswordhasbeensuccessfullyreset;
   String get gotoLogin;
+  String get home;
+  String get recipe;
+  String get save;
+  String get menu;
 }
