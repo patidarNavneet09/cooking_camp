@@ -1,6 +1,7 @@
 import 'package:cooking_champs/constant/imagepoint.dart';
 import 'package:cooking_champs/constant/mycolor.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
+import 'package:cooking_champs/forgot.dart';
 import 'package:cooking_champs/registredscr.dart';
 import 'package:flutter/material.dart';
 
@@ -243,13 +244,22 @@ class _LoginscrState extends State<Loginscr> {
                     SizedBox(
                       height: size.height * 0.03,
                     ),
-                    Text(
-                      Language().forgotPassword,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: Fonts.vietna,
-                        color: MyColor.litegray,
+                    InkWell(
+                      radius: 50,
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ForgotScr()));
+                      },
+                      child: Text(
+                        Language().forgotPassword,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: Fonts.vietna,
+                          color: MyColor.litegray,
+                        ),
                       ),
                     ),
                     SizedBox(

@@ -25,4 +25,14 @@ abstract class MyStrings {
   String get atleast5;
   String get register;
   String get login;
+  String get dontworryEnteryouremail;
+  String get email;
+  String get continuee;
+  String get youremailisontheway;
+  String get didntreceivedanymail;
+  String get resend;
+  String get enterOTP;
+  String get verification;
+  String get enterOTPCode;
+  String get submit;
 }

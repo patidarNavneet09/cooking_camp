@@ -53,4 +53,35 @@ class Language extends MyStrings {
 
   @override
   String get login => "Login";
+
+  @override
+  String get dontworryEnteryouremail =>
+      "Don't worry. \nEnter your email, and we'll \nsend you a one-time  (OTP)\nto reset your password";
+
+  @override
+  String get email => "Email";
+
+  @override
+  String get continuee => "Continue";
+
+  @override
+  String get youremailisontheway => "Your email is on the way";
+
+  @override
+  String get didntreceivedanymail => "Didn’t received any mail?  ";
+
+  @override
+  String get resend => "Resend";
+
+  @override
+  String get enterOTP => "Enter OTP";
+
+  @override
+  String get verification => "Verification";
+
+  @override
+  String get enterOTPCode => "Enter OTP Code";
+
+  @override
+  String get submit => "Submit";
 }
