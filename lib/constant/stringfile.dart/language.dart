@@ -156,4 +156,10 @@ class Language extends MyStrings {
 
   @override
   String get support => "Support";
+
+  @override
+  String get noSaveRecipeyet => "No Save Recipe Yet!";
+
+  @override
+  String get youdonthaveanysaved => "You don't have any saved recipe.";
 }

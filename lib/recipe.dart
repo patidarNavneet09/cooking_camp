@@ -10,6 +10,8 @@ class RecipeScr extends StatefulWidget {
   State<RecipeScr> createState() => _RecipeScrState();
 }
 
+List savecheck = [];
+
 class _RecipeScrState extends State<RecipeScr> {
   @override
   Widget build(BuildContext context) {
@@ -72,6 +74,10 @@ class _RecipeScrState extends State<RecipeScr> {
               padding: const EdgeInsets.all(5.0),
               child: ResponsiveGridRow(
                 children: List.generate(10, (index) {
+                  if (savecheck.length == index) {
+                    savecheck.add(false);
+                  }
+                  debugPrint("savecheck>>>>>>>>>$savecheck");
                   return ResponsiveGridCol(
                       xs: 6,
                       // md: 8,
@@ -98,7 +104,7 @@ class _RecipeScrState extends State<RecipeScr> {
                                                       .colorE2FFE4 // Fifth color
                                                   : MyColor.colorFFD6D6,
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(30))),
+                                  const BorderRadius.all(Radius.circular(30))),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -108,12 +114,28 @@ class _RecipeScrState extends State<RecipeScr> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
-                                    CircleAvatar(
-                                      backgroundColor: MyColor.white,
-                                      child: Image.asset(
+                                    InkWell(
+                                      radius: 50,
+                                      onTap: () {
+                                        if (savecheck[index] == false) {
+                                          savecheck[index] = true;
+                                          setState(() {});
+                                        } else {
+                                          savecheck[index] = false;
+                                          setState(() {});
+                                        }
+                                      },
+                                      child: CircleAvatar(
+                                        backgroundColor: MyColor.white,
+                                        child: Image.asset(
                                           height: 15,
                                           width: size.width * 0.20,
-                                          ImageAsset.savetag),
+                                          ImageAsset.savetag,
+                                          color: savecheck[index] == true
+                                              ? MyColor.red
+                                              : null,
+                                        ),
+                                      ),
                                     ),
                                   ],
                                 ),

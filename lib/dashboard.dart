@@ -281,7 +281,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                           },
                         );
                       },
-                      child: Container(
+                      child: SizedBox(
                         // color: Colors.amber,
                         height: 60,
                         width: 60,
@@ -501,7 +501,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                               ],
                             ),
                           ),
-                          trailing: Icon(
+                          trailing: const Icon(
                             Icons.arrow_forward_ios_outlined,
                             size: 20,
                           ),
@@ -536,7 +536,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                               ],
                             ),
                           ),
-                          trailing: Icon(
+                          trailing: const Icon(
                             Icons.arrow_forward_ios_outlined,
                             size: 20,
                           ),
@@ -569,7 +569,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                               ],
                             ),
                           ),
-                          trailing: Icon(
+                          trailing: const Icon(
                             Icons.arrow_forward_ios_outlined,
                             size: 20,
                           ),
@@ -577,7 +577,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                       ],
                     ),
                   ),
-                  Divider(
+                  const Divider(
                     color: MyColor.colorDADADA,
                   ),
                   Padding(
@@ -629,7 +629,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                               ],
                             ),
                           ),
-                          trailing: Icon(
+                          trailing: const Icon(
                             Icons.arrow_forward_ios_outlined,
                             size: 20,
                           ),
@@ -664,7 +664,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                               ],
                             ),
                           ),
-                          trailing: Icon(
+                          trailing: const Icon(
                             Icons.arrow_forward_ios_outlined,
                             size: 20,
                           ),
@@ -697,7 +697,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                               ],
                             ),
                           ),
-                          trailing: Icon(
+                          trailing: const Icon(
                             Icons.arrow_forward_ios_outlined,
                             size: 20,
                           ),
@@ -730,7 +730,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                               ],
                             ),
                           ),
-                          trailing: Icon(
+                          trailing: const Icon(
                             Icons.arrow_forward_ios_outlined,
                             size: 20,
                             color: MyColor.red,

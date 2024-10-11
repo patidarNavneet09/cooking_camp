@@ -22,4 +22,5 @@ class ImageAsset {
 
   static const String bellpng = "assets/images/bell.png";
   static const String savetag = "assets/images/savetag.png";
+  static const String savetagscr = "assets/images/savetagscr.png";
 }

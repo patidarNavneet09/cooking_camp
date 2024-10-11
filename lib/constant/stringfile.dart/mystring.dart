@@ -58,4 +58,6 @@ abstract class MyStrings {
   String get helpSupport;
   String get deleteAccount;
   String get support;
+  String get noSaveRecipeyet;
+  String get youdonthaveanysaved;
 }
