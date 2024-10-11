@@ -19,4 +19,7 @@ class ImageAsset {
   static const String help = "assets/images/help.png";
   static const String aboutus = "assets/images/aboutus.png";
   static const String editprofile = "assets/images/editprofile.png";
+
+  static const String bellpng = "assets/images/bell.png";
+  static const String savetag = "assets/images/savetag.png";
 }

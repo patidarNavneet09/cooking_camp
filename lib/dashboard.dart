@@ -250,7 +250,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                       customBorder: const CircleBorder(),
                       onTap: () {
                         // if (isLogin != null) {
-                        pageIndex = 3;
+                        // pageIndex = 3;
                         // } else {
                         // showdialog();
                         // }

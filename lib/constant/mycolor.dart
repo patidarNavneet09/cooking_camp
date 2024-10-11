@@ -18,6 +18,10 @@ class MyColor {
   static const litegrayB5B5B5 = Color(0xffB5B5B5);
   static const yellowF6F1E1 = Color(0xffF6F1E1);
   static const colorDADADA = Color(0xffDADADA);
+  static const colorFFFED6 = Color(0xffFFFED6);
+  static const colorE2FFE4 = Color(0xffE2FFE4);
+  static const colorE2EBFF = Color(0xffE2EBFF);
+  static const colorFFD6D6 = Color(0xffFFD6D6);
 }
 
 class Fonts {
