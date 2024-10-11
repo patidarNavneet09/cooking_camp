@@ -56,126 +56,139 @@ class _ForgotEmailScrState extends State<ForgotEmailScr> {
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset(width: size.width * 0.80, ImageAsset.emaillogo),
-              ],
-            ),
-            SizedBox(
-              height: size.height * 0.04,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  Language().youremailisontheway.toString(),
-                  style: const TextStyle(
-                    color: MyColor.black,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
-                    fontFamily: Fonts.vietna,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(width: size.width * 0.80, ImageAsset.emaillogo),
+                  ],
                 ),
-              ],
-            ),
-            SizedBox(
-              height: size.height * 0.01,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Check your email ${widget.email} and follow \nthe instructions to reset your password",
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: MyColor.black,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 15,
-                    fontFamily: Fonts.vietna,
-                  ),
+                SizedBox(
+                  height: size.height * 0.04,
                 ),
-              ],
-            ),
-            SizedBox(
-              height: size.height * 0.02,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  Language().didntreceivedanymail,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: Fonts.vietna,
-                    color: MyColor.litegray,
-                  ),
-                ),
-                InkWell(
-                  radius: 50,
-                  onTap: () {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) =>
-                    //             const Registredscr()));
-                  },
-                  child: Text(
-                    Language().resend,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: Fonts.vietna,
-                      color: MyColor.blue,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      Language().youremailisontheway.toString(),
+                      style: const TextStyle(
+                        color: MyColor.black,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 20,
+                        fontFamily: Fonts.vietna,
+                      ),
                     ),
-                  ),
+                  ],
                 ),
+                SizedBox(
+                  height: size.height * 0.01,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        "Check your email ${widget.email} and follow \nthe instructions to reset your password",
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: MyColor.black,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 15,
+                          fontFamily: Fonts.vietna,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: size.height * 0.02,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      Language().didntreceivedanymail,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: Fonts.vietna,
+                        color: MyColor.litegray,
+                      ),
+                    ),
+                    InkWell(
+                      radius: 50,
+                      onTap: () {
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) =>
+                        //             const Registredscr()));
+                      },
+                      child: Text(
+                        Language().resend,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: Fonts.vietna,
+                          color: MyColor.blue,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                // SizedBox(
+                //   height: size.height * 0.35,
+                // ),
               ],
             ),
-            SizedBox(
-              height: size.height * 0.35,
-            ),
-            SizedBox(
-              width: size.width * 0.95,
-              height: 55,
-              child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: MyColor.blue,
-                    // surfaceTintColor: MyColor.white,
-                    overlayColor: MyColor.liteyellow,
-                    enableFeedback: true,
+            Row(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(bottom: 20),
+                  width: size.width * 0.95,
+                  height: 55,
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: MyColor.blue,
+                        // surfaceTintColor: MyColor.white,
+                        overlayColor: MyColor.liteyellow,
+                        enableFeedback: true,
 
-                    enabledMouseCursor: MouseCursor.defer,
-                    // Background color
-                    // Text color (alternative)
-                    elevation: 5, // Optional: elevation (shadow)
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10), // Custom padding
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(34), // Custom shape
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => VerificationScr(
-                                  email: widget.email,
-                                )));
-                  },
-                  child: Text(
-                    Language().enterOTP.toString(),
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: Fonts.vietna,
-                      color: MyColor.white,
-                    ),
-                  )),
+                        enabledMouseCursor: MouseCursor.defer,
+                        // Background color
+                        // Text color (alternative)
+                        elevation: 5, // Optional: elevation (shadow)
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10), // Custom padding
+                        shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(34), // Custom shape
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => VerificationScr(
+                                      email: widget.email,
+                                    )));
+                      },
+                      child: Text(
+                        Language().enterOTP.toString(),
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: Fonts.vietna,
+                          color: MyColor.white,
+                        ),
+                      )),
+                ),
+              ],
             ),
           ],
         ),
