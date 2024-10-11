@@ -2,6 +2,7 @@ import 'package:cooking_champs/constant/imagepoint.dart';
 import 'package:cooking_champs/constant/mycolor.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
 import 'package:cooking_champs/home.dart';
+import 'package:cooking_champs/login.dart';
 import 'package:cooking_champs/recipe.dart';
 import 'package:cooking_champs/save.dart';
 import 'package:flutter/material.dart';
@@ -420,9 +421,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                                       Navigator.of(context).pushAndRemoveUntil(
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  const DashBoardScr(
-                                                    pageIndex: 0,
-                                                  )),
+                                                  const Loginscr()),
                                           (Route<dynamic> route) => false);
                                     },
                                     child: Row(
@@ -477,7 +476,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                         ListTile(
                           contentPadding: EdgeInsets.zero,
                           minLeadingWidth: size.width * 0.80,
-                          splashColor: MyColor.blue.withOpacity(0.5),
+                          splashColor: MyColor.blue.withOpacity(0.2),
                           onTap: () {},
                           minTileHeight: 40,
                           leading: SizedBox(
@@ -510,7 +509,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                         ListTile(
                           contentPadding: EdgeInsets.zero,
                           minLeadingWidth: size.width * 0.80,
-                          splashColor: MyColor.blue.withOpacity(0.5),
+                          splashColor: MyColor.blue.withOpacity(0.2),
                           onTap: () {},
                           minTileHeight: 40,
                           leading: SizedBox(
@@ -545,7 +544,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                         ListTile(
                           contentPadding: EdgeInsets.zero,
                           minLeadingWidth: size.width * 0.80,
-                          splashColor: MyColor.blue.withOpacity(0.5),
+                          splashColor: MyColor.blue.withOpacity(0.2),
                           onTap: () {},
                           minTileHeight: 40,
                           leading: SizedBox(
@@ -603,7 +602,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                         ListTile(
                           contentPadding: EdgeInsets.zero,
                           minLeadingWidth: size.width * 0.80,
-                          splashColor: MyColor.blue.withOpacity(0.5),
+                          splashColor: MyColor.blue.withOpacity(0.2),
                           onTap: () {},
                           minTileHeight: 40,
                           leading: SizedBox(
@@ -638,7 +637,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                         ListTile(
                           contentPadding: EdgeInsets.zero,
                           minLeadingWidth: size.width * 0.80,
-                          splashColor: MyColor.blue.withOpacity(0.5),
+                          splashColor: MyColor.blue.withOpacity(0.2),
                           onTap: () {},
                           minTileHeight: 40,
                           leading: SizedBox(
@@ -673,7 +672,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                         ListTile(
                           contentPadding: EdgeInsets.zero,
                           minLeadingWidth: size.width * 0.80,
-                          splashColor: MyColor.blue.withOpacity(0.5),
+                          splashColor: MyColor.blue.withOpacity(0.2),
                           onTap: () {},
                           minTileHeight: 40,
                           leading: SizedBox(
@@ -706,7 +705,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                         ListTile(
                           contentPadding: EdgeInsets.zero,
                           minLeadingWidth: size.width * 0.80,
-                          splashColor: MyColor.blue.withOpacity(0.5),
+                          splashColor: MyColor.blue.withOpacity(0.2),
                           onTap: () {},
                           minTileHeight: 40,
                           leading: SizedBox(
