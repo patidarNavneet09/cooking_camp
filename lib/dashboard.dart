@@ -16,14 +16,24 @@ class DashBoardScr extends StatefulWidget {
 }
 
 class _DashBoardScrState extends State<DashBoardScr> {
+  int pageIndex = 0;
+
   bool? isLogin = false;
   // pages count & variable assign >>>>>>>>>
-  int pageIndex = 0;
+
   var pages = [
     const HomeScr(),
     const RecipeScr(),
     const SaveScr(),
   ];
+  @override
+  void initState() {
+    super.initState();
+    {
+      pageIndex = widget.pageIndex!;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -705,7 +715,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                         ListTile(
                           contentPadding: EdgeInsets.zero,
                           minLeadingWidth: size.width * 0.80,
-                          splashColor: MyColor.blue.withOpacity(0.2),
+                          splashColor: MyColor.red.withOpacity(0.2),
                           onTap: () {},
                           minTileHeight: 40,
                           leading: SizedBox(

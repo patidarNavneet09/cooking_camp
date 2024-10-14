@@ -485,6 +485,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.2"
+  touch_ripple_effect:
+    dependency: "direct main"
+    description:
+      name: touch_ripple_effect
+      sha256: "370229cc0647744ae22ec3e7738eddcb90a55f7c26aadbe553839cb6a7393948"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.5.1"
   typed_data:
     dependency: transitive
     description:

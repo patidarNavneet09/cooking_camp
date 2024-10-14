@@ -2,6 +2,7 @@ import 'package:cooking_champs/constant/imagepoint.dart';
 import 'package:cooking_champs/constant/mycolor.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_grid/responsive_grid.dart';
+import 'package:touch_ripple_effect/touch_ripple_effect.dart';
 
 class RecipeScr extends StatefulWidget {
   const RecipeScr({super.key});
@@ -61,9 +62,14 @@ class _RecipeScrState extends State<RecipeScr> {
           ),
         ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 15.0),
-            child: Image.asset(height: 42, ImageAsset.bellpng),
+          TouchRippleEffect(
+            borderRadius: BorderRadius.circular(27),
+            rippleColor: Colors.white,
+            onTap: () {},
+            child: Padding(
+              padding: const EdgeInsets.only(right: 15.0),
+              child: Image.asset(height: 42, ImageAsset.bellpng),
+            ),
           )
         ],
       ),
@@ -87,125 +93,133 @@ class _RecipeScrState extends State<RecipeScr> {
                       child: Padding(
                         padding: const EdgeInsets.only(
                             left: 5, right: 5, bottom: 5, top: 10),
-                        child: Container(
-                          height: 300,
-                          decoration: BoxDecoration(
-                              color: (index % 6 == 0)
-                                  ? MyColor.bluelite // First color
-                                  : (index % 6 == 1)
-                                      ? MyColor.colorFFFED6 // Second color
-                                      : (index % 6 == 2)
-                                          ? MyColor.colorE2EBFF // Third color
-                                          : (index % 6 == 3)
-                                              ? MyColor
-                                                  .liteyellow // Fourth color
-                                              : (index % 6 == 4)
-                                                  ? MyColor
-                                                      .colorE2FFE4 // Fifth color
-                                                  : MyColor.colorFFD6D6,
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(30))),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 10, right: 10),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    InkWell(
-                                      radius: 50,
-                                      onTap: () {
-                                        if (savecheck[index] == false) {
-                                          savecheck[index] = true;
-                                          setState(() {});
-                                        } else {
-                                          savecheck[index] = false;
-                                          setState(() {});
-                                        }
-                                      },
-                                      child: CircleAvatar(
-                                        backgroundColor: MyColor.white,
-                                        child: Image.asset(
-                                          height: 15,
-                                          width: size.width * 0.20,
-                                          ImageAsset.savetag,
-                                          color: savecheck[index] == true
-                                              ? MyColor.red
-                                              : null,
+                        child: TouchRippleEffect(
+                          borderRadius: BorderRadius.circular(27),
+                          rippleColor: Colors.white,
+                          onTap: () {},
+                          child: Container(
+                            height: 300,
+                            decoration: BoxDecoration(
+                                color: (index % 6 == 0)
+                                    ? MyColor.bluelite // First color
+                                    : (index % 6 == 1)
+                                        ? MyColor.colorFFFED6 // Second color
+                                        : (index % 6 == 2)
+                                            ? MyColor.colorE2EBFF // Third color
+                                            : (index % 6 == 3)
+                                                ? MyColor
+                                                    .liteyellow // Fourth color
+                                                : (index % 6 == 4)
+                                                    ? MyColor
+                                                        .colorE2FFE4 // Fifth color
+                                                    : MyColor.colorFFD6D6,
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(30))),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(top: 10, right: 10),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      TouchRippleEffect(
+                                        borderRadius: BorderRadius.circular(27),
+                                        rippleColor: savecheck[index] == true
+                                            ? MyColor.litegray
+                                            : Colors.red[500],
+                                        onTap: () {
+                                          if (savecheck[index] == false) {
+                                            savecheck[index] = true;
+                                            setState(() {});
+                                          } else {
+                                            savecheck[index] = false;
+                                            setState(() {});
+                                          }
+                                        },
+                                        child: CircleAvatar(
+                                          backgroundColor: MyColor.white,
+                                          child: Image.asset(
+                                            height: 15,
+                                            width: size.width * 0.20,
+                                            ImageAsset.savetag,
+                                            color: savecheck[index] == true
+                                                ? MyColor.red
+                                                : null,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Image.asset(
-                                  height: 80,
-                                  width: size.width * 0.30,
-                                  "assets/images/delicious-salad-studio 1.png"),
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              const Text(
-                                "Rainbow peppers",
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: Fonts.vietna,
-                                  color: MyColor.black,
+                                Image.asset(
+                                    height: 80,
+                                    width: size.width * 0.30,
+                                    "assets/images/delicious-salad-studio 1.png"),
+                                const SizedBox(
+                                  height: 15,
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              SizedBox(
-                                // color: MyColor.red,
-                                width: size.width * 0.50,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SizedBox(
-                                      // color: MyColor.yello,
-                                      width: size.width * 0.35,
-                                      child: const Text(
-                                        "Salad, Vegetable, Bean Breadcrumbs, Spinach  ",
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w300,
-                                          fontFamily: Fonts.vietna,
-                                          color: MyColor.black,
+                                const Text(
+                                  "Rainbow peppers",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: Fonts.vietna,
+                                    color: MyColor.black,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                SizedBox(
+                                  // color: MyColor.red,
+                                  width: size.width * 0.50,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        // color: MyColor.yello,
+                                        width: size.width * 0.35,
+                                        child: const Text(
+                                          "Salad, Vegetable, Bean Breadcrumbs, Spinach  ",
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w300,
+                                            fontFamily: Fonts.vietna,
+                                            color: MyColor.black,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              const Text(
-                                "More+",
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w300,
-                                  fontFamily: Fonts.vietna,
-                                  color: MyColor.black,
+                                const Text(
+                                  "More+",
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w300,
+                                    fontFamily: Fonts.vietna,
+                                    color: MyColor.black,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              const CircleAvatar(
-                                radius: 20,
-                                backgroundColor: MyColor.blue,
-                                child: Icon(
-                                  Icons.arrow_forward_ios,
-                                  color: MyColor.white,
-                                  size: 15,
+                                const SizedBox(
+                                  height: 15,
                                 ),
-                              )
-                            ],
+                                const CircleAvatar(
+                                  radius: 20,
+                                  backgroundColor: MyColor.blue,
+                                  child: Icon(
+                                    Icons.arrow_forward_ios,
+                                    color: MyColor.white,
+                                    size: 15,
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ));

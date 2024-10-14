@@ -1,3 +1,4 @@
+import 'package:cooking_champs/constant/mycolor.dart';
 import 'package:cooking_champs/splash.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Cooking Champs',
       theme: ThemeData(
+        scaffoldBackgroundColor: MyColor.white,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
