@@ -83,36 +83,39 @@ class _HomeScrState extends State<HomeScr> {
             Container(
               height: 70,
               width: size.width,
-              padding: const EdgeInsets.only(top: 5),
+              padding: const EdgeInsets.only(left: 5, top: 5),
               // color: Colors.amber,
               alignment: Alignment.center,
               child: ListView.builder(
                   itemCount: explorelist.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(11.0),
-                      child: TouchRippleEffect(
-                        borderRadius: BorderRadius.circular(27),
-                        rippleColor: Colors.white,
-                        onTap: () {},
-                        child: Container(
-                          height: 41,
-                          // width: 100,
-                          decoration: const BoxDecoration(
-                              color: MyColor.liteyellowbottom,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5))),
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 20, right: 20),
-                            child: Center(
-                              child: Text(
-                                explorelist[index],
-                                style: const TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: Fonts.vietna,
-                                  color: MyColor.blue,
+                    return Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(08.0),
+                        child: TouchRippleEffect(
+                          borderRadius: BorderRadius.circular(5),
+                          rippleColor: Colors.white,
+                          onTap: () {},
+                          child: Container(
+                            height: 41,
+                            // width: 100,
+                            decoration: const BoxDecoration(
+                                color: MyColor.liteyellowbottom,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5))),
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 16, right: 22),
+                              child: Center(
+                                child: Text(
+                                  explorelist[index],
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: Fonts.vietna,
+                                    color: MyColor.blue,
+                                  ),
                                 ),
                               ),
                             ),
@@ -131,7 +134,7 @@ class _HomeScrState extends State<HomeScr> {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.only(
-                          top: 11.0, bottom: 0.0, left: 11.0),
+                          top: 11.0, bottom: 0.0, left: 11.0, right: 11.0),
                       child: TouchRippleEffect(
                         borderRadius: BorderRadius.circular(27),
                         rippleColor: Colors.white,
@@ -140,7 +143,7 @@ class _HomeScrState extends State<HomeScr> {
                           decoration: const BoxDecoration(
                               color: MyColor.colorE0FFC6,
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(27))),
+                                  BorderRadius.all(Radius.circular(24))),
                           height: 165,
                           width: size.width * 0.94,
                           child: Stack(
@@ -155,7 +158,7 @@ class _HomeScrState extends State<HomeScr> {
                                     decoration: const BoxDecoration(
                                         // color: MyColor.red,
                                         borderRadius: BorderRadius.all(
-                                            Radius.circular(27))),
+                                            Radius.circular(24))),
                                     child: Padding(
                                       padding: const EdgeInsets.only(
                                           left: 21, right: 5),
@@ -258,7 +261,7 @@ class _HomeScrState extends State<HomeScr> {
                                           decoration: const BoxDecoration(
                                               // color: MyColor.red,
                                               borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(27),
+                                                  topLeft: Radius.circular(24),
                                                   bottomRight:
                                                       Radius.circular(27))),
                                           // height: 162,
@@ -302,57 +305,62 @@ class _HomeScrState extends State<HomeScr> {
                   }),
             ),
             const SizedBox(
-              height: 15,
+              height: 17,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 12, right: 12),
+              padding: const EdgeInsets.only(left: 10, right: 10),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        Language().popularRecipe,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: Fonts.vietna,
-                          color: MyColor.black,
-                        ),
-                      ),
-                      InkWell(
-                        radius: 50,
-                        onTap: () {
-                          debugPrint("dfdfd");
-                          Navigator.of(context).pushAndRemoveUntil(
-                              MaterialPageRoute(
-                                  builder: (context) => const DashBoardScr(
-                                        pageIndex: 1,
-                                      )),
-                              (Route<dynamic> route) => false);
-                          setState(() {});
-                        },
-                        child: Text(
-                          Language().seeall,
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 5, right: 5, bottom: 0, top: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          Language().popularRecipe,
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
-                            fontSize: 15,
+                            fontSize: 18,
                             fontWeight: FontWeight.w500,
                             fontFamily: Fonts.vietna,
-                            color: MyColor.blue,
+                            color: MyColor.black,
                           ),
                         ),
-                      ),
-                    ],
+                        InkWell(
+                          radius: 50,
+                          onTap: () {
+                            debugPrint("dfdfd");
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                    builder: (context) => const DashBoardScr(
+                                          pageIndex: 1,
+                                        )),
+                                (Route<dynamic> route) => false);
+                            setState(() {});
+                          },
+                          child: Text(
+                            Language().seeall,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: Fonts.vietna,
+                              color: MyColor.blue,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   Container(
-                    height: 300,
+                    height: 320,
                     // width: size.width,
                     // padding: const EdgeInsets.only(top: 5),
+                    margin: const EdgeInsets.only(bottom: 0),
                     // color: Colors.amber,
                     alignment: Alignment.center,
                     child: ListView.builder(
@@ -363,18 +371,19 @@ class _HomeScrState extends State<HomeScr> {
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.only(
-                                left: 0, right: 15, bottom: 5, top: 10),
+                                left: 5, right: 5, bottom: 5, top: 10),
                             child: TouchRippleEffect(
                               // focusColor: Colors.amber,
                               // splashColor: Colors.blue,
                               // hoverColor: Colors.red,
                               // highlightColor: Colors.pink,
 
-                              borderRadius: BorderRadius.circular(27),
+                              borderRadius: BorderRadius.circular(30),
                               rippleColor: Colors.white,
                               onTap: () {},
                               child: Container(
                                 height: 300,
+                                width: size.width * 0.46,
                                 decoration: BoxDecoration(
                                     color: (index % 6 == 0)
                                         ? MyColor.bluelite // First color
@@ -392,7 +401,7 @@ class _HomeScrState extends State<HomeScr> {
                                                             .colorE2FFE4 // Fifth color
                                                         : MyColor.colorFFD6D6,
                                     borderRadius: const BorderRadius.all(
-                                        Radius.circular(27))),
+                                        Radius.circular(30))),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
@@ -486,7 +495,7 @@ class _HomeScrState extends State<HomeScr> {
                                       ),
                                     ),
                                     const SizedBox(
-                                      height: 15,
+                                      height: 20,
                                     ),
                                     const CircleAvatar(
                                       radius: 20,
@@ -505,32 +514,38 @@ class _HomeScrState extends State<HomeScr> {
                         }),
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 12,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        Language().featuredstories,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: Fonts.vietna,
-                          color: MyColor.black,
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 5,
+                      right: 5,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          Language().featuredstories,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: Fonts.vietna,
+                            color: MyColor.black,
+                          ),
                         ),
-                      ),
-                      Text(
-                        Language().seeall,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: Fonts.vietna,
-                          color: MyColor.blue,
+                        Text(
+                          Language().seeall,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: Fonts.vietna,
+                            color: MyColor.blue,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   const SizedBox(
                     height: 10,
@@ -549,19 +564,19 @@ class _HomeScrState extends State<HomeScr> {
                         itemCount: 10,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
-                          return TouchRippleEffect(
-                            borderRadius: BorderRadius.circular(27),
-                            rippleColor: Colors.white,
-                            onTap: () {},
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 0, right: 15, bottom: 5, top: 10),
+                          return Padding(
+                            padding: const EdgeInsets.only(
+                                left: 5, right: 5, bottom: 5, top: 10),
+                            child: TouchRippleEffect(
+                              borderRadius: BorderRadius.circular(10),
+                              rippleColor: Colors.white,
+                              onTap: () {},
                               child: Container(
                                 decoration: const BoxDecoration(
                                     color: MyColor.white,
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(27))),
-                                width: size.width * 0.50,
+                                        BorderRadius.all(Radius.circular(10))),
+                                width: size.width * 0.46,
                                 height: 250,
                                 child: Column(
                                   children: [

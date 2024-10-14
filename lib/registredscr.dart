@@ -167,6 +167,15 @@ class _RegistredscrState extends State<Registredscr> {
                               fontFamily: Fonts.vietna,
                             ),
                           ),
+                          const Text(
+                            " *",
+                            style: TextStyle(
+                              color: MyColor.red,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              fontFamily: Fonts.vietna,
+                            ),
+                          ),
                         ],
                       ),
                       SizedBox(
@@ -263,6 +272,15 @@ class _RegistredscrState extends State<Registredscr> {
                             Language().lastName.toString(),
                             style: const TextStyle(
                               color: MyColor.black,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              fontFamily: Fonts.vietna,
+                            ),
+                          ),
+                          const Text(
+                            " *",
+                            style: TextStyle(
+                              color: MyColor.red,
                               fontWeight: FontWeight.w600,
                               fontSize: 14,
                               fontFamily: Fonts.vietna,
@@ -370,6 +388,15 @@ class _RegistredscrState extends State<Registredscr> {
                               fontFamily: Fonts.vietna,
                             ),
                           ),
+                          const Text(
+                            " *",
+                            style: TextStyle(
+                              color: MyColor.red,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              fontFamily: Fonts.vietna,
+                            ),
+                          ),
                         ],
                       ),
                       SizedBox(
@@ -472,6 +499,15 @@ class _RegistredscrState extends State<Registredscr> {
                               fontFamily: Fonts.vietna,
                             ),
                           ),
+                          const Text(
+                            " *",
+                            style: TextStyle(
+                              color: MyColor.red,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              fontFamily: Fonts.vietna,
+                            ),
+                          ),
                         ],
                       ),
                       SizedBox(
@@ -566,14 +602,27 @@ class _RegistredscrState extends State<Registredscr> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            Language().passwordstar.toString(),
-                            style: const TextStyle(
-                              color: MyColor.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              fontFamily: Fonts.vietna,
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                Language().passwordstar.toString(),
+                                style: const TextStyle(
+                                  color: MyColor.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
+                                  fontFamily: Fonts.vietna,
+                                ),
+                              ),
+                              const Text(
+                                " *",
+                                style: TextStyle(
+                                  color: MyColor.red,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
+                                  fontFamily: Fonts.vietna,
+                                ),
+                              ),
+                            ],
                           ),
                           Text(
                             Language().atleast5.toString(),
@@ -678,14 +727,27 @@ class _RegistredscrState extends State<Registredscr> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            Language().repeatpassword.toString(),
-                            style: const TextStyle(
-                              color: MyColor.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              fontFamily: Fonts.vietna,
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                Language().repeatpassword.toString(),
+                                style: const TextStyle(
+                                  color: MyColor.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
+                                  fontFamily: Fonts.vietna,
+                                ),
+                              ),
+                              const Text(
+                                " *",
+                                style: TextStyle(
+                                  color: MyColor.red,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
+                                  fontFamily: Fonts.vietna,
+                                ),
+                              ),
+                            ],
                           ),
                           Text(
                             Language().atleast5.toString(),

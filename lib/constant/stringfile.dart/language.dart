@@ -23,22 +23,22 @@ class Language extends MyStrings {
   String get signupforafunand => "Sign up for a fun and safe cooking journey!";
 
   @override
-  String get firstName => "First Name: *";
+  String get firstName => "First Name:";
   @override
   String get enterfirstName => "Enter First Name ";
   @override
-  String get lastName => "Last Name: *";
+  String get lastName => "Last Name:";
   @override
   String get enterlastName => "Enter Last Name ";
   @override
-  String get parentEmail => "Parent Email: *";
+  String get parentEmail => "Parent Email:";
   @override
   String get enterEmail => "Enter Email";
   @override
-  String get emailstar => "Email: *";
+  String get emailstar => "Email:";
 
   @override
-  String get passwordstar => "Password: *";
+  String get passwordstar => "Password:";
 
   @override
   String get enterpassword => "Enter Password";
@@ -47,7 +47,7 @@ class Language extends MyStrings {
   String get enterpasswordstar => "Enter Password: *";
 
   @override
-  String get repeatpassword => "Repeat Password: *";
+  String get repeatpassword => "Repeat Password:";
 
   @override
   String get atleast5 => "at least 5 characters ";
