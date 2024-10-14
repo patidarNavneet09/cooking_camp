@@ -162,4 +162,15 @@ class Language extends MyStrings {
 
   @override
   String get youdonthaveanysaved => "You don't have any saved recipe.";
+
+  @override
+  String get viewDetailsarrow => "View Details >";
+
+  @override
+  String get featuredstories => "Featured Stories";
+
+  @override
+  String get popularRecipe => "Popular Recipe";
+  @override
+  String get seeall => "See All";
 }

@@ -60,4 +60,8 @@ abstract class MyStrings {
   String get support;
   String get noSaveRecipeyet;
   String get youdonthaveanysaved;
+  String get viewDetailsarrow;
+  String get featuredstories;
+  String get popularRecipe;
+  String get seeall;
 }
