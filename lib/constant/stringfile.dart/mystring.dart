@@ -66,4 +66,5 @@ abstract class MyStrings {
   String get seeall;
   String get ingredient;
   String get howtoCook;
+  String get update;
 }

@@ -93,7 +93,7 @@ class _SaveScrState extends State<SaveScr> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            true != true
+            countlistsave == 0
                 ? SizedBox(
                     height: size.height * 0.60,
                     child: Center(

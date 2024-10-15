@@ -93,6 +93,9 @@ class Language extends MyStrings {
   String get submit => "Submit";
 
   @override
+  String get update => "Update";
+
+  @override
   String get oTPVerified => "OTP Verified!";
 
   @override

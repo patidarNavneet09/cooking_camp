@@ -53,43 +53,40 @@ class _CookDetailsScrState extends State<CookDetailsScr> {
         leadingWidth: 0, automaticallyImplyLeading: false,
         backgroundColor: MyColor.liteyellow,
         surfaceTintColor: MyColor.liteyellow,
-        title: Container(
-          // color: MyColor.red,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                TouchRippleEffect(
-                  // focusColor: Colors.amber,
-                  // splashColor: Colors.blue,
-                  // hoverColor: Colors.red,
-                  // highlightColor: Colors.pink,
+        title: Padding(
+          padding: const EdgeInsets.only(left: 0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              TouchRippleEffect(
+                // focusColor: Colors.amber,
+                // splashColor: Colors.blue,
+                // hoverColor: Colors.red,
+                // highlightColor: Colors.pink,
 
-                  borderRadius: BorderRadius.circular(30),
-                  rippleColor: Colors.white,
-                  onTap: () {
-                    Navigator.pop(context);
-                    setState(() {});
-                  },
-                  child: const Icon(
-                    Icons.arrow_back_ios,
-                    size: 30,
-                    color: Colors.black,
-                  ),
+                borderRadius: BorderRadius.circular(30),
+                rippleColor: Colors.white,
+                onTap: () {
+                  Navigator.pop(context);
+                  setState(() {});
+                },
+                child: const Icon(
+                  Icons.arrow_back_ios,
+                  size: 30,
+                  color: Colors.black,
                 ),
-                Text(
-                  widget.name.toString(),
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: Fonts.vietna,
-                    color: MyColor.black,
-                  ),
+              ),
+              Text(
+                widget.name.toString(),
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: Fonts.vietna,
+                  color: MyColor.black,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
         centerTitle: true,

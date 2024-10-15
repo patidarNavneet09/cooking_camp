@@ -1,6 +1,7 @@
 import 'package:cooking_champs/constant/imagepoint.dart';
 import 'package:cooking_champs/constant/mycolor.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
+import 'package:cooking_champs/editprofile.dart';
 import 'package:cooking_champs/home.dart';
 import 'package:cooking_champs/login.dart';
 import 'package:cooking_champs/recipe.dart';
@@ -613,7 +614,13 @@ class _DashBoardScrState extends State<DashBoardScr> {
                           contentPadding: EdgeInsets.zero,
                           minLeadingWidth: size.width * 0.80,
                           splashColor: MyColor.blue.withOpacity(0.2),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const EditProfilescr()),
+                            );
+                          },
                           minTileHeight: 40,
                           leading: SizedBox(
                             width: size.width *
