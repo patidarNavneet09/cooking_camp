@@ -26,7 +26,9 @@ class ImageAsset {
   static const String image173 = "assets/images/image173.png";
 
   static const String demo1 = "assets/images/demo1.png";
+  static const String image174 = "assets/images/image174.png";
   static const String image175 = "assets/images/image175.png";
   static const String image176 = "assets/images/image176.png";
   static const String image177 = "assets/images/image177.png";
+  static const String dots = "assets/images/dots.png";
 }

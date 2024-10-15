@@ -171,6 +171,13 @@ class Language extends MyStrings {
 
   @override
   String get popularRecipe => "Popular Recipe";
+
   @override
   String get seeall => "See All";
+
+  @override
+  String get ingredient => "Ingredient";
+
+  @override
+  String get howtoCook => "How to Cook";
 }

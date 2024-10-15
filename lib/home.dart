@@ -1,6 +1,7 @@
 import 'package:cooking_champs/constant/imagepoint.dart';
 import 'package:cooking_champs/constant/mycolor.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
+import 'package:cooking_champs/cookdetails.dart';
 import 'package:cooking_champs/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:touch_ripple_effect/touch_ripple_effect.dart';
@@ -357,7 +358,7 @@ class _HomeScrState extends State<HomeScr> {
                     height: 10,
                   ),
                   Container(
-                    height: 320,
+                    height: 300,
                     // width: size.width,
                     // padding: const EdgeInsets.only(top: 5),
                     margin: const EdgeInsets.only(bottom: 0),
@@ -380,9 +381,18 @@ class _HomeScrState extends State<HomeScr> {
 
                               borderRadius: BorderRadius.circular(30),
                               rippleColor: Colors.white,
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const CookDetailsScr(
+                                            name: "Rainbow peppers",
+                                          )),
+                                );
+                              },
                               child: Container(
-                                height: 300,
+                                height: 290,
                                 width: size.width * 0.46,
                                 decoration: BoxDecoration(
                                     color: (index % 6 == 0)

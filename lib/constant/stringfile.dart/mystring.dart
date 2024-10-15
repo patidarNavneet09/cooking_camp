@@ -64,4 +64,6 @@ abstract class MyStrings {
   String get featuredstories;
   String get popularRecipe;
   String get seeall;
+  String get ingredient;
+  String get howtoCook;
 }
