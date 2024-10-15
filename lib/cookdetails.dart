@@ -61,10 +61,23 @@ class _CookDetailsScrState extends State<CookDetailsScr> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Icon(
-                  Icons.arrow_back_ios,
-                  size: 30,
-                  color: Colors.black,
+                TouchRippleEffect(
+                  // focusColor: Colors.amber,
+                  // splashColor: Colors.blue,
+                  // hoverColor: Colors.red,
+                  // highlightColor: Colors.pink,
+
+                  borderRadius: BorderRadius.circular(30),
+                  rippleColor: Colors.white,
+                  onTap: () {
+                    Navigator.pop(context);
+                    setState(() {});
+                  },
+                  child: const Icon(
+                    Icons.arrow_back_ios,
+                    size: 30,
+                    color: Colors.black,
+                  ),
                 ),
                 Text(
                   widget.name.toString(),
