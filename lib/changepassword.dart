@@ -1,8 +1,11 @@
 import 'dart:io';
+import 'package:cooking_champs/dashboard.dart';
+import 'package:cooking_champs/login.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cooking_champs/constant/mycolor.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:touch_ripple_effect/touch_ripple_effect.dart';
 
 class ChangePasswordscr extends StatefulWidget {
@@ -369,6 +372,111 @@ class _ChangePasswordscrState extends State<ChangePasswordscr> {
                       //         builder: (context) => VerificationScr(
                       //               email: widget.email,
                       //             )));
+                      showDialog(
+                          context: context,
+                          builder: (_) => AlertDialog(
+                              shape: const RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(25.0))),
+                              content: Builder(builder: (context) {
+                                // Get available height and width of the build area of this widget. Make a choice depending on the size.
+                                var size = MediaQuery.of(context).size;
+
+                                return SizedBox(
+                                  height: size.height * 0.38,
+                                  width: size.width * 0.90,
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        child: Lottie.asset(
+                                          'assets/images/PasswordChangeCooking.json',
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.17,
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                        ),
+                                      ),
+                                      Text(
+                                        Language().passwordchanged,
+                                        style: const TextStyle(
+                                          color: MyColor.black,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 20,
+                                          fontFamily: Fonts.vietna,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: size.height * 0.01,
+                                      ),
+                                      Text(
+                                        Language()
+                                            .yourpasswordhasbeensuccessfullyreset,
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                          color: MyColor.black,
+                                          fontWeight: FontWeight.w300,
+                                          fontSize: 15,
+                                          fontFamily: Fonts.vietna,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: size.height * 0.03,
+                                      ),
+                                      SizedBox(
+                                        width: size.width * 0.95,
+                                        height: 55,
+                                        child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor: MyColor.blue,
+                                              // surfaceTintColor: MyColor.white,
+                                              overlayColor: MyColor.liteyellow,
+                                              enableFeedback: true,
+
+                                              enabledMouseCursor:
+                                                  MouseCursor.defer,
+                                              // Background color
+                                              // Text color (alternative)
+                                              elevation:
+                                                  5, // Optional: elevation (shadow)
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 20,
+                                                      vertical:
+                                                          10), // Custom padding
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        34), // Custom shape
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              Navigator.of(context)
+                                                  .pushAndRemoveUntil(
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              const DashBoardScr(
+                                                                pageIndex: 0,
+                                                              )),
+                                                      (Route<dynamic> route) =>
+                                                          false);
+                                              setState(() {});
+                                            },
+                                            child: Text(
+                                              Language().gotoHome.toString(),
+                                              style: const TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w500,
+                                                fontFamily: Fonts.vietna,
+                                                color: MyColor.white,
+                                              ),
+                                            )),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              })));
                     },
                     child: Text(
                       Language().savePassword.toString(),

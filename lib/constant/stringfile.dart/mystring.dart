@@ -68,4 +68,5 @@ abstract class MyStrings {
   String get howtoCook;
   String get update;
   String get savePassword;
+  String get gotoHome;
 }

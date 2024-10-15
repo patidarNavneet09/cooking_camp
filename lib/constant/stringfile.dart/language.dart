@@ -122,6 +122,9 @@ class Language extends MyStrings {
   String get gotoLogin => "Go to Login";
 
   @override
+  String get gotoHome => "Go to Home";
+
+  @override
   String get home => "Home";
 
   @override
