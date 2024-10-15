@@ -1,3 +1,4 @@
+import 'package:cooking_champs/changepassword.dart';
 import 'package:cooking_champs/constant/imagepoint.dart';
 import 'package:cooking_champs/constant/mycolor.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
@@ -655,7 +656,14 @@ class _DashBoardScrState extends State<DashBoardScr> {
                           contentPadding: EdgeInsets.zero,
                           minLeadingWidth: size.width * 0.80,
                           splashColor: MyColor.blue.withOpacity(0.2),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const ChangePasswordscr()),
+                            );
+                          },
                           minTileHeight: 40,
                           leading: SizedBox(
                             width: size.width *

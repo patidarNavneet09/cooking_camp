@@ -183,4 +183,7 @@ class Language extends MyStrings {
 
   @override
   String get howtoCook => "How to Cook";
+
+  @override
+  String get savePassword => "Save Password";
 }
