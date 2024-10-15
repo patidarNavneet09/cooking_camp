@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:cooking_champs/dashboard.dart';
-import 'package:cooking_champs/login.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cooking_champs/constant/mycolor.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
@@ -35,37 +34,8 @@ class _ChangePasswordscrState extends State<ChangePasswordscr> {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        // // foregroundColor: MyColor.liteyellow,
-        // backgroundColor: MyColor.liteyellow,
-        // scrolledUnderElevation: 0,
-        // shadowColor: MyColor.liteyellow,
-        // elevation: 0,
-        // surfaceTintColor: MyColor.liteyellow,
-        // toolbarHeight: 50,
-        // leadingWidth: size.width * 0.80,
-        // leading: Padding(
-        //   padding: const EdgeInsets.only(left: 20),
-        //   child: Row(
-        //     children: [
-        //       Icon(
-        //         Icons.arrow_back_ios,
-        //         size: 30,
-        //         color: Colors.black,
-        //       ),
-        //       Text(
-        //         widget.name.toString(),
-        //         style: TextStyle(
-        //           fontSize: 18,
-        //           fontWeight: FontWeight.w500,
-        //           fontFamily: Fonts.vietna,
-        //           color: MyColor.black,
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ),
-
-        leadingWidth: 0, automaticallyImplyLeading: false,
+        leadingWidth: 0,
+        automaticallyImplyLeading: false,
         backgroundColor: MyColor.yellowF6F1E1,
         surfaceTintColor: MyColor.yellowF6F1E1,
         title: Padding(

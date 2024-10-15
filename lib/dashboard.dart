@@ -1,9 +1,11 @@
+import 'package:cooking_champs/Helpsupport.dart';
 import 'package:cooking_champs/changepassword.dart';
 import 'package:cooking_champs/constant/imagepoint.dart';
 import 'package:cooking_champs/constant/mycolor.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
 import 'package:cooking_champs/editprofile.dart';
 import 'package:cooking_champs/home.dart';
+import 'package:cooking_champs/kitslearning.dart';
 import 'package:cooking_champs/login.dart';
 import 'package:cooking_champs/recipe.dart';
 import 'package:cooking_champs/save.dart';
@@ -11,19 +13,28 @@ import 'package:flutter/material.dart';
 
 class DashBoardScr extends StatefulWidget {
   final int? pageIndex;
-  const DashBoardScr({super.key, this.pageIndex});
+  final String? tabcheck;
+  const DashBoardScr({super.key, this.pageIndex, this.tabcheck});
 
   @override
   State<DashBoardScr> createState() => _DashBoardScrState();
 }
 
+bool? istabExplore = false;
+
 class _DashBoardScrState extends State<DashBoardScr> {
   int pageIndex = 0;
 
   bool? isLogin = false;
+
   // pages count & variable assign >>>>>>>>>
 
   var pages = [
+    const HomeScr(),
+    const RecipeScr(),
+    const SaveScr(),
+  ];
+  var pages1 = [
     const HomeScr(),
     const RecipeScr(),
     const SaveScr(),
@@ -32,15 +43,42 @@ class _DashBoardScrState extends State<DashBoardScr> {
   void initState() {
     super.initState();
     {
+      // if (istabExplore == false) {
       pageIndex = widget.pageIndex!;
+      // }
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: buildMyNavBar(context),
-      body: pageIndex == 3 ? pages[2] : pages[pageIndex],
+    return WillPopScope(
+      onWillPop: () async {
+        debugPrint("dfsdfsdf");
+        // if (istabExplore == true) {
+        //   // istabExplore = false;
+        //   // setState(() {});
+        //   Navigator.of(context).pushAndRemoveUntil(
+        //       MaterialPageRoute(
+        //           builder: (context) => const DashBoardScr(
+        //                 pageIndex: 0,
+        //                 tabcheck: "",
+        //               )),
+        //       (Route<dynamic> route) => true);
+        //   setState(() {});
+        // }
+        Navigator.pop(context);
+        return true;
+      },
+      child: Scaffold(
+        bottomNavigationBar: buildMyNavBar(context),
+        body: istabExplore == true
+            ? widget.tabcheck == "kids"
+                ? const KitsLearningScr()
+                : Container()
+            : pageIndex == 3
+                ? pages[2]
+                : pages[pageIndex],
+      ),
     );
   }
 
@@ -71,6 +109,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                       onTap: () {
                         // print(DateTime.now().timeZoneOffset.toString());
                         pageIndex = 0;
+                        istabExplore = false;
                         // print(pageIndex);
                         setState(() {});
                       },
@@ -93,9 +132,9 @@ class _DashBoardScrState extends State<DashBoardScr> {
                                   // pageIndex == 0
                                   //     ?
                                   ImageAsset.homepng,
-                                  color: pageIndex != 0
-                                      ? MyColor.bottomiconcolor
-                                      : null,
+                                  color: pageIndex == 0
+                                      ? null
+                                      : MyColor.bottomiconcolor,
                                   // : "assets/images/ic_home2_icon.svg",
                                   // colorFilter: pageIndex == 0
                                   //     ? const ColorFilter.mode(
@@ -137,6 +176,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                         // uploadFiles(data);
                         // if (isLogin != null) {
                         pageIndex = 1;
+                        istabExplore = false;
                         // } else {
                         //   // showdialog();
                         //   // LoginMessages();
@@ -202,6 +242,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                       onTap: () {
                         // if (isLogin != null) {
                         pageIndex = 2;
+                        istabExplore = false;
                         // } else {
                         // showdialog();
                         // }
@@ -267,6 +308,8 @@ class _DashBoardScrState extends State<DashBoardScr> {
                         // showdialog();
                         // }
                         // print(pageIndex);
+
+                        // istabExplore = true;
                         setState(() {});
                         showModalBottomSheet(
                           shape: const RoundedRectangleBorder(
@@ -489,7 +532,17 @@ class _DashBoardScrState extends State<DashBoardScr> {
                           contentPadding: EdgeInsets.zero,
                           minLeadingWidth: size.width * 0.80,
                           splashColor: MyColor.blue.withOpacity(0.2),
-                          onTap: () {},
+                          onTap: () {
+                            istabExplore = true;
+                            setState(() {});
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                    builder: (context) => const DashBoardScr(
+                                          pageIndex: 4,
+                                          tabcheck: "kids",
+                                        )),
+                                (Route<dynamic> route) => false);
+                          },
                           minTileHeight: 40,
                           leading: SizedBox(
                             width: size.width *
@@ -698,7 +751,13 @@ class _DashBoardScrState extends State<DashBoardScr> {
                           contentPadding: EdgeInsets.zero,
                           minLeadingWidth: size.width * 0.80,
                           splashColor: MyColor.blue.withOpacity(0.2),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HelpSupportscr()),
+                            );
+                          },
                           minTileHeight: 40,
                           leading: SizedBox(
                             width: size.width *

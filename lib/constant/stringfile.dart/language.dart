@@ -189,4 +189,6 @@ class Language extends MyStrings {
 
   @override
   String get savePassword => "Save Password";
+  @override
+  String get kidsLearning => "Kids Learning";
 }

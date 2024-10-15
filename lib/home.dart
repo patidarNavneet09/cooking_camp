@@ -97,7 +97,24 @@ class _HomeScrState extends State<HomeScr> {
                         child: TouchRippleEffect(
                           borderRadius: BorderRadius.circular(5),
                           rippleColor: Colors.white,
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => DashBoardScr(
+                                        pageIndex: 4,
+                                        tabcheck: index == 0
+                                            ? "kids"
+                                            : index == 1
+                                                ? "ourstories"
+                                                : index == 2
+                                                    ? "about"
+                                                    : "",
+                                      )),
+                            );
+
+                            istabExplore = true;
+                            setState(() {});
+                          },
                           child: Container(
                             height: 41,
                             // width: 100,
