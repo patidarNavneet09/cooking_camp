@@ -36,4 +36,5 @@ class ImageAsset {
   static const String food1 = "assets/images/food1.png";
   static const String safety = "assets/images/safety.png";
   static const String safety1 = "assets/images/safety1.png";
+  static const String addimage = "assets/images/addimage.png";
 }

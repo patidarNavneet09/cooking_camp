@@ -19,7 +19,7 @@ class _KitsLearningScrState extends State<KitsLearningScr> {
     return WillPopScope(
       onWillPop: () async {
         debugPrint("dfsdfsdf");
-        istabExplore = false;
+        // istabExplore = false;
         setState(() {});
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(

@@ -70,4 +70,22 @@ abstract class MyStrings {
   String get savePassword;
   String get gotoHome;
   String get kidsLearning;
+  String get story;
+  String get addarecentmoment;
+  String get openyourphotogalleryto;
+  String get addImage;
+  String get momentStoryTitle;
+  String get max30Words;
+  String get yourStoryMoment;
+  String get min200Words;
+  String get writehere;
+  String get add;
+  String get addYourStories;
+  String get entertitle;
+  String get addYourRecipe;
+  String get addYourRecentCookingMoments;
+  String get openyourphotogallerytorecentrecipe;
+  String get recipeName;
+  String get enterthenameofyourrecipe;
+  String get toolsUsed;
 }

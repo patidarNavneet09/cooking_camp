@@ -1,10 +1,8 @@
 import 'dart:io';
-import 'package:cooking_champs/dashboard.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cooking_champs/constant/mycolor.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:touch_ripple_effect/touch_ripple_effect.dart';
 
 class HelpSupportscr extends StatefulWidget {
@@ -21,8 +19,6 @@ class _HelpSupportscrState extends State<HelpSupportscr> {
   TextEditingController confirmnewPassController = TextEditingController();
 
   //// <<<<<<<<<<<   Focous node >>>>>>>>>
-
-  dynamic _isFocusedcolor = '';
 
   File? selectedImage1;
   List<XFile> imageFileList = [];
@@ -106,11 +102,11 @@ class _HelpSupportscrState extends State<HelpSupportscr> {
         centerTitle: true,
         elevation: 0,
       ),
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(10.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,

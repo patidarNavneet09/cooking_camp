@@ -189,6 +189,62 @@ class Language extends MyStrings {
 
   @override
   String get savePassword => "Save Password";
+
   @override
   String get kidsLearning => "Kids Learning";
+
+  @override
+  String get story => "Story";
+
+  @override
+  String get addarecentmoment => "Add a recent moment";
+
+  @override
+  String get openyourphotogalleryto =>
+      "Open your photo gallery to share a recent memory.";
+
+  @override
+  String get addImage => "Add Image";
+
+  @override
+  String get momentStoryTitle => "Moment/Story Title";
+
+  @override
+  String get max30Words => "Max 30 Words";
+
+  @override
+  String get yourStoryMoment => "Your Story/Moment";
+
+  @override
+  String get min200Words => "Min 200 Words";
+
+  @override
+  String get writehere => "Write here..";
+
+  @override
+  String get add => "Add";
+
+  @override
+  String get addYourStories => "Add Your Stories";
+
+  @override
+  String get entertitle => "Enter title";
+
+  @override
+  String get addYourRecipe => "Add Your Recipe";
+
+  @override
+  String get addYourRecentCookingMoments => "Add Your Recent Cooking Moments";
+
+  @override
+  String get openyourphotogallerytorecentrecipe =>
+      "Open your photo gallery to share a recent recipe!";
+
+  @override
+  String get recipeName => "Recipe Name";
+
+  @override
+  String get enterthenameofyourrecipe => "Enter the name of your recipe";
+  @override
+  String get toolsUsed => "Tools Used";
 }

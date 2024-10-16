@@ -1,4 +1,4 @@
-import 'package:cooking_champs/Helpsupport.dart';
+import 'package:cooking_champs/helpsupport.dart';
 import 'package:cooking_champs/changepassword.dart';
 import 'package:cooking_champs/constant/imagepoint.dart';
 import 'package:cooking_champs/constant/mycolor.dart';
@@ -7,6 +7,7 @@ import 'package:cooking_champs/editprofile.dart';
 import 'package:cooking_champs/home.dart';
 import 'package:cooking_champs/kitslearning.dart';
 import 'package:cooking_champs/login.dart';
+import 'package:cooking_champs/ourstories.dart';
 import 'package:cooking_champs/recipe.dart';
 import 'package:cooking_champs/save.dart';
 import 'package:flutter/material.dart';
@@ -74,7 +75,9 @@ class _DashBoardScrState extends State<DashBoardScr> {
         body: istabExplore == true
             ? widget.tabcheck == "kids"
                 ? const KitsLearningScr()
-                : Container()
+                : widget.tabcheck == "OurStories"
+                    ? const OurStoriesScr()
+                    : Container()
             : pageIndex == 3
                 ? pages[2]
                 : pages[pageIndex],

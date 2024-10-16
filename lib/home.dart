@@ -105,7 +105,7 @@ class _HomeScrState extends State<HomeScr> {
                                         tabcheck: index == 0
                                             ? "kids"
                                             : index == 1
-                                                ? "ourstories"
+                                                ? "OurStories"
                                                 : index == 2
                                                     ? "about"
                                                     : "",
