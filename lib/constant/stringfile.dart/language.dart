@@ -245,6 +245,14 @@ class Language extends MyStrings {
 
   @override
   String get enterthenameofyourrecipe => "Enter the name of your recipe";
+
   @override
   String get toolsUsed => "Tools Used";
+
+  @override
+  String get entertheingredientsyouneed => "Enter the ingredients you need";
+
+  @override
+  String get enterthestepstocookyourrecipe =>
+      "Enter the steps to cook your recipe";
 }

@@ -88,4 +88,6 @@ abstract class MyStrings {
   String get recipeName;
   String get enterthenameofyourrecipe;
   String get toolsUsed;
+  String get entertheingredientsyouneed;
+  String get enterthestepstocookyourrecipe;
 }
