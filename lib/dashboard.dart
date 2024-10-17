@@ -1,3 +1,4 @@
+import 'package:cooking_champs/aboutus.dart';
 import 'package:cooking_champs/helpsupport.dart';
 import 'package:cooking_champs/changepassword.dart';
 import 'package:cooking_champs/constant/imagepoint.dart';
@@ -11,6 +12,7 @@ import 'package:cooking_champs/ourstories.dart';
 import 'package:cooking_champs/recipe.dart';
 import 'package:cooking_champs/save.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class DashBoardScr extends StatefulWidget {
   final int? pageIndex;
@@ -77,7 +79,9 @@ class _DashBoardScrState extends State<DashBoardScr> {
                 ? const KitsLearningScr()
                 : widget.tabcheck == "OurStories"
                     ? const OurStoriesScr()
-                    : Container()
+                    : widget.tabcheck == "Aboutus"
+                        ? const AboutUsScr()
+                        : Container()
             : pageIndex == 3
                 ? pages[2]
                 : pages[pageIndex],
@@ -476,11 +480,233 @@ class _DashBoardScrState extends State<DashBoardScr> {
                                         ),
                                         padding: EdgeInsets.zero),
                                     onPressed: () {
-                                      Navigator.of(context).pushAndRemoveUntil(
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const Loginscr()),
-                                          (Route<dynamic> route) => false);
+                                      showDialog(
+                                          context: context,
+                                          builder: (_) => AlertDialog(
+                                              contentPadding: EdgeInsets.only(
+                                                  left: 20,
+                                                  right: 20,
+                                                  bottom: 15,
+                                                  top: 15),
+                                              insetPadding: EdgeInsets.only(
+                                                  left: 20,
+                                                  right: 20,
+                                                  bottom: 15,
+                                                  top: 15),
+                                              shape:
+                                                  const RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  25.0))),
+                                              content:
+                                                  Builder(builder: (context) {
+                                                // Get available height and width of the build area of this widget. Make a choice depending on the size.
+                                                var size =
+                                                    MediaQuery.of(context).size;
+
+                                                return SizedBox(
+                                                  height: size.height * 0.38,
+                                                  width: size.width * 0.98,
+                                                  child: Column(
+                                                    children: [
+                                                      Container(
+                                                        child: Lottie.asset(
+                                                          'assets/images/Logout Cooki.json',
+                                                          height: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .height *
+                                                              0.17,
+                                                          width: MediaQuery.of(
+                                                                  context)
+                                                              .size
+                                                              .width,
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        Language()
+                                                            .logoutAccount,
+                                                        style: const TextStyle(
+                                                          color: MyColor.black,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          fontSize: 20,
+                                                          fontFamily:
+                                                              Fonts.vietna,
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        height:
+                                                            size.height * 0.01,
+                                                      ),
+                                                      Text(
+                                                        Language()
+                                                            .areyousureyouwanttologoutyouraccount,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: const TextStyle(
+                                                          color: MyColor.black,
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                          fontSize: 15,
+                                                          fontFamily:
+                                                              Fonts.vietna,
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        height:
+                                                            size.height * 0.03,
+                                                      ),
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
+                                                        children: [
+                                                          SizedBox(
+                                                            width: size.width *
+                                                                0.35,
+                                                            height: 55,
+                                                            child:
+                                                                ElevatedButton(
+                                                              style:
+                                                                  ElevatedButton
+                                                                      .styleFrom(
+                                                                backgroundColor:
+                                                                    MyColor
+                                                                        .white,
+                                                                overlayColor:
+                                                                    MyColor
+                                                                        .liteyellow,
+                                                                enableFeedback:
+                                                                    true,
+                                                                enabledMouseCursor:
+                                                                    MouseCursor
+                                                                        .defer,
+                                                                elevation:
+                                                                    5, // Optional: elevation (shadow)
+                                                                padding: const EdgeInsets
+                                                                    .symmetric(
+                                                                    horizontal:
+                                                                        20,
+                                                                    vertical:
+                                                                        10), // Custom padding
+                                                                shape:
+                                                                    RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              34), // Custom shape
+                                                                  side: BorderSide(
+                                                                      color: MyColor
+                                                                          .blue,
+                                                                      width:
+                                                                          2), // Blue border
+                                                                ),
+                                                              ),
+                                                              onPressed: () {
+                                                                Navigator.of(context).pushAndRemoveUntil(
+                                                                    MaterialPageRoute(
+                                                                        builder:
+                                                                            (context) =>
+                                                                                const Loginscr()),
+                                                                    (Route<dynamic>
+                                                                            route) =>
+                                                                        false);
+                                                                setState(() {});
+                                                              },
+                                                              child: Text(
+                                                                Language()
+                                                                    .yes
+                                                                    .toString(),
+                                                                style:
+                                                                    const TextStyle(
+                                                                  fontSize: 16,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                  fontFamily:
+                                                                      Fonts
+                                                                          .vietna,
+                                                                  color: MyColor
+                                                                      .blue, // Center text color blue
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            width: size.width *
+                                                                0.35,
+                                                            height: 55,
+                                                            child:
+                                                                ElevatedButton(
+                                                                    style: ElevatedButton
+                                                                        .styleFrom(
+                                                                      backgroundColor:
+                                                                          MyColor
+                                                                              .blue,
+                                                                      // surfaceTintColor: MyColor.white,
+                                                                      overlayColor:
+                                                                          MyColor
+                                                                              .liteyellow,
+                                                                      enableFeedback:
+                                                                          true,
+
+                                                                      enabledMouseCursor:
+                                                                          MouseCursor
+                                                                              .defer,
+                                                                      // Background color
+                                                                      // Text color (alternative)
+                                                                      elevation:
+                                                                          5, // Optional: elevation (shadow)
+                                                                      padding: const EdgeInsets
+                                                                          .symmetric(
+                                                                          horizontal:
+                                                                              20,
+                                                                          vertical:
+                                                                              10), // Custom padding
+                                                                      shape:
+                                                                          RoundedRectangleBorder(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(34), // Custom shape
+                                                                      ),
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {
+                                                                      Navigator.pop(
+                                                                          context);
+                                                                      // Navigator.of(context).pushAndRemoveUntil(
+                                                                      //     MaterialPageRoute(
+                                                                      //         builder: (context) => const DashBoardScr(
+                                                                      //               pageIndex: 0,
+                                                                      //             )),
+                                                                      //     (Route<dynamic> route) => false);
+                                                                      setState(
+                                                                          () {});
+                                                                    },
+                                                                    child: Text(
+                                                                      Language()
+                                                                          .no
+                                                                          .toString(),
+                                                                      style:
+                                                                          const TextStyle(
+                                                                        fontSize:
+                                                                            16,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                        fontFamily:
+                                                                            Fonts.vietna,
+                                                                        color: MyColor
+                                                                            .white,
+                                                                      ),
+                                                                    )),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              })));
                                     },
                                     child: Row(
                                       mainAxisAlignment:
@@ -578,7 +804,17 @@ class _DashBoardScrState extends State<DashBoardScr> {
                           contentPadding: EdgeInsets.zero,
                           minLeadingWidth: size.width * 0.80,
                           splashColor: MyColor.blue.withOpacity(0.2),
-                          onTap: () {},
+                          onTap: () {
+                            istabExplore = true;
+                            setState(() {});
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                    builder: (context) => const DashBoardScr(
+                                          pageIndex: 4,
+                                          tabcheck: "OurStories",
+                                        )),
+                                (Route<dynamic> route) => false);
+                          },
                           minTileHeight: 40,
                           leading: SizedBox(
                             width: size.width *
@@ -613,7 +849,17 @@ class _DashBoardScrState extends State<DashBoardScr> {
                           contentPadding: EdgeInsets.zero,
                           minLeadingWidth: size.width * 0.80,
                           splashColor: MyColor.blue.withOpacity(0.2),
-                          onTap: () {},
+                          onTap: () {
+                            istabExplore = true;
+                            setState(() {});
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                    builder: (context) => const DashBoardScr(
+                                          pageIndex: 4,
+                                          tabcheck: "Aboutus",
+                                        )),
+                                (Route<dynamic> route) => false);
+                          },
                           minTileHeight: 40,
                           leading: SizedBox(
                             width: size.width *

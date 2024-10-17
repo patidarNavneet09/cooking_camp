@@ -37,4 +37,9 @@ class ImageAsset {
   static const String safety = "assets/images/safety.png";
   static const String safety1 = "assets/images/safety1.png";
   static const String addimage = "assets/images/addimage.png";
+
+  static const String ellipse16 = "assets/images/Ellipse16.png";
+  static const String ellipse17 = "assets/images/Ellipse17.png";
+  static const String ellipse18 = "assets/images/Ellipse18.png";
+  static const String ellipse19 = "assets/images/Ellipse19.png";
 }

@@ -18,7 +18,7 @@ class _DropdownExampleState extends State<DropdownExample> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Dropdown Example"),
+        title: const Text("Dropdown Example"),
       ),
       body: Center(
         child: DropdownButtonHideUnderline(
@@ -30,7 +30,7 @@ class _DropdownExampleState extends State<DropdownExample> {
                   child: Text(
                     selectedItems.isEmpty
                         ? "Select Tools"
-                        : "${selectedItems.join(', ')}",
+                        : selectedItems.join(', '),
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
@@ -55,7 +55,7 @@ class _DropdownExampleState extends State<DropdownExample> {
                         ListTile(
                           minTileHeight: 30,
                           contentPadding: EdgeInsets.zero,
-                          title: Container(
+                          title: SizedBox(
                             height: 20,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -145,8 +145,8 @@ class _DropdownExampleState extends State<DropdownExample> {
             ),
             iconStyleData: IconStyleData(
               icon: dropopen
-                  ? Icon(Icons.arrow_drop_up_sharp)
-                  : Icon(Icons.arrow_drop_down),
+                  ? const Icon(Icons.arrow_drop_up_sharp)
+                  : const Icon(Icons.arrow_drop_down),
               iconSize: 20,
               iconEnabledColor: Colors.blue,
               iconDisabledColor: Colors.grey,

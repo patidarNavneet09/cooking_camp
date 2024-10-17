@@ -255,4 +255,29 @@ class Language extends MyStrings {
   @override
   String get enterthestepstocookyourrecipe =>
       "Enter the steps to cook your recipe";
+
+  @override
+  String get introductiontoCookingChamps => "Introduction to Cooking Champs";
+
+  @override
+  String get messageforParents => "Message for \nParents";
+
+  @override
+  String get messagetoCookingChamps => "Message to Cooking Champs";
+
+  @override
+  String get cookingChampsMoto => "Cooking Champs \nMoto";
+
+  @override
+  String get logoutAccount => "Logout Account";
+
+  @override
+  String get areyousureyouwanttologoutyouraccount =>
+      "Are you sure you want to logout  your account?";
+
+  @override
+  String get yes => "Yes";
+
+  @override
+  String get no => "No";
 }

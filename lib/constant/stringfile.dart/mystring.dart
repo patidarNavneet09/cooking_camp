@@ -90,4 +90,12 @@ abstract class MyStrings {
   String get toolsUsed;
   String get entertheingredientsyouneed;
   String get enterthestepstocookyourrecipe;
+  String get introductiontoCookingChamps;
+  String get messageforParents;
+  String get messagetoCookingChamps;
+  String get cookingChampsMoto;
+  String get logoutAccount;
+  String get areyousureyouwanttologoutyouraccount;
+  String get yes;
+  String get no;
 }

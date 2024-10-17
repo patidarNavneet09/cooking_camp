@@ -27,7 +27,7 @@ class _HelpSupportscrState extends State<HelpSupportscr> {
   String base64Image = "";
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    // var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         // // foregroundColor: MyColor.liteyellow,

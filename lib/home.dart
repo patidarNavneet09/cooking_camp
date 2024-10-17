@@ -107,7 +107,7 @@ class _HomeScrState extends State<HomeScr> {
                                             : index == 1
                                                 ? "OurStories"
                                                 : index == 2
-                                                    ? "about"
+                                                    ? "Aboutus"
                                                     : "",
                                       )),
                             );
@@ -119,7 +119,7 @@ class _HomeScrState extends State<HomeScr> {
                             height: 41,
                             // width: 100,
                             decoration: const BoxDecoration(
-                                color: MyColor.liteyellowbottom,
+                                color: MyColor.blue,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(5))),
                             child: Padding(
@@ -132,7 +132,7 @@ class _HomeScrState extends State<HomeScr> {
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,
                                     fontFamily: Fonts.vietna,
-                                    color: MyColor.blue,
+                                    color: MyColor.white,
                                   ),
                                 ),
                               ),

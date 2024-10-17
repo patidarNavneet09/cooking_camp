@@ -163,7 +163,7 @@ class _OurStoriesScrState extends State<OurStoriesScr>
                     children: [
                       Text(
                         "Best from the champs!",
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: MyColor.black,
                           fontWeight: FontWeight.w500,
                           fontSize: 18,

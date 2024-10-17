@@ -41,7 +41,6 @@ class _AddYourRecipeScrState extends State<AddYourRecipeScr> {
   final int maxSelection = 3;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     cookadd.clear();
     tooladd.clear();
@@ -145,7 +144,7 @@ class _AddYourRecipeScrState extends State<AddYourRecipeScr> {
                                 color: MyColor.blue,
                                 strokeWidth: 2,
                                 borderType: BorderType.RRect,
-                                radius: Radius.circular(10),
+                                radius: const Radius.circular(10),
                                 dashPattern: const [02, 10],
                                 child: TouchRippleEffect(
                                   backgroundColor: Colors.transparent,
@@ -306,7 +305,7 @@ class _AddYourRecipeScrState extends State<AddYourRecipeScr> {
                       ],
                     ),
                   ),
-                  Divider(),
+                  const Divider(),
                   Padding(
                     padding:
                         const EdgeInsets.only(left: 15, right: 15, bottom: 15),
@@ -352,7 +351,7 @@ class _AddYourRecipeScrState extends State<AddYourRecipeScr> {
                                     child: Text(
                                       selectedItems.isEmpty
                                           ? "Select Tools"
-                                          : "${selectedItems.join(', ')}",
+                                          : selectedItems.join(', '),
                                       style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w400,
@@ -376,13 +375,13 @@ class _AddYourRecipeScrState extends State<AddYourRecipeScr> {
                                     ) {
                                       final isSelected =
                                           selectedItems.contains(tool.name);
-                                      print(tool);
+
                                       return Wrap(
                                         children: [
                                           ListTile(
                                             minTileHeight: 30,
                                             contentPadding: EdgeInsets.zero,
-                                            title: Container(
+                                            title: SizedBox(
                                               height: 20,
                                               child: Row(
                                                 mainAxisAlignment:
@@ -452,7 +451,7 @@ class _AddYourRecipeScrState extends State<AddYourRecipeScr> {
                                           //     height: 1,
                                           //   ),
                                           // ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 10,
                                           )
                                         ],
@@ -471,7 +470,7 @@ class _AddYourRecipeScrState extends State<AddYourRecipeScr> {
 
                               onChanged: (value) {
                                 _isFocusedcolor = "dropdwon";
-                                debugPrint("${value}");
+                                debugPrint("$value");
                                 if (selectedItems.contains(value) == false) {
                                   setState(() {
                                     selectedItems.add(value!);
@@ -500,8 +499,8 @@ class _AddYourRecipeScrState extends State<AddYourRecipeScr> {
                               ),
                               iconStyleData: IconStyleData(
                                 icon: dropopen == true
-                                    ? Icon(Icons.arrow_drop_up_sharp)
-                                    : Icon(Icons.arrow_drop_down),
+                                    ? const Icon(Icons.arrow_drop_up_sharp)
+                                    : const Icon(Icons.arrow_drop_down),
                                 iconSize: 20,
                                 iconEnabledColor: MyColor.blue,
                                 iconDisabledColor: MyColor.graylite,
@@ -532,7 +531,7 @@ class _AddYourRecipeScrState extends State<AddYourRecipeScr> {
                       ],
                     ),
                   ),
-                  Divider(),
+                  const Divider(),
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 15, right: 15, bottom: 15, top: 15),
@@ -696,7 +695,7 @@ class _AddYourRecipeScrState extends State<AddYourRecipeScr> {
                                         Expanded(
                                           child: Text(
                                             tooladd[index],
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w400,
                                               fontFamily: Fonts.vietna,
@@ -718,7 +717,7 @@ class _AddYourRecipeScrState extends State<AddYourRecipeScr> {
                   const SizedBox(
                     height: 15,
                   ),
-                  Divider(),
+                  const Divider(),
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 15, right: 15, bottom: 15, top: 15),
@@ -759,7 +758,7 @@ class _AddYourRecipeScrState extends State<AddYourRecipeScr> {
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 15,
                         ),
                         Container(
@@ -875,7 +874,7 @@ class _AddYourRecipeScrState extends State<AddYourRecipeScr> {
                                       children: [
                                         Text(
                                           "Step ${(index + 1)} - ",
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w400,
                                             fontFamily: Fonts.vietna,
@@ -885,7 +884,7 @@ class _AddYourRecipeScrState extends State<AddYourRecipeScr> {
                                         Expanded(
                                           child: Text(
                                             cookadd[index],
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w400,
                                               fontFamily: Fonts.vietna,

@@ -114,7 +114,7 @@ class _AddYourStoriesScrState extends State<AddYourStoriesScr> {
                             color: MyColor.blue,
                             strokeWidth: 2,
                             borderType: BorderType.RRect,
-                            radius: Radius.circular(10),
+                            radius: const Radius.circular(10),
                             dashPattern: const [02, 10],
                             child: TouchRippleEffect(
                               backgroundColor: Colors.transparent,
@@ -128,11 +128,11 @@ class _AddYourStoriesScrState extends State<AddYourStoriesScr> {
                               rippleColor: MyColor.blue.withOpacity(0.8),
                               onTap: () {},
                               child: Container(
-                                  margin: const EdgeInsets.all(2),
                                   height: size.height * 0.19,
                                   width: size.width * 0.40,
                                   decoration: const BoxDecoration(
-                                      shape: BoxShape.circle),
+                                    color: MyColor.yellowF6F1E1,
+                                  ),
                                   child: Center(
                                       child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -157,7 +157,7 @@ class _AddYourStoriesScrState extends State<AddYourStoriesScr> {
                             color: MyColor.blue,
                             strokeWidth: 2,
                             borderType: BorderType.RRect,
-                            radius: Radius.circular(10),
+                            radius: const Radius.circular(10),
                             dashPattern: const [02, 10],
                             child: TouchRippleEffect(
                               backgroundColor: Colors.transparent,
@@ -171,11 +171,11 @@ class _AddYourStoriesScrState extends State<AddYourStoriesScr> {
                               rippleColor: MyColor.blue.withOpacity(0.8),
                               onTap: () {},
                               child: Container(
-                                  margin: const EdgeInsets.all(2),
                                   height: size.height * 0.19,
                                   width: size.width * 0.40,
                                   decoration: const BoxDecoration(
-                                      shape: BoxShape.circle),
+                                    color: MyColor.yellowF6F1E1,
+                                  ),
                                   child: Center(
                                       child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
