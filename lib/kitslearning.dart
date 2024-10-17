@@ -2,6 +2,7 @@ import 'package:cooking_champs/constant/imagepoint.dart';
 import 'package:cooking_champs/constant/mycolor.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
 import 'package:cooking_champs/dashboard.dart';
+import 'package:cooking_champs/safatykiten.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 import 'package:touch_ripple_effect/touch_ripple_effect.dart';
@@ -102,7 +103,13 @@ class _KitsLearningScrState extends State<KitsLearningScr> {
                           child: TouchRippleEffect(
                             borderRadius: BorderRadius.circular(27),
                             rippleColor: Colors.white,
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SafetykitenScr()));
+                              ;
+                            },
                             child: Stack(
                               children: [
                                 Container(

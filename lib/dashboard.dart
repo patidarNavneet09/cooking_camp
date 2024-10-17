@@ -24,10 +24,9 @@ class DashBoardScr extends StatefulWidget {
 }
 
 bool? istabExplore = false;
+int pageIndex = 0;
 
 class _DashBoardScrState extends State<DashBoardScr> {
-  int pageIndex = 0;
-
   bool? isLogin = false;
 
   // pages count & variable assign >>>>>>>>>
@@ -483,16 +482,18 @@ class _DashBoardScrState extends State<DashBoardScr> {
                                       showDialog(
                                           context: context,
                                           builder: (_) => AlertDialog(
-                                              contentPadding: EdgeInsets.only(
-                                                  left: 20,
-                                                  right: 20,
-                                                  bottom: 15,
-                                                  top: 15),
-                                              insetPadding: EdgeInsets.only(
-                                                  left: 20,
-                                                  right: 20,
-                                                  bottom: 15,
-                                                  top: 15),
+                                              contentPadding:
+                                                  const EdgeInsets.only(
+                                                      left: 20,
+                                                      right: 20,
+                                                      bottom: 15,
+                                                      top: 15),
+                                              insetPadding:
+                                                  const EdgeInsets.only(
+                                                      left: 20,
+                                                      right: 20,
+                                                      bottom: 15,
+                                                      top: 15),
                                               shape:
                                                   const RoundedRectangleBorder(
                                                       borderRadius:
@@ -597,7 +598,7 @@ class _DashBoardScrState extends State<DashBoardScr> {
                                                                       BorderRadius
                                                                           .circular(
                                                                               34), // Custom shape
-                                                                  side: BorderSide(
+                                                                  side: const BorderSide(
                                                                       color: MyColor
                                                                           .blue,
                                                                       width:

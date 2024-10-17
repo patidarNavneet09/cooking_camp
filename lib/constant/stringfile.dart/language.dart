@@ -280,4 +280,7 @@ class Language extends MyStrings {
 
   @override
   String get no => "No";
+
+  @override
+  String get safetyinthekitchen => "Safety in the kitchen";
 }

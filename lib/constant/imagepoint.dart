@@ -42,4 +42,8 @@ class ImageAsset {
   static const String ellipse17 = "assets/images/Ellipse17.png";
   static const String ellipse18 = "assets/images/Ellipse18.png";
   static const String ellipse19 = "assets/images/Ellipse19.png";
+
+  static const String orangeroundedback = "assets/images/orangeroundedback.png";
+  static const String whitesamallroundedback =
+      "assets/images/whitesamallroundedback.png";
 }

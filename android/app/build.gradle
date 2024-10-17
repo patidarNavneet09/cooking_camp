@@ -7,8 +7,8 @@ plugins {
 
 android {
     namespace = "com.example.cooking_champs"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    compileSdk = 34
+    ndkVersion "21.4.7075529"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -24,10 +24,12 @@ android {
         applicationId = "com.example.cooking_champs"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
+        minSdk = 26
+        targetSdk = 34
         versionCode = flutter.versionCode
-        versionName = flutter.versionName
+        versionName = flutter.versionName    
+        multiDexEnabled true
+        
     }
 
     buildTypes {

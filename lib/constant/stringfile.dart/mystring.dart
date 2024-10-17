@@ -98,4 +98,5 @@ abstract class MyStrings {
   String get areyousureyouwanttologoutyouraccount;
   String get yes;
   String get no;
+  String get safetyinthekitchen;
 }
