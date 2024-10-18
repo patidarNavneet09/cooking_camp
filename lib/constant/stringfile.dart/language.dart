@@ -283,4 +283,14 @@ class Language extends MyStrings {
 
   @override
   String get safetyinthekitchen => "Safety in the kitchen";
+
+  @override
+  String get yourStories => "Your Stories";
+
+  @override
+  String get nostoriesYet => "No Stories Yet!";
+
+  @override
+  String get youhaventaddedanystoriesyet =>
+      "You haven’t added any stories yet. Feel free to share your cherished family moments and start adding your favorite memories now!";
 }

@@ -99,4 +99,7 @@ abstract class MyStrings {
   String get yes;
   String get no;
   String get safetyinthekitchen;
+  String get yourStories;
+  String get nostoriesYet;
+  String get youhaventaddedanystoriesyet;
 }

@@ -46,4 +46,7 @@ class ImageAsset {
   static const String orangeroundedback = "assets/images/orangeroundedback.png";
   static const String whitesamallroundedback =
       "assets/images/whitesamallroundedback.png";
+
+  static const String safetyimg = "assets/images/safety (1).png";
+  static const String nostories = "assets/images/nostories.png";
 }

@@ -42,6 +42,8 @@ class _SafetykitenScrState extends State<SafetykitenScr> {
               ],
             ),
             Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   height: size.height * 0.06,
@@ -92,6 +94,64 @@ class _SafetykitenScrState extends State<SafetykitenScr> {
                     ],
                   ),
                 ),
+                Image.asset(ImageAsset.safetyimg),
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "What’s inside",
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: Fonts.vietna,
+                          color: MyColor.blue,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Rhyming Rules for the Cooking Champs Kitchen",
+                        style: const TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: Fonts.vietna,
+                          color: MyColor.white,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Cooking Champs’ Kitchen Rules Chart",
+                        style: const TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: Fonts.vietna,
+                          color: MyColor.white,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Knife Safety Skills Chart",
+                        style: const TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: Fonts.vietna,
+                          color: MyColor.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
               ],
             )
           ],
