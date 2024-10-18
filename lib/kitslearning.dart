@@ -108,7 +108,6 @@ class _KitsLearningScrState extends State<KitsLearningScr> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => SafetykitenScr()));
-                              ;
                             },
                             child: Stack(
                               children: [

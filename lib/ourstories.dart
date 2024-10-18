@@ -3,8 +3,8 @@ import 'package:cooking_champs/addyourstories.dart';
 import 'package:cooking_champs/constant/imagepoint.dart';
 import 'package:cooking_champs/constant/mycolor.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
-import 'package:cooking_champs/constant/stringfile.dart/mystring.dart';
 import 'package:cooking_champs/dashboard.dart';
+import 'package:cooking_champs/storiesdetials.dart';
 import 'package:flutter/material.dart';
 import 'package:touch_ripple_effect/touch_ripple_effect.dart';
 
@@ -192,7 +192,14 @@ class _OurStoriesScrState extends State<OurStoriesScr>
                                 child: TouchRippleEffect(
                                   borderRadius: BorderRadius.circular(10),
                                   rippleColor: Colors.white,
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const StoriesDetialsScr()),
+                                    );
+                                    setState(() {});
+                                  },
                                   child: Container(
                                     decoration: const BoxDecoration(
                                         color: MyColor.white,
@@ -327,7 +334,14 @@ class _OurStoriesScrState extends State<OurStoriesScr>
                                       child: TouchRippleEffect(
                                         borderRadius: BorderRadius.circular(10),
                                         rippleColor: Colors.white,
-                                        onTap: () {},
+                                        onTap: () {
+                                          Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const StoriesDetialsScr()),
+                                          );
+                                          setState(() {});
+                                        },
                                         child: Container(
                                           decoration: const BoxDecoration(
                                               color: MyColor.white,
