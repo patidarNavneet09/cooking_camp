@@ -1,8 +1,12 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:cooking_champs/constant/imagepoint.dart';
 import 'package:cooking_champs/constant/mycolor.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:touch_ripple_effect/touch_ripple_effect.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
@@ -14,6 +18,11 @@ class AddYourRecipeScr extends StatefulWidget {
 }
 
 class _AddYourRecipeScrState extends State<AddYourRecipeScr> {
+  List<XFile> imageFileList = [];
+  dynamic image1;
+  File? selectedImage1;
+
+  String base64Image = "";
   dynamic _isFocusedcolor = '';
   List cookadd = [];
   List tooladd = [];
@@ -145,7 +154,9 @@ class _AddYourRecipeScrState extends State<AddYourRecipeScr> {
                                 strokeWidth: 2,
                                 borderType: BorderType.RRect,
                                 radius: const Radius.circular(10),
-                                dashPattern: const [02, 10],
+                                dashPattern: selectedImage1 != null
+                                    ? [200, 0]
+                                    : const [02, 10],
                                 child: TouchRippleEffect(
                                   backgroundColor: Colors.transparent,
 
@@ -156,34 +167,56 @@ class _AddYourRecipeScrState extends State<AddYourRecipeScr> {
 
                                   borderRadius: BorderRadius.circular(10),
                                   rippleColor: MyColor.blue.withOpacity(0.8),
-                                  onTap: () {},
-                                  child: Container(
-                                      // margin: const EdgeInsets.all(2),
-                                      height: size.height * 0.19,
-                                      width: size.width * 0.90,
-                                      decoration: const BoxDecoration(
-                                        color: MyColor.yellowF6F1E1,
-                                      ),
-                                      child: Center(
-                                          child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Image.asset(
-                                              width: 35,
-                                              height: 35,
-                                              ImageAsset.addimage),
-                                          Text(
-                                            Language().addImage,
-                                            style: const TextStyle(
-                                              color: MyColor.blue,
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 12,
-                                              fontFamily: Fonts.vietna,
-                                            ),
+                                  onTap: () {
+                                    showModalBottomSheet(
+                                        shape: const RoundedRectangleBorder(
+                                          // <-- SEE HERE
+                                          borderRadius: BorderRadius.vertical(
+                                            top: Radius.circular(20.0),
                                           ),
-                                        ],
-                                      ))),
+                                        ),
+                                        context: context,
+                                        builder: ((builder) => bottomSheet1()));
+                                  },
+                                  child: selectedImage1 != null
+                                      ? Container(
+                                          height: size.height * 0.19,
+                                          width: size.width * 0.90,
+                                          decoration: const BoxDecoration(
+                                            color: MyColor.yellowF6F1E1,
+                                          ),
+                                          child: Image.file(
+                                            selectedImage1!,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        )
+                                      : Container(
+                                          // margin: const EdgeInsets.all(2),
+                                          height: size.height * 0.19,
+                                          width: size.width * 0.90,
+                                          decoration: const BoxDecoration(
+                                            color: MyColor.yellowF6F1E1,
+                                          ),
+                                          child: Center(
+                                              child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Image.asset(
+                                                  width: 35,
+                                                  height: 35,
+                                                  ImageAsset.addimage),
+                                              Text(
+                                                Language().addImage,
+                                                style: const TextStyle(
+                                                  color: MyColor.blue,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 12,
+                                                  fontFamily: Fonts.vietna,
+                                                ),
+                                              ),
+                                            ],
+                                          ))),
                                 )),
                           ],
                         ),
@@ -952,6 +985,114 @@ class _AddYourRecipeScrState extends State<AddYourRecipeScr> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Future<void> chooseImage1(
+    type,
+  ) async {
+    imageFileList.clear();
+
+    if (type == "camera") {
+      image1 = await ImagePicker()
+          .pickImage(source: ImageSource.camera, imageQuality: 50);
+      imageFileList.add(image1);
+    } else {
+      image1 = await ImagePicker()
+          .pickImage(source: ImageSource.gallery, imageQuality: 50);
+      imageFileList.add(image1);
+    }
+
+    if (image1 != null) {
+      setState(() {
+        selectedImage1 = File(image1.path);
+        base64Image = base64Encode(selectedImage1!.readAsBytesSync());
+      });
+    }
+  }
+
+  Widget bottomSheet1() {
+    return Container(
+      height: 110.0,
+      width: MediaQuery.of(context).size.width,
+      margin: const EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 20,
+      ),
+      child: Column(
+        children: <Widget>[
+          const Text(
+            "Choose Product Images",
+            style: TextStyle(
+              fontSize: 20,
+              color: MyColor.blue,
+              fontFamily: Fonts.vietna,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              OutlinedButton.icon(
+                  style: OutlinedButton.styleFrom(
+                    side: const BorderSide(width: 1.0, color: MyColor.blue),
+                    minimumSize: const Size(110, 35),
+                    maximumSize: const Size(115, 35),
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                    chooseImage1(
+                      "camera",
+                    );
+                    setState(() {});
+                  },
+                  icon: const Icon(
+                    Icons.camera,
+                    color: MyColor.blue,
+                  ),
+                  label: const Text(
+                    "camera",
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: MyColor.blue,
+                      fontFamily: Fonts.vietna,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  )),
+              OutlinedButton.icon(
+                style: OutlinedButton.styleFrom(
+                  side: const BorderSide(width: 1.0, color: MyColor.blue),
+                  minimumSize: const Size(110, 35),
+                  maximumSize: const Size(115, 35),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                  chooseImage1(
+                    "Gallery",
+                  );
+                  setState(() {});
+                },
+                icon: const Icon(
+                  Icons.image,
+                  color: MyColor.blue,
+                ),
+                label: const Text(
+                  "Gallery",
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: MyColor.blue,
+                    fontFamily: Fonts.vietna,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
