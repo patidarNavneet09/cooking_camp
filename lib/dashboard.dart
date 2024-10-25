@@ -1,4 +1,5 @@
 import 'package:cooking_champs/aboutus.dart';
+import 'package:cooking_champs/friendrequest.dart';
 import 'package:cooking_champs/helpsupport.dart';
 import 'package:cooking_champs/changepassword.dart';
 import 'package:cooking_champs/constant/imagepoint.dart';
@@ -8,6 +9,7 @@ import 'package:cooking_champs/editprofile.dart';
 import 'package:cooking_champs/home.dart';
 import 'package:cooking_champs/kitslearning.dart';
 import 'package:cooking_champs/login.dart';
+import 'package:cooking_champs/mykits.dart';
 import 'package:cooking_champs/ourstories.dart';
 import 'package:cooking_champs/recipe.dart';
 import 'package:cooking_champs/save.dart';
@@ -844,6 +846,120 @@ class _DashBoardScrState extends State<DashBoardScr> {
                           trailing: const Icon(
                             Icons.arrow_forward_ios_outlined,
                             size: 20,
+                          ),
+                        ),
+                        ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          minLeadingWidth: size.width * 0.80,
+                          splashColor: MyColor.blue.withOpacity(0.2),
+                          onTap: () {
+                            istabExplore = true;
+                            setState(() {});
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const MyKitsProfileShowscr()),
+                                (Route<dynamic> route) => false);
+                          },
+                          minTileHeight: 40,
+                          leading: SizedBox(
+                            width: size.width *
+                                0.80, // Adjust this value as per your layout needs
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  height: 23,
+                                  width: 23,
+                                  ImageAsset.kitslearningorange,
+                                  color: MyColor.blue,
+                                ),
+                                const SizedBox(width: 10),
+                                Flexible(
+                                  child: Text(
+                                    Language().myKids.toString(),
+                                    style: const TextStyle(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w300,
+                                      fontFamily: Fonts.vietna,
+                                      color: MyColor.black,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          trailing: const Icon(
+                            Icons.arrow_forward_ios_outlined,
+                            size: 20,
+                          ),
+                        ),
+                        ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          minLeadingWidth: size.width * 0.80,
+                          splashColor: MyColor.blue.withOpacity(0.2),
+                          onTap: () {
+                            istabExplore = true;
+                            setState(() {});
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const FriendRequestScr()),
+                                (Route<dynamic> route) => false);
+                          },
+                          minTileHeight: 40,
+                          leading: SizedBox(
+                            width: size.width *
+                                0.80, // Adjust this value as per your layout needs
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  height: 23,
+                                  width: 23,
+                                  ImageAsset.addperson,
+                                  color: MyColor.blue,
+                                ),
+                                const SizedBox(width: 10),
+                                Flexible(
+                                  child: Text(
+                                    Language().friendRequest.toString(),
+                                    style: const TextStyle(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w300,
+                                      fontFamily: Fonts.vietna,
+                                      color: MyColor.black,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          trailing: Container(
+                            width: 100,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: MyColor.blue,
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text(
+                                      "2",
+                                      style: TextStyle(color: MyColor.white),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                const Icon(
+                                  Icons.arrow_forward_ios_outlined,
+                                  size: 20,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         ListTile(

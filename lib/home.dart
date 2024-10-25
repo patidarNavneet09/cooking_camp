@@ -82,7 +82,7 @@ class _HomeScrState extends State<HomeScr> {
         child: Column(
           children: [
             Container(
-              height: 70,
+              height: 108,
               width: size.width,
               padding: const EdgeInsets.only(left: 5, top: 5),
               // color: Colors.amber,
@@ -116,25 +116,51 @@ class _HomeScrState extends State<HomeScr> {
                             setState(() {});
                           },
                           child: Container(
-                            height: 41,
+                            height: 108,
                             // width: 100,
-                            decoration: const BoxDecoration(
-                                color: MyColor.blue,
+                            decoration: BoxDecoration(
+                                color: index == 0
+                                    ? MyColor.colorFFF0FF8
+                                    : index == 1
+                                        ? MyColor.colorEDEFFF
+                                        : MyColor.colorF3E6FF,
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(5))),
+                                    BorderRadius.all(Radius.circular(16))),
                             child: Padding(
                               padding:
-                                  const EdgeInsets.only(left: 16, right: 22),
-                              child: Center(
-                                child: Text(
-                                  explorelist[index],
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: Fonts.vietna,
-                                    color: MyColor.white,
+                                  const EdgeInsets.only(left: 18, right: 20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    height: 15,
                                   ),
-                                ),
+                                  Image.asset(
+                                    index == 0
+                                        ? ImageAsset.kitslearningorange
+                                        : index == 1
+                                            ? ImageAsset.ourstoriesblue
+                                            : ImageAsset.aboutsblue,
+                                    width: 36,
+                                    height: 36,
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    explorelist[index],
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: Fonts.vietna,
+                                      color: index == 0
+                                          ? MyColor.orange
+                                          : index == 1
+                                              ? MyColor.blue1
+                                              : MyColor.blue,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),

@@ -2,6 +2,7 @@ import 'package:cooking_champs/constant/imagepoint.dart';
 import 'package:cooking_champs/constant/mycolor.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
 import 'package:cooking_champs/dashboard.dart';
+import 'package:cooking_champs/safatykiten1.dart';
 import 'package:cooking_champs/safatykiten.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_grid/responsive_grid.dart';
@@ -14,7 +15,17 @@ class KitsLearningScr extends StatefulWidget {
   State<KitsLearningScr> createState() => _KitsLearningScrState();
 }
 
+// bool check to never repple navigate >>>>
+
+bool navigateSafetykiten = false;
+
 class _KitsLearningScrState extends State<KitsLearningScr> {
+  @override
+  void initState() {
+    super.initState();
+    navigateSafetykiten = true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -104,10 +115,19 @@ class _KitsLearningScrState extends State<KitsLearningScr> {
                             borderRadius: BorderRadius.circular(27),
                             rippleColor: Colors.white,
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => SafetykitenScr()));
+                              if (navigateSafetykiten == true) {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            SafetykitenScr())).then(
+                                  (value) {
+                                    navigateSafetykiten = true;
+                                  },
+                                );
+                              }
+
+                              setState(() {});
                             },
                             child: Stack(
                               children: [

@@ -337,6 +337,159 @@ class _CookDetailsScrState extends State<CookDetailsScr> {
               ],
             ),
           ),
+          // Container(
+          //   height: 150,
+          //   width: MediaQuery.of(context).size.width,
+          //   decoration: BoxDecoration(
+          //     borderRadius: BorderRadius.only(
+          //         topLeft: Radius.circular(46), topRight: Radius.circular(46)),
+          //     color: MyColor.colorF3E6FF,
+          //     // boxShadow: [
+          //     //   BoxShadow(
+          //     //     color: MyColor.colorF3E6FF,
+          //     //     spreadRadius: 3,
+          //     //     blurRadius: 2,
+          //     //     offset: const Offset(0, 1),
+          //     //   ),
+          //     // ],
+          //   ),
+          //   child: Column(
+          //     children: [
+          //       Row(
+          //         children: [
+          //           Text("data"),
+          //         ],
+          //       ),
+          //     ],
+          //   ),
+          // )
+          Container(
+            padding: EdgeInsets.all(10),
+            height: 180,
+            decoration: BoxDecoration(
+              color: MyColor.colorF8F0FF,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(46), topRight: Radius.circular(46)),
+            ),
+            alignment:
+                Alignment.center, // Centers text vertically and horizontally
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CircleAvatar(
+                        radius: 40,
+                        child: Image.asset(ImageAsset.image),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10, top: 15),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Andrew Robert",
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: Fonts.vietna,
+                                color: MyColor.black,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 3,
+                            ),
+                            Row(
+                              children: [
+                                const Text(
+                                  "12 | March | 2006 | 1 st Standard",
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: Fonts.vietna,
+                                    color: MyColor.black,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      // Column(
+                      //   mainAxisAlignment: MainAxisAlignment.end,
+                      //   crossAxisAlignment: CrossAxisAlignment.end,
+                      //   children: [
+                      //     Row(
+                      //       children: [
+                      //         Image.asset(
+                      //           ImageAsset.editfullback,
+                      //           width: 30,
+                      //         ),
+                      //         SizedBox(
+                      //           width: 5,
+                      //         ),
+                      //         Image.asset(
+                      //           ImageAsset.deletefullback,
+                      //           width: 30,
+                      //         )
+                      //       ],
+                      //     )
+                      //   ],
+                      // )
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(top: 10),
+                  width: size.width * 0.95,
+                  height: 55,
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: MyColor.blue,
+                        // surfaceTintColor: MyColor.white,
+                        overlayColor: MyColor.liteyellow,
+                        enableFeedback: true,
+
+                        enabledMouseCursor: MouseCursor.defer,
+                        // Background color
+                        // Text color (alternative)
+                        elevation: 5, // Optional: elevation (shadow)
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10), // Custom padding
+                        shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(34), // Custom shape
+                        ),
+                      ),
+                      onPressed: () {
+                        // Navigator.of(context)
+                        //     .pushAndRemoveUntil(
+                        //         MaterialPageRoute(
+                        //             builder:
+                        //                 (context) =>
+                        //                     const KitsProfileShowscr()),
+                        //         (Route<dynamic>
+                        //                 route) =>
+                        //             false);
+                        // setState(() {});
+                      },
+                      child: Text(
+                        Language().sendRequest.toString(),
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: Fonts.vietna,
+                          color: MyColor.white,
+                        ),
+                      )),
+                ),
+              ],
+            ),
+          ),
         ],
       )),
     );

@@ -26,6 +26,9 @@ class Language extends MyStrings {
   String get firstName => "First Name:";
   @override
   String get enterfirstName => "Enter First Name ";
+
+  @override
+  String get searchbyname => "Search by name";
   @override
   String get lastName => "Last Name:";
   @override
@@ -119,6 +122,10 @@ class Language extends MyStrings {
       "Your password has been successfully reset. You can now log in with your new password.";
 
   @override
+  String get greatYouvesuccessfullycreatedAndrewprofile =>
+      "Great! You’ve successfully created   Andrew profile. Would you like to add another child?";
+
+  @override
   String get gotoLogin => "Go to Login";
 
   @override
@@ -126,6 +133,12 @@ class Language extends MyStrings {
 
   @override
   String get home => "Home";
+
+  @override
+  String get okay => "Ok";
+
+  @override
+  String get searchFriends => "Search Friends";
 
   @override
   String get recipe => "Recipe";
@@ -147,6 +160,20 @@ class Language extends MyStrings {
 
   @override
   String get aboutUs => "About Us";
+
+  @override
+  String get myKids => "My Kids";
+  @override
+  String get addAnotherKid => "Add Another Kid";
+
+  @override
+  String get editKidProfile => "Edit Kid Profile";
+
+  @override
+  String get friendRequest => "Friend Request";
+
+  @override
+  String get request => "Request";
 
   @override
   String get editProfile => "Edit Profile";
@@ -176,6 +203,9 @@ class Language extends MyStrings {
   String get featuredstories => "Featured Stories";
 
   @override
+  String get sendRequest => "Send Request";
+
+  @override
   String get popularRecipe => "Popular Recipe";
 
   @override
@@ -195,6 +225,9 @@ class Language extends MyStrings {
 
   @override
   String get story => "Story";
+
+  @override
+  String get myFriends => "My Friends";
 
   @override
   String get addarecentmoment => "Add a recent moment";
@@ -293,4 +326,67 @@ class Language extends MyStrings {
   @override
   String get youhaventaddedanystoriesyet =>
       "You haven’t added any stories yet. Feel free to share your cherished family moments and start adding your favorite memories now!";
+
+  @override
+  String get letCreateYourKidChampProfile =>
+      "Let’s Create Your Kid's Champ \nProfile!";
+
+  @override
+  String get yourChampFullName => "Your Champ Full Name";
+
+  @override
+  String get name => "Name";
+
+  @override
+  String get entername => "Enter name";
+
+  @override
+  String get dateofbirth => "Date of Birth";
+
+  @override
+  String get day => "Day";
+  @override
+  String get selectyourcampbornday => "Select your champs born day";
+
+  @override
+  String get month => "Month";
+
+  @override
+  String get year => "year";
+  @override
+  String get selectyourcampmanth => "Select your champs month";
+
+  @override
+  String get selectyourcampyear => "Select your champs year";
+
+  @override
+  String get whichclassgradearetheyin => "Which class/grade are they in?";
+
+  @override
+  String get classgrade => "Class/Grade";
+  @override
+  String get enterclassgrade => "Enter Class/Grade";
+  @override
+  String get username => "Username";
+
+  @override
+  String get enterusername => "Enter username";
+
+  @override
+  String get passwordd => "Password";
+
+  @override
+  String get careatekidprifile => "Create Kid Profile";
+
+  @override
+  String get firstNamee => "First Name";
+
+  @override
+  String get optional => "Optional";
+
+  @override
+  String get childprofilecreated => "Child Profile Created!";
+
+  @override
+  String get addkidsmore => "Add More Kid";
 }

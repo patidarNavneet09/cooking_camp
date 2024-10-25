@@ -6,11 +6,14 @@ class MyColor {
   static const yello = Colors.yellow;
   static const red = Color(0xffEB3039);
   static const blue = Color(0xff48335C);
+  static const blue1 = Color(0xff0010BB);
+  static const bluelite1 = Color(0xffC8BCD3);
   static const bluelite = Color(0xffF1E2FF);
   static const liteyellow = Color(0xffFFE5D6);
   static const litegray = Color(0xff878787);
   static const graylite = Color(0xffDCDCDC);
   static const graylite1 = Color(0xff878787);
+  static const graylite2 = Color(0xffDADADA);
   static const otpcolr = Color(0xffDDDDDD);
   static const liteyellowotp = Color(0xffFCF8EB);
   static const liteyellowbottom = Color(0xffEEE9D9);
@@ -26,6 +29,12 @@ class MyColor {
   static const colorE2E2E2 = Color(0xffE2E2E2);
   static const color1C1C1C = Color(0xff1C1C1C);
   static const colorE5E9F4 = Color(0xffE5E9F4);
+  static const colorF8F0FF = Color(0xffF8F0FF);
+  static const colorFFF0FF8 = Color(0xffFFF0E8);
+  static const colorEDEFFF = Color(0xffEDEFFF);
+  static const colorF3E6FF = Color(0xffF3E6FF);
+  static const colorD8DCE4 = Color(0xffD8DCE4);
+  static const colorEFF0F2B8 = Color(0xffEFF0F2B8);
   static const orange = Color(0xffF7AA64);
 }
 

@@ -49,4 +49,17 @@ class ImageAsset {
 
   static const String safetyimg = "assets/images/safety (1).png";
   static const String nostories = "assets/images/nostories.png";
+
+  static const String google = "assets/images/google.png";
+  static const String facebook = "assets/images/facebook.png";
+
+  static const String editfullback = "assets/images/editfullback.png";
+  static const String deletefullback = "assets/images/deletefullback.png";
+
+  static const String kitslearningorange =
+      "assets/images/kitslearningorange.png";
+
+  static const String ourstoriesblue = "assets/images/ourstoriesblue.png";
+  static const String aboutsblue = "assets/images/aboutsblue.png";
+  static const String addperson = "assets/images/addperson.png";
 }

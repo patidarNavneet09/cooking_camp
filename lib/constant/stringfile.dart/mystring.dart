@@ -102,4 +102,48 @@ abstract class MyStrings {
   String get yourStories;
   String get nostoriesYet;
   String get youhaventaddedanystoriesyet;
+  String get letCreateYourKidChampProfile;
+
+  String get yourChampFullName;
+  String get name;
+
+  String get entername;
+
+  String get dateofbirth;
+
+  String get day;
+  String get selectyourcampbornday;
+
+  String get month;
+
+  String get selectyourcampmanth;
+
+  String get selectyourcampyear;
+
+  String get whichclassgradearetheyin;
+
+  String get username;
+
+  String get enterusername;
+
+  String get passwordd;
+
+  String get careatekidprifile;
+  String get firstNamee;
+  String get year;
+  String get classgrade;
+  String get optional;
+  String get enterclassgrade;
+  String get childprofilecreated;
+  String get okay;
+  String get sendRequest;
+  String get myKids;
+  String get friendRequest;
+  String get addkidsmore;
+  String get addAnotherKid;
+  String get editKidProfile;
+  String get myFriends;
+  String get request;
+  String get searchFriends;
+  String get searchbyname;
 }
