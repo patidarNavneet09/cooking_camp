@@ -1,4 +1,4 @@
-package com.example.cooking_champs
+package com.cw.cooking_champs
 
 import io.flutter.embedding.android.FlutterActivity
 
