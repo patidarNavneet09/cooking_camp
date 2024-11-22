@@ -327,7 +327,7 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
 
 
                 hsized10,
-                if (recipeModel.recipeAddedBy!.id.toString() != userDetails.id.toString() && btnText(recipeModel.recipeAddedBy!.friendRequestStatus.toString() ).isNotEmpty) GlobalButton(btnText(recipeModel.recipeAddedBy!.friendRequestStatus.toString() ), MyColor.appTheme, MyColor.appTheme, btnSize40,double.infinity, sendRequestOnTap, 55, 5, 0,mediumTextStyle(fontSize:16.0, color: MyColor.white))
+                if (recipeModel.recipeAddedBy!.id.toString() != userDetails.id.toString() && btnText(recipeModel.recipeAddedBy!.friendRequestStatus.toString()).isNotEmpty) GlobalButton(btnText(recipeModel.recipeAddedBy!.friendRequestStatus.toString()), MyColor.appTheme, MyColor.appTheme, btnSize40,double.infinity, sendRequestOnTap, 55, 5, 0,mediumTextStyle(fontSize:16.0, color: MyColor.white))
                 else SizedBox.fromSize()
 
               ],
@@ -339,15 +339,20 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
     );
   }
   String btnText(String status) {
+    debugPrint("recipeModel.userId.toString()...${recipeModel.userId.toString()}");
+    debugPrint("userDetails.id.toString()...${userDetails.id.toString()}");
+    debugPrint("status...${status}");
     switch (status) {
       case "request not sent":
         return Languages.of(context)!.sendRequest.toString();
-      // case "pending":
-      //   return "Cancel Request";
-      // case "accepted":
-      //   return "View Details";
-      // case "rejected":
-      //   return "Try Again";
+      case "pending":
+        return Languages.of(context)!.cancelRequest.toString();
+        case "Accept":
+        return "Accept";
+        case "accepted":
+        return Languages.of(context)!.friend.toString();
+      case "rejected":
+        return Languages.of(context)!.sendRequest.toString();
       default:
         return '';
     }
@@ -383,22 +388,30 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
   }
 
   void sendRequestOnTap() async{
-    SendFriendRequest friendRequest = SendFriendRequest(
+    if(recipeModel.recipeAddedBy!.friendRequestStatus.toString() == "request not sent" || recipeModel.recipeAddedBy!.friendRequestStatus.toString() == "rejected"|| recipeModel.recipeAddedBy!.friendRequestStatus.toString() == "pending" ) {
+      SendFriendRequest friendRequest = SendFriendRequest(
         senderId: int.parse(userDetails.id??"0"),
         receiverId: int.parse(recipeModel.recipeAddedBy!.id.toString()),
         requestSentBy:userDetails.role ,
-        requestSentTo:recipeModel.recipeAddedBy!.role.toString()
+        requestSentTo:recipeModel.recipeAddedBy!.role.toString(),
+        type: recipeModel.recipeAddedBy!.friendRequestStatus.toString() == "pending"? "cancel":""
     );
-    await ApiServices.sendRequest(context, friendRequest).then((onValue){
-      if(onValue.status == true){
-        if(mounted){
-          setState(() {
-            btnText('');
-            // isSent = true;
-          });
+      await ApiServices.sendRequest(context, friendRequest).then((onValue){
+        debugPrint("testttt...");
+        if(onValue.status == true){
+          if(mounted){
+            setState(() {
+               recipeModel.recipeAddedBy!.friendRequestStatus.toString() == "pending" ?
+               recipeModel.recipeAddedBy!.friendRequestStatus = "request not sent":
+               recipeModel.recipeAddedBy!.friendRequestStatus = "pending";
+
+              // isSent = true;
+            });
+          }
         }
-      }
-    });
+      });
+    }
+
   }
 
 }

@@ -474,4 +474,10 @@ class LanguagesEN extends Languages{
 
   @override
   String get tapToSelectAndShare => "Tap to select and share with a friend";
+
+  @override
+  String get cancelRequest => "Cancel Request";
+
+  @override
+  String get friend => "Friend";
 }

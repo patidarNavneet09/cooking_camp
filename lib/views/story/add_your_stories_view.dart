@@ -33,11 +33,44 @@ class _AddYourStoriesViewState extends State<AddYourStoriesView> {
   File? selectedImage1;
   File? selectedImage2;
 
+  int wordCount = 0; // Initialize word count
+  int titleCount = 0; // Initialize word count
+  bool isValidate = false;
+  String titleError = "";
+  String storyError = "";
+
   dynamic _isFocusColor = '';
 
   TextEditingController titleController = TextEditingController();
   TextEditingController storyController = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    // Listen for changes in the TextField
+    storyController.addListener(() {
+      setState(() {
+        wordCount = _countWords(storyController.text);
+      });
+    });
+      titleController.addListener(() {
+      setState(() {
+        titleCount = _countWords(titleController.text);
+      });
+    });
 
+  }
+  @override
+  void dispose() {
+    titleController.dispose();
+    storyController.dispose();
+    super.dispose();
+  }
+
+  int _countWords(String text) {
+    if (text.trim().isEmpty) return 0;
+    // Split text by spaces and remove empty strings
+    return text.trim().split(RegExp(r'\s+')).length;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -185,16 +218,6 @@ class _AddYourStoriesViewState extends State<AddYourStoriesView> {
                         rippleColor: MyColor.appTheme.withOpacity(0.8),
                         onTap: () {
                           AllDialogs.globalBottomSheet(context,ImagePickerDialog(onCallBack: onCallBackImage2,cropStyle:"rectangle"),(){});
-                          /*   showModalBottomSheet(
-                                    shape: const RoundedRectangleBorder(
-                                      // <-- SEE HERE
-                                      borderRadius: BorderRadius.vertical(
-                                        top: Radius.circular(20.0),
-                                      ),
-                                    ),
-                                    context: context,
-                                    builder: ((builder) =>
-                                        bottomSheet1("Two")));*/
                         },
                         child: selectedImage2 != null ? Stack(
                           alignment: Alignment.topRight,
@@ -266,7 +289,7 @@ class _AddYourStoriesViewState extends State<AddYourStoriesView> {
 
                   Text(
                       Languages.of(context)!.max30Words,
-                      style:regularTextStyle(fontSize:14.0, color:MyColor.appTheme)
+                      style:regularTextStyle(fontSize:14.0, color:titleError.isNotEmpty? MyColor.red: MyColor.appTheme)
                   ),
                 ],
               ),
@@ -274,6 +297,58 @@ class _AddYourStoriesViewState extends State<AddYourStoriesView> {
               hsized15,
 
               Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                      color: _isFocusColor == "Enter title"
+                          ? MyColor.liteOrange
+                          : MyColor.grayLite),
+                  color: MyColor.white,
+                  borderRadius: const BorderRadius.all(Radius.circular(12)),
+                ),
+                alignment: Alignment.center,
+                padding: const EdgeInsets.fromLTRB(12, 5, 0, 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TextField(
+                      minLines:1,
+                      textCapitalization: TextCapitalization.sentences,
+                      onTap: () {
+                        setState(() {
+                          _isFocusColor = "Enter title";
+                        });
+                      },
+                      controller: titleController,
+                      onTapOutside: (v) {
+                        FocusManager.instance.primaryFocus!.unfocus();
+                      },
+                      textInputAction: TextInputAction.newline,
+                      keyboardType: TextInputType.multiline,
+                      style: regularTextStyle(fontSize: 14.0, color: MyColor.black),
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: Languages.of(context)!.entertitle.toString(),
+                        hintStyle:regularTextStyle(fontSize:14.0, color: MyColor.grayLite1),
+                        isDense: true,
+                        contentPadding: const EdgeInsets.only(top: 10),
+                      ),
+                      maxLines: null,
+                      cursorColor: MyColor.black,
+                    ),
+                    const SizedBox(height:0),
+                    titleCount ==0 ? SizedBox.shrink():
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Text(
+                        '$titleCount words  ', // Display the word count
+                        style: regularTextStyle(fontSize: 12.0, color: MyColor.grayLite1),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+             /* Container(
                 decoration: BoxDecoration(
                   border: Border.all(
                       color: _isFocusColor == "Enter title"
@@ -310,7 +385,7 @@ class _AddYourStoriesViewState extends State<AddYourStoriesView> {
                   maxLines: 1,
                   cursorColor: MyColor.black,
                 ),
-              ),
+              ),*/
 
               hsized30,
 
@@ -323,14 +398,68 @@ class _AddYourStoriesViewState extends State<AddYourStoriesView> {
                   ),
                   Text(
                       Languages.of(context)!.min200Words,
-                      style:regularTextStyle(fontSize:14.0, color:MyColor.appTheme)
+                      style:regularTextStyle(fontSize:14.0, color:storyError.isNotEmpty? MyColor.red: MyColor.appTheme)
                   ),
                 ],
               ),
 
               hsized15,
 
+
               Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                      color: _isFocusColor == "writehere"
+                          ? MyColor.liteOrange
+                          : MyColor.grayLite),
+                  color: MyColor.white,
+                  borderRadius: const BorderRadius.all(Radius.circular(12)),
+                ),
+                alignment: Alignment.center,
+                padding: const EdgeInsets.fromLTRB(12, 5, 0, 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TextField(
+                      minLines: 5,
+                      textCapitalization: TextCapitalization.sentences,
+                      onTap: () {
+                        setState(() {
+                          _isFocusColor = "writehere";
+                        });
+                      },
+                      controller: storyController,
+                      onTapOutside: (v) {
+                        FocusManager.instance.primaryFocus!.unfocus();
+                      },
+                      textInputAction: TextInputAction.newline,
+                      keyboardType: TextInputType.multiline,
+                      style: regularTextStyle(fontSize: 14.0, color: MyColor.black),
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: Languages.of(context)!.writehere.toString(),
+                        hintStyle: regularTextStyle(
+                            fontSize: 14.0, color: MyColor.grayLite1),
+                        isDense: true,
+                        contentPadding: const EdgeInsets.only(top: 10),
+                      ),
+                      maxLines: null,
+                      cursorColor: MyColor.black,
+                    ),
+                    const SizedBox(height: 10),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Text(
+                        '$wordCount words  ', // Display the word count
+                        style: regularTextStyle(fontSize: 12.0, color: MyColor.grayLite1),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+
+              /*Container(
                 decoration: BoxDecoration(
                   border: Border.all(
                       color: _isFocusColor == "writehere"
@@ -344,7 +473,6 @@ class _AddYourStoriesViewState extends State<AddYourStoriesView> {
                 padding: const EdgeInsets.fromLTRB(12, 5, 0, 15),
                // height: 165,
                 child: TextField(
-                  maxLength: 200,
                   minLines: 5,
                   textCapitalization: TextCapitalization.sentences,
                   onTap: () {
@@ -363,6 +491,7 @@ class _AddYourStoriesViewState extends State<AddYourStoriesView> {
                   keyboardType: TextInputType.multiline,
                   style:regularTextStyle(fontSize:14.0, color:MyColor.black),
                   decoration: InputDecoration(
+                    counterText:storyController.text.length.toString() ,
                     border: InputBorder.none,
                     hintText: Languages.of(context)!.writehere.toString(),
                     hintStyle: regularTextStyle(fontSize:14.0, color:MyColor.grayLite1),
@@ -370,10 +499,10 @@ class _AddYourStoriesViewState extends State<AddYourStoriesView> {
                     isDense: true,
                     contentPadding: const EdgeInsets.only(top: 10,),
                   ),
-                  maxLines: 10000,
+                  maxLines: null,
                   cursorColor: MyColor.black,
                 ),
-              ),
+              ),*/
 
               hsized30,
             ],
@@ -390,20 +519,54 @@ class _AddYourStoriesViewState extends State<AddYourStoriesView> {
 
 
   void addOnTap() {
-    if(titleController.text.trim().isEmpty){
-      Utility.customToast(context, Languages.of(context)!.entertitle);
-    }else if(titleController.text.length != 30){
-      Utility.customToast(context, Languages.of(context)!.max30Words);
-    }else if(storyController.text.trim().isEmpty){
-      Utility.customToast(context, Languages.of(context)!.story);
-    }
-    // else if(storyController.text.length <= 200){
-    //   Utility.customToast(context, Languages.of(context)!.min200Words);
-    // }
-    else{
-      Future.delayed(Duration.zero,addStories);
+    isValidate = true;
+
+    // Validate Title
+    final titleValidationResult = validateTitle(titleController.text.trim());
+    if (titleValidationResult != null) {
+      titleError = titleValidationResult;
+      isValidate = false;
+    } else {
+      titleError = "";
     }
 
+    // Validate Story
+    final storyValidationResult = validateStory(storyController.text.trim());
+    if (storyValidationResult != null) {
+      storyError = storyValidationResult;
+      isValidate = false;
+    } else {
+      storyError = "";
+    }
+
+    setState(() {}); // Update UI once after all validations
+
+    // If everything is valid, proceed to add the story
+    if (isValidate) {
+      Future.delayed(Duration.zero, addStories);
+    }
+  }
+
+  /// Validation function for Story
+  String? validateStory(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return "Story cannot be empty.";
+    }
+    if (Utility().countWords(value) < 200) {
+      return "Story must have at least 200 words.";
+    }
+    return null; // Validation passed
+  }
+
+  /// Validation function for Title
+  String? validateTitle(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return "Title cannot be empty.";
+    }
+    if (Utility().countWords(value) < 30) {
+      return "Title must not exceed 30 words.";
+    }
+    return null; // Validation passed
   }
 
   addStories()async{

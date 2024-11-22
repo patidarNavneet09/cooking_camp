@@ -4,6 +4,11 @@ import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/sized_box.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
+import 'package:cooking_champs/enums/register_enum.dart';
+import 'package:cooking_champs/model/dynamic_models/friend_model.dart';
+import 'package:cooking_champs/model/dynamic_models/user_identity_model.dart';
+import 'package:cooking_champs/services/api_path.dart';
+import 'package:cooking_champs/services/api_services.dart';
 import 'package:cooking_champs/utils/ui_utils.dart';
 import 'package:cooking_champs/widgets/global_button.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +22,32 @@ class ShareStoryView extends StatefulWidget {
 }
 
 class _ShareStoryViewState extends State<ShareStoryView> {
+  List<FriendsModel> myFriendsList = [];
+  UserIdentityModel senderDetail = UserIdentityModel();
+  FriendsModel friendsModel = FriendsModel();
+
+  String myFriend = "";
+  String request = "";
+  String requestId = "";
+  String accept = "";
+
+
+  bool isLoading = false;
+  bool hasMoreData = true;
+
+  int totalPage = 1;
+  int page = 1;
+  int tabIndex = 0;
   bool isCheck = false;
   int id = 0;
+  @override
+  void initState() {
+    Future.delayed(Duration.zero, () {
+      getFriendsRequest(true);
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -64,14 +93,16 @@ class _ShareStoryViewState extends State<ShareStoryView> {
                         child: Text(Languages.of(context)!.tapToSelectAndShare,style: regularTextStyle(fontSize:15.0, color:MyColor.black),)),
                 
                     hsized10,
-                
-                    Column(
-                      children:List.generate(10, (int index){
-                        return friendsCard(index);
-                      }),
-                    ),
 
-                    hsized50,
+                    myFriendsList.isNotEmpty?
+                    Column(
+                      children:List.generate(myFriendsList.length, (int index){
+                        return friendsCard(index,myFriendsList[index]);
+                      }),
+                    ) : SizedBox.shrink(),
+
+                    hsized100,
+
 
                   ],
                 ),
@@ -88,7 +119,7 @@ class _ShareStoryViewState extends State<ShareStoryView> {
       ),
     );
   }
-  friendsCard(int index){
+  friendsCard(int index,FriendsModel model){
     return Column(
       children: [
         Container(
@@ -101,17 +132,20 @@ class _ShareStoryViewState extends State<ShareStoryView> {
           ),
           child: Row(
             children: [
-              CircleAvatar(
-                backgroundColor: Colors.lightBlue,
-                radius:30,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(300),
+                child: UiUtils.networkProfile(60,60,model.senderDetail!.image != null? ApiPath.imageBaseUrl+ model.senderDetail!.image.toString():""),
               ),
               SizedBox(width: 10),
               Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                Text("Andrew Robert",style: mediumTextStyle(fontSize:16.0, color:MyColor.black),),
-                Text("12 | March | 2006 | 1 st Standard",style:regularTextStyle(fontSize:14.0, color:MyColor.black),),
+                Text("${model.senderDetail!.name}",style: mediumTextStyle(fontSize:16.0, color:MyColor.black),),
+
+                      model.senderDetail!.role == RegisterType.roleKids.value ?
+                Text("${model.senderDetail!.day} | ${model.senderDetail!.month} | ${model.senderDetail!.year} | ${model.senderDetail!.grade}",style:regularTextStyle(fontSize:14.0, color:MyColor.black),)
+                          :SizedBox.shrink()
               ],
                   )),
 
@@ -134,5 +168,39 @@ class _ShareStoryViewState extends State<ShareStoryView> {
   }
 
   void shareOnTap() {
+  }
+
+  Future<void> getFriendsRequest(bool load) async {
+    if (isLoading || !hasMoreData) return;
+
+    String type = "accepted";
+
+    setState(() {
+      isLoading = true; // Start loading
+    });
+    try {
+      var onValue = await ApiServices.getFriendsRequest(context, page, load, type);
+      if (!mounted || onValue.status != true) return;
+
+      setState(() {
+        var items = (onValue.data as List<dynamic>?) ?? [];
+       myFriendsList.clear(); // Clear the list only on the first page
+
+        if (items.isNotEmpty) {
+          var friends = items.map((item) => FriendsModel.fromJson(item)).toList();
+
+            myFriendsList.addAll(friends);
+            myFriendsList.sort((a, b) => a.senderDetail!.name!.compareTo(b.senderDetail!.name!));
+        } else {
+          hasMoreData = false; // No more data to load
+        }
+      });
+    } catch (e) {
+      debugPrint('Error fetching friends request: $e');
+    } finally {
+      setState(() {
+        isLoading = false; // End loading
+      });
+    }
   }
 }

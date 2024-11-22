@@ -248,7 +248,11 @@ class _FriendRequestViewState extends State<FriendRequestView>
                   : tabIndex == 1
                   ? "Request"
                   : "Search Friends",
-                  () {},
+              (v){
+                friendsModel = filteredList[index];
+                requestId = filteredList[index].id??"";
+                acceptRejectOnCallBack(v);}
+           ,
             );
           },
         )
@@ -271,7 +275,10 @@ class _FriendRequestViewState extends State<FriendRequestView>
                     "${senderDetail.day??""} | ${senderDetail.month??""} | ${senderDetail.year??""} | ${senderDetail.grade??""}" :"",
                     senderDetail.image != null ? ApiPath.imageBaseUrl + senderDetail.image.toString() : "",
                    tabIndex == 0? "My Friends": tabIndex == 1? "Request":"Search Friends",
-                        () {});
+                        (v){
+                          friendsModel = myFriendsList[index];
+                      requestId = myFriendsList[index].id??"";
+                      acceptRejectOnCallBack(v);});
               },
             ),
 
@@ -295,11 +302,27 @@ class _FriendRequestViewState extends State<FriendRequestView>
         : SizedBox.shrink();
   }
 
+  acceptRejectOnCallBack(String acceptStatus){
+    setState(() {
+      if(acceptStatus == "Accept"){
+        accept = "yes";
+      }else{
+        accept = "no";
+      }
+    });
+   // acceptReject();
+    Future.delayed(Duration.zero,acceptReject);
+
+  }
+
   acceptReject() async{
+
     FriendAcceptRejectRequest acceptRejectRequest = FriendAcceptRejectRequest(
       friendRequestId: int.parse(requestId),
       accept: accept,
     );
+    debugPrint("acceptStatus...${acceptRejectRequest.accept}");
+
     await ApiServices.acceptRejectFriendsRequest(context, acceptRejectRequest, true).then((onValue){
       if(onValue.status == true){
         if(mounted){

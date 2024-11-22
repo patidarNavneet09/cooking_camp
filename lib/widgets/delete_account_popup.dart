@@ -1,4 +1,5 @@
 import 'package:cooking_champs/constant/app_state.dart';
+import 'package:cooking_champs/constant/assets_path.dart';
 import 'package:cooking_champs/constant/dimen.dart';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
@@ -43,7 +44,7 @@ class _DeleteAccountPopupState extends State<DeleteAccountPopup> {
                   children: [
                     Container(
                       child: Lottie.asset(
-                        'assets/images/PasswordChangeCooking.json',
+                        AssetsPath.deleteGif,
                         height: MediaQuery.of(context)
                             .size
                             .height *

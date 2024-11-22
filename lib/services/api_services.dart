@@ -20,9 +20,7 @@ import 'package:cooking_champs/model/post_model/update_kid_profile_model.dart';
 import 'package:cooking_champs/services/api_path.dart';
 import 'package:cooking_champs/services/http_services.dart';
 import 'package:cooking_champs/services/user_prefences.dart';
-import 'package:cooking_champs/utils/navigators.dart';
 import 'package:cooking_champs/utils/utility.dart';
-import 'package:cooking_champs/views/dashboard.dart';
 import 'package:flutter/material.dart';
 
 class ApiServices {
@@ -38,9 +36,9 @@ class ApiServices {
         commonResponse = CommonResponse.fromJson(response);
         debugPrint("response...$response");
         if (commonResponse.data != null) {
-          RegisterIdentityModel model =
-              RegisterIdentityModel.fromJson(commonResponse.data);
-          checkRegisterResult(model);
+          UserIdentityModel model =
+          UserIdentityModel.fromJson(commonResponse.data);
+          checkLoginResult(model);
         }
         if (commonResponse.errors != null) {
           Utility.customToast(context, commonResponse.errors.toString());
@@ -52,34 +50,7 @@ class ApiServices {
     return commonResponse;
   }
 
-  static Future<void> checkRegisterResult(
-      RegisterIdentityModel loginResultData) async {
-    try {
-      debugPrint("loginResultData.id.....${loginResultData.id}");
-      if (loginResultData.id == null || loginResultData.id!.isEmpty) {
-        AppState.current.registerUserIdentityDetails = loginResultData;
-      } else {
-        AppState.current.registerUserIdentityDetails = loginResultData;
-        PreferencesServices.setPreferencesData(
-            PreferencesServices.isLogin, true);
-        PreferencesServices.setPreferencesData(
-            PreferencesServices.userToken, loginResultData.token);
-        if (AppState.current.registerUserIdentityDetails != null) {
-          PreferencesServices.setPreferencesData(
-              PreferencesServices.registerUserIdentityDetails,
-              jsonEncode(
-                  AppState.current.registerUserIdentityDetails!.toJson()));
-          PreferencesServices.setPreferencesData(PreferencesServices.parentId,
-              AppState.current.registerUserIdentityDetails!.id);
-          ApiConnectorConstants.accessToken =
-              AppState.current.registerUserIdentityDetails!.token!;
-        }
-      }
-    } catch (e) {
-      // Handle exception and logging here
-      debugPrint(e.toString());
-    }
-  }
+
 
   static Future<CommonResponse> kidsRegister(
       BuildContext context, KidsRegisterModel kidsModel, var image) async {

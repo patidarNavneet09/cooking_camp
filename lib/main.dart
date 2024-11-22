@@ -1,19 +1,67 @@
 import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/stringfile.dart/app_localization.dart';
 import 'package:cooking_champs/constant/stringfile.dart/locale_constant.dart';
+import 'package:cooking_champs/services/notification_services.dart';
 import 'package:cooking_champs/utils/utility.dart';
 import 'package:cooking_champs/views/splash.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:month_year_picker/month_year_picker.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'firebase_options.dart';
+
+// void main() async{
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+// //  FirebaseMessaging.onBackgroundMessage(_backgroundHandler);
+//   runApp(const MyApp());
+//   SystemChrome.setPreferredOrientations([
+//     DeviceOrientation.portraitUp,
+//   ]);
+// }
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+/// Background message handler
+@pragma('vm:entry-point')
+Future<void> _backgroundHandler(RemoteMessage message) async {
+  debugPrint('Background Message Received: ${message.data}');
+  await Firebase.initializeApp();
+  // NotificationService().handleMessage(message);
+}
+
+Future<void> _initializeApp() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize Firebase
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  // Set background message handler
+  FirebaseMessaging.onBackgroundMessage(_backgroundHandler);
+
+  // Initialize notification service
+  await NotificationService().initialize();
+
+  // Set system UI overlays
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    // statusBarColor: MyColors.bg,
+    statusBarBrightness: Brightness.light,
+    statusBarIconBrightness: Brightness.dark,
+  ));
+}
+
+void main() async {
+ // await _initializeApp();
+    runApp(const MyApp());
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
 }
+
+
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});

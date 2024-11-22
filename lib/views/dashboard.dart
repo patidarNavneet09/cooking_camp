@@ -3,8 +3,10 @@ import 'dart:io';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/model/dynamic_models/user_identity_model.dart';
 import 'package:cooking_champs/services/api_path.dart';
+import 'package:cooking_champs/services/api_services.dart';
 import 'package:cooking_champs/services/user_prefences.dart';
 import 'package:cooking_champs/utils/all_dialogs.dart';
+import 'package:cooking_champs/utils/navigators.dart';
 import 'package:cooking_champs/utils/ui_utils.dart';
 import 'package:cooking_champs/views/aboutUs/aboutus_view.dart';
 import 'package:cooking_champs/constant/assets_path.dart';
@@ -13,6 +15,7 @@ import 'package:cooking_champs/constant/stringfile.dart/language.dart';
 import 'package:cooking_champs/views/menu/menu_view.dart';
 import 'package:cooking_champs/views/home.dart';
 import 'package:cooking_champs/views/kitslearning.dart';
+import 'package:cooking_champs/views/notication_view.dart';
 import 'package:cooking_champs/views/story/our_stories_view.dart';
 import 'package:cooking_champs/views/recipe/recipe.dart';
 import 'package:cooking_champs/views/save_view.dart';
@@ -34,6 +37,7 @@ int pageIndex = 0;
 
 class _DashBoardViewState extends State<DashBoardView> {
   bool? isLogin = false;
+
   UserIdentityModel userDetails= UserIdentityModel();
   String userResponse = "";
   // pages count & variable assign >>>>>>>>>
@@ -47,7 +51,7 @@ class _DashBoardViewState extends State<DashBoardView> {
 
   @override
   void initState() {
-    getUserData();
+    Future.delayed(Duration.zero,getProfileDetail);
     super.initState();
     if (widget.pageIndex != null) {
         pageIndex = widget.pageIndex!;
@@ -62,12 +66,14 @@ class _DashBoardViewState extends State<DashBoardView> {
     }
     if(mounted){
       setState(() {});
+
     }
   }
 
 
   @override
   Widget build(BuildContext context) {
+    getUserData();
     var size = MediaQuery.of(context).size;
     return WillPopScope(
       onWillPop: () async {
@@ -76,65 +82,77 @@ class _DashBoardViewState extends State<DashBoardView> {
       },
       child: Scaffold(
         bottomNavigationBar: buildMyNavBar(context),
-        appBar: pageIndex == 3 || widget.tabCheck == "kids" ||  widget.tabCheck == "OurStories" ||  widget.tabCheck == "Aboutus"? null:AppBar(
-          surfaceTintColor: MyColor.yellowF6F1E1,
-          toolbarHeight: 111,
-          backgroundColor: MyColor.yellowF6F1E1,
-          leadingWidth: size.width * 0.80,
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 20),
-            child: Row(
-              children: [
-                ClipRRect(
-                    borderRadius: BorderRadius.circular(500),
-                    child: UiUtils.networkProfile(60, 60,userDetails.image != null? ApiPath.imageBaseUrl+userDetails.image.toString():"")
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.only(top:20, left: 10),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                            "${Languages.of(context)!.hey}, ${userDetails.name??""}",
-                            maxLines: 2,
-                            style:semiBoldTextStyle(fontSize:18.0, color:MyColor.appTheme)
-                        ),
-                        Text(
-                            Languages.of(context)!.welcomeBack,
-                            style: regularTextStyle(fontSize: 16.0, color: MyColor.black)
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          actions: [
-            TouchRippleEffect(
-              borderRadius: BorderRadius.circular(27),
-              rippleColor: Colors.white,
-              onTap: () {},
-              child: Padding(
-                padding: const EdgeInsets.only(right: 15.0),
-                child: Image.asset(height: 42, AssetsPath.bellpng),
+          body:Column(
+          children: [
+            pageIndex == 3 || widget.tabCheck == "kids" ||  widget.tabCheck == "OurStories" ||  widget.tabCheck == "Aboutus"? SizedBox.shrink():
+            Container(
+              padding: EdgeInsets.only(left: 20,right:20,top:45,bottom: 20),
+              decoration: BoxDecoration(
+                color: MyColor.yellowF6F1E1
               ),
-            )
-          ],
-        ),
-        body: isTabExplore == true
-            ? widget.tabCheck == "kids"
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        ClipRRect(
+                            borderRadius: BorderRadius.circular(500),
+                            child: UiUtils.networkProfile(60, 60,userDetails.image != null? ApiPath.imageBaseUrl+userDetails.image.toString():"")
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.only(top:0, left: 10),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                    "${Languages.of(context)!.hey}, ${userDetails.name??""}",
+                                    maxLines: 2,
+                                    style:semiBoldTextStyle(fontSize:18.0, color:MyColor.appTheme)
+                                ),
+                                Text(
+                                    Languages.of(context)!.welcomeBack,
+                                    style: regularTextStyle(fontSize: 16.0, color: MyColor.black)
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ]),
+                  ),
+                  TouchRippleEffect(
+                    borderRadius: BorderRadius.circular(27),
+                    rippleColor: Colors.white,
+                    onTap: () {
+                      CustomNavigators.pushNavigate(NotificationView(), context);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 15.0),
+                      child: Image.asset(height: 42, AssetsPath.bellpng),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Expanded(
+              child: isTabExplore == true
+                ? widget.tabCheck == "kids"
                 ? const KidsLearningView()
                 : widget.tabCheck == "OurStories"
-                    ? const OurStoriesView()
-                    : widget.tabCheck == "Aboutus"
-                        ? const AboutUsView()
-                        :  pages[pageIndex]
-            : pageIndex == 3
+                ? const OurStoriesView()
+                : widget.tabCheck == "Aboutus"
+                ? const AboutUsView()
+                :  pages[pageIndex]
+                : pageIndex == 3
                 ? pages[2]
-                : pages[pageIndex],
+                : pages[pageIndex],)
+          ],
+        )
+
+
       ),
     );
   }
@@ -222,6 +240,23 @@ class _DashBoardViewState extends State<DashBoardView> {
     setState(() {
       pageIndex = 0;
       isTabExplore = false;
+    });
+  }
+
+  getProfileDetail()async{
+    await ApiServices.userDetail(context,"",true).then((onValue){
+      if(mounted){
+        setState(() {
+          if(onValue.status == true){
+            if(onValue.data != null){
+              userDetails = UserIdentityModel.fromJson(onValue.data);
+              if(userDetails.firstName != null){
+                getUserData();
+              }
+            }
+          }
+        });
+      }
     });
   }
 }

@@ -89,89 +89,6 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
 
                   commonTextField(passwordController, Languages.of(context)!.enterpassword.toString(),TextInputAction.done,TextInputType.text,"Password",isPassHide),
 
-
-                  /*Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                          color: _isFocusColor == "enterpassword"
-                              ? MyColor.liteYellow
-                              : MyColor.grayLite),
-                      color: MyColor.white,
-                      borderRadius: const BorderRadius.all(Radius.circular(12)),
-                    ),
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.fromLTRB(12, 5, 0, 15),
-                    height: 55,
-                    child: TextField(
-                      textCapitalization: TextCapitalization.sentences,
-                      onTap: () {
-                        _isFocusColor = "enterpassword";
-                      },
-                      // textInputAction: TextInputAction.next,
-                      onEditingComplete: () {
-                        // String input = phoneController.text;
-                        // if (input.isNotEmpty && input.length == 10) {
-                        //   loginApi(context, input, countrycode, devicetype,
-                        //       devicetoken);
-                        // }
-                      },
-
-                      buildCounter: (BuildContext context,
-                              {required int currentLength,
-                              int? maxLength,
-                              required bool isFocused}) =>
-                          null,
-                      // inputFormatters: [
-                      //   FilteringTextInputFormatter.allow(RegExp("[0-9]")),
-                      // ],
-                      controller: passwordController,
-
-                      textInputAction: TextInputAction.next,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: Fonts.beVietnamProRegular,
-                        color: MyColor.black,
-                      ),
-                      // obscureText: _obscureTextpassword,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: Languages.of(context)!.enterpassword.toString(),
-                        // suffixIcon: Padding(
-                        //   padding: const EdgeInsets.only(bottom: 2),
-                        //   child: IconButton(
-                        //     icon: Icon(
-                        //       _obscureTextpassword
-                        //           ? Icons.visibility_off
-                        //           : Icons.visibility,
-                        //       color: MyColor.grayeye,
-                        //       size: 25,
-                        //     ),
-                        //     onPressed: () {
-                        //       setState(() {
-                        //         _obscureTextpassword = !_obscureTextpassword;
-                        //       });
-                        //     },
-                        //   ),
-                        // ),
-                        hintStyle: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: MyColor.grayLite1,
-                          fontFamily: Fonts.beVietnamProRegular,
-                        ),
-                        counter: const Offstage(),
-                        isDense: true,
-                        // this will remove the default content padding
-                        contentPadding: const EdgeInsets.only(
-                          top: 10,
-                        ),
-                      ),
-                      maxLines: 1,
-                      cursorColor: MyColor.black,
-                    ),
-                  ),*/
-
                   SizedBox(
                     height: size.height * 0.03,
                   ),
@@ -187,149 +104,6 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                 ],
               ),
             ),
-           /* Row(
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(bottom: 20),
-                  width: size.width * 0.95,
-                  height: 55,
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: MyColor.appTheme,
-                        // surfaceTintColor: MyColor.white,
-                        overlayColor: MyColor.liteYellow,
-                        enableFeedback: true,
-
-                        enabledMouseCursor: MouseCursor.defer,
-                        // Background color
-                        // Text color (alternative)
-                        elevation: 5, // Optional: elevation (shadow)
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 10), // Custom padding
-                        shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(34), // Custom shape
-                        ),
-                      ),
-                      onPressed: () {
-                        showDialog(
-                            context: context,
-                            builder: (_) => AlertDialog(
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(25.0))),
-                                content: Builder(builder: (context) {
-                                  // Get available height and width of the build area of this widget. Make a choice depending on the size.
-                                  var size = MediaQuery.of(context).size;
-
-                                  return SizedBox(
-                                    height: size.height * 0.38,
-                                    width: size.width * 0.90,
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          child: Lottie.asset(
-                                            'assets/images/PasswordChangeCooking.json',
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.17,
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                          ),
-                                        ),
-                                        Text(
-                                          Languages.of(context)!.passwordchanged,
-                                          style: const TextStyle(
-                                            color: MyColor.black,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 20,
-                                            fontFamily: Fonts.beVietnamProRegular,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: size.height * 0.01,
-                                        ),
-                                        Text(
-                                          Languages.of(context)!.yourpasswordhasbeensuccessfullyreset,
-                                          textAlign: TextAlign.center,
-                                          style: const TextStyle(
-                                            color: MyColor.black,
-                                            fontWeight: FontWeight.w300,
-                                            fontSize: 15,
-                                            fontFamily: Fonts.beVietnamProRegular,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: size.height * 0.03,
-                                        ),
-                                        SizedBox(
-                                          width: size.width * 0.95,
-                                          height: 55,
-                                          child: ElevatedButton(
-                                              style: ElevatedButton.styleFrom(
-                                                backgroundColor: MyColor.appTheme,
-                                                // surfaceTintColor: MyColor.white,
-                                                overlayColor:
-                                                    MyColor.liteYellow,
-                                                enableFeedback: true,
-
-                                                enabledMouseCursor:
-                                                    MouseCursor.defer,
-                                                // Background color
-                                                // Text color (alternative)
-                                                elevation:
-                                                    5, // Optional: elevation (shadow)
-                                                padding: const EdgeInsets
-                                                    .symmetric(
-                                                    horizontal: 20,
-                                                    vertical:
-                                                        10), // Custom padding
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          34), // Custom shape
-                                                ),
-                                              ),
-                                              onPressed: () {
-                                                Navigator.of(context)
-                                                    .pushAndRemoveUntil(
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                const LoginView()),
-                                                        (Route<dynamic>
-                                                                route) =>
-                                                            false);
-                                              },
-                                              child: Text(
-                                                Languages.of(context)!.gotoLogin.toString(),
-                                                style: const TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontFamily: Fonts.beVietnamProRegular,
-                                                  color: MyColor.white,
-                                                ),
-                                              )),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                })));
-                      },
-                      child: Text(
-                        Languages.of(context)!.submit.toString(),
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: Fonts.beVietnamProRegular,
-                          color: MyColor.white,
-                        ),
-                      )),
-                ),
-              ],
-            ),*/
-
             Padding(
               padding: const EdgeInsets.only(bottom:30.0,left: 10,right: 10),
               child: GlobalButton(Languages.of(context)!.submit.toString(), MyColor.appTheme, MyColor.appTheme, btnSize55,double.infinity, submitOnTap, 55, 5,0, mediumTextStyle(fontSize:16.0, color:MyColor.white)),
@@ -470,17 +244,16 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
         isValidate = false;
         newConPassError = Languages.of(context)!.atleast5;
       }
-      if(confirmPassController.text != passwordController.text){
+      if(confirmPassController.text != passwordController.text) {
         isValidate = false;
         newConPassError = Languages.of(context)!.newConPAssNotMatch;
-      }else{
-        newConPassError ="";
-        newPassError ="";
       }
     });
 
 
     if(isValidate) {
+      newConPassError ="";
+      newPassError ="";
       Future.delayed(Duration.zero, resetPassword);
     }
 
@@ -493,8 +266,8 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
         newPasswordConfirmation:confirmPassController.text
     );
     await ApiServices.resetPassword(context, resetPasswordRequest).then((onValue){
+      Utility.customToast(context, onValue.message??"");
       if(onValue.status == true){
-        Utility.customToast(context, onValue.message??"");
         AllDialogs.customDialog(context, ChangePasswordPopup(title: Languages.of(context)!.passwordchanged,
           des:Languages.of(context)!.yourpasswordhasbeensuccessfullyreset,
           img:AssetsPath.passwordChangeImg, btnName:Languages.of(context)!.gotoLogin.toString(),

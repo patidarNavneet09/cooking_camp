@@ -284,6 +284,8 @@ class _LoginViewState extends State<LoginView> {
 
   checkValidation() {
     if (fullNameController.text.trim().isEmpty) {
+      loginType == RegisterType.roleKids.value ?
+      Utility.customToast(context, "Please enter userName"):
       Utility.customToast(context, "Please enter email");
     } else if (passwordController.text.trim().isEmpty) {
       Utility.customToast(context, "Please enter password");

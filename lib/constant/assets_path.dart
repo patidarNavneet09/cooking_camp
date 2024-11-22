@@ -73,5 +73,6 @@ class AssetsPath {
   static String check = "assets/images/check.svg";
   static String fillCheck = "assets/images/fillCheck.svg";
   static String fillCancel = "assets/images/fillCancel.svg";
-  static String cookingChamp = "'assets/images/CookingChamp.json'";
+  static String cookingChamp = "assets/images/CookingChamp.json";
+  static String deleteGif = "assets/images/deleteGif.json";
 }

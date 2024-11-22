@@ -178,6 +178,7 @@ class UiUtils{
                             InkWell(
                                 radius:60,
                                 onTap: () {
+                                  debugPrint("jnxdjkhigfj");
                                   onCallBack("Accept");
                                 },
                                 child: SvgPicture.asset(AssetsPath.fillCheck)),
@@ -207,6 +208,38 @@ class UiUtils{
           ),
           Divider(),
         ],
+      ),
+    );
+  }
+
+
+ static notificationCard(String des,String img){
+    return Padding(
+      padding: const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
+      child: Container(
+        padding: EdgeInsets.only(left: 10,right: 10,bottom: 10),
+        decoration: BoxDecoration(
+          color: MyColor.white,
+          borderRadius: BorderRadius.circular(12), // Optional rounded corners
+        ),
+        alignment: Alignment.center, // Centers text vertically and horizontally
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(500),
+              child:Image.asset(img,height: 60,width: 60,)
+              //UiUtils.networkProfile(60.0,60.0, img),
+            ),
+           SizedBox(width: 15,),
+
+            Expanded(
+              child:  Text(
+                  des,
+                  style:regularTextStyle(fontSize:13.0, color:MyColor.black)
+              )),
+          ],
+        ),
       ),
     );
   }

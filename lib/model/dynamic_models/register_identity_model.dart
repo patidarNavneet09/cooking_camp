@@ -10,6 +10,8 @@ class RegisterIdentityModel {
   String? token;
 
 
+
+
   RegisterIdentityModel(
       {this.firstName,
         this.lastName,

@@ -143,6 +143,8 @@ abstract class Languages {
   String get childProfileUpdated;
   String get okay;
   String get sendRequest;
+  String get cancelRequest;
+  String get friend;
   String get myKids;
   String get friendRequest;
   String get addkidsmore;

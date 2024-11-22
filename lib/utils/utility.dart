@@ -7,6 +7,7 @@ import 'package:cooking_champs/services/user_prefences.dart';
 import 'package:cooking_champs/utils/navigators.dart';
 import 'package:cooking_champs/views/authentication/login_view.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
@@ -32,8 +33,8 @@ class Utility {
 
   ///.....FCM Token........................
   static Future<String?> getFcm() async {
-   // String? token = await FirebaseMessaging.instance.getToken();
-    //debugPrint("fcm token.....$token");
+   String? token = await FirebaseMessaging.instance.getToken();
+    debugPrint("fcm token.....$token");
    String fcmToken = "123456";
    PreferencesServices.setPreferencesData(PreferencesServices.fcm,fcmToken);
     return fcmToken;
@@ -159,6 +160,14 @@ class Utility {
 
     // Convert hex to Color
     return Color(int.parse('0xFF$hex'));
+  }
+  /// Count words in a given text
+  int countWords(String text) {
+    if (text.isEmpty) return 0;
+    return text
+        .trim()
+        .split(RegExp(r'\s+')) // Split by spaces or newlines
+        .length;
   }
 
 }

@@ -55,6 +55,7 @@ class _RegisterViewState extends State<RegisterView> {
   bool isConPassHide = true;
   bool isValidate = false;
   bool isImage = false;
+  bool isImageBorder = false;
 
   String passwordImage = AssetsPath.hideEyeIc;
   String conPasswordImage = AssetsPath.hideEyeIc;
@@ -111,18 +112,27 @@ class _RegisterViewState extends State<RegisterView> {
                       },
                       child: Stack(
                         children: [
-                          CircleAvatar(
-                              backgroundColor: Colors.white,
-                              radius: 50,
-                              backgroundImage: selectedImage == null
-                                  ? Image.asset(
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(300),
+                              child: selectedImage == null
+                                  ? Container(
+                                height:100,
+                                  width:100,
+                                  padding: EdgeInsets.all(2),
+                                  decoration: BoxDecoration(border: Border.all( color: isImageBorder?MyColor.red:MyColor.liteGray),
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(image: Image.asset(
                                       AssetsPath.demoPerson,
-                                      fit: BoxFit.contain,
-                                    ).image
+                                    ).image)
+                                  ),
+                              )
+
                                   : Image.file(
                                       selectedImage!,
                                       fit: BoxFit.contain,
-                                    ).image),
+                                height:100,
+                                width:100,
+                                    )),
 
                           Positioned(
                             left: 70,
@@ -596,11 +606,13 @@ class _RegisterViewState extends State<RegisterView> {
             isValidate = false;
           }
           if(!isImage){
+            isImageBorder = true;
             Utility.customToast(context, Languages.of(context)!.pleaseUploadProfile);
             isValidate = false;
           }
         setState(() {});
           if(isValidate) {
+            isImageBorder = false;
             fNameError = "";
             lastNameError = "";
             parentEmailError = "";

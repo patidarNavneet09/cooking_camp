@@ -116,6 +116,7 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                             ),
                           ],
                         ),
+
                         UiUtils.errorText(newPassError)
                       ],
                     ),
@@ -271,17 +272,23 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
   }
 
   checkValidation(){
+    isValidate = false;
     if(newPasswordController.text.trim().isEmpty){
+      isValidate = true;
       newPassError = Languages.of(context)!.atleast5;
-    }else if(confirmNewPassController.text.trim().isEmpty){
+    } if(confirmNewPassController.text.trim().isEmpty){
+      isValidate = true;
       newConPassError = Languages.of(context)!.atleast5;
-    }else if(confirmNewPassController.text != newPasswordController.text){
+    } if(confirmNewPassController.text != newPasswordController.text){
+      isValidate = true;
+      newPassError = "";
       newConPassError = Languages.of(context)!.newConPAssNotMatch;
-    }else{
-      newConPassError ="";
-      newPassError ="";
+    }
+    if(!isValidate){
       Future.delayed(Duration.zero, changePassword);
     }
+
+    setState(() {});
   }
 
   changePassword()async{
@@ -291,7 +298,7 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
     );
     await ApiServices.changePassword(context, changePasswordModel).then((onValue){
       if(onValue.status == true){
-        Utility.customToast(context, onValue.message??"");
+        // Utility.customToast(context, onValue.message??"");
         AllDialogs.customDialog(context, ChangePasswordPopup(title: Languages.of(context)!.passwordchanged,
           des:Languages.of(context)!.yourpasswordhasbeensuccessfullyreset,
           img:AssetsPath.passwordChangeImg, btnName:Languages.of(context)!.gotoHome.toString(),

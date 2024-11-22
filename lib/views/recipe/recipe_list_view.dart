@@ -75,7 +75,7 @@ class _RecipeListViewState extends State<RecipeListView> {
                         child: gridItem(size,index,recipeList[index]));})):
                       widget.pageType == "Favorite"?
                       Container(
-                        padding: EdgeInsets.only(top:size.height * 0.3),
+                        padding: EdgeInsets.only(top:size.height * 0.2),
                       alignment: Alignment.center,
                       child: noStory(size,Languages.of(context)!.noSaveRecipeyet,AssetsPath.savetagscr,Languages.of(context)!.youdonthaveanysaved),
                     ):
