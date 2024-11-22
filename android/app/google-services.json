@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "830099740011",
+    "project_id": "cooking-champs-79749",
+    "storage_bucket": "cooking-champs-79749.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830099740011:android:c9b3104f4982c5f86aa82e",
+        "android_client_info": {
+          "package_name": "com.cw.cooking_champs"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLF7KnSvl0OyHhpVUF9LSOyYwP1sOFr08"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830099740011:android:99d94e0769a9bd4b6aa82e",
+        "android_client_info": {
+          "package_name": "com.cw.cookingchamps"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLF7KnSvl0OyHhpVUF9LSOyYwP1sOFr08"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
