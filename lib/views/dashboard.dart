@@ -4,6 +4,7 @@ import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/model/dynamic_models/user_identity_model.dart';
 import 'package:cooking_champs/services/api_path.dart';
 import 'package:cooking_champs/services/api_services.dart';
+import 'package:cooking_champs/services/notification_services.dart';
 import 'package:cooking_champs/services/user_prefences.dart';
 import 'package:cooking_champs/utils/all_dialogs.dart';
 import 'package:cooking_champs/utils/navigators.dart';
@@ -16,7 +17,7 @@ import 'package:cooking_champs/views/menu/menu_view.dart';
 import 'package:cooking_champs/views/home.dart';
 import 'package:cooking_champs/views/kitslearning.dart';
 import 'package:cooking_champs/views/notication_view.dart';
-import 'package:cooking_champs/views/story/our_stories_view.dart';
+import 'package:cooking_champs/views/story/memories_view.dart';
 import 'package:cooking_champs/views/recipe/recipe.dart';
 import 'package:cooking_champs/views/save_view.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +41,7 @@ class _DashBoardViewState extends State<DashBoardView> {
 
   UserIdentityModel userDetails= UserIdentityModel();
   String userResponse = "";
+  bool isBusy  = false;
   // pages count & variable assign >>>>>>>>>
 
   var pages = [
@@ -51,11 +53,13 @@ class _DashBoardViewState extends State<DashBoardView> {
 
   @override
   void initState() {
-    Future.delayed(Duration.zero,getProfileDetail);
     super.initState();
+    NotificationService().initialize(); // Initialize the notification service
+
     if (widget.pageIndex != null) {
         pageIndex = widget.pageIndex!;
       }
+    Future.delayed(Duration.zero,getProfileDetail);
   }
 
   void getUserData() async{
@@ -81,8 +85,8 @@ class _DashBoardViewState extends State<DashBoardView> {
         return true;
       },
       child: Scaffold(
-        bottomNavigationBar: buildMyNavBar(context),
-          body:Column(
+        bottomNavigationBar:isBusy?SizedBox.shrink(): buildMyNavBar(context),
+          body: Column(
           children: [
             pageIndex == 3 || widget.tabCheck == "kids" ||  widget.tabCheck == "OurStories" ||  widget.tabCheck == "Aboutus"? SizedBox.shrink():
             Container(
@@ -138,17 +142,19 @@ class _DashBoardViewState extends State<DashBoardView> {
               ),
             ),
             Expanded(
-              child: isTabExplore == true
-                ? widget.tabCheck == "kids"
-                ? const KidsLearningView()
-                : widget.tabCheck == "OurStories"
-                ? const OurStoriesView()
-                : widget.tabCheck == "Aboutus"
-                ? const AboutUsView()
-                :  pages[pageIndex]
-                : pageIndex == 3
-                ? pages[2]
-                : pages[pageIndex],)
+              child: _getPage()
+              // isTabExplore == true
+              //   ? widget.tabCheck == "kids"
+              //   ? const KidsLearningView()
+              //   : widget.tabCheck == "OurStories"
+              //   ? const OurStoriesView()
+              //   : widget.tabCheck == "Aboutus"
+              //   ? const AboutUsView()
+              //   :  pages[pageIndex]
+              //   : pageIndex == 3
+              //    ? pages[2]
+              //    : pages[pageIndex],
+            )
           ],
         )
 
@@ -156,6 +162,23 @@ class _DashBoardViewState extends State<DashBoardView> {
       ),
     );
   }
+  Widget _getPage() {
+    if (isTabExplore!) {
+      switch (widget.tabCheck) {
+        case "kids":
+          return const KidsLearningView();
+        case "OurStories":
+          return const MemoriesView();
+        case "Aboutus":
+          return const AboutUsView();
+        default:
+          return pages[pageIndex];
+      }
+    } else {
+      return pageIndex == 3 ? pages[2] : pages[pageIndex];
+    }
+  }
+
 
   Container buildMyNavBar(BuildContext context) {
     return Container(
@@ -244,19 +267,32 @@ class _DashBoardViewState extends State<DashBoardView> {
   }
 
   getProfileDetail()async{
-    await ApiServices.userDetail(context,"",true).then((onValue){
+    if(!isBusy){
       if(mounted){
         setState(() {
-          if(onValue.status == true){
-            if(onValue.data != null){
-              userDetails = UserIdentityModel.fromJson(onValue.data);
-              if(userDetails.firstName != null){
-                getUserData();
-              }
-            }
-          }
+          isBusy = true;
         });
       }
-    });
+      await ApiServices.userDetail(context,"",false).then((onValue){
+        if(mounted){
+          setState(() {
+            if(onValue.status == true){
+              if(onValue.data != null){
+                userDetails = UserIdentityModel.fromJson(onValue.data);
+                if(userDetails.firstName != null){
+                  getUserData();
+                }
+              }
+            }
+          });
+        }
+      });
+
+      if(mounted){
+        setState(() {
+          isBusy = false;
+        });
+      }
+    }
   }
 }

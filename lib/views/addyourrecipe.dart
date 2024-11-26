@@ -247,11 +247,12 @@ class _AddYourRecipeViewState extends State<AddYourRecipeView> {
                           onChanged: (value) {
                             isFocusColor = "dropdwon";
                             setState(() {
-                            if (selectedItems.contains(value) == false) {
-                              selectedItems.add(value!);
-                            } else {
-                                selectedItems.remove(value);
-                            }
+                            //
+                            // if (selectedItems.contains(value) == false) {
+                            //   selectedItems.add(value!);
+                            // } else {
+                            //     selectedItems.remove(value);
+                            // }
                           });
                           },
                           // No action needed here

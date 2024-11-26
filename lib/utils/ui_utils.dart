@@ -228,7 +228,8 @@ class UiUtils{
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(500),
-              child:Image.asset(img,height: 60,width: 60,)
+              child:UiUtils.networkProfile(60.0,60.0, img),
+              //Image.asset(img,height: 60,width: 60,)
               //UiUtils.networkProfile(60.0,60.0, img),
             ),
            SizedBox(width: 15,),

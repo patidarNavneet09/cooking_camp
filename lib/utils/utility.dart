@@ -36,8 +36,8 @@ class Utility {
    String? token = await FirebaseMessaging.instance.getToken();
     debugPrint("fcm token.....$token");
    String fcmToken = "123456";
-   PreferencesServices.setPreferencesData(PreferencesServices.fcm,fcmToken);
-    return fcmToken;
+   PreferencesServices.setPreferencesData(PreferencesServices.fcm,token);
+    return token;
   }
 
   static getId() async{

@@ -63,7 +63,7 @@ class AllDialogs{
         barrierDismissible: false,
         builder: (BuildContext context) {
           return  Center(
-             child:CircularProgressIndicator()
+             child:CircularProgressIndicator(color: MyColor.appTheme,)
             // //LoaderView()
             // Image.asset(MyAssetsPaths.loader2,height: 100,width: 100,color: MyColors.appTheme,)
 

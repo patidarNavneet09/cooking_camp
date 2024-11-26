@@ -31,7 +31,7 @@ class _AboutUsViewState extends State<AboutUsView> {
     super.initState();
   }
   aboutUs()async{
-  await ApiServices.getAboutUs(context, true,"").then((onValue){
+  await ApiServices.getAboutUs(context, false,"").then((onValue){
     if(mounted){
       setState(() {
         if(onValue.status == true){

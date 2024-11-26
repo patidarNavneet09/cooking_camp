@@ -344,9 +344,9 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
     debugPrint("status...${status}");
     switch (status) {
       case "request not sent":
-        return Languages.of(context)!.sendRequest.toString();
+        return Languages.of(context)!.follow.toString();
       case "pending":
-        return Languages.of(context)!.cancelRequest.toString();
+        return Languages.of(context)!.unFallow.toString();
         case "Accept":
         return "Accept";
         case "accepted":

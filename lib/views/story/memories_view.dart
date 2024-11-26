@@ -1,32 +1,21 @@
 import 'package:cooking_champs/constant/my_fonts_style.dart';
-import 'package:cooking_champs/constant/sized_box.dart';
-import 'package:cooking_champs/model/dynamic_models/recipe_model.dart';
-import 'package:cooking_champs/model/dynamic_models/my_story_model.dart';
-import 'package:cooking_champs/services/api_path.dart';
-import 'package:cooking_champs/services/api_services.dart';
 import 'package:cooking_champs/utils/navigators.dart';
-import 'package:cooking_champs/utils/ui_utils.dart';
-import 'package:cooking_champs/views/addyourrecipe.dart';
-import 'package:cooking_champs/constant/assets_path.dart';
 import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
-import 'package:cooking_champs/views/story/add_your_stories_view.dart';
 import 'package:cooking_champs/views/dashboard.dart';
 import 'package:cooking_champs/views/recipe/recipe_list_view.dart';
-import 'package:cooking_champs/views/storiesdetials.dart';
 import 'package:cooking_champs/views/story/story_view.dart';
 import 'package:flutter/material.dart';
-import 'package:touch_ripple_effect/touch_ripple_effect.dart';
 
-class OurStoriesView extends StatefulWidget {
+class MemoriesView extends StatefulWidget {
   final Function? onCallBack;
-  const OurStoriesView({super.key,this.onCallBack});
+  const MemoriesView({super.key,this.onCallBack});
 
   @override
-  State<OurStoriesView> createState() => _OurStoriesViewState();
+  State<MemoriesView> createState() => _MemoriesViewState();
 }
 
-class _OurStoriesViewState extends State<OurStoriesView>
+class _MemoriesViewState extends State<MemoriesView>
     with TickerProviderStateMixin {
   late final TabController _tabController;
 
@@ -74,7 +63,7 @@ class _OurStoriesViewState extends State<OurStoriesView>
           ),
         ),
         title:  Text(
-          Languages.of(context)!.ourStories,
+          Languages.of(context)!.memories,
           style:mediumTextStyle(fontSize:18.0, color:MyColor.black)
         ),
 
@@ -115,7 +104,7 @@ class _OurStoriesViewState extends State<OurStoriesView>
           ),
           Expanded(
             child: TabBarView(
-              physics: NeverScrollableScrollPhysics(),
+             // physics: NeverScrollableScrollPhysics(),
               controller: _tabController,
               children: <Widget>[
                 //storyUi(size),

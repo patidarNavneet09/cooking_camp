@@ -55,6 +55,7 @@ abstract class Languages {
   String get explore;
   String get kidLearning;
   String get ourStories;
+  String get memories;
   String get aboutUs;
   String get editProfile;
   String get changePassword;
@@ -143,7 +144,9 @@ abstract class Languages {
   String get childProfileUpdated;
   String get okay;
   String get sendRequest;
+  String get follow;
   String get cancelRequest;
+  String get unFallow;
   String get friend;
   String get myKids;
   String get friendRequest;

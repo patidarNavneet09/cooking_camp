@@ -32,7 +32,7 @@ class _RecipeViewState extends State<RecipeView> {
 
 @override
   void initState() {
-  getUserData();
+ // getUserData();
     super.initState();
   }
 

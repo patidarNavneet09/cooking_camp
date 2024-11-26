@@ -579,5 +579,32 @@ static Future<CommonResponse> sendRequest(BuildContext context,SendFriendRequest
     return commonResponse;
   }
 
+  static Future<CommonResponse> getNotification(BuildContext context,bool load,int page)async{
+    String url = "${ApiPath.notificationListing}?page=$page";
+    CommonResponse commonResponse = CommonResponse();
+    try{
+      var response = await HttpServices.getDataObjectFromAPI(context, url, load);
+      if(response.toString() != "null"){
+        commonResponse = CommonResponse.fromJson(response);
+      }
+    }on SocketException catch(e){
+      Utility.customToast(context, e.toString());
+    }
+    return commonResponse;
+  }
+
+  static Future<CommonResponse> countFriendRequest(BuildContext context,bool load) async{
+   String url = ApiPath.friendRequestCount;
+   CommonResponse commonResponse = CommonResponse();
+   try {
+     var response = await HttpServices.getDataObjectFromAPI(context, url, load);
+     if(response.toString() != "null"){
+       commonResponse = CommonResponse.fromJson(response);
+     }
+   }on SocketException catch(e){
+     Utility.customToast(context, e.toString());
+   }
+   return commonResponse;
+  }
 
 }

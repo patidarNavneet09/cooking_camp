@@ -29,6 +29,8 @@ class ApiPath{
   static const String   sendFriendRequest = "send-friend-request";
   static const String   friendRequest = "friend-request";
   static const String   acceptFriendRequest = "accept-friend-request";
+  static const String   notificationListing = "notification-listing";
+  static const String   friendRequestCount = "pending-friend-request-count";
 
 
 }

@@ -16,7 +16,8 @@ import 'package:flutter/material.dart';
 import 'package:touch_ripple_effect/touch_ripple_effect.dart';
 
 class FriendRequestView extends StatefulWidget {
-  const FriendRequestView({super.key});
+  final String type ;
+  const FriendRequestView({super.key,required this.type});
 
   @override
   State<FriendRequestView> createState() => _FriendRequestViewState();
@@ -80,7 +81,12 @@ class _FriendRequestViewState extends State<FriendRequestView>
                 setState(() {
                   isTabExplore = false;
                 });
-                Navigator.pop(context);
+                if(widget.type == "Notification"){
+                  CustomNavigators.pushRemoveUntil(DashBoardView(pageIndex: 0,), context);
+                }else{
+                  Navigator.pop(context);
+                }
+
               },
               child: const Icon(
                 Icons.arrow_back_ios,

@@ -21,7 +21,7 @@ import 'package:cooking_champs/views/friend_request.dart';
 import 'package:cooking_champs/views/helpsupport.dart';
 import 'package:cooking_champs/views/my_kids_listing_view.dart';
 import 'package:cooking_champs/views/my_kids_profile_view.dart';
-import 'package:cooking_champs/views/story/our_stories_view.dart';
+import 'package:cooking_champs/views/story/memories_view.dart';
 import 'package:cooking_champs/views/profile/editprofile.dart';
 import 'package:cooking_champs/widgets/delete_account_popup.dart';
 import 'package:cooking_champs/widgets/logout_popup.dart';
@@ -36,9 +36,11 @@ class MenuView extends StatefulWidget {
 
 class _MenuViewState extends State<MenuView> {
   UserIdentityModel userDetails= UserIdentityModel();
+  String friendRequestCount = "0";
 
   @override
   void initState() {
+Future.delayed(Duration.zero,(){callApi(context);});
     getUserData();
     super.initState();
   }
@@ -58,6 +60,7 @@ class _MenuViewState extends State<MenuView> {
 
   @override
   Widget build(BuildContext context) {
+    countFriendRequestApi();
     final data = MediaQuery.of(context);
     final size = data.size;
     return  MediaQuery(data: data.copyWith(textScaleFactor: 1.0),
@@ -299,7 +302,7 @@ class _MenuViewState extends State<MenuView> {
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Text(
-                  "2",
+                  friendRequestCount,
                   style: TextStyle(color: MyColor.white),
                 ),
               ),
@@ -324,7 +327,7 @@ class _MenuViewState extends State<MenuView> {
       isTabExplore = true;
     });
     CustomNavigators.pushRemoveUntil(const DashBoardView(
-      pageIndex: 4,
+      pageIndex: 3,
       tabCheck: "kids",
     ), context);
   }
@@ -333,7 +336,7 @@ class _MenuViewState extends State<MenuView> {
     setState(() {
       isTabExplore = true;
     });
-    CustomNavigators.pushNavigate(FriendRequestView(), context);
+    CustomNavigators.pushNavigate(FriendRequestView(type: 'menu',), context);
   }
 
 
@@ -341,7 +344,7 @@ class _MenuViewState extends State<MenuView> {
     setState(() {
       isTabExplore = true;
     });
-    CustomNavigators.pushNavigate(OurStoriesView(onCallBack:onUpdate), context);
+    CustomNavigators.pushNavigate(MemoriesView(onCallBack:onUpdate), context);
   }
 
   void myKidsOnTap() {
@@ -411,4 +414,26 @@ class _MenuViewState extends State<MenuView> {
       }
     });
   }
+
+  void countFriendRequestApi() {
+    Future.delayed(const Duration(minutes:1), (){
+      // call API functionality
+    //  callApi(context);
+    });
+  }
+  callApi(BuildContext context)async{
+    await ApiServices.countFriendRequest(context,false).then((onValue){
+      if(mounted){
+        setState(() {
+          if(onValue.status == true) {
+            friendRequestCount = onValue.pendingReqCount??"";
+            //"1";
+          }
+        });
+      }
+
+    });
+
+  }
+
 }

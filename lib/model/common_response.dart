@@ -3,6 +3,7 @@ class CommonResponse {
   String? message;
   String? errors;
   String? error;
+  String? pendingReqCount;
   int? statusCode;
   dynamic data;
 
@@ -11,6 +12,7 @@ class CommonResponse {
     this.message,
     this.errors,
     this.error,
+    this.pendingReqCount,
     this.statusCode,
     this.data,
   });
@@ -21,6 +23,7 @@ class CommonResponse {
         message: json['message'],
         errors: json['errors'],
         error: json['error'],
+        pendingReqCount: json['pending_req_count'].toString(),
         statusCode: json['status_code'],
         data: json['data'],
       );
@@ -31,6 +34,7 @@ class CommonResponse {
         'message': message,
         'errors': errors,
         'error': error,
+        'pending_req_count': pendingReqCount,
         'status_code': statusCode,
         'data': data,
       };

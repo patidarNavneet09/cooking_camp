@@ -480,4 +480,14 @@ class LanguagesEN extends Languages{
 
   @override
   String get friend => "Friend";
+
+  @override
+  String get memories => "Memories";
+
+  @override
+  String get follow => "Follow";
+
+
+  @override
+  String get unFallow => "unFallow";
 }

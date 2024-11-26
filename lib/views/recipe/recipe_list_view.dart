@@ -36,9 +36,10 @@ class _RecipeListViewState extends State<RecipeListView> {
   int page = 1;
   String recipeId = "";
 
-
+  bool isBusy  = false;
   @override
   void initState() {
+    debugPrint("test.....");
     Future.delayed(Duration.zero,getRecipe);
     super.initState();
   }
@@ -87,7 +88,7 @@ class _RecipeListViewState extends State<RecipeListView> {
                          ),
 
 
-                    isLoading? Container(
+                   page != 1 && isLoading? Container(
                       margin: EdgeInsets.only(top: 20,bottom: 80),
                         height: 50,
                         alignment: Alignment.center,
@@ -294,59 +295,67 @@ class _RecipeListViewState extends State<RecipeListView> {
   Future<void> getRecipe() async {
     if (isLoading || !hasMoreData ) return;
 
-    setState(() {
-      isLoading = true; // Start loading
-    });
-
-    bool load = (page == 1); // Set `load` to true for the first page, false otherwise
-
-    try {
-
-       var onValue ;
-      if(widget.pageType == "Favorite"){
-        onValue = await ApiServices.getFavoriteList(context, load);
-      }else{
-        onValue = await ApiServices.getRecipeList(context, page.toString(), load,widget.pageType == "dash" ?"all":"");
-      }
-
-
-      if (mounted && onValue.status == true) {
+    if(!isBusy)
+      {
         setState(() {
-          if (onValue.data['total_page'] != null) {
-            totalPage = onValue.data['total_page'];
-          }
-
-          var items = onValue.data['items'] as List<dynamic>? ?? []; // Safely cast items to List<dynamic>
-
-          if (page == 1) {
-            recipeList.clear(); // Clear the list only on the first page
-          }
-
-          if (items.isNotEmpty) {
-            // Convert items to StoryModel and add to the list
-            var storyModels = items.map((item) => RecipeModel.fromJson(item)).toList();
-
-            // Sort by `id` in descending order (replace with `a.id.compareTo(b.id)` for ascending order)
-            storyModels.sort((a, b) => b.id!.compareTo(a.id!));
-
-            recipeList.addAll(storyModels);
-            page++; // Increment the page number for the next call
-
-            for (int i = 0; i < recipeList.length; i++) {
-              recipeList[i].color = Utility().getColorForIndex(i);
-            }
-          }
-          else {
-            hasMoreData = false; // No more data to load
-          }
+          isBusy = true;
+          isLoading = true; // Start loading
         });
+
+        bool load = (page == 1); // Set `load` to true for the first page, false otherwise
+
+        try {
+
+          var onValue ;
+          if(widget.pageType == "Favorite"){
+            onValue = await ApiServices.getFavoriteList(context, load);
+          }else{
+            onValue = await ApiServices.getRecipeList(context, page.toString(), load,widget.pageType == "dash" ?"all":"");
+          }
+
+
+          if (mounted && onValue.status == true) {
+            setState(() {
+              if (onValue.data['total_page'] != null) {
+                totalPage = onValue.data['total_page'];
+              }
+
+              var items = onValue.data['items'] as List<dynamic>? ?? []; // Safely cast items to List<dynamic>
+
+              if (page == 1) {
+                recipeList.clear(); // Clear the list only on the first page
+              }
+
+              if (items.isNotEmpty) {
+                // Convert items to StoryModel and add to the list
+                var storyModels = items.map((item) => RecipeModel.fromJson(item)).toList();
+
+                // Sort by `id` in descending order (replace with `a.id.compareTo(b.id)` for ascending order)
+                storyModels.sort((a, b) => b.id!.compareTo(a.id!));
+
+                recipeList.addAll(storyModels);
+                page++; // Increment the page number for the next call
+
+                for (int i = 0; i < recipeList.length; i++) {
+                  recipeList[i].color = Utility().getColorForIndex(i);
+                }
+              }
+              else {
+                hasMoreData = false; // No more data to load
+              }
+            });
+          }
+        } catch (e) {
+          debugPrint('Error fetching stories: $e');
+        } finally {
+          if(mounted) {
+            setState(() {
+              isBusy = false;
+              isLoading = false; // End loading
+            });
+          }
       }
-    } catch (e) {
-      debugPrint('Error fetching stories: $e');
-    } finally {
-      setState(() {
-        isLoading = false; // End loading
-      });
+
     }
   }
 
