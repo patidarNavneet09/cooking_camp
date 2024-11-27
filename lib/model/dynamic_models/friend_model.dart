@@ -10,6 +10,7 @@ class FriendsModel {
   String? createdAt;
   String? updatedAt;
   UserIdentityModel? senderDetail;
+  bool? isSelected = false;
 
   FriendsModel(
       {this.id,
@@ -20,7 +21,7 @@ class FriendsModel {
         this.status,
         this.createdAt,
         this.updatedAt,
-        this.senderDetail});
+        this.senderDetail,this.isSelected});
 
   FriendsModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

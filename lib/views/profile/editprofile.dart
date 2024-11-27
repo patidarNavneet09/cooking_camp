@@ -1,21 +1,17 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:cooking_champs/constant/dimen.dart';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
+import 'package:cooking_champs/constant/sized_box.dart';
 import 'package:cooking_champs/model/dynamic_models/update_parent_profile_model.dart';
 import 'package:cooking_champs/model/dynamic_models/user_identity_model.dart';
-import 'package:cooking_champs/model/post_model/kids_register_model.dart';
-import 'package:cooking_champs/model/post_model/parent_register_model.dart';
 import 'package:cooking_champs/services/api_path.dart';
 import 'package:cooking_champs/services/api_services.dart';
 import 'package:cooking_champs/utils/all_dialogs.dart';
 import 'package:cooking_champs/utils/navigators.dart';
 import 'package:cooking_champs/utils/ui_utils.dart';
-import 'package:cooking_champs/utils/utility.dart';
 import 'package:cooking_champs/views/dashboard.dart';
 import 'package:cooking_champs/widgets/global_button.dart';
 import 'package:cooking_champs/widgets/image_picker_dialog.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:cooking_champs/constant/assets_path.dart';
 import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
@@ -44,6 +40,9 @@ class _EditProfileViewState extends State<EditProfileView> {
   dynamic image;
   String base64Image = "";
   bool isImage = false;
+
+  String firstNameError = "";
+  String lastNameError = "";
 
   @override
   void initState() {
@@ -93,11 +92,6 @@ class _EditProfileViewState extends State<EditProfileView> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               TouchRippleEffect(
-                // focusColor: Colors.amber,
-                // splashColor: Colors.blue,
-                // hoverColor: Colors.red,
-                // highlightColor: Colors.pink,
-
                 borderRadius: BorderRadius.circular(30),
                 rippleColor: Colors.white,
                 onTap: () {
@@ -125,103 +119,114 @@ class _EditProfileViewState extends State<EditProfileView> {
         centerTitle: true,
         elevation: 0,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: size.height * 0.02,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      AllDialogs.globalBottomSheet(context,ImagePickerDialog(onCallBack: onCallBack),(){});
-                    },
-                    child: Stack(
-                      children: [
-                         SizedBox(
-                                child:
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: size.height * 0.02,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    AllDialogs.globalBottomSheet(context,ImagePickerDialog(onCallBack: onCallBack),(){});
+                  },
+                  child: Stack(
+                    children: [
+                       SizedBox(
+                              child:
 
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(500),
-                          child:
-                          isImage?
-                          Image.file(selectedImage!, fit: BoxFit.contain, height: 120,
-                            width: 120,):
-                          imageUrl.isNotEmpty?
-                          UiUtils.networkProfile(120, 120, ApiPath.imageBaseUrl+imageUrl)
-                              :Image.asset(
-                            height: 120,
-                            width: 120,
-                            AssetsPath.demoPerson,
-                            fit: BoxFit.contain,
-                          )
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(500),
+                        child:
+                        isImage?
+                        Image.file(selectedImage!, fit: BoxFit.contain, height: 120,
+                          width: 120,):
+                        imageUrl.isNotEmpty?
+                        UiUtils.networkProfile(120, 120, ApiPath.imageBaseUrl+imageUrl)
+                            :Image.asset(
+                          height: 120,
+                          width: 120,
+                          AssetsPath.demoPerson,
+                          fit: BoxFit.contain,
                         )
-                         ),
-                        Positioned(
-                          left: 90,
-                          top: 80,
-                          child: Image.asset(
-                            AssetsPath.cameraimage,
-                            height: 30,
-                            width: 30,
-                            fit: BoxFit.contain,
-                          ),
+                      )
+                       ),
+                      Positioned(
+                        left: 90,
+                        top: 80,
+                        child: Image.asset(
+                          AssetsPath.cameraimage,
+                          height: 30,
+                          width: 30,
+                          fit: BoxFit.contain,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
+                ),
+              ],
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+
+                  hsized20,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        Languages.of(context)!.firstName.toString(),
+                        style: regularTextStyle(fontSize:15.0, color:MyColor.black)
+                      ),
+                      UiUtils.errorText(firstNameError)
+                    ],
+                  ),
+
+                  SizedBox(
+                    height: size.height * 0.01,
+                  ),
+
+                  commonTextField(firstNameController,Languages.of(context)!.enterfirstName.toString(),TextInputAction.done,TextInputType.text,"Last Name"),
+
+
+                  SizedBox(
+                    height: size.height * 0.02,
+                  ),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        Languages.of(context)!.lastName.toString(),
+                        style:regularTextStyle(fontSize: 15.0, color:MyColor.black)
+                      ),
+                      UiUtils.errorText(lastNameError)
+                    ],
+                  ),
+
+                  SizedBox(
+                    height: size.height * 0.01,
+                  ),
+
+                  commonTextField(lastnameController,Languages.of(context)!.enterlastName.toString(),TextInputAction.done,TextInputType.text,"Last Name"),
+
                 ],
               ),
-
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      Languages.of(context)!.firstName.toString(),
-                      style: regularTextStyle(fontSize:15.0, color:MyColor.black)
-                    ),
-
-                    SizedBox(
-                      height: size.height * 0.01,
-                    ),
-
-                    commonTextField(firstNameController,Languages.of(context)!.enterfirstName.toString(),TextInputAction.done,TextInputType.text,"Last Name"),
-
-
-                    SizedBox(
-                      height: size.height * 0.02,
-                    ),
-
-                    Text(
-                      Languages.of(context)!.lastName.toString(),
-                      style:regularTextStyle(fontSize: 15.0, color:MyColor.black)
-                    ),
-
-                    SizedBox(
-                      height: size.height * 0.01,
-                    ),
-
-                    commonTextField(lastnameController,Languages.of(context)!.enterlastName.toString(),TextInputAction.done,TextInputType.text,"Last Name"),
-
-                  ],
-                ),
-              ),
-            ],
-          ),
-
-          Container(
-              padding: EdgeInsets.only(bottom: 30,left: 20,right: 20),
-              child: GlobalButton( Languages.of(context)!.update.toString(), MyColor.appTheme, MyColor.appTheme,btnSize55,double.infinity, updateOnTap, 55,5, 0,mediumTextStyle(fontSize:15.0, color:MyColor.white))),
-        ],
+            ),
+          ],
+        ),
       ),
+      bottomSheet:  Container(
+          padding: EdgeInsets.only(bottom:20,left: 20,right: 20),
+          child: GlobalButton( Languages.of(context)!.update.toString(), MyColor.appTheme, MyColor.appTheme,btnSize55,double.infinity, updateOnTap, 55,5, 0,mediumTextStyle(fontSize:15.0, color:MyColor.white))),
+
     );
   }
 
@@ -293,8 +298,22 @@ class _EditProfileViewState extends State<EditProfileView> {
     }
   }
 
-  void updateOnTap() {
-Future.delayed(Duration.zero,updateProfile);
+  void updateOnTap(){
+    bool isValid = true;
+    if(mounted){
+      setState(() {
+        if(firstNameController.text.trim().isEmpty){
+          firstNameError = Languages.of(context)!.pleaseEnterFirstName;
+          isValid = false;
+        }if(lastnameController.text.trim().isEmpty){
+          firstNameError = Languages.of(context)!.pleaseEnterLastName;
+          isValid = false;
+        }
+      });
+      if(isValid){
+        Future.delayed(Duration.zero,updateProfile);
+      }
+    }
   }
 
   updateProfile()async{

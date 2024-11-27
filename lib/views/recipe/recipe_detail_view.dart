@@ -325,9 +325,10 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                   ),
                 ),
 
-
-                hsized10,
-                if (recipeModel.recipeAddedBy!.id.toString() != userDetails.id.toString() && btnText(recipeModel.recipeAddedBy!.friendRequestStatus.toString()).isNotEmpty) GlobalButton(btnText(recipeModel.recipeAddedBy!.friendRequestStatus.toString()), MyColor.appTheme, MyColor.appTheme, btnSize40,double.infinity, sendRequestOnTap, 55, 5, 0,mediumTextStyle(fontSize:16.0, color: MyColor.white))
+                if (recipeModel.recipeAddedBy!.id.toString() != userDetails.id.toString() && btnText(recipeModel.recipeAddedBy!.friendRequestStatus.toString()).isNotEmpty) Padding(
+                  padding: const EdgeInsets.only(top:10.0),
+                  child: GlobalButton(btnText(recipeModel.recipeAddedBy!.friendRequestStatus.toString()), MyColor.appTheme, MyColor.appTheme, btnSize40,double.infinity, sendRequestOnTap, 55, 5, 0,mediumTextStyle(fontSize:16.0, color: MyColor.white)),
+                )
                 else SizedBox.fromSize()
 
               ],
@@ -339,9 +340,6 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
     );
   }
   String btnText(String status) {
-    debugPrint("recipeModel.userId.toString()...${recipeModel.userId.toString()}");
-    debugPrint("userDetails.id.toString()...${userDetails.id.toString()}");
-    debugPrint("status...${status}");
     switch (status) {
       case "request not sent":
         return Languages.of(context)!.follow.toString();
@@ -368,7 +366,6 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
               recipeModel = RecipeModel.fromJson(onValue.data);
               if(recipeModel.recipeAddedBy != null){
                 if(recipeModel.recipeAddedBy!.friendRequestStatus != null){
-                 // debugPrint("")
                   if(recipeModel.recipeAddedBy!.friendRequestStatus.toString() != "request not sent"){
                     isSent = true;
                   }else{
@@ -397,7 +394,6 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
         type: recipeModel.recipeAddedBy!.friendRequestStatus.toString() == "pending"? "cancel":""
     );
       await ApiServices.sendRequest(context, friendRequest).then((onValue){
-        debugPrint("testttt...");
         if(onValue.status == true){
           if(mounted){
             setState(() {
@@ -405,7 +401,6 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
                recipeModel.recipeAddedBy!.friendRequestStatus = "request not sent":
                recipeModel.recipeAddedBy!.friendRequestStatus = "pending";
 
-              // isSent = true;
             });
           }
         }

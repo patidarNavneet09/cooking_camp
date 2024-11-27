@@ -351,7 +351,7 @@ Future.delayed(Duration.zero,(){callApi(context);});
     setState(() {
       isTabExplore = true;
     });
-    CustomNavigators.pushNavigate(const MyKidsListingView(pageType: 'MyKids',), context);
+    CustomNavigators.pushNavigate(const MyKidsListingView(pageType: 'MyKids'), context);
   }
 
   void aboutOnTap() {

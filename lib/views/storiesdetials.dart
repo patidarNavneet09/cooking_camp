@@ -29,7 +29,7 @@ class _StoriesDetailsViewState extends State<StoriesDetailsView> {
   @override
   void initState() {
     setStoryImage();
-  //  Future.delayed(Duration.zero,getStoriesDetail);
+    Future.delayed(Duration.zero,getStoriesDetail);
     super.initState();
   }
 
@@ -168,7 +168,7 @@ class _StoriesDetailsViewState extends State<StoriesDetailsView> {
       ),
       bottomNavigationBar: InkWell(
         onTap:(){
-          AllDialogs.globalBottomSheet(context, ShareStoryView(),(){});
+          AllDialogs.globalBottomSheet(context, ShareStoryView(storyId:widget.model.id??"",),(){});
         },
         child: Container(
           height:Platform.isAndroid? 70:80,

@@ -13,6 +13,7 @@ import 'package:cooking_champs/utils/all_dialogs.dart';
 import 'package:cooking_champs/utils/ui_utils.dart';
 import 'package:cooking_champs/utils/utility.dart';
 import 'package:cooking_champs/widgets/child_profile_created_popup.dart';
+import 'package:cooking_champs/widgets/custom_month_picker.dart';
 import 'package:cooking_champs/widgets/global_button.dart';
 import 'package:cooking_champs/widgets/image_picker_dialog.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -59,12 +60,15 @@ class _KidsRegisterScreenState extends State<KidsRegisterScreen> {
   dynamic isFocusColor = '';
   dynamic image;
 
+
+
   String nameError = "";
   String userNameError = "";
   String gradeError = "";
   String yearError = "";
   String passError = "";
   String selectDate2 = "";
+  int? selectedMonth; // Get current month (0-based index)
   String kidImage = "";
 
   bool isPassHide = true;
@@ -99,6 +103,8 @@ class _KidsRegisterScreenState extends State<KidsRegisterScreen> {
         }
       }
     }
+    final now = DateTime.now();
+   selectedMonth = now.month - 1; // Get current month (0-based index)
   }
 
   @override
@@ -747,25 +753,35 @@ class _KidsRegisterScreenState extends State<KidsRegisterScreen> {
   }
 
   void monthOnTap() async {
-    final selectedMonth = await showMonthYearPicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2019),
-        lastDate: DateTime(2050),
-        initialMonthYearPickerMode: MonthYearPickerMode.month);
-    if (selectedMonth != null) {
-      setState(() {
-        selectDate2 =
-            "${selectedMonth.year}-${selectedMonth.month.toString().padLeft(2, '0')}-${selectedMonth.day.toString().padLeft(2, '0')} 00:00:00.000";
-        monthController.text = Utility.formatDateToMonthDay(selectDate2);
-        //selectedMonth.month.toString().padLeft(2, '0');
-      });
-    }
-
+    AllDialogs.customDialog(context, CustomMonthPicker(
+      onMonthSelected: (selectedMonth1) {
+        setState(() {
+          selectedMonth = int.parse(selectedMonth1);
+          final now = DateTime.now();
+          final formattedDate =
+              "${now.year}-$selectedMonth1-01 00:00:00.000"; // Example: first day of selected month
+          selectDate2 = formattedDate;
+          monthController.text = Utility.formatDateToMonthDay(formattedDate);
+          debugPrint("month...${Utility.formatDateToMonthDay1(formattedDate)}") ;
+        });
+      }, currentMonthIndex:selectedMonth!,
+    ));
     isFocusColor = "parentEmail";
   }
 
   void yearOnTap() async {
+   /* AllDialogs.customDialog(context, SizedBox(
+      height: 200,
+      child: CustomYearPicker(
+        onYearSelected: (selectedYear) {
+          setState(() {
+            yearController.text = selectedYear.toString();
+          });
+        },
+      ),
+    )
+    );*/
+
     DateTime? selectedDate = await showDatePicker(
         context: context,
         initialDate: DateTime.now(),

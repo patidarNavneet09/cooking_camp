@@ -607,4 +607,18 @@ static Future<CommonResponse> sendRequest(BuildContext context,SendFriendRequest
    return commonResponse;
   }
 
+  static Future<CommonResponse> shareFriends(BuildContext context,var request)async{
+    String url = ApiPath.shareStories;
+    CommonResponse commonResponse = CommonResponse();
+    try {
+      var response = await HttpServices.postApi(context, url, request, true);
+      if(response.toString() != "null"){
+        commonResponse = CommonResponse.fromJson(response);
+      }
+    }on SocketException catch(e){
+      Utility.customToast(context, e.toString());
+    }
+    return commonResponse;
+  }
+
 }

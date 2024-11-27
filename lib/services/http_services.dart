@@ -16,41 +16,15 @@ import 'package:http_parser/http_parser.dart';
 
 
 class HttpServices {
-  static Future<dynamic> postDataObjectAsync(BuildContext context, String url, dynamic requestModel) async {
-    ApiConnectorConstants.accessToken = await PreferencesServices.getPreferencesData(PreferencesServices.userToken)??"";
-    if (context.mounted) {
-      AllDialogs.progressLoadingDialog(context, true);
+  // Utility function to convert model to Map if it's not already a Map
+ static Map<String, dynamic> toMap(dynamic data) {
+    if (data is Map<String, dynamic>) {
+      return data;
+    } else  {
+      return data.toJson(); // Assuming `ModelRequest` has a `toJson()` method
     }
-
-    debugPrint("url......${'${ApiPath.baseUrl}/$url'}");
-    try {
-      var response = await http.post(Uri.parse('${ApiPath.baseUrl}/$url'),
-          body: convert.jsonEncode(requestModel),
-          headers: {
-            "Content-Type": "application/json",
-            "x-api-key": ApiConnectorConstants.apiKey
-          });
-
-      if (ApiConnectorConstants.accessToken.isNotEmpty) {
-        response.headers.addAll(
-            {"Authorization": "Bearer ${ApiConnectorConstants.accessToken}"});
-      }
-      print(response.body);
-      if (response.statusCode == 200) {
-        Map<String, dynamic> jsonResponse = convert.jsonDecode(response.body);
-
-        return jsonResponse;
-      }
-    } on SocketException catch (e) {
-      debugPrint("e......$e");
-      throw Exception(e);
-    } finally {
-      if (context.mounted) {
-        AllDialogs.progressLoadingDialog(context, false);
-      }
-    }
-    return;
   }
+
 
   static Future<dynamic> getDataObjectFromAPI(
       BuildContext context, String url, bool load) async {
@@ -142,6 +116,7 @@ class HttpServices {
   static Future<dynamic> postApi(BuildContext context, String url, dynamic requestModel, bool load) async {
     final language = await PreferencesServices.getPreferencesData(prefSelectedLanguageCode)??"en";
      ApiConnectorConstants.accessToken = await PreferencesServices.getPreferencesData(PreferencesServices.userToken)??"";
+    final requestData = toMap(requestModel); // Convert data to Map if it's a model
     if (context.mounted) {
      load? AllDialogs.progressLoadingDialog(context, true):null;
     }
@@ -161,9 +136,9 @@ class HttpServices {
         headers.addAll({"Authorization": "Bearer ${ApiConnectorConstants.accessToken}"});
       }
       var request = http.Request('POST', Uri.parse('${ApiPath.baseUrl}$url'));
-      request.body = json.encode(requestModel);
+      request.body = json.encode(requestData);
       request.headers.addAll(headers);
-      debugPrint("Request.......${json.encode(requestModel)}");
+      debugPrint("Request.......${json.encode(requestData)}");
       http.StreamedResponse response = await request.send();
 
       String responseString = await response.stream.bytesToString();

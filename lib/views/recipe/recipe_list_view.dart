@@ -131,7 +131,7 @@ class _RecipeListViewState extends State<RecipeListView> {
           CustomNavigators.pushNavigate(RecipeDetailView(model: model, color:model.color??MyColor.blueLite), context);
         },
         child: Container(
-          height:  widget.pageType == "dash" || widget.pageType == "Favorite"?size.height * 0.35:260,
+          height:  widget.pageType == "dash" || widget.pageType == "Favorite"?size.height * 0.37:260,
           width:320,
           padding: const EdgeInsets.only(left:20, right:20, bottom:12, top: 10),
           decoration: BoxDecoration(
@@ -281,7 +281,6 @@ class _RecipeListViewState extends State<RecipeListView> {
   void onCallBackRecipe(RecipeModel model) {
     if (mounted) {
       setState(() {
-     //   debugPrint("json....${jsonEncode(model)}");
         model.isFavourite = "No";
         model.status = "0";
         recipeList.insert(0, model); // Add `model` at the first index
@@ -368,7 +367,6 @@ class _RecipeListViewState extends State<RecipeListView> {
           if(onValue.status == true){
             if(onValue.message.toString() == "Recipe removed from favorites successfully!"){
               if(widget.pageType == "Favorite") {
-                debugPrint("widget.pageType..${recipeModel.isFavourite}");
                 recipeList.remove(recipeModel);
               }
              recipeModel.isFavourite = "No";
@@ -384,14 +382,4 @@ class _RecipeListViewState extends State<RecipeListView> {
     });
   }
 
-  Future<void> onRefresh() async{
-    debugPrint("trtt");
-    setState(() {
-      page == 1;
-      hasMoreData = true;
-      isLoading = false;
-
-    });
-return  Future.delayed(Duration.zero,getRecipe);
-  }
 }

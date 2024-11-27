@@ -3,6 +3,7 @@ import 'package:cooking_champs/constant/dimen.dart';
 import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/sized_box.dart';
+import 'package:cooking_champs/constant/stringfile.dart/all_key.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
 import 'package:cooking_champs/enums/register_enum.dart';
 import 'package:cooking_champs/model/dynamic_models/friend_model.dart';
@@ -15,7 +16,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ShareStoryView extends StatefulWidget {
-  const ShareStoryView({super.key});
+  final  String storyId;
+  const ShareStoryView({super.key,required this.storyId});
 
   @override
   State<ShareStoryView> createState() => _ShareStoryViewState();
@@ -23,13 +25,12 @@ class ShareStoryView extends StatefulWidget {
 
 class _ShareStoryViewState extends State<ShareStoryView> {
   List<FriendsModel> myFriendsList = [];
+  List<String> selectedFriendList = [];
   UserIdentityModel senderDetail = UserIdentityModel();
   FriendsModel friendsModel = FriendsModel();
 
   String myFriend = "";
-  String request = "";
-  String requestId = "";
-  String accept = "";
+
 
 
   bool isLoading = false;
@@ -38,7 +39,6 @@ class _ShareStoryViewState extends State<ShareStoryView> {
   int totalPage = 1;
   int page = 1;
   int tabIndex = 0;
-  bool isCheck = false;
   int id = 0;
   @override
   void initState() {
@@ -134,9 +134,11 @@ class _ShareStoryViewState extends State<ShareStoryView> {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(300),
-                child: UiUtils.networkProfile(60,60,model.senderDetail!.image != null? ApiPath.imageBaseUrl+ model.senderDetail!.image.toString():""),
+                child: UiUtils.networkProfile(60,60,model.senderDetail == null?"":model.senderDetail!.image != null? ApiPath.imageBaseUrl+ model.senderDetail!.image.toString():""),
               ),
               SizedBox(width: 10),
+              model.senderDetail == null?
+              SizedBox.shrink():
               Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -152,11 +154,15 @@ class _ShareStoryViewState extends State<ShareStoryView> {
               InkWell(
                 onTap: (){
                   setState(() {
-                    isCheck = !isCheck;
-                    id = index;
+                    model.isSelected = !model.isSelected!;
+                    if(model.isSelected == true){
+                      selectedFriendList.add(model.id.toString());
+                    }else{
+                      selectedFriendList.remove(model.id.toString());
+                    }
                   });
                 },
-                child: SvgPicture.asset(id == index &&isCheck?AssetsPath.fillCheck:AssetsPath.check),
+                child: SvgPicture.asset(model.isSelected!?AssetsPath.fillCheck:AssetsPath.check),
               )
             ],
           ),
@@ -168,16 +174,32 @@ class _ShareStoryViewState extends State<ShareStoryView> {
   }
 
   void shareOnTap() {
+   Future.delayed(Duration.zero,shareFriends);
+  }
+
+  Future<void> shareFriends()async{
+
+    Map<String, dynamic> body = {
+      AllKeys.storyId: widget.storyId,
+      AllKeys.friends_id:selectedFriendList.join(', ')
+    };
+    await ApiServices.shareFriends(context, body).then((onValue){
+      if(mounted){
+        if(onValue.status == true){
+          Navigator.pop(context);
+        }
+      }
+    });
   }
 
   Future<void> getFriendsRequest(bool load) async {
     if (isLoading || !hasMoreData) return;
-
     String type = "accepted";
 
     setState(() {
       isLoading = true; // Start loading
     });
+
     try {
       var onValue = await ApiServices.getFriendsRequest(context, page, load, type);
       if (!mounted || onValue.status != true) return;

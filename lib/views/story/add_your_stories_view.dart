@@ -348,45 +348,6 @@ class _AddYourStoriesViewState extends State<AddYourStoriesView> {
                 ),
               ),
 
-             /* Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                      color: _isFocusColor == "Enter title"
-                          ? MyColor.liteOrange
-                          : MyColor.grayLite),
-                  color: MyColor.white,
-                  borderRadius:
-                  const BorderRadius.all(Radius.circular(12)),
-                ),
-                alignment: Alignment.center,
-                padding: const EdgeInsets.fromLTRB(12, 5, 0, 15),
-                height: 55,
-                child: TextField(
-                  textCapitalization: TextCapitalization.sentences,
-                  onTap: () {
-                    _isFocusColor = "Enter title";
-                  },
-                  maxLength: 30,
-                  onTapOutside: (v){
-                    FocusManager.instance.primaryFocus!.unfocus();
-                  },
-                  buildCounter: (BuildContext context, {required int currentLength, int? maxLength, required bool isFocused}) => null,
-                  controller: titleController,
-                  textInputAction: TextInputAction.next,
-                  style: regularTextStyle(fontSize:14.0, color: MyColor.black),
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: Languages.of(context)!.entertitle.toString(),
-                    hintStyle:regularTextStyle(fontSize:14.0, color: MyColor.grayLite1),
-                    counter: const Offstage(),
-                    isDense: true,
-                    contentPadding: const EdgeInsets.only(top: 10,),
-                  ),
-                  maxLines: 1,
-                  cursorColor: MyColor.black,
-                ),
-              ),*/
-
               hsized30,
 
               Row(
@@ -457,52 +418,6 @@ class _AddYourStoriesViewState extends State<AddYourStoriesView> {
                   ],
                 ),
               ),
-
-
-              /*Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                      color: _isFocusColor == "writehere"
-                          ? MyColor.liteOrange
-                          : MyColor.grayLite),
-                  color: MyColor.white,
-                  borderRadius:
-                  const BorderRadius.all(Radius.circular(12)),
-                ),
-                alignment: Alignment.center,
-                padding: const EdgeInsets.fromLTRB(12, 5, 0, 15),
-               // height: 165,
-                child: TextField(
-                  minLines: 5,
-                  textCapitalization: TextCapitalization.sentences,
-                  onTap: () {
-                    _isFocusColor = "writehere";
-                  },
-                  buildCounter: (BuildContext context,
-                      {required int currentLength,
-                        int? maxLength,
-                        required bool isFocused}) =>
-                  null,
-                  controller: storyController,
-                  onTapOutside: (v){
-                    FocusManager.instance.primaryFocus!.unfocus();
-                  },
-                  textInputAction: TextInputAction.newline,
-                  keyboardType: TextInputType.multiline,
-                  style:regularTextStyle(fontSize:14.0, color:MyColor.black),
-                  decoration: InputDecoration(
-                    counterText:storyController.text.length.toString() ,
-                    border: InputBorder.none,
-                    hintText: Languages.of(context)!.writehere.toString(),
-                    hintStyle: regularTextStyle(fontSize:14.0, color:MyColor.grayLite1),
-                    counter: const Offstage(),
-                    isDense: true,
-                    contentPadding: const EdgeInsets.only(top: 10,),
-                  ),
-                  maxLines: null,
-                  cursorColor: MyColor.black,
-                ),
-              ),*/
 
               hsized30,
             ],

@@ -134,6 +134,10 @@ class Utility {
     }
     return "";
   }
+  static String formatDateToMonthDay1(String date) {
+    final parsedDate = DateTime.parse(date);
+    return "${parsedDate.year}-${parsedDate.month.toString().padLeft(2, '0')}";
+  }
 
  static String removeHtmlTag(String str) {
     String result = '';
