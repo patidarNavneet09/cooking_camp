@@ -91,7 +91,7 @@ class _MyKidsListingViewState extends State<MyKidsListingView> {
                      if(widget.onCallBack != null){
                        widget.onCallBack!();
                      }
-                    isTabExplore = false;
+                   // isTabExplore = false;
                     setState(() {});
                   },
                   child: const Icon(

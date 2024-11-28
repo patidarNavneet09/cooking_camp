@@ -313,8 +313,6 @@ class _LoginViewState extends State<LoginView> {
         if (mounted) {
           if(onValue.status == true){
             CustomNavigators.pushReplacementNavigate(DashBoardView(pageIndex: 0,), context);
-          }else{
-
           }
         }
       } catch (e) {
