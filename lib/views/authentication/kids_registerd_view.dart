@@ -770,7 +770,7 @@ class _KidsRegisterScreenState extends State<KidsRegisterScreen> {
   }
 
   void yearOnTap() async {
-   /* AllDialogs.customDialog(context, SizedBox(
+    AllDialogs.customDialog(context, SizedBox(
       height: 200,
       child: CustomYearPicker(
         onYearSelected: (selectedYear) {
@@ -780,20 +780,20 @@ class _KidsRegisterScreenState extends State<KidsRegisterScreen> {
         },
       ),
     )
-    );*/
+    );
 
-    DateTime? selectedDate = await showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(1900),
-        lastDate: DateTime(2025),
-        initialDatePickerMode: DatePickerMode.year);
-
-    if (selectedDate != null) {
-      setState(() {
-        yearController.text = selectedDate.year.toString();
-      });
-    }
+    // DateTime? selectedDate = await showDatePicker(
+    //     context: context,
+    //     initialDate: DateTime.now(),
+    //     firstDate: DateTime(1900),
+    //     lastDate: DateTime(2025),
+    //     initialDatePickerMode: DatePickerMode.year);
+    //
+    // if (selectedDate != null) {
+    //   setState(() {
+    //     yearController.text = selectedDate.year.toString();
+    //   });
+    // }
     isFocusColor = "emailstar";
     setState(() {});
   }

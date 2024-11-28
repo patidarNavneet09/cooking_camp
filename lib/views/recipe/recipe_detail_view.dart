@@ -56,16 +56,17 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
       backgroundColor: MyColor.white,
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        leadingWidth:size.width * 0.08,
+        leadingWidth:size.width * 0.12,
         automaticallyImplyLeading: false,
         backgroundColor:widget.color,
         surfaceTintColor:widget.color,
-        leading: InkWell(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Padding(
-            padding: const EdgeInsets.only(left:20.0),
+        leading: Padding(
+          padding: const EdgeInsets.only(left:20.0),
+          child: InkWell(
+            radius:80,
+            onTap: () {
+              Navigator.pop(context);
+            },
             child: const Icon(
               Icons.arrow_back_ios,
               size:28,
@@ -74,12 +75,9 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
           ),
         ),
 
-        title: Padding(
-          padding: const EdgeInsets.only(left:10),
-          child:   Text(
-              recipeModel.name??"",
-              style:mediumTextStyle(fontSize:18.0, color:MyColor.black)
-          ),
+        title: Text(
+            recipeModel.name??"",
+            style:mediumTextStyle(fontSize:18.0, color:MyColor.black)
         ),
         centerTitle: false,
         elevation: 0,
@@ -344,7 +342,7 @@ class _RecipeDetailViewState extends State<RecipeDetailView> {
       case "request not sent":
         return Languages.of(context)!.follow.toString();
       case "pending":
-        return Languages.of(context)!.unFallow.toString();
+        return Languages.of(context)!.cancelRequest.toString();
         case "Accept":
         return "Accept";
         case "accepted":

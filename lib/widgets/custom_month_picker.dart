@@ -1,13 +1,17 @@
+import 'package:cooking_champs/constant/dimen.dart';
 import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
+import 'package:cooking_champs/constant/sized_box.dart';
 import 'package:cooking_champs/utils/ui_utils.dart';
+import 'package:cooking_champs/widgets/global_button.dart';
 import 'package:flutter/material.dart';
 
 class CustomMonthPicker extends StatefulWidget {
-  final  int? currentMonthIndex;
+  final int? currentMonthIndex;
   final Function(String) onMonthSelected;
 
-  const CustomMonthPicker({super.key, required this.onMonthSelected, this.currentMonthIndex});
+  const CustomMonthPicker(
+      {super.key, required this.onMonthSelected, this.currentMonthIndex});
 
   @override
   State<CustomMonthPicker> createState() => _CustomMonthPickerState();
@@ -36,9 +40,9 @@ class _CustomMonthPickerState extends State<CustomMonthPicker> {
   void initState() {
     super.initState();
     final now = DateTime.now();
-    if(widget.currentMonthIndex != null){
-      currentMonthIndex = widget.currentMonthIndex!-1;
-    }else{
+    if (widget.currentMonthIndex != null) {
+      currentMonthIndex = widget.currentMonthIndex! - 1;
+    } else {
       currentMonthIndex = now.month - 1; // Get current month (0-based index)
     }
 
@@ -54,24 +58,22 @@ class _CustomMonthPickerState extends State<CustomMonthPicker> {
           margin: EdgeInsets.symmetric(horizontal: 15),
           alignment: Alignment.center,
           decoration: BoxDecoration(
-              color: MyColor.white,
-            borderRadius: BorderRadius.circular(15)
-          ),
-          child: Wrap(
+              color: MyColor.white, borderRadius: BorderRadius.circular(15)),
+          child: Column(
             children: [
-               Container(
+              Container(
                 padding: EdgeInsets.all(16.0),
                 alignment: Alignment.center,
                 child: Text(
                   'Select Month',
-                  style:semiBoldTextStyle(fontSize:18.0, color:MyColor.black),
+                  style:
+                      semiBoldTextStyle(fontSize: 18.0, color: MyColor.black),
                 ),
               ),
-
               UiUtils.dividerLine(),
-
               GridView.builder(
-                padding: const EdgeInsets.only(top: 15,left:10,right: 10,bottom: 20),
+                padding: const EdgeInsets.only(
+                    top: 15, left: 10, right: 10, bottom: 20),
                 shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3, // 3 columns
@@ -89,38 +91,61 @@ class _CustomMonthPickerState extends State<CustomMonthPicker> {
                       setState(() {
                         selectedMonthIndex = index; // Update selected month
                       });
-                      widget.onMonthSelected('${index + 1}'.padLeft(2, '0')); // Callback with selected month
-                      Navigator.of(context).pop();
+
                     },
                     child: Container(
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         color: isSelected
-                            ?MyColor.appTheme
+                            ? MyColor.appTheme
                             : isCurrentMonth
-                            ? MyColor.appTheme.withOpacity(0.2)
-                            : Colors.grey[200],
+                                ? MyColor.appTheme.withOpacity(0.2)
+                                : Colors.grey[200],
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: Text(
-                        months[index],
-                        style: regularTextStyle(fontSize:15.0, color:isSelected || isCurrentMonth
-                            ? Colors.white
-                            : Colors.black)
-                      ),
+                      child: Text(months[index],
+                          style: regularTextStyle(
+                              fontSize: 15.0,
+                              color: isSelected || isCurrentMonth
+                                  ? Colors.white
+                                  : Colors.black)),
                     ),
                   );
                 },
               ),
 
+             // hsized10,
+
+              UiUtils.dividerLine(),
+              hsized15,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  GlobalButton("Ok",MyColor.appTheme,MyColor.white,btnSize50,60,okOnTap,10,0,0,mediumTextStyle(fontSize:18.0, color:MyColor.white)),
+                  SizedBox(width:15),
+                  GlobalButton("Cancel",MyColor.red,MyColor.white,btnSize50,100,cancelOnTap,10,0,0,mediumTextStyle(fontSize:18.0, color:MyColor.white)),
+                  SizedBox(width: 20,),
+                ],
+              ),
+
+
+              hsized15,
             ],
           ),
         ),
       ],
     );
   }
-}
+  void okOnTap() {
+    widget.onMonthSelected('${selectedMonthIndex! + 1}'
+        .padLeft(2, '0')); // Callback with selected month
+    Navigator.of(context).pop();
+  }
 
+  void cancelOnTap() {
+    Navigator.of(context).pop(); // Close dialog
+  }
+}
 
 class CustomYearPicker extends StatefulWidget {
   final Function(int) onYearSelected;
@@ -146,75 +171,96 @@ class _CustomYearPickerState extends State<CustomYearPicker> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 200,
-      color: MyColor.white,
-      alignment: Alignment.center,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text(
-              'Select Year',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-          ),
-          GridView.builder(
-            shrinkWrap: true,
-            padding: const EdgeInsets.all(8.0),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount:8, // Number of columns
-              mainAxisSpacing:1,
-              crossAxisSpacing: 8,
-              childAspectRatio: 1.5, // Adjust for year buttons
-            ),
-            itemCount: currentYear - startYear + 1, // Total number of years
-            itemBuilder: (context, index) {
-              final year = startYear + index;
-              final isCurrentYear = year == currentYear;
-              final isSelected = year == selectedYear;
+    return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+      Container(
+        margin: EdgeInsets.symmetric(horizontal: 15),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+            color: MyColor.white, borderRadius: BorderRadius.circular(15)),
+        child: Column(
+          children: [
+            hsized10,
 
-              return GestureDetector(
-                onTap: () {
-                  setState(() {
-                    selectedYear = year; // Update selected year
-                  });
-                  widget.onYearSelected(year); // Callback with selected year
-                  Navigator.of(context).pop(); // Close dialog
-                },
-                child: Container(
-                  /*alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: isSelected
-                        ? Colors.blue
-                        : isCurrentYear
-                        ? Colors.blue.withOpacity(0.2)
-                        : Colors.grey[200],
-                    borderRadius: BorderRadius.circular(8),
-                  ),*/
-                  child: Text(
-                    year.toString(),
-                    style: mediumTextStyle(fontSize:16.0, color:  isSelected || isCurrentYear
-                          ?MyColor.appTheme
-                          : Colors.black)
-                    //   isSelected || isCurrentYear
-                    //       ?MyColor.appTheme
-                    //       : Colors.black,
-                    //   fontWeight: isSelected
-                    //       ? FontWeight.bold
-                    //       : isCurrentYear
-                    //       ? FontWeight.w600
-                    //       : FontWeight.normal,
-                    // ),
-                  ),
+             Text(
+               'Select Year',
+               textAlign: TextAlign.center,
+               style: TextStyle(fontSize:20, fontWeight: FontWeight.bold),
+             ),
+            hsized15,
+            UiUtils.dividerLine(),
+            hsized10,
+
+            SizedBox(
+              height:230,
+              child: GridView.builder(
+                reverse: true,
+                shrinkWrap: true,
+                padding: const EdgeInsets.only(left:20.0,right:20.0),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount:5, // Number of columns
+                  mainAxisSpacing:2,
+                  crossAxisSpacing: 8,
+                  childAspectRatio: 1.5, // Adjust for year buttons
                 ),
-              );
-            },
-          ),
-          const SizedBox(height: 8),
-        ],
-      ),
-    );
+                itemCount: currentYear - startYear + 1,
+                // Total number of years
+                itemBuilder: (context, index) {
+                  final year = startYear + index;
+                  final isCurrentYear = year == currentYear;
+                  final isSelected = year == selectedYear;
+
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedYear = year; // Update selected year
+                      });
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: isSelected ? MyColor.appTheme : isCurrentYear ?MyColor.appTheme.withOpacity(0.2) : null,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                      child: Text(year.toString(),
+                          style: mediumTextStyle(
+                              fontSize: 16.0,
+                              color: isSelected || isCurrentYear
+                                  ? MyColor.white
+                                  : Colors.black)
+                          ),
+                    ),
+                  );
+                },
+              ),
+            ),
+            hsized10,
+
+            UiUtils.dividerLine(),
+            hsized10,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                GlobalButton("Ok",MyColor.appTheme,MyColor.white,btnSize50,60,okOnTap,10,0,0,mediumTextStyle(fontSize:18.0, color:MyColor.white)),
+                SizedBox(width:15),
+                GlobalButton("Cancel",MyColor.red,MyColor.white,btnSize50,100,cancelOnTap,10,0,0,mediumTextStyle(fontSize:18.0, color:MyColor.white)),
+                SizedBox(width: 20,),
+              ],
+            ),
+
+
+            const SizedBox(height:10),
+          ],
+        ),
+      )
+    ]);
+  }
+
+  void okOnTap() {
+    widget.onYearSelected(selectedYear!); // Callback with selected year
+    Navigator.of(context).pop(); // Close dialog
+  }
+
+  void cancelOnTap() {
+    Navigator.of(context).pop(); // Close dialog
   }
 }

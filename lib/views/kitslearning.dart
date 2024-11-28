@@ -32,8 +32,13 @@ class _KidsLearningViewState extends State<KidsLearningView> {
     return WillPopScope(
       onWillPop: () async {
         debugPrint("dfsdfsdf");
-        // istabExplore = false;
-        CustomNavigators.pushRemoveUntil( const DashBoardView(pageIndex: 0, tabCheck: ""), context);
+        setState(() {
+          tabCheck = "";
+          pageIndex = 0;
+          // istabExplore = false;
+        });
+
+    //    CustomNavigators.pushRemoveUntil( const DashBoardView(pageIndex: 0, tabCheck: ""), context);
         return true;
       },
       child: Scaffold(
@@ -48,27 +53,28 @@ class _KidsLearningViewState extends State<KidsLearningView> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                TouchRippleEffect(
-                  // focusColor: Colors.amber,
-                  // splashColor: Colors.blue,
-                  // hoverColor: Colors.red,
-                  // highlightColor: Colors.pink,
-
+                InkWell(
+                 radius: 80,
                   borderRadius: BorderRadius.circular(30),
-                  rippleColor: Colors.white,
                   onTap: () {
-                   CustomNavigators.pushReplacementNavigate( const DashBoardView(pageIndex: 0,), context);
+                  // CustomNavigators.pushReplacementNavigate( const DashBoardView(pageIndex: 0,), context);
 
                     setState(() {
+                      pageIndex = 0;
+                      tabCheck = "";
                       isTabExplore = false;
                     });
                   },
-                  child: const Icon(
-                    Icons.arrow_back_ios,
-                    size: 30,
-                    color: Colors.black,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left:5.0,right:10),
+                    child: const Icon(
+                      Icons.arrow_back_ios,
+                      size:28,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
+
                 Text(
                   Languages.of(context)!.kidsLearning,
                   style:mediumTextStyle(fontSize:18.0, color:MyColor.black)

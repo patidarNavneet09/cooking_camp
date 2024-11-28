@@ -489,5 +489,5 @@ class LanguagesEN extends Languages{
 
 
   @override
-  String get unFallow => "unFollow";
+  String get unFallow => "UnFollow";
 }

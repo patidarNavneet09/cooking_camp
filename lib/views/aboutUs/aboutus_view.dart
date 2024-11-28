@@ -63,11 +63,17 @@ class _AboutUsViewState extends State<AboutUsView> {
                 borderRadius: BorderRadius.circular(30),
                 rippleColor: Colors.white,
                 onTap: () {
-                  CustomNavigators.pushRemoveUntil(const DashBoardView(
-                    pageIndex:0,
-                    tabCheck: "",
-                  ), context);
-                  isTabExplore = false;
+                  setState(() {
+                    pageIndex = 0;
+                    isTabExplore = false;
+                    tabCheck = "";
+                  });
+
+                  // CustomNavigators.pushRemoveUntil(const DashBoardView(
+                  //   pageIndex:0,
+                  //   tabCheck: "",
+                  // ), context);
+
                 },
                 child: const Icon(
                   Icons.arrow_back_ios,

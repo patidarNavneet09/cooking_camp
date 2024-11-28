@@ -13,7 +13,7 @@ import 'package:cooking_champs/constant/stringfile.dart/language.dart';
 import 'package:cooking_champs/views/story/add_your_stories_view.dart';
 import 'package:cooking_champs/views/dashboard.dart';
 import 'package:cooking_champs/views/recipe/recipe_list_view.dart';
-import 'package:cooking_champs/views/storiesdetials.dart';
+import 'package:cooking_champs/views/story/storie_detials.dart';
 import 'package:flutter/material.dart';
 import 'package:touch_ripple_effect/touch_ripple_effect.dart';
 

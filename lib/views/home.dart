@@ -14,6 +14,7 @@ import 'package:cooking_champs/utils/navigators.dart';
 import 'package:cooking_champs/utils/ui_utils.dart';
 import 'package:cooking_champs/views/recipe/recipe_detail_view.dart';
 import 'package:cooking_champs/views/dashboard.dart';
+import 'package:cooking_champs/views/story/all_story_view.dart';
 import 'package:cooking_champs/widgets/global_button.dart';
 import 'package:flutter/material.dart';
 import 'package:touch_ripple_effect/touch_ripple_effect.dart';
@@ -103,7 +104,10 @@ class _HomeViewState extends State<HomeView> {
                       InkWell(
                         radius: 50,
                         onTap: () {
-                        CustomNavigators.pushRemoveUntil(const DashBoardView(pageIndex: 1,), context);
+                          setState(() {
+                            isTabExplore = false;
+                            pageIndex = 1;
+                          });
                         },
                         child: Text(
                           Languages.of(context)!.seeall,
@@ -256,10 +260,15 @@ class _HomeViewState extends State<HomeView> {
                           overflow: TextOverflow.ellipsis,
                           style:mediumTextStyle(fontSize:18.0, color:MyColor.black)
                         ),
-                        Text(
-                          Languages.of(context)!.seeall,
-                          overflow: TextOverflow.ellipsis,
-                          style:regularTextStyle(fontSize:15.0, color:MyColor.appTheme)
+                        InkWell(
+                          onTap: (){
+                            CustomNavigators.pushNavigate(AllStoryView(), context);
+                          },
+                          child: Text(
+                            Languages.of(context)!.seeall,
+                            overflow: TextOverflow.ellipsis,
+                            style:regularTextStyle(fontSize:15.0, color:MyColor.appTheme)
+                          ),
                         ),
                       ],
                     ),
@@ -346,7 +355,11 @@ class _HomeViewState extends State<HomeView> {
       flex:2,
       child: InkWell(
         onTap: (){
-          CustomNavigators.pushReplacementNavigate(DashBoardView(pageIndex:0, tabCheck: index == 0 ? "kids" : index == 1 ? "OurStories" : index == 2 ? "Aboutus" : "",), context);
+          setState(() {
+          tabCheck=  index == 0 ? "kids" : index == 1 ? "OurStories" : index == 2 ? "Aboutus" : "";
+          pageIndex =0;
+          });
+       //   CustomNavigators.pushReplacementNavigate(DashBoardView(pageIndex:0, tabCheck: index == 0 ? "kids" : index == 1 ? "OurStories" : index == 2 ? "Aboutus" : "",), context);
           setState(() {
             isTabExplore = true;
           });

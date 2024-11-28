@@ -48,8 +48,10 @@ class _MemoriesViewState extends State<MemoriesView>
             }else{
               setState(() {
                 isTabExplore = false;
+                pageIndex = 0;
+                tabCheck = "";
               });
-              CustomNavigators.pushReplacementNavigate(DashBoardView(pageIndex: 0,), context);
+             // CustomNavigators.pushReplacementNavigate(DashBoardView(pageIndex: 0,), context);
             }
           },
           child: Container(

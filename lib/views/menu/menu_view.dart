@@ -325,11 +325,14 @@ Future.delayed(Duration.zero,(){callApi(context);});
   void kidLearningOnTap() {
     setState(() {
       isTabExplore = true;
+      pageIndex = 3;
+      tabCheck = "kids";
     });
-    CustomNavigators.pushRemoveUntil(const DashBoardView(
-      pageIndex: 3,
-      tabCheck: "kids",
-    ), context);
+    Navigator.pop(context);
+    // CustomNavigators.pushRemoveUntil(const DashBoardView(
+    //   pageIndex: 3,
+    //   tabCheck: "kids",
+    // ), context);
   }
 
   void friendRequestOnTap() {
@@ -355,13 +358,12 @@ Future.delayed(Duration.zero,(){callApi(context);});
   }
 
   void aboutOnTap() {
+    Navigator.pop(context);
     setState(() {
       isTabExplore = true;
+      pageIndex = 3;
+      tabCheck = "Aboutus";
     });
-    CustomNavigators.pushRemoveUntil(const DashBoardView(
-      pageIndex:3,
-      tabCheck: "Aboutus",
-    ), context);
   }
 
 
@@ -379,7 +381,7 @@ Future.delayed(Duration.zero,(){callApi(context);});
   }
 
   void deleteAccountOnTap() {
-    AllDialogs.customDialog(context, DeleteAccountPopup());
+    AllDialogs.customDialog(context, DeleteAccountPopup(onCallBack: onDeleteAccount));
   }
 
 

@@ -8,6 +8,7 @@ import 'package:cooking_champs/services/api_services.dart';
 import 'package:cooking_champs/services/user_prefences.dart';
 import 'package:cooking_champs/utils/navigators.dart';
 import 'package:cooking_champs/views/authentication/login_view.dart';
+import 'package:cooking_champs/views/dashboard.dart';
 import 'package:cooking_champs/widgets/global_button.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -115,6 +116,7 @@ class _LogoutPopupState extends State<LogoutPopup> {
         if(mounted){
           setState(() {
             if(onValue.status == true){
+              tabCheck = "";
             PreferencesServices.setLogoutPreferencesData();
               CustomNavigators.pushRemoveUntil(LoginView(), context);
             }

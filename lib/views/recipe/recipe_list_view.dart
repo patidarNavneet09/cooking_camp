@@ -124,105 +124,109 @@ class _RecipeListViewState extends State<RecipeListView> {
   gridItem(var size ,int index,RecipeModel model) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 5, top: 10,right:8,left:8),
-      child: TouchRippleEffect(
-        borderRadius: BorderRadius.circular(27),
-        rippleColor: Colors.white,
-        onTap: () {
-          CustomNavigators.pushNavigate(RecipeDetailView(model: model, color:model.color??MyColor.blueLite), context);
-        },
-        child: Container(
-          height:  widget.pageType == "dash" || widget.pageType == "Favorite"?size.height * 0.37:260,
-          width:320,
-          padding: const EdgeInsets.only(left:20, right:20, bottom:12, top: 10),
-          decoration: BoxDecoration(
-              color: model.color,
-              borderRadius: const BorderRadius.all(Radius.circular(30))),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  widget.pageType == "dash" || widget.pageType == "Favorite"?
-                  Padding(
-                    padding: const EdgeInsets.only(bottom:10,),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        TouchRippleEffect(
-                          borderRadius: BorderRadius.circular(27),
-                          rippleColor:model.isFavourite == "No"
-                              ? MyColor.liteGray
-                              : Colors.red[500],
-                          onTap: () {
-                            setState(() {
-                              recipeModel = model;
-                              recipeId = model.id??"";
-                              if (model.isFavourite == "No") {
-                                model.isFavourite = "Yes";
-                              } else {
-                                model.isFavourite = "No";
-                              }
-                            });
-                            Future.delayed(Duration.zero,addFavorite);
+      child: Container(
+        height:  widget.pageType == "dash" || widget.pageType == "Favorite"?size.height * 0.37:260,
+        width:320,
+        padding: const EdgeInsets.only(left:20, right:20, bottom:12, top: 10),
+        decoration: BoxDecoration(
+            color: model.color,
+            borderRadius: const BorderRadius.all(Radius.circular(30))),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                widget.pageType == "dash" || widget.pageType == "Favorite"?
+                Padding(
+                  padding: const EdgeInsets.only(bottom:10,),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TouchRippleEffect(
 
-                          },
-                          child: CircleAvatar(
-                            backgroundColor: MyColor.white,
-                            child: Image.asset(
-                              height: 15,
-                              width: size.width * 0.20,
-                              AssetsPath.savetag,
-                              color:model.isFavourite != "No"? MyColor.red : null,
-                            ),
+                        borderRadius: BorderRadius.circular(27),
+                        rippleColor:model.isFavourite == "No"
+                            ? MyColor.liteGray
+                            : Colors.red[500],
+                        onTap: () {
+                          setState(() {
+                            recipeModel = model;
+                            recipeId = model.id??"";
+                            if (model.isFavourite == "No") {
+                              model.isFavourite = "Yes";
+                            } else {
+                              model.isFavourite = "No";
+                            }
+                          });
+                          Future.delayed(Duration.zero,addFavorite);
+
+                        },
+                        child: CircleAvatar(
+                          backgroundColor: MyColor.white,
+                          child: Image.asset(
+                            height: 15,
+                            width: size.width * 0.20,
+                            AssetsPath.savetag,
+                            color:model.isFavourite != "No"? MyColor.red : null,
                           ),
                         ),
-                      ],
-                    ),
-                  )
-                      :SizedBox.shrink(),
-
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: UiUtils.networkImages(size.width * 0.30,80,model.bannerImage != null? ApiPath.imageBaseUrl+model.bannerImage.toString():""),
+                      ),
+                    ],
                   ),
+                )
+                    :SizedBox.shrink(),
 
-                 hsized15,
-                   Text(
-                       model.name??"" ,
-                    maxLines: 1,
-                    textAlign: TextAlign.center,
-                    style:semiBoldTextStyle(fontSize:15.0, color:MyColor.black)
-                  ),
-                 hsized5,
-                  model.recipeIngredient != null?
-                  SizedBox(
-                    width: size.width * 0.35,
-                    child:  ListView.builder(
-                      shrinkWrap: true,
-                      padding: EdgeInsets.zero,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount:model.recipeIngredient!.length > 1 ?1:model.recipeIngredient!.length ,
-                      itemBuilder: (context,int index){
-                      return Text(
-                          model.recipeIngredient![index].name??"",
-                          maxLines:2,
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.center,
-                          style:regularNormalTextStyle(fontSize:12.0, color:MyColor.black)
-                      );
-                    },)
-                  ) : SizedBox.shrink(),
-                   Text(
-                    "More+",
-                    style:regularNormalTextStyle(fontSize:12.0, color:MyColor.black)
-                  ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: UiUtils.networkImages(size.width * 0.30,80,model.bannerImage != null? ApiPath.imageBaseUrl+model.bannerImage.toString():""),
+                ),
 
-                 hsized15,
 
-                ],
-              ),
-              Align(
+
+               hsized15,
+                 Text(
+                     model.name??"" ,
+                  maxLines: 1,
+                  textAlign: TextAlign.center,
+                  style:semiBoldTextStyle(fontSize:15.0, color:MyColor.black)
+                ),
+               hsized5,
+                model.recipeIngredient != null?
+                SizedBox(
+                  width: size.width * 0.35,
+                  child:  ListView.builder(
+                    shrinkWrap: true,
+                    padding: EdgeInsets.zero,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount:model.recipeIngredient!.length > 1 ?1:model.recipeIngredient!.length ,
+                    itemBuilder: (context,int index){
+                    return Text(
+                        model.recipeIngredient![index].name??"",
+                        maxLines:2,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.center,
+                        style:regularNormalTextStyle(fontSize:12.0, color:MyColor.black)
+                    );
+                  },)
+                ) : SizedBox.shrink(),
+                 Text(
+                  "More+",
+                  style:regularNormalTextStyle(fontSize:12.0, color:MyColor.black)
+                ),
+
+               hsized15,
+
+              ],
+            ),
+            TouchRippleEffect(
+              borderRadius: BorderRadius.circular(27),
+              rippleColor: MyColor.liteGray,
+
+              onTap: (){
+                CustomNavigators.pushNavigate(RecipeDetailView(model: model, color:model.color??MyColor.blueLite), context);
+              },
+              child: Align(
                 alignment: Alignment.bottomCenter,
                 child: const CircleAvatar(
                   radius: 20,
@@ -233,9 +237,9 @@ class _RecipeListViewState extends State<RecipeListView> {
                     size: 15,
                   ),
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );

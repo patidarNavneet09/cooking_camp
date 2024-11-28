@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cooking_champs/constant/assets_path.dart';
 import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
+import 'package:cooking_champs/constant/sized_box.dart';
 import 'package:cooking_champs/model/dynamic_models/my_story_model.dart';
 import 'package:cooking_champs/services/api_path.dart';
 import 'package:cooking_champs/services/api_services.dart';
@@ -43,17 +44,6 @@ class _StoriesDetailsViewState extends State<StoriesDetailsView> {
           children: [
             Stack(
               children: [
-             /*   Container(
-                  width: size.width,
-                  height: size.height * 0.35,
-                  decoration: BoxDecoration(
-                      color: Colors.amber,
-                      borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(20),
-                          bottomLeft: Radius.circular(20))),
-                  child:UiUtils.networkImages(double.infinity,size.height*0.35,widget.model.image != null?ApiPath.imageBaseUrl+widget.model.image.toString():"" )
-                ),*/
-
                 SizedBox(
                   width: size.width,
                   height: size.height * 0.35,
@@ -107,7 +97,7 @@ class _StoriesDetailsViewState extends State<StoriesDetailsView> {
                 ),
 
                 Padding(
-                  padding: const EdgeInsets.only(top: 30, left: 15),
+                  padding: const EdgeInsets.only(top: 40, left: 15),
                   child: InkWell(
                     radius: 80,
                     borderRadius: BorderRadius.circular(30),
@@ -130,9 +120,8 @@ class _StoriesDetailsViewState extends State<StoriesDetailsView> {
                 )
               ],
             ),
-            SizedBox(
-              height: 15,
-            ),
+
+          hsized15,
             Padding(
               padding: const EdgeInsets.only(left:15.0,top: 10),
               child: Column(
@@ -140,24 +129,13 @@ class _StoriesDetailsViewState extends State<StoriesDetailsView> {
                 children: [
                   Text(
                     widget.model.title??"",
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: Fonts.beVietnamProRegular,
-                      color: MyColor.black,
-                    ),
+                    style:mediumTextStyle(fontSize:20.0, color:MyColor.black)
                   ),
-                  SizedBox(
-                    height: 15,
-                  ),
+
+                 hsized15,
                   Text(
                     widget.model.description??"",
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w300,
-                      fontFamily: Fonts.beVietnamProRegular,
-                      color: MyColor.black,
-                    ),
+                    style: regularNormalTextStyle(fontSize:15.0, color:MyColor.black)
                   ),
 
                 ],

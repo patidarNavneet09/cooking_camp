@@ -69,25 +69,23 @@ class _FriendRequestViewState extends State<FriendRequestView>
       length: tabItemList.length,
       child: Scaffold(
         appBar: AppBar(
-          leadingWidth: size.width * 0.08,
+          leadingWidth: size.width * 0.12,
           automaticallyImplyLeading: false,
           backgroundColor: MyColor.yellowF6F1E1,
           surfaceTintColor: MyColor.yellowF6F1E1,
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 20),
-            child: InkWell(
-              radius: 80,
-              onTap: () {
-                setState(() {
-                  isTabExplore = false;
-                });
-                if(widget.type == "Notification"){
-                  CustomNavigators.pushRemoveUntil(DashBoardView(pageIndex: 0,), context);
-                }else{
-                  Navigator.pop(context);
-                }
-
-              },
+          leading: InkWell(
+            radius: 80,
+            onTap: () {
+              setState(() {// isTabExplore = false;
+              });
+              if(widget.type == "Notification"){
+                CustomNavigators.pushRemoveUntil(DashBoardView(pageIndex: 0,), context);
+              }else{
+                Navigator.pop(context);
+              }
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20),
               child: const Icon(
                 Icons.arrow_back_ios,
                 size: 30,
@@ -95,11 +93,8 @@ class _FriendRequestViewState extends State<FriendRequestView>
               ),
             ),
           ),
-          title: Padding(
-            padding: const EdgeInsets.only(left: 40),
-            child: Text(Languages.of(context)!.friendRequest,
-                style: mediumTextStyle(fontSize: 18.0, color: MyColor.black)),
-          ),
+          title: Text(Languages.of(context)!.friendRequest,
+              style: mediumTextStyle(fontSize: 18.0, color: MyColor.black)),
           centerTitle: false,
           elevation: 0,
         ),
@@ -140,8 +135,8 @@ class _FriendRequestViewState extends State<FriendRequestView>
               ),
               padding: const EdgeInsets.fromLTRB(12, 5, 0, 15),
               child: TextField(
-                controller: searchController,
-                textCapitalization: TextCapitalization.sentences,
+                controller:searchController,
+                textCapitalization:TextCapitalization.sentences,
                 onTap: () {
                   setState(() {
                     isFocusColor = "firstName";

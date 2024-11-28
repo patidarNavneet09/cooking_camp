@@ -1,21 +1,16 @@
-import 'package:cooking_champs/constant/app_state.dart';
 import 'package:cooking_champs/constant/assets_path.dart';
 import 'package:cooking_champs/constant/dimen.dart';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
-import 'package:cooking_champs/model/post_model/login_request_model.dart';
-import 'package:cooking_champs/services/api_services.dart';
-import 'package:cooking_champs/services/user_prefences.dart';
 import 'package:cooking_champs/utils/navigators.dart';
-import 'package:cooking_champs/views/authentication/login_view.dart';
 import 'package:cooking_champs/widgets/global_button.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-
 import '../constant/my_color.dart';
 
 class DeleteAccountPopup extends StatefulWidget {
-  const DeleteAccountPopup({super.key});
+  final Function onCallBack;
+  const DeleteAccountPopup({super.key,required this.onCallBack});
 
   @override
   State<DeleteAccountPopup> createState() => _DeleteAccountPopupState();
@@ -122,6 +117,7 @@ class _DeleteAccountPopupState extends State<DeleteAccountPopup> {
 
   void yesOnTap() async{
     CustomNavigators.popNavigate(context);
+    widget.onCallBack();
   }
 
   void noOnTap() {

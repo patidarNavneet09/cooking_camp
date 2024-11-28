@@ -25,9 +25,11 @@ import 'package:touch_ripple_effect/touch_ripple_effect.dart';
 
 class DashBoardView extends StatefulWidget {
   final int? pageIndex;
-  final String? tabCheck;
+  // final String? tabCheck;
 
-  const DashBoardView({super.key, this.pageIndex, this.tabCheck});
+  const DashBoardView({super.key, this.pageIndex,
+    // this.tabCheck
+  });
 
   @override
   State<DashBoardView> createState() => _DashBoardViewState();
@@ -35,6 +37,7 @@ class DashBoardView extends StatefulWidget {
 
 bool? isTabExplore = false;
 int pageIndex = 0;
+String? tabCheck;
 
 class _DashBoardViewState extends State<DashBoardView> {
   bool? isLogin = false;
@@ -88,7 +91,8 @@ class _DashBoardViewState extends State<DashBoardView> {
         bottomNavigationBar:isBusy?SizedBox.shrink(): buildMyNavBar(context),
           body: Column(
           children: [
-            pageIndex == 3 || widget.tabCheck == "kids" ||  widget.tabCheck == "OurStories" ||  widget.tabCheck == "Aboutus"? SizedBox.shrink():
+           // pageIndex == 3 || widget.tabCheck == "kids" ||  widget.tabCheck == "OurStories" ||  widget.tabCheck == "Aboutus"? SizedBox.shrink():
+            pageIndex == 3 || tabCheck == "kids" ||  tabCheck == "OurStories" ||  tabCheck == "Aboutus"? SizedBox.shrink():
             Container(
               padding: EdgeInsets.only(left: 20,right:20,top:45,bottom: 20),
               decoration: BoxDecoration(
@@ -164,7 +168,7 @@ class _DashBoardViewState extends State<DashBoardView> {
   }
   Widget _getPage() {
     if (isTabExplore!) {
-      switch (widget.tabCheck) {
+      switch (tabCheck) {
         case "kids":
           return const KidsLearningView();
         case "OurStories":
@@ -224,6 +228,7 @@ class _DashBoardViewState extends State<DashBoardView> {
               setState(() {
                 pageIndex = index;
                 isTabExplore = false;
+                tabCheck = "";
               });
             }
           },
@@ -263,6 +268,7 @@ class _DashBoardViewState extends State<DashBoardView> {
     setState(() {
       pageIndex = 0;
       isTabExplore = false;
+      tabCheck = "";
     });
   }
 
