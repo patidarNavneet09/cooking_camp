@@ -30,11 +30,12 @@ class HttpServices {
       BuildContext context, String url, bool load) async {
     final language = await PreferencesServices.getPreferencesData(prefSelectedLanguageCode)??"en";
     ApiConnectorConstants.accessToken = await PreferencesServices.getPreferencesData(PreferencesServices.userToken)??"";
-    if (context.mounted) {
-      load? AllDialogs.progressLoadingDialog(context, true):null;
-    }
+
     debugPrint("url.....${'${ApiPath.baseUrl}$url'}....${ApiConnectorConstants.accessToken}");
     try {
+      if (context.mounted) {
+        load? AllDialogs.progressLoadingDialog(context, true):null;
+      }
       var headers = {
         "Accept": "application/json",
         "X-CLIENT": ApiConnectorConstants.apiKey};
@@ -47,7 +48,9 @@ class HttpServices {
       }
       var response =
       await http.get(Uri.parse('${ApiPath.baseUrl}$url'), headers: headers);
-      load ? AllDialogs.progressLoadingDialog(context, false) : null;
+      if (context.mounted) {
+        load ? AllDialogs.progressLoadingDialog(context, false) : null;
+      }
       debugPrint(response.body);
       var jsonResponse = convert.jsonDecode(response.body);
       debugPrint("jsonResponse.......${response.statusCode}");
@@ -117,13 +120,14 @@ class HttpServices {
     final language = await PreferencesServices.getPreferencesData(prefSelectedLanguageCode)??"en";
      ApiConnectorConstants.accessToken = await PreferencesServices.getPreferencesData(PreferencesServices.userToken)??"";
     final requestData = toMap(requestModel); // Convert data to Map if it's a model
-    if (context.mounted) {
-     load? AllDialogs.progressLoadingDialog(context, true):null;
-    }
+
     debugPrint("headers.......${ApiConnectorConstants.accessToken}");
     debugPrint("url......${'${ApiPath.baseUrl}$url'}");
     
     try {
+      if (context.mounted) {
+        load? AllDialogs.progressLoadingDialog(context, true):null;
+      }
       var headers = {
         "Accept": "application/json",
         "Content-type":'application/json',
@@ -136,15 +140,16 @@ class HttpServices {
         headers.addAll({"Authorization": "Bearer ${ApiConnectorConstants.accessToken}"});
       }
       var request = http.Request('POST', Uri.parse('${ApiPath.baseUrl}$url'));
+      if (context.mounted) {
+        load? AllDialogs.progressLoadingDialog(context, false):null;
+      }
       request.body = json.encode(requestData);
       request.headers.addAll(headers);
       debugPrint("Request.......${json.encode(requestData)}");
       http.StreamedResponse response = await request.send();
 
       String responseString = await response.stream.bytesToString();
-      if (context.mounted) {
-        load? AllDialogs.progressLoadingDialog(context, false):null;
-      }
+
       if (response.statusCode == 200) {
         var jsonResponse = json.decode(responseString);
         debugPrint("Response.......$jsonResponse");

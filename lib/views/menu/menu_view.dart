@@ -344,10 +344,13 @@ Future.delayed(Duration.zero,(){callApi(context);});
 
 
   void ourStoriesOnTap() {
+    Navigator.pop(context);
     setState(() {
       isTabExplore = true;
+      pageIndex = 3;
+      tabCheck = "OurStories";
     });
-    CustomNavigators.pushNavigate(MemoriesView(onCallBack:onUpdate), context);
+  //  CustomNavigators.pushNavigate(MemoriesView(onCallBack:onUpdate), context);
   }
 
   void myKidsOnTap() {

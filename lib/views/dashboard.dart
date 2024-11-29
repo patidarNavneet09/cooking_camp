@@ -88,7 +88,7 @@ class _DashBoardViewState extends State<DashBoardView> {
         return true;
       },
       child: Scaffold(
-        bottomNavigationBar:isBusy?SizedBox.shrink(): buildMyNavBar(context),
+        bottomNavigationBar: buildMyNavBar(context),
           body: Column(
           children: [
            // pageIndex == 3 || widget.tabCheck == "kids" ||  widget.tabCheck == "OurStories" ||  widget.tabCheck == "Aboutus"? SizedBox.shrink():

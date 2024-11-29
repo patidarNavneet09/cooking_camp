@@ -30,6 +30,7 @@ class Items {
   String? name;
   String? role;
   String? kidImage;
+  String? image;
   String? day;
   String? month;
   String? year;
@@ -52,7 +53,8 @@ class Items {
         this.username,
         this.password,
         this.createdAt,
-        this.updatedAt});
+        this.updatedAt,
+      this.image});
 
   Items.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -68,6 +70,7 @@ class Items {
     password = json['password'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
+    image = json['image'];
   }
 
   Map<String, dynamic> toJson() {
@@ -85,6 +88,7 @@ class Items {
     data['password'] = password;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
+    data['image'] = image;
     return data;
   }
 }

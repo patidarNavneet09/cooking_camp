@@ -169,7 +169,7 @@ class _MyKidsListingViewState extends State<MyKidsListingView> {
                             children: [
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(500),
-                                child:  UiUtils.networkProfile(59,59,model.kidImage != null?ApiPath.imageBaseUrl+model.kidImage.toString():""),
+                                child:  UiUtils.networkProfile(59,59,ApiPath.imageBaseUrl+model.image.toString()),
                               ),
                               Expanded(
                                 child: Padding(
