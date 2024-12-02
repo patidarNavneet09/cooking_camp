@@ -95,9 +95,16 @@ class _StoriesViewState extends State<StoriesView> {
           if (onValue.data['total_page'] != null) {
             totalPage = onValue.data['total_page'];
           }
-          if(onValue.data['featured_stories'] != null){
+          var featuredStories = onValue.data['featured_stories'] as List<dynamic>? ?? [];
 
+          if(featuredStories.isNotEmpty){
+            debugPrint("featuredStory.....${featuredStories}");
+            featuredStoryList.clear();
+            var storyModels = featuredStories.map((item) => StoryModel.fromJson(item)).toList();
+            storyModels.sort((a, b) => b.id!.compareTo(a.id!));
+            featuredStoryList.addAll(storyModels);
           }
+
           var items = onValue.data['items'] as List<dynamic>? ?? []; // Safely cast items to List<dynamic>
 
           if (page == 1) {
@@ -118,15 +125,7 @@ class _StoriesViewState extends State<StoriesView> {
             hasMoreData = false; // No more data to load
           }
 
-          var featuredStories = onValue.data['featured_stories'] as List<dynamic>? ?? [];
-          if(featuredStories.isNotEmpty){
-            featuredStoryList.clear();
-            // Convert items to StoryModel and add to the list
-            var storyModels = featuredStories.map((item) => StoryModel.fromJson(item)).toList();
-            // Sort by `id` in descending order (replace with `a.id.compareTo(b.id)` for ascending order)
-            storyModels.sort((a, b) => b.id!.compareTo(a.id!));
-            featuredStoryList.addAll(storyModels);
-          }
+
         });
       }
     } catch (e) {
@@ -149,12 +148,15 @@ class _StoriesViewState extends State<StoriesView> {
             Text(Languages.of(context)!.bestFromTheChamps,
                 style: mediumTextStyle(fontSize: 18.0, color: MyColor.black)),
             featuredStoryList.isNotEmpty
-                ?      Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: List.generate(featuredStoryList.length, (index) {
-                return storyItemUi(featuredStoryList[index], size);
-              }),
-            )
+                ?      SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+                  child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: List.generate(featuredStoryList.length, (index) {
+                  return storyItemUi(featuredStoryList[index], size);
+                                }),
+                              ),
+                )
                 :
             noStory(size,Languages.of(context)!.nostoriesYet,AssetsPath.nostories, Languages.of(context)!.youhaventaddedanystoriesyet),
 
