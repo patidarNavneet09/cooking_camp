@@ -49,7 +49,7 @@ class _AllStoryViewState extends State<AllStoryView> {
                 borderRadius: BorderRadius.circular(10),
                 rippleColor: Colors.white,
                 onTap: () {
-                  CustomNavigators.pushNavigate(StoriesDetailsView(model:StoryModel()), context);
+                  CustomNavigators.pushNavigate(StoriesDetailsView(model:StoryModel(), type: '',), context);
                 },
                 child: Container(
                   decoration: const BoxDecoration(

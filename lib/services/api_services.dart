@@ -127,8 +127,6 @@ class ApiServices {
   static Future<void> checkLoginResult(
       UserIdentityModel loginResultData) async {
     try {
-      debugPrint("loginResultData.id.....${loginResultData.id}");
-
       if (loginResultData.id != null || loginResultData.id!.isNotEmpty) {
         AppState.current.loginUserIdentityDetails = loginResultData;
         PreferencesServices.setPreferencesData(PreferencesServices.isLogin, true);
@@ -138,9 +136,7 @@ class ApiServices {
         bool showEmailError = false;
         if (AppState.current.loginUserIdentityDetails != null) {
           // Save the login user identity details to SharedPreferences
-          PreferencesServices.setPreferencesData(
-              PreferencesServices.loginUserIdentityDetails,
-              jsonEncode(AppState.current.loginUserIdentityDetails!.toJson()));
+          PreferencesServices.setPreferencesData(PreferencesServices.loginUserIdentityDetails, jsonEncode(AppState.current.loginUserIdentityDetails!.toJson()));
         }
       } else {
         AppState.current.loginUserIdentityDetails = loginResultData;
@@ -181,6 +177,7 @@ class ApiServices {
     }
     try {
       var response =
+
           await HttpServices.getDataObjectFromAPI(context, url, load);
       if (response != null) {
         commonResponse = CommonResponse.fromJson(response);
@@ -266,10 +263,14 @@ class ApiServices {
   }
 
   static Future<CommonResponse> deleteAccount(BuildContext context) async {
+
     String url = ApiPath.deleteAccount;
+    Map<String, dynamic> request = {};
     CommonResponse commonResponse = CommonResponse();
+
     try {
-      var response = await HttpServices.postApi(context, url, null, true);
+      var response = await HttpServices.postApi(context, url,request,true);
+      debugPrint("ttt..");
       if (response != null) {
         debugPrint("response...$response");
         commonResponse = CommonResponse.fromJson(response);

@@ -75,4 +75,14 @@ class AssetsPath {
   static String fillCancel = "assets/images/fillCancel.svg";
   static String cookingChamp = "assets/images/CookingChamp.json";
   static String deleteGif = "assets/images/deleteGif.json";
+
+
+  //Kids Learning........
+  static String safetyKitchen = "assets/kids_learning_image/safetyKitchen.png";
+  static String cornerBg = "assets/kids_learning_image/cornerBg.png";
+  static String kitchenRules = "assets/kids_learning_image/kitchenRules.png";
+  static String chapter3Img = "assets/kids_learning_image/chapter3Img.png";
+  static String chapter4Img = "assets/kids_learning_image/chapter4Img.png";
+  static String photoroom = "assets/kids_learning_image/photoroom.png";
+  static String chapter5 = "assets/kids_learning_image/chapter5.png";
 }

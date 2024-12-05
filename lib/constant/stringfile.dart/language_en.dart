@@ -490,4 +490,28 @@ class LanguagesEN extends Languages{
 
   @override
   String get unFallow => "UnFollow";
+
+  @override
+  String get rhymingRulesForTheCookingChampsKitchen => "Rhyming Rules for the Cooking Champs Kitchen";
+
+  @override
+  String get whatInside => "What’s inside";
+
+  @override
+  String get cookingChampsKitchenRulesChart =>"Cooking Champs’ Kitchen Rules chart";
+
+  @override
+  String get knifeSafetySkillsChart => "Knife Safety Skills chart";
+
+  @override
+  String get activities => "Activities";
+
+  @override
+  String get glossary => "Glossary";
+
+  @override
+  String get quiz => "Quiz";
+
+
+
 }

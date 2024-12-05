@@ -180,4 +180,11 @@ abstract class Languages {
   String get youHavenAddedAnyRecipesYet;
   String get share;
   String get tapToSelectAndShare;
+  String get whatInside;
+  String get rhymingRulesForTheCookingChampsKitchen;
+  String get cookingChampsKitchenRulesChart;
+  String get knifeSafetySkillsChart;
+  String get activities;
+  String get glossary;
+  String get quiz;
 }

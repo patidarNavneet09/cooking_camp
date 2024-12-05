@@ -19,9 +19,15 @@ class NotificationModel {
   final String? id;
   final String? kidId;
   final String? message;
-  String? createdAt;
-  String? updatedAt;
-  UserDetails? userDetails;
+  final String? createdAt;
+  final  String? updatedAt;
+  final  UserDetails? userDetails;
+
+  final String? storyShareToRole;
+  final String? storyId;
+  final String? storyShareBy;
+  final String? storyShareTo;
+
 
   NotificationModel({
     this.body,
@@ -46,7 +52,13 @@ class NotificationModel {
     this.message,
     this.createdAt,
     this.updatedAt,
-    this.userDetails
+    this.userDetails,
+
+
+     this.storyShareToRole,
+     this.storyId,
+     this.storyShareBy,
+     this.storyShareTo,
   });
 
   factory NotificationModel.fromJson(Map<String, dynamic> json) {
@@ -75,7 +87,12 @@ class NotificationModel {
         updatedAt : json['updated_at'],
         userDetails: json['user_details'] != null
     ? UserDetails.fromJson(json['user_details'])
-        : null
+        : null,
+
+      storyShareToRole: json['storyShareToRole'].toString(),
+      storyId: json['story_id'].toString(),
+      storyShareBy: json['story_share_by'].toString(),
+      storyShareTo: json['story_share_to'].toString(),
     );
   }
 
@@ -101,9 +118,13 @@ class NotificationModel {
       'id': id,
       'kid_id': kidId,
       'message': message,
-      'message': message,
       'user_details': userDetails!.toJson(),
 
+      'storyShareToRole': storyShareToRole,
+      'story_id': storyId,
+      'imageUrl': imageUrl,
+      'story_share_by': storyShareBy,
+      'story_share_to': storyShareTo,
     };
   }
 }

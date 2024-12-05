@@ -1,14 +1,12 @@
-import 'package:cooking_champs/constant/assets_path.dart';
 import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/sized_box.dart';
-import 'package:cooking_champs/model/dynamic_models/my_story_model.dart';
 import 'package:cooking_champs/model/dynamic_models/notification_model.dart';
 import 'package:cooking_champs/services/api_path.dart';
 import 'package:cooking_champs/services/api_services.dart';
 import 'package:cooking_champs/utils/navigators.dart';
 import 'package:cooking_champs/utils/ui_utils.dart';
-import 'package:cooking_champs/views/story/storie_detials.dart';
+import 'package:cooking_champs/views/friend_request.dart';
 import 'package:flutter/material.dart';
 
 class NotificationView extends StatefulWidget {
@@ -72,6 +70,7 @@ class _NotificationViewState extends State<NotificationView> {
 
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         surfaceTintColor: MyColor.yellowF6F1E1,
         backgroundColor: MyColor.yellowF6F1E1,
         leadingWidth: size.width * 0.12,
@@ -136,13 +135,8 @@ class _NotificationViewState extends State<NotificationView> {
             var notification = notificationList[index];
             return InkWell(
               onTap: () {
-                if (notification.type.toString() ==
-                    "Accept Friend Request") {
-                  CustomNavigators.pushNavigate(
-                      StoriesDetailsView(
-                        model: StoryModel(id: notification.id ?? ""),
-                      ),
-                      context);
+                if (notification.type.toString() == "Accept Friend Request") {
+                  CustomNavigators.pushNavigate(FriendRequestView(type: '',), context);
                 }
               },
               child: Column(

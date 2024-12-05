@@ -26,25 +26,20 @@ import 'firebase_options.dart';
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 
-// /// Background message handler
-// @pragma('vm:entry-point')
-// Future<void> _backgroundHandler(RemoteMessage message) async {
-//   debugPrint('Background Message Received: ${message.data}');
-//   await Firebase.initializeApp();
-//    // NotificationService.handleInitialMessage(message);
-// }
-//
+@pragma('vm:entry-point')
+Future<void> _backgroundHandler(RemoteMessage message) async {
+  debugPrint('---_backgroundHandler--${message.data}-');
+  await Firebase.initializeApp();
+  // setupLocator();
+  NotificationService.handleMessage(message);
+}
+
 Future<void> _initializeApp() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize Firebase
   await Firebase.initializeApp(options:DefaultFirebaseOptions.currentPlatform);
-
-  // Set background message handler
- // FirebaseMessaging.onBackgroundMessage(_backgroundHandler);
-
-  // Initialize notification service
-  // await NotificationService().initialize();
+  FirebaseMessaging.onBackgroundMessage(_backgroundHandler);
 
   // Set system UI overlays
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -56,6 +51,7 @@ Future<void> _initializeApp() async {
 
 void main() async {
   await _initializeApp();
+  NotificationService().initialize(); // Initialize the notification service
     runApp(const MyApp());
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

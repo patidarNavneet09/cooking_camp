@@ -36,6 +36,7 @@ class MyColor {
   static const colorD8DCE4 = Color(0xffD8DCE4);
   static const colorEFF0F2B8 = Color(0xffEFF0F2B8);
   static const orange = Color(0xffF7AA64);
+  static const darkOrange = Color(0xffFF902B);
 }
 
 class Fonts {

@@ -388,12 +388,17 @@ Future.delayed(Duration.zero,(){callApi(context);});
   }
 
 
-  onDeleteAccount() async{
+
+  onDeleteAccount(String t) {
+    debugPrint("ttt..$t");
+    Future.delayed(Duration.zero,deleteApi);
+  }
+ Future<void> deleteApi()async{
     await ApiServices.deleteAccount(context).then((onValue){
       if(mounted){
         if(onValue.status == true){
-         PreferencesServices.setLogoutPreferencesData();
-         CustomNavigators.pushRemoveUntil(LoginView(),context);
+          PreferencesServices.setLogoutPreferencesData();
+          CustomNavigators.pushRemoveUntil(LoginView(),context);
         }
       }
     });

@@ -8,14 +8,17 @@ import 'package:cooking_champs/model/dynamic_models/my_story_model.dart';
 import 'package:cooking_champs/services/api_path.dart';
 import 'package:cooking_champs/services/api_services.dart';
 import 'package:cooking_champs/utils/all_dialogs.dart';
+import 'package:cooking_champs/utils/navigators.dart';
 import 'package:cooking_champs/utils/ui_utils.dart';
+import 'package:cooking_champs/views/dashboard.dart';
 import 'package:cooking_champs/views/story/share_story_view.dart';
 import 'package:flutter/material.dart';
 import 'package:touch_ripple_effect/touch_ripple_effect.dart';
 
 class StoriesDetailsView extends StatefulWidget {
    StoryModel model;
-   StoriesDetailsView({super.key,required this.model});
+   String type;
+   StoriesDetailsView({super.key,required this.model,required this.type});
 
   @override
   State<StoriesDetailsView> createState() => _StoriesDetailsViewState();
@@ -102,7 +105,18 @@ class _StoriesDetailsViewState extends State<StoriesDetailsView> {
                     radius: 80,
                     borderRadius: BorderRadius.circular(30),
                     onTap: () {
-                      Navigator.pop(context);
+                      if(widget.type == "Notification"){
+                        setState(() {
+                          tabCheck = "";
+                          pageIndex = 0;
+                          isTabExplore = false;
+                        });
+
+                        CustomNavigators.pushRemoveUntil(DashBoardView(pageIndex:0), context);
+                      }else{
+                        Navigator.pop(context);
+                      }
+
                     },
                     child: CircleAvatar(
                       backgroundColor: Colors.white,
@@ -146,6 +160,9 @@ class _StoriesDetailsViewState extends State<StoriesDetailsView> {
       ),
       bottomNavigationBar: InkWell(
         onTap:(){
+          setState(() {
+            tabCheck = "";
+          });
           AllDialogs.globalBottomSheet(context, ShareStoryView(storyId:widget.model.id??"",),(){});
         },
         child: Container(

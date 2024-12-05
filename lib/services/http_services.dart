@@ -71,7 +71,7 @@ class HttpServices {
     final language = await PreferencesServices.getPreferencesData(prefSelectedLanguageCode)??"en";
     ApiConnectorConstants.accessToken = await PreferencesServices.getPreferencesData(PreferencesServices.userToken)??"";
     if (context.mounted) {
-       AllDialogs.progressLoadingDialog(context, true);
+      successStatus?  AllDialogs.progressLoadingDialog(context, true):null;
     }
     debugPrint("headers.......${ApiConnectorConstants.accessToken}");
     debugPrint("url......${'${ApiPath.baseUrl}$url'}");
@@ -98,7 +98,7 @@ class HttpServices {
 
       http.StreamedResponse response = await request.send();
       if (context.mounted) {
-        AllDialogs.progressLoadingDialog(context, false);
+        successStatus?  AllDialogs.progressLoadingDialog(context, false):null;
       }
       if (response.statusCode == 200) {
         String responseString = await response.stream.bytesToString();
@@ -120,7 +120,6 @@ class HttpServices {
     final language = await PreferencesServices.getPreferencesData(prefSelectedLanguageCode)??"en";
      ApiConnectorConstants.accessToken = await PreferencesServices.getPreferencesData(PreferencesServices.userToken)??"";
     final requestData = toMap(requestModel); // Convert data to Map if it's a model
-
     debugPrint("headers.......${ApiConnectorConstants.accessToken}");
     debugPrint("url......${'${ApiPath.baseUrl}$url'}");
     

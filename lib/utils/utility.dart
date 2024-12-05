@@ -33,12 +33,16 @@ class Utility {
 
   ///.....FCM Token........................
   static Future<String?> getFcm() async {
-   String? token = await FirebaseMessaging.instance.getToken();
-    debugPrint("fcm token.....$token");
-   String fcmToken = "123456";
-   PreferencesServices.setPreferencesData(PreferencesServices.fcm,token);
-    return token;
+    String fcmToken = "123456";
+     String? token = await FirebaseMessaging.instance.getToken();
+     debugPrint("fcm token.....$token");
+     fcmToken = token.toString();
+     PreferencesServices.setPreferencesData(PreferencesServices.fcm,token);
+
+    return fcmToken;
+
   }
+
 
   static getId() async{
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();

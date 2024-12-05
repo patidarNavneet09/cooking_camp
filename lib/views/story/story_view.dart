@@ -207,7 +207,7 @@ class _StoriesViewState extends State<StoriesView> {
         borderRadius: BorderRadius.circular(10),
         rippleColor: Colors.white,
         onTap: () {
-          CustomNavigators.pushNavigate(StoriesDetailsView(model:model,), context);
+          CustomNavigators.pushNavigate(StoriesDetailsView(model:model, type: '',), context);
         },
         child: Container(
           decoration: const BoxDecoration(

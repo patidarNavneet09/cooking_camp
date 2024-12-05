@@ -15,7 +15,7 @@ import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
 import 'package:cooking_champs/views/menu/menu_view.dart';
 import 'package:cooking_champs/views/home.dart';
-import 'package:cooking_champs/views/kitslearning.dart';
+import 'package:cooking_champs/views/kids_learning/kids_learning_view.dart';
 import 'package:cooking_champs/views/notication_view.dart';
 import 'package:cooking_champs/views/story/memories_view.dart';
 import 'package:cooking_champs/views/recipe/recipe.dart';
@@ -57,8 +57,6 @@ class _DashBoardViewState extends State<DashBoardView> {
   @override
   void initState() {
     super.initState();
-    NotificationService().initialize(); // Initialize the notification service
-
     if (widget.pageIndex != null) {
         pageIndex = widget.pageIndex!;
       }

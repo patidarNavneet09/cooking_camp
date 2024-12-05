@@ -116,8 +116,9 @@ class _DeleteAccountPopupState extends State<DeleteAccountPopup> {
   }
 
   void yesOnTap() async{
+    debugPrint("yes");
+    widget.onCallBack("test");
     CustomNavigators.popNavigate(context);
-    widget.onCallBack();
   }
 
   void noOnTap() {
