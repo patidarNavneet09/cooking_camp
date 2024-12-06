@@ -4,6 +4,8 @@ import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/sized_box.dart';
 import 'package:flutter/material.dart';
 
+import '../safty_kitchen_view.dart';
+
 class Chapter5View extends StatefulWidget {
   const Chapter5View({super.key});
 
@@ -30,6 +32,9 @@ class _Chapter5ViewState extends State<Chapter5View> {
                     InkWell(
                       radius: 80,
                       onTap: () {
+                        setState(() {
+                          currentIndex = 0;
+                        });
                         Navigator.pop(context);
                       },
                       child: Icon(
@@ -47,11 +52,47 @@ class _Chapter5ViewState extends State<Chapter5View> {
               ),
               Expanded(
                 child: SingleChildScrollView(
-                  padding: EdgeInsets.only(
-                      top: size.size.height * 0.05, left: 20, right: 20),
-                  child: Column(
+                  padding: EdgeInsets.only(top: size.size.height * 0.05, left: 20, right: 20),
+                  child: Stack(
                     children: [
-                    Image.asset(AssetsPath.chapter5)
+
+                    Image.asset(AssetsPath.chapter5Img,height: 500,width: double.infinity,),
+
+                      Container(
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.only(top:size.size.height * 0.13),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(left: 30,right: 30),
+                              child: Text("Rules are a waste of time if we don’t understand why we need them.",
+                              textAlign: TextAlign.center
+                              ,style:semiBoldTextStyle(fontSize:16.0, color:MyColor.red1),),
+                            ),
+
+                            hsized15,
+                            Padding(
+                              padding: EdgeInsets.only(left: 30,right: 30),
+                              child: Text("Good rules usually make sense so let’s look at the Cooking Champ kitchen rules a little more closely.",
+                              textAlign: TextAlign.center
+                              ,style:semiBoldTextStyle(fontSize:16.0, color:MyColor.red1),),
+                            ),
+
+                          hsized60,
+                            Padding(
+                              padding: EdgeInsets.only(left:20,right:20),
+                              child: Image.asset(AssetsPath.chapter5Book,),
+                            )
+                          ],
+                        ),
+                      ),
+
+                    Padding(
+                      padding: const EdgeInsets.only(left:5.0),
+                      child: Image.asset(AssetsPath.searchEmoji,height: 110,width:95,),
+                    ),
+
                     ],
                   ),
                 ),

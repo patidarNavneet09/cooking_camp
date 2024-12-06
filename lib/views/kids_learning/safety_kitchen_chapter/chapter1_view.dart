@@ -3,8 +3,10 @@ import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/sized_box.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
+import 'package:cooking_champs/utils/navigators.dart';
+import 'package:cooking_champs/views/kids_learning/safty_kitchen_view.dart';
 import 'package:flutter/material.dart';
-
+List<String> skillList = [];
 class Chapter1View extends StatefulWidget {
   const Chapter1View({super.key});
 
@@ -14,7 +16,7 @@ class Chapter1View extends StatefulWidget {
 
 class _Chapter1ViewState extends State<Chapter1View> {
 
-  List<String> skillList = [];
+
   addSkills(){
     setState(() {
       skillList = [Languages.of(context)!.activities,Languages.of(context)!.glossary,Languages.of(context)!.quiz];
@@ -40,6 +42,9 @@ class _Chapter1ViewState extends State<Chapter1View> {
                 InkWell(
                   radius: 80,
                   onTap: (){
+                    setState(() {
+                      currentIndex = 0;
+                    });
                     Navigator.pop(context);
                   },
                   child: Icon(Icons.arrow_back_ios,size:28,),
@@ -59,45 +64,45 @@ class _Chapter1ViewState extends State<Chapter1View> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(Languages.of(context)!.whatInside,style:semiBoldTextStyle(fontSize:20.0, color:MyColor.black),),
-                  hsized15,
+                  hsized10,
                   Text(Languages.of(context)!.rhymingRulesForTheCookingChampsKitchen,style:semiBoldTextStyle(fontSize:17.0, color:MyColor.white),),
                   hsized10,
                   Text(Languages.of(context)!.cookingChampsKitchenRulesChart,style:semiBoldTextStyle(fontSize:17.0, color:MyColor.white),),
                   hsized10,
                   Text(Languages.of(context)!.knifeSafetySkillsChart,style:semiBoldTextStyle(fontSize:17.0, color:MyColor.white),),
 
-                  hsized5,
+                  hsized20,
 
-                  Wrap(
-                    children:List.generate(3, (index){
+                /*  Wrap(
+                    children:List.generate(skillList.length, (index){
                       return InkWell(
                         onTap: (){
-
+                          setState(() {
+                            currentIndex = 11;
+                          });
+                          Navigator.pop(context);
                         },
-                        child: btnUI("Activities",index),
+                        child: btnUI(skillList[index],index),
                       );
                     }),
-                  ),
+                  ),*/
 
-                  hsized30
                 ],
               ),
             ),
           ),
-          Align(
+         /* Align(
               alignment: Alignment.bottomRight,
-              child: Image.asset(AssetsPath.cornerBg,height: 120,width: 120,))
+              child: Image.asset(AssetsPath.cornerBg,height:120,width:120,))*/
         ],
       ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-      // floatingActionButton:Image.asset(AssetsPath.cornerBg,height: 108,width: 100,) ,
     );
   }
 
   btnUI(String title,int index){
     return Container(
-      margin: EdgeInsets.only(right: 15,top: 15 ),
-      padding: EdgeInsets.symmetric(horizontal:30,vertical: 15),
+      margin: EdgeInsets.only(right:15,top:15 ),
+      padding: EdgeInsets.symmetric(horizontal:30,vertical:15),
       decoration: BoxDecoration(
           color: MyColor.white,
           borderRadius: BorderRadius.circular(60)

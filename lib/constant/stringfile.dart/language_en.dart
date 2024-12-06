@@ -512,6 +512,111 @@ class LanguagesEN extends Languages{
   @override
   String get quiz => "Quiz";
 
+  @override
+  String get answer1 => "It’s important to enjoy your time cooking, as the Cooking Champs’ motto says cooking is all about caring and sharing and of course making yummy things to eat.";
+
+  @override
+  String get answer2 => "Kitchens are small places with lots of things you can slip, knock or burn yourself with.";
+
+  @override
+  String get answer3 => "An apron is like a protective shield when you are cooking. It keeps your nice clothes clean. Imagine staining your favourite top or trousers?  An apron also keeps your clothes tight against your body so they don’t get in the way.";
+
+  @override
+  String get answer4 => "Remember about slipping in the kitchen? If you don’t clean your spills imagine the mess on the floor. It could get so messy that even walking can be dangerous.";
+
+  @override
+  String get answer5 => "Hygiene is something we talk about later; basically it’s very important that you keep your bench tops clean so you don’t get bacteria and germs spreading into your food.";
+
+  @override
+  String get answer6 => "What travels through cords in the kitchen? You got it, electricity! If you leave cords on your stove top a fire could start and that could be deadly…";
+
+  @override
+  String get answer7 => "If the stove is on and you have left paper towels and tea towels around what would happen if they contacted the flame? You got it! A Fire!";
+
+  @override
+  String get answer8 => "Pots are usually on the stove because something is cooking like soup or oil and usually it’s BOILING HOT!\n\n  If you leave handles facing out it’s very easy to knock it as you pass and it can spill over you or someone else. Someone can get very badly burnt!";
+
+  @override
+  String get answer9 => "Knives can cut vegetable and fruit and FINGERS! That’s why you should always use your special knife and always handle knives with care.";
+
+  @override
+  String get answer10 => "You might say that electricity likes water. When electricity hits water with an appliance, the electricity moves through the water, so if you touch the water it will then move through you giving you an electric shock! So never use electrical equipment near water or touch electrical equipment with wet hands";
+
+  @override
+  String get answer11 => "Always keep chemicals away from food. You could get them in your food or accidentally mistake a chemical for oil or vinegar. Yaiks!! Eating your poisonous detergents or cleaners could put you in the hospital and cause all sorts of problems to your throat and stomach.";
+
+  @override
+  String get answer12 => "Sometimes accidents happen or you just can’t manage something on your own. The most important rule is to call an adult straight away, don’t wait, don’t panic, just call for help.";
+
+
+  @override
+  String get question1 => "Cooking Champs in the kitchen having fun...";
+
+  @override
+  String get question2 => "But please oh please don’t ever run!";
+
+  @override
+  String get question3 => "Aprons on and wash your hands";
+
+  @override
+  String get question4 => "Clean those spills before they land!";
+
+  @override
+  String get question5 => "Bench tops cleaned";
+
+
+  @override
+  String get question6 => "Cords away from stove tops where they must not stray";
+
+  @override
+  String get question7 => "Watch for fire hazards too like, Paper towels and tea towels strewn.";
+
+
+  @override
+  String get question8 =>"Pot and pan handles turn them in, never out where they can spin!";
+
+
+  @override
+  String get question9 => "Always follow Knife Safety Rules, Carefully held like treasured jewels.";
+
+
+  @override
+  String get question10 => "Electrical equipment away from taps";
+
+  @override
+  String get question11 => "Food near chemicals never match";
+
+  @override
+  String get question12 => "Adults are your safety net";
+
+  @override
+  String get aLawOrDirectionThatTellsUsHow => "A law or direction that tells us how we should behave.";
+
+  @override
+  String get aListOfTheHardOrUnusualWords => "A list of the hard or unusual words with their meaning that has been used in a book.";
+
+  @override
+  String get chemical => "Chemical";
+
+  @override
+  String get dangerOrRisk => "Danger or risk.";
+
+  @override
+  String get extension => "Extension";
+
+  @override
+  String get hazard => "Hazard";
+
+  @override
+  String get rules => "Rules";
+
+  @override
+  String get somethingExtraAnAddition => "Something extra, an addition.";
+
+  @override
+  String get somethingYouCan => "Something you can’t find in nature and is made in a laboratory.";
+
+
 
 
 }

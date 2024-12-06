@@ -5,6 +5,8 @@ import 'package:cooking_champs/constant/sized_box.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
 import 'package:flutter/material.dart';
 
+import '../safty_kitchen_view.dart';
+
 class Chapter2View extends StatefulWidget {
   const Chapter2View({super.key});
 
@@ -29,6 +31,9 @@ class _Chapter2ViewState extends State<Chapter2View> {
                 InkWell(
                   radius: 80,
                   onTap: (){
+                    setState(() {
+                      currentIndex = 0;
+                    });
                     Navigator.pop(context);
                   },
                   child: Icon(Icons.arrow_back_ios,size:28,),

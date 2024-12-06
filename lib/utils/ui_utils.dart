@@ -245,4 +245,44 @@ class UiUtils{
     );
   }
 
+  static questionAnswerUi(String img,String question,String answer,int index){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        hsized15,
+        img.trim().isEmpty?
+        SizedBox(height:50,width:107,):
+            Padding(padding: EdgeInsets.only(left:17),child:Image.asset(img,height: 80,width:107,)),
+        hsized8,
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("$index.",style:semiBoldTextStyle(fontSize:16.0, color:MyColor.red1),),
+            SizedBox(width:10),
+            Expanded(child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(question,style:semiBoldTextStyle(fontSize:15.80, color:MyColor.red1),),
+
+                hsized5,
+                Text(answer,style:regularTextStyle(fontSize:14.50, color:MyColor.black)),
+              ],
+            )),
+          ],
+        ),
+
+      ],
+    );
+  }
+
+ static roundedPage(){
+    return   Align(
+        alignment: Alignment.bottomRight,
+        child: Image.asset(
+          AssetsPath.cornerBg,
+          height: 110,
+          width: 110,
+        ));
+  }
+
 }

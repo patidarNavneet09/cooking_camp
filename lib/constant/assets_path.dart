@@ -85,4 +85,24 @@ class AssetsPath {
   static String chapter4Img = "assets/kids_learning_image/chapter4Img.png";
   static String photoroom = "assets/kids_learning_image/photoroom.png";
   static String chapter5 = "assets/kids_learning_image/chapter5.png";
+  static String chapter5Book = "assets/kids_learning_image/chapter5Book.png";
+  static String searchEmoji = "assets/kids_learning_image/searchEmoji.png";
+  static String chapter5Img = "assets/kids_learning_image/chapter5Img.png";
+  static String img1 = "assets/kids_learning_image/img1.png";
+  static String img2 = "assets/kids_learning_image/img2.png";
+  static String img3 = "assets/kids_learning_image/img3.png";
+  static String img5 = "assets/kids_learning_image/img5.png";
+  static String img6 = "assets/kids_learning_image/img6.png";
+  static String img7 = "assets/kids_learning_image/img7.png";
+  static String img8 = "assets/kids_learning_image/img8.png";
+  static String img9 = "assets/kids_learning_image/img9.png";
+  static String knifeSkillsImg1 = "assets/kids_learning_image/knifeSkillsImg1.png";
+  static String knifeSkill2 = "assets/kids_learning_image/knifeSkill2.png";
+  static String knifeSkillImg3 = "assets/kids_learning_image/knifeSkillImg3.png";
+  static String knifeImg = "assets/kids_learning_image/knifeImg.png";
+  static String knifeSkill4Img = "assets/kids_learning_image/knifeSkill4Img.png";
+  static String knifeSkill5Img = "assets/kids_learning_image/knifeSkill5Img.png";
+  static String knifeSkill6Img = "assets/kids_learning_image/knifeSkill6Img.png";
+  static String chapter12Img = "assets/kids_learning_image/chapter12Img.png";
+
 }
