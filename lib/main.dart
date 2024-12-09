@@ -141,56 +141,60 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      navigatorKey: navigatorKey,
-      title: 'Cooking Champs',
-      theme: ThemeData(
-        dialogTheme: DialogTheme(
-            backgroundColor: MyColor.white
+    final data  = MediaQuery.of(context);
+    return MediaQuery(
+      data: data.copyWith(textScaleFactor:1.0),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        navigatorKey: navigatorKey,
+        title: 'Cooking Champs',
+        theme: ThemeData(
+          dialogTheme: DialogTheme(
+              backgroundColor: MyColor.white
+          ),
+          scaffoldBackgroundColor: MyColor.white,
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
+          primarySwatch: const MaterialColor(
+            0xffFD7418,
+            <int, Color>{
+              50: Color(0xff48335C),
+              100: Color(0xff48335C),
+              200: Color(0xff48335C),
+              300 :Color(0xff48335C),
+              400 :Color(0xff48335C),
+              500 :Color(0xff48335C),
+              600 :Color(0xff48335C),
+              700 :Color(0xff48335C),
+              800 :Color(0xff48335C),
+              900 :Color(0xff48335C)
+            },
+          ),
+          useMaterial3: true,
         ),
-        scaffoldBackgroundColor: MyColor.white,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
-        primarySwatch: const MaterialColor(
-          0xffFD7418,
-          <int, Color>{
-            50: Color(0xff48335C),
-            100: Color(0xff48335C),
-            200: Color(0xff48335C),
-            300 :Color(0xff48335C),
-            400 :Color(0xff48335C),
-            500 :Color(0xff48335C),
-            600 :Color(0xff48335C),
-            700 :Color(0xff48335C),
-            800 :Color(0xff48335C),
-            900 :Color(0xff48335C)
-          },
-        ),
-        useMaterial3: true,
-      ),
-      locale: _locale,
-      supportedLocales: const [
-        Locale('en', ''),
-        Locale('ar', ''),
-      ],
-      localizationsDelegates: const [
-        AppLocalizationsDelegate(),
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        MonthYearPickerLocalizations.delegate,
-      ],
-      localeResolutionCallback: (locale, supportedLocales) {
-        for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale?.languageCode &&
-              supportedLocale.countryCode == locale?.countryCode) {
-            return supportedLocale;
+        locale: _locale,
+        supportedLocales: const [
+          Locale('en', ''),
+          Locale('ar', ''),
+        ],
+        localizationsDelegates: const [
+          AppLocalizationsDelegate(),
+          GlobalMaterialLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          MonthYearPickerLocalizations.delegate,
+        ],
+        localeResolutionCallback: (locale, supportedLocales) {
+          for (var supportedLocale in supportedLocales) {
+            if (supportedLocale.languageCode == locale?.languageCode &&
+                supportedLocale.countryCode == locale?.countryCode) {
+              return supportedLocale;
+            }
           }
-        }
-        return supportedLocales.first;
-      },
+          return supportedLocales.first;
+        },
 
-      home: const SplashView(),
+        home: const SplashView(),
+      ),
     );
   }
 }

@@ -38,6 +38,7 @@ class MyColor {
   static const orange = Color(0xffF7AA64);
   static const darkOrange = Color(0xffFF902B);
   static const red1 = Color(0xffD64641);
+  static const dividerYellow = Color(0xffF0D400);
 }
 
 class Fonts {

@@ -220,4 +220,11 @@ abstract class Languages {
   String get aLawOrDirectionThatTellsUsHow;
   String get somethingExtraAnAddition;
   String get aListOfTheHardOrUnusualWords;
+  String get activity;
+  String get lookAtThePictureBelow;
+  String get listTheRisks;
+  String get drawACircleAroundTheThingsThatLookRisky;
+  String get whyAreTheseAreasOrThingsRisky;
+  String get howDoYouMakeThisKitchenSafer;
 }
+

@@ -6,15 +6,20 @@ import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/sized_box.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
+import 'package:cooking_champs/model/dynamic_models/home_model.dart';
+import 'package:cooking_champs/model/dynamic_models/my_story_model.dart';
 import 'package:cooking_champs/model/dynamic_models/recipe_model.dart';
 import 'package:cooking_champs/model/dynamic_models/user_identity_model.dart';
 import 'package:cooking_champs/services/api_path.dart';
+import 'package:cooking_champs/services/api_services.dart';
 import 'package:cooking_champs/services/user_prefences.dart';
 import 'package:cooking_champs/utils/navigators.dart';
 import 'package:cooking_champs/utils/ui_utils.dart';
+import 'package:cooking_champs/utils/utility.dart';
 import 'package:cooking_champs/views/recipe/recipe_detail_view.dart';
 import 'package:cooking_champs/views/dashboard.dart';
 import 'package:cooking_champs/views/story/all_story_view.dart';
+import 'package:cooking_champs/views/story/storie_detials.dart';
 import 'package:cooking_champs/widgets/global_button.dart';
 import 'package:flutter/material.dart';
 import 'package:touch_ripple_effect/touch_ripple_effect.dart';
@@ -28,6 +33,10 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   UserIdentityModel userDetails= UserIdentityModel();
+  HomeModel homeModel = HomeModel();
+  List<RecipeModel> recipeOfTheWeekList = [];
+  List<RecipeModel> popularRecipeList = [];
+  List<StoryModel> featuredStoryList = [];
   String userResponse = "";
   List exploreList = [
     "Kids Learning",
@@ -42,6 +51,10 @@ class _HomeViewState extends State<HomeView> {
   }
 
   void getUserData() async{
+    Future.delayed(Duration.zero,(){
+    home(true);
+    });
+
     var data = await PreferencesServices.getPreferencesData(PreferencesServices.loginUserIdentityDetails);
     if(data != null){
       Map<String, dynamic> jsonResponse = await jsonDecode(data);
@@ -50,6 +63,33 @@ class _HomeViewState extends State<HomeView> {
     if(mounted){
       setState(() {});
     }
+  }
+void home(bool load) async{
+   await ApiServices.home(context, load).then((onValue){
+     if(mounted){
+       if(onValue.status == true){
+         setState(() {
+           if(onValue.data != null){
+             homeModel = HomeModel.fromJson(onValue.data);
+             if(homeModel.recipeOfTheWeek != null){
+               recipeOfTheWeekList.add(homeModel.recipeOfTheWeek!);
+             }
+
+             if(homeModel.popularRecipes!.isNotEmpty){
+               popularRecipeList.addAll(homeModel.popularRecipes!);
+             }
+             for (int i = 0; i < popularRecipeList.length; i++) {
+               popularRecipeList[i].color = Utility().getColorForIndex(i);
+             }
+
+             if(homeModel.featuredStories!.isNotEmpty){
+               featuredStoryList.addAll(homeModel.featuredStories!);
+             }
+           }
+         });
+       }
+     }
+   });
   }
 
   @override
@@ -76,14 +116,16 @@ class _HomeViewState extends State<HomeView> {
               )
             ),
 
+            recipeOfTheWeekList.isEmpty?
+                SizedBox.shrink():
             SizedBox(
               height: 170,
               child: ListView.builder(
                   shrinkWrap: true,
-                  itemCount: exploreList.length,
+                  itemCount: recipeOfTheWeekList.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return bannerUi(size);
+                    return bannerUi(size,recipeOfTheWeekList[index]);
                   }),
             ),
 
@@ -120,6 +162,7 @@ class _HomeViewState extends State<HomeView> {
 
                  hsized10,
 
+                  popularRecipeList.isNotEmpty?
                   Container(
                     height: 300,
                     margin: const EdgeInsets.only(bottom: 0),
@@ -127,95 +170,60 @@ class _HomeViewState extends State<HomeView> {
                     child: ListView.builder(
                         shrinkWrap: true,
                         padding: EdgeInsets.zero,
-                        itemCount: 10,
+                        itemCount: popularRecipeList.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
+                          var model = popularRecipeList[index];
                           return Padding(
                             padding: const EdgeInsets.only(bottom: 5, top: 10,right: 10),
                             child: TouchRippleEffect(
                               borderRadius: BorderRadius.circular(30),
                               rippleColor: Colors.white,
                               onTap: () {
-                                var color;
-                                setState(() {
-                                  color =    (index % 6 == 0)
-                                      ? MyColor.blueLite // First color
-                                      : (index % 6 == 1)
-                                      ? MyColor.colorFFFED6 // Second color
-                                      : (index % 6 == 2)
-                                      ? MyColor.colorE2EBFF // Third color
-                                      : (index % 6 == 3)
-                                      ? MyColor
-                                      .liteOrange // Fourth color
-                                      : (index % 6 == 4)
-                                      ? MyColor
-                                      .colorE2FFE4 // Fifth color
-                                      : MyColor.colorFFD6D6;
-                                });
-                                CustomNavigators.pushNavigate(RecipeDetailView( model: RecipeModel(), color:color,), context);
+                                CustomNavigators.pushNavigate(RecipeDetailView( model:model, color:model.color??MyColor.blueLite), context);
                               },
                               child: Container(
                                 height: 290,
                                 width: size.width * 0.46,
                                 decoration: BoxDecoration(
-                                    color: (index % 6 == 0)
-                                        ? MyColor.blueLite // First color
-                                        : (index % 6 == 1)
-                                            ? MyColor
-                                                .colorFFFED6 // Second color
-                                            : (index % 6 == 2)
-                                                ? MyColor
-                                                    .colorE2EBFF // Third color
-                                                : (index % 6 == 3)
-                                                    ? MyColor
-                                                        .liteOrange // Fourth color
-                                                    : (index % 6 == 4)
-                                                        ? MyColor
-                                                            .colorE2FFE4 // Fifth color
-                                                        : MyColor.colorFFD6D6,
+                                    color:model.color??MyColor.blueLite,
                                     borderRadius: const BorderRadius.all(
                                         Radius.circular(30))),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    const SizedBox(
-                                      height: 30,
-                                    ),
-                                    Image.asset(
-                                        height: 80,
-                                        width: size.width * 0.30,
-                                        AssetsPath.deliciousSaladStudio),
-                                    const SizedBox(
-                                      height: 15,
-                                    ),
+                                   hsized30,
+
+                                    UiUtils.networkImages( size.width * 0.30,80,"${ApiPath.imageBaseUrl}${model.bannerImage ?? ""}"),
+
+                                   hsized15,
+
                                      Text(
-                                      "Rainbow peppers",
+                                         model.name??"",
                                       style:semiBoldTextStyle(fontSize:15.0, color:MyColor.black)
                                     ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
+
+                                    hsized5,
+
+                                    model.recipeIngredient != null?
                                     SizedBox(
-                                      // color: MyColor.red,
-                                      width: size.width * 0.50,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          SizedBox(
-                                            // color: MyColor.yello,
-                                            width: size.width * 0.35,
-                                            child:  Text(
-                                              "Salad, Vegetable, Bean Breadcrumbs, Spinach  ",
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.center,
-                                              style:regularTextStyle(fontSize:12.0, color:MyColor.black)
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                                        width: size.width * 0.35,
+                                        child:  ListView.builder(
+                                          shrinkWrap: true,
+                                          padding: EdgeInsets.zero,
+                                          physics: NeverScrollableScrollPhysics(),
+                                          itemCount:model.recipeIngredient!.length > 1 ?1:model.recipeIngredient!.length ,
+                                          itemBuilder: (context,int index){
+                                            return Text(
+                                                model.recipeIngredient![index].name??"",
+                                                maxLines:2,
+                                                overflow: TextOverflow.ellipsis,
+                                                textAlign: TextAlign.center,
+                                                style:regularNormalTextStyle(fontSize:12.0, color:MyColor.black)
+                                            );
+                                          },)
+                                    )
+                                        : SizedBox.shrink(),
                                     const Text(
                                       "More+",
                                       style: TextStyle(
@@ -243,10 +251,11 @@ class _HomeViewState extends State<HomeView> {
                             ),
                           );
                         }),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
+                  )
+                      :SizedBox.shrink(),
+
+                 hsized15,
+
                   Padding(
                     padding: const EdgeInsets.only(
                       left: 5,
@@ -276,42 +285,36 @@ class _HomeViewState extends State<HomeView> {
                   const SizedBox(
                     height: 10,
                   ),
+                  featuredStoryList.isNotEmpty?
                   Container(
                     height: 250,
                     margin: const EdgeInsets.only(bottom: 10),
-                    // width: size.width,
-                    // padding: const EdgeInsets.only(top: 5),
-                    // color: Colors.amber,
                     alignment: Alignment.center,
-
                     child: ListView.builder(
                         shrinkWrap: true,
                         padding: EdgeInsets.zero,
-                        itemCount: 10,
+                        itemCount:featuredStoryList.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return Padding(
-                            padding: const EdgeInsets.only(
-                                left: 5, right: 5, bottom: 5, top: 10),
+                            padding: const EdgeInsets.only(left: 5, right: 5, bottom: 5, top: 10),
                             child: TouchRippleEffect(
                               borderRadius: BorderRadius.circular(10),
                               rippleColor: Colors.white,
-                              onTap: () {},
+                              onTap: () {
+                                CustomNavigators.pushNavigate(StoriesDetailsView(model:featuredStoryList[index], type: '',), context);
+                              },
                               child: Container(
                                 decoration: const BoxDecoration(
                                     color: MyColor.white,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10))),
+                                    borderRadius: BorderRadius.all(Radius.circular(10))),
                                 width: size.width * 0.46,
                                 height: 250,
                                 child: Column(
                                   children: [
-                                    Image.asset(
-                                        width: size.width * 0.52,
-                                        AssetsPath.demo1),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
+                                    UiUtils.networkImages( size.width * 0.52,  size.height * 0.14,"${ApiPath.imageBaseUrl}${featuredStoryList[index].image.toString()}",),
+
+                                   hsized10,
                                      Padding(
                                       padding: EdgeInsets.all(8.0),
                                       child: Column(
@@ -321,15 +324,15 @@ class _HomeViewState extends State<HomeView> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            "Lorem Ipsum ",
-                                            style:mediumTextStyle(fontSize:15.0, color:MyColor.black)
+                                              featuredStoryList[index].title??"",
+                                            maxLines: 1,
+                                            style:mediumTextStyle(fontSize:15.0, color:MyColor.black,overflow:TextOverflow.ellipsis)
                                           ),
-                                          SizedBox(
-                                            height: 10,
-                                          ),
+                                          hsized5,
                                           Text(
-                                            "Lorem Ipsum is simply dummy text of the and typesetting.. ",
-                                            style:regularTextStyle(fontSize: 11.0, color:MyColor.black)
+                                              featuredStoryList[index].description??"",
+                                            maxLines: 2,
+                                            style:regularTextStyle(fontSize: 11.0, color:MyColor.black,overflow:TextOverflow.ellipsis)
                                           )
                                         ],
                                       ),
@@ -340,7 +343,8 @@ class _HomeViewState extends State<HomeView> {
                             ),
                           );
                         }),
-                  ),
+                  )
+                  :SizedBox.shrink(),
                 ],
               ),
             ),
@@ -407,7 +411,7 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-  Widget bannerUi(var size) {
+  Widget bannerUi(var size,RecipeModel model) {
     return Padding(
       padding: const EdgeInsets.only(
           top: 11.0, bottom: 0.0, left: 15.0, right: 15.0),
@@ -431,35 +435,45 @@ class _HomeViewState extends State<HomeView> {
                   Container(
                     height: 165,
                     width: size.width * 0.60,
-                    decoration: const BoxDecoration(
-                      // color: MyColor.red,
-                        borderRadius: BorderRadius.all(
-                            Radius.circular(24))),
+                    decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(24))),
                     child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 21, right: 5),
+                      padding: const EdgeInsets.only(left: 21, right: 5),
                       child: Column(
-                        mainAxisAlignment:
-                        MainAxisAlignment.start,
-                        crossAxisAlignment:
-                        CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                          hsized45,
                           Text(
-                              "Rainbow Veggie Wraps",
+                              model.name??"",
                               overflow: TextOverflow.ellipsis,
                               style: semiBoldTextStyle(fontSize:17.0, color:  MyColor.black)
 
                           ),
                          hsized2,
-                          Text(
-                              "Salad, Vegetable, Bean, More+",
-                              overflow: TextOverflow.ellipsis,
-                              style: regularTextStyle(fontSize:14.0, color:  MyColor.black)
-                          ),
+                          model.recipeIngredient != null?
+                          SizedBox(
+                              width: size.width * 0.35,
+                              child:  ListView.builder(
+                                shrinkWrap: true,
+                                padding: EdgeInsets.zero,
+                                physics: NeverScrollableScrollPhysics(),
+                                itemCount:model.recipeIngredient!.length > 1 ?1:model.recipeIngredient!.length ,
+                                itemBuilder: (context,int index){
+                                  return Text(
+                                      model.recipeIngredient![index].name??"",
+                                      maxLines:2,
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.start,
+                                      style:regularNormalTextStyle(fontSize:12.0, color:MyColor.black)
+                                  );
+                                },)
+                          )
+                              : SizedBox.shrink(),
                          hsized15,
 
-                          GlobalButton(Languages.of(context)!.viewDetailsarrow.toString(),MyColor.appTheme,MyColor.appTheme,30.0, size.width * 0.27,viewDetailsOnTap,10,5,0,regularTextStyle(fontSize:13.0, color:  MyColor.white))
+                          GlobalButton(Languages.of(context)!.viewDetailsarrow.toString(),MyColor.appTheme,MyColor.appTheme,30.0, size.width * 0.27,(){
+                            CustomNavigators.pushNavigate(RecipeDetailView( model:model, color:model.color??MyColor.colorE0FFC6), context);
+                          },10,5,0,regularTextStyle(fontSize:13.0, color:  MyColor.white))
                         ],
                       ),
                     ),
@@ -468,21 +482,10 @@ class _HomeViewState extends State<HomeView> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Container(
-                          decoration: const BoxDecoration(
-                            // color: MyColor.red,
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(24),
-                                  bottomRight:
-                                  Radius.circular(27))),
-                          // height: 162,
-                          // width: size.width * 0.335,
-                          child: Image.asset(
-                            height: 130,
-                            width: size.width * 0.30,
-                            AssetsPath.image173,
-                            fit: BoxFit.fitWidth,
-                          )),
+                      ClipRRect(
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(30), bottomRight: Radius.circular(27)),
+                          child:UiUtils.networkImages(size.width * 0.30,120,"${ApiPath.imageBaseUrl}${model.bannerImage}")
+                      ),
                     ],
                   )
                 ],
@@ -514,4 +517,6 @@ class _HomeViewState extends State<HomeView> {
 
   void viewDetailsOnTap() {
   }
+
+
 }

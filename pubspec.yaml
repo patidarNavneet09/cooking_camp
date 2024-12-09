@@ -57,7 +57,8 @@ dependencies:
   flutter_local_notifications: ^18.0.1
   push: ^2.3.0
   flutter_hooks: ^0.20.5
-
+  mobkit_dashed_border: ^0.0.7
+  scribble: ^0.10.0+1
 
   flutter_localizations:
     sdk: flutter

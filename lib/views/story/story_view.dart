@@ -1,18 +1,14 @@
 import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/sized_box.dart';
-import 'package:cooking_champs/model/dynamic_models/recipe_model.dart';
 import 'package:cooking_champs/model/dynamic_models/my_story_model.dart';
 import 'package:cooking_champs/services/api_path.dart';
 import 'package:cooking_champs/services/api_services.dart';
 import 'package:cooking_champs/utils/navigators.dart';
 import 'package:cooking_champs/utils/ui_utils.dart';
-import 'package:cooking_champs/views/addyourrecipe.dart';
 import 'package:cooking_champs/constant/assets_path.dart';
 import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
 import 'package:cooking_champs/views/story/add_your_stories_view.dart';
-import 'package:cooking_champs/views/dashboard.dart';
-import 'package:cooking_champs/views/recipe/recipe_list_view.dart';
 import 'package:cooking_champs/views/story/storie_detials.dart';
 import 'package:flutter/material.dart';
 import 'package:touch_ripple_effect/touch_ripple_effect.dart';
@@ -98,7 +94,6 @@ class _StoriesViewState extends State<StoriesView> {
           var featuredStories = onValue.data['featured_stories'] as List<dynamic>? ?? [];
 
           if(featuredStories.isNotEmpty){
-            debugPrint("featuredStory.....${featuredStories}");
             featuredStoryList.clear();
             var storyModels = featuredStories.map((item) => StoryModel.fromJson(item)).toList();
             storyModels.sort((a, b) => b.id!.compareTo(a.id!));

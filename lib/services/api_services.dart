@@ -622,4 +622,18 @@ static Future<CommonResponse> sendRequest(BuildContext context,SendFriendRequest
     return commonResponse;
   }
 
+  static Future<CommonResponse> home(BuildContext context,bool load)async{
+    String url = ApiPath.home;
+    CommonResponse commonResponse = CommonResponse();
+    try{
+      var response = await HttpServices.getDataObjectFromAPI(context, url, load);
+      if(response.toString() != "null"){
+        commonResponse = CommonResponse.fromJson(response);
+      }
+    }on SocketException catch(e){
+      Utility.customToast(context, e.toString());
+    }
+    return commonResponse;
+  }
+
 }

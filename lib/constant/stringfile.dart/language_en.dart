@@ -616,6 +616,24 @@ class LanguagesEN extends Languages{
   @override
   String get somethingYouCan => "Something you can’t find in nature and is made in a laboratory.";
 
+  @override
+  String get activity => "Activity";
+
+  @override
+  String get drawACircleAroundTheThingsThatLookRisky => "Draw a circle around the things that look risky in this kitchen.";
+
+  @override
+  String get howDoYouMakeThisKitchenSafer => "How do you make this kitchen safer?";
+
+  @override
+  String get listTheRisks => "List the risks";
+
+  @override
+  String get lookAtThePictureBelow => "Look at the picture below.";
+
+  @override
+  String get whyAreTheseAreasOrThingsRisky => "Why are these areas or things risky?";
+
 
 
 

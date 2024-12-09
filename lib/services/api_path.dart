@@ -32,6 +32,7 @@ class ApiPath{
   static const String   notificationListing = "notification-listing";
   static const String   friendRequestCount = "pending-friend-request-count";
   static const String   shareStories = "share-stories";
+  static const String   home = "home";
 
 
 }

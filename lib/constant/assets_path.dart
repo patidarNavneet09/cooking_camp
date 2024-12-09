@@ -104,5 +104,10 @@ class AssetsPath {
   static String knifeSkill5Img = "assets/kids_learning_image/knifeSkill5Img.png";
   static String knifeSkill6Img = "assets/kids_learning_image/knifeSkill6Img.png";
   static String chapter12Img = "assets/kids_learning_image/chapter12Img.png";
+  static String activityTopImg = "assets/kids_learning_image/activityTopImg.png";
+  static String activityImg1 = "assets/kids_learning_image/activityImg1.png";
+  static String twoEmoji = "assets/kids_learning_image/twoEmoji.png";
+  static String quizBg = "assets/kids_learning_image/quizBg.png";
+  static String girlBoyBottomImg = "assets/kids_learning_image/girlBoyBottomImg.png";
 
 }

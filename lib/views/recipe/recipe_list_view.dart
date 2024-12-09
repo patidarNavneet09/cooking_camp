@@ -125,7 +125,7 @@ class _RecipeListViewState extends State<RecipeListView> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 5, top: 10,right:8,left:8),
       child: Container(
-        height:  widget.pageType == "dash" || widget.pageType == "Favorite"?size.height * 0.38:260,
+        height:  widget.pageType == "dash" || widget.pageType == "Favorite"?size.height * 0.36:260,
         width:320,
         padding: const EdgeInsets.only(left:20, right:20, bottom:12, top: 10),
         decoration: BoxDecoration(
@@ -219,9 +219,10 @@ class _RecipeListViewState extends State<RecipeListView> {
 
               ],
             ),
-            TouchRippleEffect(
+            InkWell(
+              radius: 60,
               borderRadius: BorderRadius.circular(27),
-              rippleColor: MyColor.liteGray,
+             // rippleColor: MyColor.liteGray,
 
               onTap: (){
                 CustomNavigators.pushNavigate(RecipeDetailView(model: model, color:model.color??MyColor.blueLite), context);

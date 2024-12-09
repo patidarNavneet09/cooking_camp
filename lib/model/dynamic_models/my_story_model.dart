@@ -8,6 +8,9 @@ class StoryModel {
   String? id;
   List<StoryImages>? storyImages;
   String? status;
+  String? kidId;
+  String? role;
+  int? isFeatured;
 
   StoryModel(
       {this.userId,
@@ -18,7 +21,7 @@ class StoryModel {
         this.createdAt,
         this.id,
         this.status,
-        this.storyImages});
+        this.storyImages,this.kidId,this.role,this.isFeatured});
 
   StoryModel.fromJson(Map<String, dynamic> json) {
     userId = json['user_id'];
@@ -29,6 +32,9 @@ class StoryModel {
     createdAt = json['created_at'];
     id = json['id'];
     status = json['status'];
+    kidId = json['kid_id'];
+    role = json['role'];
+    isFeatured = json['is_featured'];
     if (json['story_images'] != null) {
       storyImages = <StoryImages>[];
       json['story_images'].forEach((v) {
@@ -47,6 +53,11 @@ class StoryModel {
     data['created_at'] = createdAt;
     data['id'] = id;
     data['status'] = status;
+
+    data['kid_id'] = kidId;
+    data['role'] = role;
+    data['is_featured'] = isFeatured;
+
     if (storyImages != null) {
       data['story_images'] = storyImages!.map((v) => v.toJson()).toList();
     }

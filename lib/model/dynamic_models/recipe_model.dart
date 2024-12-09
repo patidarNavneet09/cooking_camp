@@ -5,16 +5,20 @@ class RecipeModel {
   String? userId;
   String? name;
   String? bannerImage;
-  List<RecipeTools>? recipeTools;
+
   String? updatedAt;
   String? createdAt;
   String? id;
-  List<RecipeIngredient>? recipeIngredient;
-  List<RecipeSteps>? recipeSteps;
   String? status;
   Color? color;
   String? isFavourite;
+  String? kidId;
+  String? role;
+  String? recipeOfTheWeek;
   UserIdentityModel? recipeAddedBy;
+  List<RecipeTools>? recipeTools;
+  List<RecipeIngredient>? recipeIngredient;
+  List<RecipeSteps>? recipeSteps;
 
 
 
@@ -28,23 +32,27 @@ class RecipeModel {
         this.id,
         this.status,
         this.recipeIngredient,
-        this.recipeSteps,this.color,this.isFavourite,this.recipeAddedBy});
+        this.recipeSteps,this.color,this.isFavourite,this.recipeAddedBy,this.kidId,this.role,this.recipeOfTheWeek});
 
   RecipeModel.fromJson(Map<String, dynamic> json) {
     userId = json['user_id'].toString();
     name = json['name'];
     bannerImage = json['banner_image'];
+
+    updatedAt = json['updated_at'];
+    createdAt = json['created_at'];
+    id = json['id'].toString();
+    status = json['status'].toString();
+    isFavourite = json['is_favourite'];
+    kidId = json['kid_id'];
+    role = json['role'];
+    recipeOfTheWeek = json['recipe_of_the_week'];
     if (json['recipe_tools'] != null) {
       recipeTools = <RecipeTools>[];
       json['recipe_tools'].forEach((v) {
         recipeTools!.add(RecipeTools.fromJson(v));
       });
     }
-    updatedAt = json['updated_at'];
-    createdAt = json['created_at'];
-    id = json['id'].toString();
-    status = json['status'].toString();
-    isFavourite = json['is_favourite'];
     if (json['recipe_ingredient'] != null) {
       recipeIngredient = <RecipeIngredient>[];
       json['recipe_ingredient'].forEach((v) {
@@ -75,7 +83,9 @@ class RecipeModel {
     data['created_at'] = createdAt;
     data['id'] = id;
     data['status'] = status;
-    data['is_favourite'] = isFavourite;
+    data['kid_id'] = kidId;
+    data['role'] = role;
+    data['recipe_of_the_week'] = recipeOfTheWeek;
     if (recipeIngredient != null) {
       data['recipe_ingredient'] =
           recipeIngredient!.map((v) => v.toJson()).toList();

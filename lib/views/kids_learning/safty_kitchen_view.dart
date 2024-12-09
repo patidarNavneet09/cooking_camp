@@ -3,10 +3,12 @@ import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/sized_box.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
+import 'package:cooking_champs/utils/navigators.dart';
 import 'package:cooking_champs/utils/ui_utils.dart';
+import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/activity_one_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter10_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter11_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter12_view.dart';
+import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/glossary_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter1_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter2_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter3_view.dart';
@@ -16,6 +18,7 @@ import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapte
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter7_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter8_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter9_view.dart';
+import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/quiz_view.dart';
 import 'package:flutter/material.dart';
 
 class SafetyKitchenView extends StatefulWidget {
@@ -41,7 +44,6 @@ class _SafetyKitchenViewState extends State<SafetyKitchenView> {
     Chapter9View(),
     Chapter10View(),
     Chapter11View(),
-    Chapter12View(),
   ];
 
   addSkills() {
@@ -85,11 +87,17 @@ class _SafetyKitchenViewState extends State<SafetyKitchenView> {
                             children: List.generate(skillList.length, (index) {
                               return InkWell(
                                 onTap: () {
-                                  if (index == 1) {
-                                    setState(() {
-                                      currentIndex = 11;
-                                    });
-                                    _pageController.jumpToPage(currentIndex); // for regular jump
+                                  if (index == 0) {
+                                    CustomNavigators.pushNavigate(ActivityOneView(), context);
+                                  }
+                                 else if (index == 1) {
+                                    CustomNavigators.pushNavigate(GlossaryView(), context);
+                                    // setState(() {
+                                    //   currentIndex = 11;
+                                    // });
+                                    // _pageController.jumpToPage(currentIndex); // for regular jump
+                                  }else if(index == 2){
+                                    CustomNavigators.pushNavigate(QuizPage(), context);
                                   }
                                 },
                                 child: btnUI(skillList[index], index),
