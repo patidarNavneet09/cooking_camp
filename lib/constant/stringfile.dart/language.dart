@@ -50,6 +50,7 @@ abstract class Languages {
   String get gotoLogin;
   String get home;
   String get recipe;
+  String get recipes;
   String get save;
   String get menu;
   String get explore;
@@ -187,6 +188,7 @@ abstract class Languages {
   String get activities;
   String get glossary;
   String get quiz;
+  String get quizTime;
   String get question1;
   String get question2;
   String get question3;
@@ -226,5 +228,6 @@ abstract class Languages {
   String get drawACircleAroundTheThingsThatLookRisky;
   String get whyAreTheseAreasOrThingsRisky;
   String get howDoYouMakeThisKitchenSafer;
+  String get next;
 }
 

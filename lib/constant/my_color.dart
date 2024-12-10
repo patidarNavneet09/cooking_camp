@@ -39,6 +39,8 @@ class MyColor {
   static const darkOrange = Color(0xffFF902B);
   static const red1 = Color(0xffD64641);
   static const dividerYellow = Color(0xffF0D400);
+  static const pink = Color(0xffFE365A6);
+  static const sky = Color(0xff70BBE8);
 }
 
 class Fonts {

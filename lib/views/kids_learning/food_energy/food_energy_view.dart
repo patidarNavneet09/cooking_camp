@@ -1,15 +1,11 @@
-import 'package:cooking_champs/constant/assets_path.dart';
 import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
-import 'package:cooking_champs/constant/sized_box.dart';
-import 'package:cooking_champs/constant/stringfile.dart/language.dart';
-import 'package:cooking_champs/utils/navigators.dart';
 import 'package:cooking_champs/utils/ui_utils.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/activity_one_view.dart';
+import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter1_view.dart';
+import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter2_view.dart';
+import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter3_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter10_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter11_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/glossary_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter1_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter2_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter3_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter4_view.dart';
@@ -18,24 +14,23 @@ import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapte
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter7_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter8_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter9_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/quiz_view.dart';
 import 'package:flutter/material.dart';
-
-class SafetyKitchenView extends StatefulWidget {
-  const SafetyKitchenView({super.key});
+List<String> skillList = [];
+class FoodEnergyView extends StatefulWidget {
+  const FoodEnergyView({super.key});
 
   @override
-  State<SafetyKitchenView> createState() => _SafetyKitchenViewState();
+  State<FoodEnergyView> createState() => _FoodEnergyViewState();
 }
 
 int currentIndex = 0;
 final PageController _pageController = PageController();
 
-class _SafetyKitchenViewState extends State<SafetyKitchenView> {
+class _FoodEnergyViewState extends State<FoodEnergyView> {
   List<Widget> pageList = [
-    Chapter1View(),
-    Chapter2View(),
-    Chapter3View(),
+    FoodEnergyChapter1View(),
+    FoodEnergyChapter2View(),
+    FoodEnergyChapter3View(),
     Chapter4View(),
     Chapter5View(),
     Chapter6View(),
@@ -46,19 +41,10 @@ class _SafetyKitchenViewState extends State<SafetyKitchenView> {
     Chapter11View(),
   ];
 
-  addSkills() {
-    setState(() {
-      skillList = [
-        Languages.of(context)!.activities,
-        Languages.of(context)!.glossary,
-        Languages.of(context)!.quiz
-      ];
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-    addSkills();
+
     final size = MediaQuery.of(context);
 
     return Scaffold(
@@ -72,46 +58,17 @@ class _SafetyKitchenViewState extends State<SafetyKitchenView> {
               itemBuilder: (context, int index) {
                 return Container(child: pageList[currentIndex]);
               }),
-          currentIndex == 0
-              ? Stack(
-                  children: [
-                    hsized10,
-                    Container(
-                      margin: EdgeInsets.only(bottom: 20, left: 20, right: 20),
-                      alignment: Alignment.bottomLeft,
-                      child: Visibility(
-                        visible: currentIndex == 0 ? true : false,
-                        child: Container(
-                          color: MyColor.orange,
-                          child: Wrap(
-                            children: List.generate(skillList.length, (index) {
-                              return InkWell(
-                                onTap: () {
-                                  if (index == 0) {
-                                    CustomNavigators.pushNavigate(ActivityOneView(), context);
-                                  }
-                                 else if (index == 1) {
-                                    CustomNavigators.pushNavigate(GlossaryView(), context);
-                                    // setState(() {
-                                    //   currentIndex = 11;
-                                    // });
-                                    // _pageController.jumpToPage(currentIndex); // for regular jump
-                                  }else if(index == 2){
-                                    CustomNavigators.pushNavigate(QuizPage(), context);
-                                  }
-                                },
-                                child: btnUI(skillList[index], index),
-                              );
-                            }),
-                          ),
-                        ),
-                      ),
-                    ),
-                    UiUtils.roundedPage()
-                    // Image.asset(AssetsPath.cornerBg,height:120,width:120,),
-                  ],
-                )
-              : SizedBox.shrink()
+
+          // currentIndex == 0
+          //     ? Stack(
+          //   children: [
+          //     hsized10,
+
+              UiUtils.roundedPage()
+          //     // Image.asset(AssetsPath.cornerBg,height:120,width:120,),
+          //   ],
+          // )
+          //     : SizedBox.shrink()
         ],
       ),
       bottomNavigationBar: Container(
@@ -139,9 +96,9 @@ class _SafetyKitchenViewState extends State<SafetyKitchenView> {
                                     color: currentIndex == i
                                         ? MyColor.appTheme
                                         : currentIndex == 2
-                                            ? MyColor.blueLite1
-                                            : const Color.fromARGB(
-                                                255, 219, 217, 217),
+                                        ? MyColor.blueLite1
+                                        : const Color.fromARGB(
+                                        255, 219, 217, 217),
                                     width: 10),
                               ),
                             ],
@@ -177,7 +134,7 @@ class _SafetyKitchenViewState extends State<SafetyKitchenView> {
       height: 10,
       width: width,
       decoration:
-          BoxDecoration(color: color, borderRadius: BorderRadius.circular(10)),
+      BoxDecoration(color: color, borderRadius: BorderRadius.circular(10)),
     );
   }
 

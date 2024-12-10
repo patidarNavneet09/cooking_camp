@@ -30,8 +30,6 @@ class NotificationService {
     await _flutterLocalNotificationsPlugin.initialize(
       initializationSettings,
        onDidReceiveBackgroundNotificationResponse: _backgroundHandler,
-     // onDidReceiveNotificationResponse:onSelectNotification,
-     // onDidReceiveBackgroundNotificationResponse:      onSelectNotification,
       onDidReceiveNotificationResponse: (response) {
         debugPrint("response.....${response.payload}");
         handleResponse(response, "set", "navigate");

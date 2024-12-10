@@ -2,6 +2,9 @@ import 'package:cooking_champs/constant/assets_path.dart';
 import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
+import 'package:cooking_champs/utils/navigators.dart';
+import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter1_view.dart';
+import 'package:cooking_champs/views/kids_learning/food_energy/food_energy_view.dart';
 import 'package:cooking_champs/views/kids_learning/safty_kitchen_view.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_grid/responsive_grid.dart';
@@ -114,7 +117,7 @@ class _KidsLearningViewState extends State<KidsLearningView> {
                 child: TouchRippleEffect(
                   borderRadius: BorderRadius.circular(27),
                   rippleColor: Colors.white,
-                  onTap: () => _handleTileTap(context),
+                  onTap: () => _handleTileTap(context,index),
                   child: _buildGridTile(colors[index], images[index], titles[index]),
                 ),
               ),
@@ -125,14 +128,19 @@ class _KidsLearningViewState extends State<KidsLearningView> {
     );
   }
 
-  void _handleTileTap(BuildContext context) {
+  void _handleTileTap(BuildContext context,int index) {
     if (navigateSafetyKic) {
-      Navigator.push(
+      if(index == 0){
+        CustomNavigators.pushNavigate(SafetyKitchenView(), context);
+      }else if(index == 1){
+        CustomNavigators.pushNavigate(FoodEnergyView(), context);
+      }
+ /*     Navigator.push(
         context,
         MaterialPageRoute(builder: (context) =>  SafetyKitchenView()),
       ).then((value) => setState(() {
         navigateSafetyKic = true;
-      }));
+      }));*/
     }
   }
 

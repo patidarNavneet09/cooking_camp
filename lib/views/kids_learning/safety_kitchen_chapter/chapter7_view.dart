@@ -57,7 +57,7 @@ class _Chapter7ViewState extends State<Chapter7View> {
                   padding: EdgeInsets.only( left: 20, right:40),
                   child: Column(
                     children: [
-                      UiUtils.questionAnswerUi("",Languages.of(context)!.question4,Languages.of(context)!.answer4,4),
+                      UiUtils.questionAnswerUi(AssetsPath.img4,Languages.of(context)!.question4,Languages.of(context)!.answer4,4),
                       UiUtils.questionAnswerUi(AssetsPath.img5,Languages.of(context)!.question5,Languages.of(context)!.answer5,5),
                       UiUtils.questionAnswerUi(AssetsPath.img6,Languages.of(context)!.question5,Languages.of(context)!.answer6,6),
                       hsized80

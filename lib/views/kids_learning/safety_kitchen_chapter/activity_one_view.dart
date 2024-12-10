@@ -49,7 +49,7 @@ class _ActivityOneViewState extends State<ActivityOneView> {
                       ],
                     ),
 
-                    Image.asset(AssetsPath.activityTopImg,height: 125,width:120)
+                    Image.asset(AssetsPath.activityTopImg,height: 105,width:120)
                   ],
                 ),
               ),

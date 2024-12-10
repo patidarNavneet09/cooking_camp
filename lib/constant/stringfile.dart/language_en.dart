@@ -634,6 +634,16 @@ class LanguagesEN extends Languages{
   @override
   String get whyAreTheseAreasOrThingsRisky => "Why are these areas or things risky?";
 
+  @override
+  String get next => "Next";
+
+  @override
+
+  String get quizTime => "Quiz Time";
+
+  @override
+  String get recipes => "Recipes";
+
 
 
 
