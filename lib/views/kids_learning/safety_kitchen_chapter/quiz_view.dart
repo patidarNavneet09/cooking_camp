@@ -18,7 +18,7 @@ class QuizQuestion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical:5),
+      padding: const EdgeInsets.symmetric(vertical:4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -62,6 +62,9 @@ class QuizQuestion extends StatelessWidget {
             scrollPhysics: NeverScrollableScrollPhysics(),
             decoration: InputDecoration(border: InputBorder.none),
             cursorHeight: 22,
+            onTapOutside: (v){
+              FocusManager.instance.primaryFocus!.unfocus();
+            },
             style: TextStyle(
               fontSize: 20.0,
             ),
@@ -77,7 +80,9 @@ class QuizQuestion extends StatelessWidget {
 
 
 class QuizPage extends StatefulWidget {
-  const QuizPage({super.key});
+  final Widget page;
+  final Color bgColor;
+  const QuizPage({super.key,required this.page,required this.bgColor});
 
   @override
   State<QuizPage> createState() => _QuizPageState();
@@ -88,11 +93,11 @@ class _QuizPageState extends State<QuizPage> {
   Widget build(BuildContext context) {
     final size  =MediaQuery.of(context);
     return Scaffold(
-        backgroundColor:MyColor.orange,
+        backgroundColor:widget.bgColor,
         appBar: PreferredSize(
           preferredSize:Size.zero,
           child: AppBar(
-            backgroundColor:MyColor.orange,
+            backgroundColor:widget.bgColor,
             automaticallyImplyLeading: false,
           ),
         ),
@@ -136,29 +141,8 @@ class _QuizPageState extends State<QuizPage> {
                                 ),
                                 SizedBox(height: 12),
 
-                                // Questions
-                                QuizQuestion(
-                                  questionNumber: "1",
-                                  questionText: "What should you never do in the kitchen?",
-                                ),
-                                QuizQuestion(
-                                  questionNumber: "2",
-                                  questionText: "Where should handles of pots and pans point?",
-                                ),
-                                QuizQuestion(
-                                  questionNumber: "3",
-                                  questionText: "How should you carry a knife?",
-                                ),
-                                QuizQuestion(
-                                  questionNumber: "4",
-                                  questionText:
-                                  "What should you keep kitchen electrical appliances away from?",
-                                ),
-                                QuizQuestion(
-                                  questionNumber: "5",
-                                  questionText:
-                                  "What is the first thing Cooking Champs must do before they start cooking?",
-                                ),
+                                widget.page,
+                                //FoodQuizTimeView(),
 
                                 hsized45
                               ],
@@ -183,7 +167,7 @@ class _QuizPageState extends State<QuizPage> {
       ),
       //floatingActionButtonLocation:FloatingActionButtonLocation.centerDocked,
       bottomSheet:  Container(
-        color: MyColor.orange,
+        color:widget.bgColor,
           padding: EdgeInsets.only(left:20,right:20,bottom:20,top: 0),
           child:GlobalButton(Languages.of(context)!.submit,MyColor.appTheme,MyColor.appTheme, 55,double.infinity,submitOnTap,55,0,0,mediumTextStyle(fontSize:16.0, color:MyColor.white))
       ),

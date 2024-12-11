@@ -2,11 +2,7 @@ import 'package:cooking_champs/constant/assets_path.dart';
 import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/sized_box.dart';
-import 'package:cooking_champs/constant/stringfile.dart/language.dart';
-import 'package:cooking_champs/utils/navigators.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/activity_one_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/glossary_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/quiz_view.dart';
+import 'package:cooking_champs/utils/ui_utils.dart';
 import 'package:cooking_champs/views/kids_learning/safty_kitchen_view.dart';
 import 'package:flutter/material.dart';
 
@@ -123,12 +119,12 @@ class _FoodEnergyChapter3ViewState extends State<FoodEnergyChapter3View> {
                 ],
               ),
             ),
-
             hsized20,
             Padding(
-              padding: const EdgeInsets.only(left:15.0),
-              child: Image.asset(AssetsPath.foodChapterImg2),
-            ),
+                padding: const EdgeInsets.only(left: 15.0),
+                child: UiUtils.extensionBox(
+                    "On a map of the world, find Germany, Poland, Hungary, New Zealand and America. Are any of these countries close to each other? Which is the furthest away?",
+                    rightPadding: 55)),
             hsized100
           ],
         ),

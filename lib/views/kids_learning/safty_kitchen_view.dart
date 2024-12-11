@@ -19,6 +19,7 @@ import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapte
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter8_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter9_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/quiz_view.dart';
+import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/safty_quiz_time_view.dart';
 import 'package:flutter/material.dart';
 
 class SafetyKitchenView extends StatefulWidget {
@@ -97,7 +98,7 @@ class _SafetyKitchenViewState extends State<SafetyKitchenView> {
                                     // });
                                     // _pageController.jumpToPage(currentIndex); // for regular jump
                                   }else if(index == 2){
-                                    CustomNavigators.pushNavigate(QuizPage(), context);
+                                    CustomNavigators.pushNavigate(QuizPage(page:SafetyQuizTimeView(), bgColor:MyColor.orange,), context);
                                   }
                                 },
                                 child: btnUI(skillList[index], index),

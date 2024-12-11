@@ -30,6 +30,7 @@ class MyColor {
   static const color1C1C1C = Color(0xff1C1C1C);
   static const colorE5E9F4 = Color(0xffE5E9F4);
   static const colorF8F0FF = Color(0xffF8F0FF);
+  static const lightPink = Color(0xffF9E0ED);
   static const colorFFF0FF8 = Color(0xffFFF0E8);
   static const colorEDEFFF = Color(0xffEDEFFF);
   static const colorF3E6FF = Color(0xffF3E6FF);
@@ -41,6 +42,11 @@ class MyColor {
   static const dividerYellow = Color(0xffF0D400);
   static const pink = Color(0xffFE365A6);
   static const sky = Color(0xff70BBE8);
+  static const sky1 = Color(0xff79BCEA);
+  static const darkSky = Color(0xff00AEEF);
+  static const green = Color(0xff48B776);
+  static const darkYellow = Color(0xffFFCC38);
+  static const darkBlue = Color(0xff005E89);
 }
 
 class Fonts {

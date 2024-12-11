@@ -4,6 +4,8 @@ import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/sized_box.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
 import 'package:cooking_champs/utils/navigators.dart';
+import 'package:cooking_champs/views/kids_learning/food_energy/food_glossary_view.dart';
+import 'package:cooking_champs/views/kids_learning/food_energy/food_quiz_time_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/activity_one_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/glossary_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/quiz_view.dart';
@@ -100,12 +102,10 @@ class _FoodEnergyChapter1ViewState extends State<FoodEnergyChapter1View> {
                               }
                               else if (index == 1) {
                                 CustomNavigators.pushNavigate(GlossaryView(), context);
-                                // setState(() {
-                                //   currentIndex = 11;
-                                // });
-                                // _pageController.jumpToPage(currentIndex); // for regular jump
                               }else if(index == 2){
-                                CustomNavigators.pushNavigate(QuizPage(), context);
+                                CustomNavigators.pushNavigate(FoodGlossaryView(), context);
+                              }else if(index ==3){
+                                CustomNavigators.pushNavigate(QuizPage(page:FoodQuizTimeView(), bgColor:MyColor.pink), context);
                               }
                             },
                             child: btnUI(skillList[index], index),

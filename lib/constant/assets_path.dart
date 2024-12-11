@@ -118,5 +118,30 @@ class AssetsPath {
   static String foodEnergyImg2 = "assets/kids_learning_image/foodEnergyImg2.png";
   static String foodChapterImg3 = "assets/kids_learning_image/foodChapterImg3.png";
   static String foodChapterImg2 = "assets/kids_learning_image/foodChapterImg2.png";
+  static String foodChapter5Bg = "assets/kids_learning_image/foodChapter5Bg.png";
+  static String foodChapter5Img1 = "assets/kids_learning_image/foodChapter5Img1.png";
+  static String foodChapter4Img1 = "assets/kids_learning_image/foodChapter4Img1.png";
+  static String foodChapter4Img2 = "assets/kids_learning_image/foodChapter4Img2.png";
+  static String foodChapter4Img3 = "assets/kids_learning_image/foodChapter4Img3.png";
+  static String foodChapter4Img4 = "assets/kids_learning_image/foodChapter4Img4.png";
+  static String foodChapter4Img5 = "assets/kids_learning_image/foodChapter4Img5.png";
+  static String foodChapter6Img1 = "assets/kids_learning_image/foodChapter6Img1.png";
+  static String foodChapter6Img2 = "assets/kids_learning_image/foodChapter6Img2.png";
+  static String foodChapter7Img = "assets/kids_learning_image/foodChapter7Img.png";
+  static String foodChapter9Img1 = "assets/kids_learning_image/foodChapter9Img1.png";
+  static String foodChapter9Img2 = "assets/kids_learning_image/foodChapter9Img2.png";
+  static String foodChapter10Img = "assets/kids_learning_image/foodChapter10Img.png";
+  static String foodChapter11Img = "assets/kids_learning_image/foodChapter11Img.png";
+  static String foodChapter13Img = "assets/kids_learning_image/foodChapter13Img.png";
+  static String extensionImg = "assets/kids_learning_image/extensionImg.png";
+
+  static String allAboutFruits = "assets/kids_learning_image/allAboutFruits.png";
+  static String allAboutHygiene = "assets/kids_learning_image/allAboutHygiene.png";
+  static String allAboutVegetables = "assets/kids_learning_image/allAboutVegetables.png";
+  static String celebration = "assets/kids_learning_image/celebration.png";
+  static String honeybees = "assets/kids_learning_image/honeybees.png";
+  static String nuts = "assets/kids_learning_image/nuts.png";
+  static String theBasic = "assets/kids_learning_image/theBasic.png";
+  static String theSenses = "assets/kids_learning_image/theSenses.png";
 
 }

@@ -274,6 +274,21 @@ class UiUtils{
       ],
     );
   }
+  foodEnergyAppBar(GestureTapCallback  onTap){
+    return   Row(
+      children: [
+        InkWell(
+          onTap:onTap,
+          child: const Icon(Icons.arrow_back_ios, size: 24),
+        ),
+        const SizedBox(width: 10),
+        Text(
+          "Food is energy",
+          style: mediumTextStyle(fontSize: 18.0, color: MyColor.black),
+        ),
+      ],
+    );
+  }
 
  static roundedPage(){
     return   Align(
@@ -285,4 +300,97 @@ class UiUtils{
         ));
   }
 
+ static Widget buildNormalText(String text,{double fonSize  = 16.0,Color color = MyColor.black}) {
+    return Text(
+      text,
+      style: regularNormalTextStyle(fontSize:fonSize, color:color),
+    );
+  }
+
+  static Widget buildRegularText(String text,{double fonSize  = 16.0,Color color = MyColor.black}) {
+    return Text(
+      text,
+      style:regularTextStyle(fontSize:fonSize, color:color),
+    );
+  }
+  static Widget buildBoldText(String text,{double fonSize  = 16.0,Color color = MyColor.black}) {
+    return Text(
+      text,
+      style: boldTextStyle(fontSize:fonSize, color: color),
+    );
+  }
+  static Widget buildMediumText(String text,{double fonSize  = 16.0,Color color = MyColor.black}) {
+    return Text(
+      text,
+      style:mediumTextStyle(fontSize:fonSize, color: color),
+    );
+  }
+
+  /// Fun Fact Container
+  static Widget buildFunFact({required String title, required String fact}) {
+    return Container(
+      padding: const EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+        color: MyColor.darkYellow,
+        borderRadius: BorderRadius.circular(6),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(title, style: boldTextStyle(fontSize: 18.0, color: MyColor.red1)),
+          const SizedBox(height: 5),
+          Text(fact,
+              style: boldTextStyle(fontSize: 15.0, color: MyColor.appTheme)),
+        ],
+      ),
+    );
+  }
+
+     // Helper Widgets
+  static Widget buildParagraph(String prefix, String highlight, String suffix,{Color color =MyColor.pink }) {
+    return RichText(
+      text: TextSpan(
+        style: regularTextStyle(fontSize: 14.0, color: MyColor.black),
+        children: [
+          TextSpan(text: prefix),
+          TextSpan(
+              text: highlight,
+              style: boldTextStyle(fontSize: 15.0, color:color)),
+          TextSpan(text: suffix),
+        ],
+      ),
+    );
+  }
+
+  static extensionBox(String title,{double imgHeight = 127,double rightPadding = 50}){
+    return Stack(
+      children: [
+
+        Container(
+          margin: EdgeInsets.only(right:rightPadding,top: 10,left:8),
+          // height:110,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color:MyColor.appTheme,
+            borderRadius: BorderRadius.circular(11)
+          ),
+          padding: EdgeInsets.only(right:70,left: 20,top:35,bottom:15),
+          child: Text(title,style:mediumTextStyle(fontSize:13.0, color:MyColor.white),),
+        ),
+        Container(
+          margin: EdgeInsets.only(top:12),
+          decoration: BoxDecoration(
+              color:MyColor.darkYellow,
+              borderRadius: BorderRadius.circular(55)
+          ),
+          padding: EdgeInsets.symmetric(horizontal: 10,vertical:5),
+          child: Text("Extension",style:boldTextStyle(fontSize:11.0, color:MyColor.black),),
+        ),
+        Container(
+          padding: EdgeInsets.only(top:rightPadding == 55? 30:0),
+            alignment: Alignment.centerRight,
+            child: Image.asset(AssetsPath.extensionImg,height:imgHeight,))
+      ],
+    );
+  }
 }

@@ -1,20 +1,22 @@
 import 'package:cooking_champs/constant/my_color.dart';
-import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/utils/ui_utils.dart';
+import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter10_view.dart';
+import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter11_view.dart';
+import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter12_view.dart';
+import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter14_view.dart';
 import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter1_view.dart';
 import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter2_view.dart';
 import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter3_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter10_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter11_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter2_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter3_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter4_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter5_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter6_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter7_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter8_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter9_view.dart';
+import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter4_view.dart';
+import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter5_view.dart';
+import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter6_view.dart';
+import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter7_view.dart';
+import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter8_view.dart';
+import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter9_view.dart';
 import 'package:flutter/material.dart';
+
+import 'food_chapter13_view.dart';
+int currentPage = 0;
 List<String> skillList = [];
 class FoodEnergyView extends StatefulWidget {
   const FoodEnergyView({super.key});
@@ -23,7 +25,7 @@ class FoodEnergyView extends StatefulWidget {
   State<FoodEnergyView> createState() => _FoodEnergyViewState();
 }
 
-int currentIndex = 0;
+
 final PageController _pageController = PageController();
 
 class _FoodEnergyViewState extends State<FoodEnergyView> {
@@ -31,14 +33,17 @@ class _FoodEnergyViewState extends State<FoodEnergyView> {
     FoodEnergyChapter1View(),
     FoodEnergyChapter2View(),
     FoodEnergyChapter3View(),
-    Chapter4View(),
-    Chapter5View(),
-    Chapter6View(),
-    Chapter7View(),
-    Chapter8View(),
-    Chapter9View(),
-    Chapter10View(),
-    Chapter11View(),
+    FoodChapter4View(),
+    FoodChapter5View(),
+    FoodChapter6View(),
+    FoodChapter7View(),
+    FoodChapter8View(),
+    FoodChapter9View(),
+    FoodChapter10View(),
+    FoodChapter11View(),
+    FoodChapter12View(),
+    FoodChapter13View(),
+    FoodChapter14View(),
   ];
 
 
@@ -56,19 +61,12 @@ class _FoodEnergyViewState extends State<FoodEnergyView> {
               controller: _pageController,
               onPageChanged: onPageChanged,
               itemBuilder: (context, int index) {
-                return Container(child: pageList[currentIndex]);
+                return Container(child: pageList[currentPage]);
               }),
 
-          // currentIndex == 0
-          //     ? Stack(
-          //   children: [
-          //     hsized10,
 
-              UiUtils.roundedPage()
-          //     // Image.asset(AssetsPath.cornerBg,height:120,width:120,),
-          //   ],
-          // )
-          //     : SizedBox.shrink()
+          UiUtils.roundedPage()
+
         ],
       ),
       bottomNavigationBar: Container(
@@ -93,9 +91,9 @@ class _FoodEnergyViewState extends State<FoodEnergyView> {
                             children: [
                               SizedBox(
                                 child: _indicatorDotsWidget(
-                                    color: currentIndex == i
+                                    color: currentPage == i
                                         ? MyColor.appTheme
-                                        : currentIndex == 2
+                                        : currentPage == 2
                                         ? MyColor.blueLite1
                                         : const Color.fromARGB(
                                         255, 219, 217, 217),
@@ -115,18 +113,6 @@ class _FoodEnergyViewState extends State<FoodEnergyView> {
     );
   }
 
-  btnUI(String title, int index) {
-    return Container(
-      margin: EdgeInsets.only(right: 18, top: 15),
-      padding: EdgeInsets.symmetric(horizontal: 35, vertical: 15),
-      decoration: BoxDecoration(
-          color: MyColor.white, borderRadius: BorderRadius.circular(60)),
-      child: Text(
-        title,
-        style: mediumTextStyle(fontSize: 14.0, color: MyColor.black),
-      ),
-    );
-  }
 
   Container _indicatorDotsWidget(
       {required Color color, required double width}) {
@@ -140,7 +126,7 @@ class _FoodEnergyViewState extends State<FoodEnergyView> {
 
   void onPageChanged(int value) {
     setState(() {
-      currentIndex = value;
+      currentPage = value;
     });
   }
 
