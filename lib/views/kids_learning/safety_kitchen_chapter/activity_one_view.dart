@@ -4,6 +4,7 @@ import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/sized_box.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
 import 'package:cooking_champs/utils/navigators.dart';
+import 'package:cooking_champs/utils/ui_utils.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/activity_two_view.dart';
 import 'package:cooking_champs/widgets/global_button.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,9 @@ class _ActivityOneViewState extends State<ActivityOneView> {
         child: Scaffold(
           appBar: PreferredSize(
             preferredSize:Size.zero,
-            child: AppBar(),
+            child: AppBar(
+              backgroundColor:MyColor.white,
+            ),
           ),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +52,8 @@ class _ActivityOneViewState extends State<ActivityOneView> {
                       ],
                     ),
 
-                    Image.asset(AssetsPath.activityTopImg,height: 105,width:120)
+                    UiUtils.bookReadGirl(MyColor.darkOrange,AssetsPath.bookReadImg)
+
                   ],
                 ),
               ),

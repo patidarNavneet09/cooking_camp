@@ -23,32 +23,12 @@ class AssetsPath {
   static const String bellpng = "assets/images/bell.png";
   static const String savetag = "assets/images/savetag.png";
   static const String savetagscr = "assets/images/savetagscr.png";
-  static const String image173 = "assets/images/paneer.png";
-
-  static const String demo1 = "assets/images/demo1.png";
-  // static const String image174 = "assets/images/image174.png";
-  // static const String image175 = "assets/images/image175.png";
-  // static const String image176 = "assets/images/image176.png";
-  // static const String image177 = "assets/images/image177.png";
   static const String dots = "assets/images/dots.png";
-
   static const String food = "assets/images/food.png";
-  static const String food1 = "assets/images/food1.png";
-  static const String safety = "assets/images/safety.png";
-  static const String safety1 = "assets/images/safety1.png";
+  static const String safety = "assets/kids_learning_image/safety.png";
   static const String addimage = "assets/images/addimage.png";
-
-  // static const String ellipse16 = "assets/images/Ellipse16.png";
-  // static const String ellipse17 = "assets/images/Ellipse17.png";
-  // static const String ellipse18 = "assets/images/Ellipse18.png";
-  // static const String ellipse19 = "assets/images/Ellipse19.png";
-
-  static const String orangeroundedback = "assets/images/orangeroundedback.png";
   static const String whitesamallroundedback = "assets/images/whitesamallroundedback.png";
-
-  static const String safetyimg = "assets/images/safety (1).png";
   static const String nostories = "assets/images/nostories.png";
-
   static const String google = "assets/images/google.png";
   static const String facebook = "assets/images/facebook.png";
 
@@ -69,7 +49,6 @@ class AssetsPath {
   static String deleteIc = "assets/images/delete.svg";
   static String passwordChangeImg = "assets/images/PasswordChangeCooking.json";
   static String noRecipe = "assets/images/noRecipe.png";
-  static String delicious = "assets/images/delicious-salad-studio 1.png";
   static String check = "assets/images/check.svg";
   static String fillCheck = "assets/images/fillCheck.svg";
   static String fillCancel = "assets/images/fillCancel.svg";
@@ -108,7 +87,6 @@ class AssetsPath {
   static String knifeSkill5Img = "assets/kids_learning_image/knifeSkill5Img.png";
   static String knifeSkill6Img = "assets/kids_learning_image/knifeSkill6Img.png";
   static String chapter12Img = "assets/kids_learning_image/chapter12Img.png";
-  static String activityTopImg = "assets/kids_learning_image/activityTopImg.png";
   static String activityImg1 = "assets/kids_learning_image/activityImg1.png";
   static String twoEmoji = "assets/kids_learning_image/twoEmoji.png";
   static String quizBg = "assets/kids_learning_image/quizBg.png";
@@ -134,6 +112,24 @@ class AssetsPath {
   static String foodChapter11Img = "assets/kids_learning_image/foodChapter11Img.png";
   static String foodChapter13Img = "assets/kids_learning_image/foodChapter13Img.png";
   static String extensionImg = "assets/kids_learning_image/extensionImg.png";
+  static String bookReadImg = "assets/kids_learning_image/bookReadImg.png";
+  static String foodActivity4AImg = "assets/kids_learning_image/foodActivityImg4a.png";
+  static String sheff = "assets/kids_learning_image/shef.png";
+  static String maleFemaleSheff = "assets/kids_learning_image/maleFemaleSheff.png";
+  static String mixNuts = "assets/kids_learning_image/mixNuts.png";
+  static String rainbowSoup = "assets/kids_learning_image/rainbowSoup.png";
+  static String smoothie = "assets/kids_learning_image/smoothie.png";
+  static String foodActivity7Img = "assets/kids_learning_image/foodActivity7Img.png";
+  static String readBookBoy = "assets/kids_learning_image/readBookBoy.png";
+  static String kitchenCleanUpImg1 = "assets/kids_learning_image/kitchenCleanUpImg1.png";
+  static String kitchenCleanUpImg2 = "assets/kids_learning_image/kitchenCleanUpImg2.png";
+  static String kitchenCleanUpImg3 = "assets/kids_learning_image/kitchenCleanUpImg3.png";
+  static String hygieneChapter1Img = "assets/kids_learning_image/hygieneChapter1Img.png";
+  static String hygieneChapter2Img = "assets/kids_learning_image/hygieneChapter2Img.png";
+  static String hygieneChapter3Img = "assets/kids_learning_image/hygieneChapter3Img.png";
+  static String hygieneActivity1Img = "assets/kids_learning_image/hygieneActivity1Img.png";
+  static String washHandClean = "assets/kids_learning_image/washHandClean.png";
+
 
   static String allAboutFruits = "assets/kids_learning_image/allAboutFruits.png";
   static String allAboutHygiene = "assets/kids_learning_image/allAboutHygiene.png";
@@ -143,5 +139,13 @@ class AssetsPath {
   static String nuts = "assets/kids_learning_image/nuts.png";
   static String theBasic = "assets/kids_learning_image/theBasic.png";
   static String theSenses = "assets/kids_learning_image/theSenses.png";
+
+  // Tools.....
+  static String bowlImg = "assets/kids_learning_image/tools_img/bowlImg.png";
+  static String pot = "assets/kids_learning_image/tools_img/container.png";
+  static String mug = "assets/kids_learning_image/tools_img/mug.png";
+  static String spoon = "assets/kids_learning_image/tools_img/spoon.png";
+  static String tallGlass = "assets/kids_learning_image/tools_img/tallGlass.png";
+  static String blender = "assets/kids_learning_image/tools_img/blender.png";
 
 }

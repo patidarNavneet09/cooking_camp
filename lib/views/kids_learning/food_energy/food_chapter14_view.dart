@@ -28,7 +28,7 @@ class FoodChapter14View extends StatelessWidget {
                       children: [
                         hsized20,
                         UiUtils.buildBoldText("Italy",
-                            fonSize: 20.0, color: MyColor.pink),
+                            fontSize: 20.0, color: MyColor.pink),
 
                         hsized5,
                         // Additional content for bottom section
@@ -42,7 +42,7 @@ class FoodChapter14View extends StatelessWidget {
                         hsized10,
 
                         UiUtils.buildBoldText("All about Italy",
-                            fonSize: 16.0, color: MyColor.sky),
+                            fontSize: 16.0, color: MyColor.sky),
 
                         hsized10,
                         _buildParagraph(

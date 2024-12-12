@@ -26,7 +26,7 @@ class FoodChapter4View extends StatelessWidget {
                       "It all starts from the time you see and smell food and your mouth fills with saliva."),
                   _buildActivityBox(),
                   hsized10,
-                  _buildImage(AssetsPath.foodChapter4Img2,height:300),
+                  UiUtils.buildImage(AssetsPath.foodChapter4Img2,height:300),
                   _buildSectionTitle("Teeth"),
                   _buildText(
                       "Your teeth then get to do their important work of breaking down the food by chewing and crushing the food into small enough pieces for you to swallow.\n\nIt's very important to keep your teeth hard and strong so they can do their job."),
@@ -55,8 +55,11 @@ class FoodChapter4View extends StatelessWidget {
                       "An elephant’s tooth can weigh as much as three kilograms!! WOW!!",
                     ),
                   ),
-                  _buildJokeSection(),
-                  hsized45,
+                  Padding(
+                    padding: const EdgeInsets.only(left:15.0),
+                    child: UiUtils.buildJokeSection("Q. What time do you go to the dentist?","A. At tooth-hurty! HE! HE!"),
+                  ),
+                  hsized100,
                 ],
               ),
             ),
@@ -112,10 +115,6 @@ class FoodChapter4View extends StatelessWidget {
     );
   }
 
-  /// Image Widget
-  Widget _buildImage(String path, {double height = 160}) {
-    return Center(child: Image.asset(path, height: height));
-  }
 
   /// Activity Box Widget
   Widget _buildActivityBox() {
@@ -157,10 +156,10 @@ class FoodChapter4View extends StatelessWidget {
       children: imageOnRight
           ? [
         _buildTextColumn(texts),
-        _buildImage(imagePath),
+        UiUtils.buildImage(imagePath),
       ]
           : [
-        _buildImage(imagePath),
+        UiUtils.buildImage(imagePath),
         _buildTextColumn(texts),
       ],
     );
@@ -184,34 +183,7 @@ class FoodChapter4View extends StatelessWidget {
     );
   }
 
-  /// Joke Section Widget
-  Widget _buildJokeSection() {
-    return Padding(
-      padding: const EdgeInsets.only(top:20, bottom: 80,left:15),
-      child: Stack(
-        children: [
-          _buildImage(AssetsPath.foodChapter4Img5,height:220),
-          Container(
-            width: 270,
-            height: 100,
-            alignment: Alignment.centerLeft,
-            padding: const EdgeInsets.only(left:30.0,top: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("Q. What time do you go to the dentist?",
-                    style: semiBoldTextStyle(fontSize: 12.0, color: MyColor.pink)),
-                hsized8,
-                Text("A. At tooth-hurty! HE! HE!",
-                    style: semiBoldTextStyle(fontSize: 12.0, color: MyColor.white)),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+
 }
 
 

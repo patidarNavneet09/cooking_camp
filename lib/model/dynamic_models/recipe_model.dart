@@ -5,7 +5,6 @@ class RecipeModel {
   String? userId;
   String? name;
   String? bannerImage;
-
   String? updatedAt;
   String? createdAt;
   String? id;

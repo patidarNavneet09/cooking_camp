@@ -89,6 +89,7 @@ flutter:
   assets:
     - assets/images/
     - assets/kids_learning_image/
+    - assets/kids_learning_image/tools_img/
     - assets/
   #   - images/a_dot_ham.jpeg
 

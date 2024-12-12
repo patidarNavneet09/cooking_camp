@@ -4,6 +4,7 @@ import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/sized_box.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
 import 'package:cooking_champs/utils/navigators.dart';
+import 'package:cooking_champs/utils/ui_utils.dart';
 import 'package:cooking_champs/views/kids_learning/food_energy/foodRecipeActivityView.dart';
 import 'package:cooking_champs/views/kids_learning/food_energy/food_activity1_view.dart';
 import 'package:cooking_champs/views/kids_learning/food_energy/food_glossary_view.dart';
@@ -14,21 +15,20 @@ import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/quiz_v
 import 'package:cooking_champs/views/kids_learning/safty_kitchen_view.dart';
 import 'package:flutter/material.dart';
 List<String> skillList = [];
-class FoodEnergyChapter1View extends StatefulWidget {
-  const FoodEnergyChapter1View({super.key});
+class HygieneChapter1View extends StatefulWidget {
+  const HygieneChapter1View({super.key});
 
   @override
-  State<FoodEnergyChapter1View> createState() => _FoodEnergyChapter1ViewState();
+  State<HygieneChapter1View> createState() => _HygieneChapter1ViewState();
 }
 
-class _FoodEnergyChapter1ViewState extends State<FoodEnergyChapter1View> {
+class _HygieneChapter1ViewState extends State<HygieneChapter1View> {
 
 
   addSkills() {
     setState(() {
       skillList = [
         Languages.of(context)!.activities,
-        Languages.of(context)!.recipes,
         Languages.of(context)!.glossary,
         Languages.of(context)!.quizTime
       ];
@@ -40,35 +40,20 @@ class _FoodEnergyChapter1ViewState extends State<FoodEnergyChapter1View> {
     addSkills();
     final size = MediaQuery.of(context);
     return  Scaffold(
-      backgroundColor: MyColor.pink,
+      backgroundColor: MyColor.green,
       body: Column(
         children: [
 
           Padding(
             padding: const EdgeInsets.only(top:50.0,left:20,right: 20,bottom: 20),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                InkWell(
-                  radius: 80,
-                  onTap: (){
-                    setState(() {
-                      currentIndex = 0;
-                    });
-                    Navigator.pop(context);
-                  },
-                  child: Icon(Icons.arrow_back_ios,size:28,),
-                ),
-                SizedBox(width:10),
-                Text("Food is energy",style:mediumTextStyle(fontSize:18.0, color:MyColor.black),),
-              ],
-            ),
+            child:UiUtils.hygieneAppBar(()=> Navigator.pop(context)),
           ),
+
 
           Padding(
             padding: const EdgeInsets.symmetric(horizontal:20.0),
             child: Image.asset(
-                AssetsPath.foodEnergyImg1
+                AssetsPath.hygieneChapter1Img
             ),
           ),
 
@@ -83,13 +68,19 @@ class _FoodEnergyChapter1ViewState extends State<FoodEnergyChapter1View> {
                   children: [
                     Text(Languages.of(context)!.whatInside,style:semiBoldTextStyle(fontSize:20.0, color:MyColor.white),),
                     hsized8,
-                    Text("The trail mix story",style:semiBoldTextStyle(fontSize:17.0, color:MyColor.white),),
+                    Text("What is Hygiene?",style:semiBoldTextStyle(fontSize:17.0, color:MyColor.white),),
                     hsized8,
-                    Text("Digestion",style:semiBoldTextStyle(fontSize:17.0, color:MyColor.white),),
+                    Text("What is Food Poisoning?",style:semiBoldTextStyle(fontSize:17.0, color:MyColor.white),),
                     hsized8,
-                    Text("Rhyming Rules to stop decay",style:semiBoldTextStyle(fontSize:17.0, color:MyColor.white),),
+                    Text("What is Food Poisoning?",style:semiBoldTextStyle(fontSize:17.0, color:MyColor.white),),
                     hsized8,
-                    Text("A healthy diet: eat a rainbow",style:semiBoldTextStyle(fontSize:17.0, color:MyColor.white),),
+                    Text("Wash hands clean chart",style:semiBoldTextStyle(fontSize:17.0, color:MyColor.white),),
+
+                    hsized8,
+                    Text("Cooking Champs Hand Washing song",style:semiBoldTextStyle(fontSize:17.0, color:MyColor.white),),
+
+                    hsized8,
+                    Text("Cooking Champs Hand Washing song",style:semiBoldTextStyle(fontSize:17.0, color:MyColor.white),),
 
                     hsized15,
                     Container(
@@ -107,7 +98,7 @@ class _FoodEnergyChapter1ViewState extends State<FoodEnergyChapter1View> {
                               }else if(index == 2){
                                 CustomNavigators.pushNavigate(FoodGlossaryView(), context);
                               }else if(index ==3){
-                                CustomNavigators.pushNavigate(QuizPage(page:FoodQuizTimeView(), bgColor:MyColor.pink), context);
+                                CustomNavigators.pushNavigate(QuizPage(page:FoodQuizTimeView(), bgColor:MyColor.green), context);
                               }
                             },
                             child: btnUI(skillList[index], index),

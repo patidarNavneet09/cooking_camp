@@ -4,7 +4,6 @@ import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/model/dynamic_models/user_identity_model.dart';
 import 'package:cooking_champs/services/api_path.dart';
 import 'package:cooking_champs/services/api_services.dart';
-import 'package:cooking_champs/services/notification_services.dart';
 import 'package:cooking_champs/services/user_prefences.dart';
 import 'package:cooking_champs/utils/all_dialogs.dart';
 import 'package:cooking_champs/utils/navigators.dart';
@@ -168,7 +167,7 @@ class _DashBoardViewState extends State<DashBoardView> {
     if (isTabExplore!) {
       switch (tabCheck) {
         case "kids":
-          return const KidsLearningView();
+          return const KidsLearningView(type: '',);
         case "OurStories":
           return const MemoriesView();
         case "Aboutus":

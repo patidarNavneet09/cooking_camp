@@ -24,7 +24,7 @@ class FoodChapter10View extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 UiUtils.buildBoldText("DON’T FORGET WATER!",
-                    fonSize: 20.0, color: MyColor.green),
+                    fontSize: 20.0, color: MyColor.green),
                 hsized15,
                 UiUtils.buildBoldText(
                     "Water keeps us cool; it makes up most of our blood and helps us digest our food.",

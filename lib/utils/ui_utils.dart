@@ -274,7 +274,7 @@ class UiUtils{
       ],
     );
   }
-  foodEnergyAppBar(GestureTapCallback  onTap){
+  foodEnergyAppBar(GestureTapCallback  onTap,{String text = "Food is energy" }){
     return   Row(
       children: [
         InkWell(
@@ -283,8 +283,24 @@ class UiUtils{
         ),
         const SizedBox(width: 10),
         Text(
-          "Food is energy",
+          text,
           style: mediumTextStyle(fontSize: 18.0, color: MyColor.black),
+        ),
+      ],
+    );
+  }
+
+ static hygieneAppBar(GestureTapCallback  onTap,{String text = "All About Hygiene" ,Color color = MyColor.white}){
+    return   Row(
+      children: [
+        InkWell(
+          onTap:onTap,
+          child:  Icon(Icons.arrow_back_ios, size: 24,color: color,),
+        ),
+        const SizedBox(width: 10),
+        Text(
+          text,
+          style: mediumTextStyle(fontSize: 18.0, color: color),
         ),
       ],
     );
@@ -300,10 +316,10 @@ class UiUtils{
         ));
   }
 
- static Widget buildNormalText(String text,{double fonSize  = 16.0,Color color = MyColor.black}) {
+ static Widget buildNormalText(String text,{double fontSize  = 16.0,Color color = MyColor.black}) {
     return Text(
       text,
-      style: regularNormalTextStyle(fontSize:fonSize, color:color),
+      style: regularNormalTextStyle(fontSize:fontSize, color:color),
     );
   }
 
@@ -313,10 +329,17 @@ class UiUtils{
       style:regularTextStyle(fontSize:fonSize, color:color),
     );
   }
-  static Widget buildBoldText(String text,{double fonSize  = 16.0,Color color = MyColor.black}) {
+  static Widget buildBoldText(String text,{double fontSize  = 16.0,Color color = MyColor.black}) {
     return Text(
       text,
-      style: boldTextStyle(fontSize:fonSize, color: color),
+      style: boldTextStyle(fontSize:fontSize, color: color),
+    );
+  }
+
+  static Widget buildSemiBoldText(String text,{double fontSize  = 15.0,Color color = MyColor.black}) {
+    return Text(
+      text,
+      style: semiBoldTextStyle(fontSize:fontSize, color: color),
     );
   }
   static Widget buildMediumText(String text,{double fonSize  = 16.0,Color color = MyColor.black}) {
@@ -347,16 +370,50 @@ class UiUtils{
   }
 
      // Helper Widgets
-  static Widget buildParagraph(String prefix, String highlight, String suffix,{Color color =MyColor.pink }) {
+  static Widget buildParagraph(String prefix, String highlight, String suffix,{Color color =MyColor.pink, double highlightFontSize = 15.0,double regularFontSize = 14.0 }) {
     return RichText(
       text: TextSpan(
-        style: regularTextStyle(fontSize: 14.0, color: MyColor.black),
+        style: regularTextStyle(fontSize:regularFontSize, color: MyColor.black),
         children: [
           TextSpan(text: prefix),
           TextSpan(
               text: highlight,
-              style: boldTextStyle(fontSize: 15.0, color:color)),
+              style: boldTextStyle(fontSize:highlightFontSize, color:color)),
           TextSpan(text: suffix),
+        ],
+      ),
+    );
+  }
+
+  /// Image Widget
+static  Widget buildImage(String path, {double height = 160}) {
+    return Center(child: Image.asset(path, height: height));
+  }
+
+  /// Joke Section Widget
+ static Widget buildJokeSection(String que,String ans) {
+    return Padding(
+      padding: const EdgeInsets.only(top:10, bottom:10,left:0),
+      child: Stack(
+        children: [
+          buildImage(AssetsPath.foodChapter4Img5,height:220),
+          Container(
+            width: 250,
+            height: 110,
+            alignment: Alignment.centerLeft,
+            padding: const EdgeInsets.only(left:30.0,top:25),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(que,
+                    style: semiBoldTextStyle(fontSize: 12.0, color: MyColor.pink)),
+                hsized8,
+                Text(ans,
+                    style: semiBoldTextStyle(fontSize: 12.0, color: MyColor.white)),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -393,4 +450,75 @@ class UiUtils{
       ],
     );
   }
+
+  static  Widget buildBulletPoints(List<String> points,{double bottomPadding = 0}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: points.map((point) => Padding(
+        padding:  EdgeInsets.only(bottom:bottomPadding),
+        child: Text("• $point", style: regularNormalTextStyle(fontSize: 16.0, color: MyColor.black)),
+      )).toList(),
+    );
+  }
+static  Widget buildSteps(List<String> steps,{double bottomPadding = 0.0,String step = ""}) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: steps
+        .asMap()
+        .entries
+        .map((entry) => Padding(
+          padding:  EdgeInsets.only(bottom:bottomPadding),
+          child:buildParagraph(step.isNotEmpty?"":"$step ${entry.key + 1}",step.isNotEmpty?"$step ${entry.key + 1}":"",".${entry.value}",color: MyColor.black,highlightFontSize:16.0,regularFontSize:16.0),
+        //  Text("step${entry.key + 1}. ${entry.value}",
+        //   style:
+        //   regularNormalTextStyle(fontSize: 16.0, color: MyColor.black)
+    //),
+        ))
+        .toList(),
+  );
+}
+  static bookReadGirl(Color color,String img){
+    return Stack(
+      children: [
+        ClipPath(
+          clipper: BottomCutClipper(),
+          child: Container(
+            margin: EdgeInsets.only(top: 5),
+            height:76, // Height of the container
+            width:90,
+            color:color, // Background color
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left:3.0),
+          child: Image.asset(
+           img, // Replace with your asset image
+            width:90,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class BottomCutClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+
+    // Start from the top-left corner
+    path.lineTo(0, size.height); // Bottom-left cut (50px up from bottom-left)
+    path.lineTo(50, size.height-18); // Draw diagonal cut to the bottom edge
+
+    path.lineTo(size.width , size.height); // Bottom-right cut (50px up)
+    path.lineTo(size.width, size.height - 50); // Draw diagonal cut to bottom-right corner
+
+    path.lineTo(size.width, 0); // Top-right corner
+    path.close(); // Connect back to top-left
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }

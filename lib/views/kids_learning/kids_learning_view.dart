@@ -5,6 +5,8 @@ import 'package:cooking_champs/constant/stringfile.dart/language.dart';
 import 'package:cooking_champs/utils/navigators.dart';
 import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter1_view.dart';
 import 'package:cooking_champs/views/kids_learning/food_energy/food_energy_view.dart';
+import 'package:cooking_champs/views/kids_learning/hygiene/hygiene_chapter1_view.dart';
+import 'package:cooking_champs/views/kids_learning/hygiene/hygine_view.dart';
 import 'package:cooking_champs/views/kids_learning/safty_kitchen_view.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_grid/responsive_grid.dart';
@@ -13,7 +15,8 @@ import 'package:touch_ripple_effect/touch_ripple_effect.dart';
 import '../dashboard.dart';
 
 class KidsLearningView extends StatefulWidget {
-  const KidsLearningView({super.key});
+ final String type ;
+  const KidsLearningView({super.key,required this.type});
 
   @override
   State<KidsLearningView> createState() => _KidsLearningViewState();
@@ -74,11 +77,21 @@ List<KidsLearningModel> topicList  =[];
             radius: 80,
             borderRadius: BorderRadius.circular(30),
             onTap: () {
-              setState(() {
-                pageIndex = 0;
-                tabCheck = "";
-                isTabExplore = false;
-              });
+              if(widget.type == "Food Activity"){
+                setState(() {
+                  pageIndex = 0;
+                  tabCheck = "";
+                  isTabExplore = false;
+                });
+                CustomNavigators.pushRemoveUntil(DashBoardView(pageIndex: 0,), context);
+              }else{
+                setState(() {
+                  pageIndex = 0;
+                  tabCheck = "";
+                  isTabExplore = false;
+                });
+              }
+
             },
             child: const Padding(
               padding: EdgeInsets.only(left: 5.0, right: 10),
@@ -101,28 +114,6 @@ List<KidsLearningModel> topicList  =[];
   }
 
   Widget _buildBody(BuildContext context) {
-    const colors = [
-      MyColor.blueLite,
-      MyColor.colorFFFED6,
-      MyColor.colorE2EBFF,
-      MyColor.liteOrange,
-    ];
-
-    const images = [
-      AssetsPath.safety,
-      AssetsPath.food,
-      AssetsPath.food1,
-      AssetsPath.safety1,
-    ];
-
-    const titles = [
-      "Safety in the \nkitchen",
-      "Food is Energy",
-      "Safety in the \nkitchen",
-      "Food is Energy",
-    ];
-
-
 
     return SingleChildScrollView(
       child: Padding(
@@ -137,7 +128,7 @@ List<KidsLearningModel> topicList  =[];
                   borderRadius: BorderRadius.circular(27),
                   rippleColor: Colors.white,
                   onTap: () => _handleTileTap(context,index),
-                  child: _buildGridTile(MyColor.pink, topicList[index].img, topicList[index].title),
+                  child: _buildGridTile(index == 2 || index == 4?MyColor.white: MyColor.black, topicList[index].img, topicList[index].title),
                 ),
               ),
             );
@@ -154,7 +145,10 @@ List<KidsLearningModel> topicList  =[];
         CustomNavigators.pushNavigate(SafetyKitchenView(), context);
       }else if(index == 1){
         CustomNavigators.pushNavigate(FoodEnergyView(), context);
+      }else if(index == 2){
+        CustomNavigators.pushNavigate(AllAboutHygieneView(), context);
       }
+      hygieneCurrentPage = 0;
       currentPage = 0;
       currentIndex = 0;
       setState(() {});
@@ -167,7 +161,6 @@ List<KidsLearningModel> topicList  =[];
         Container(
           height: 250,
           decoration: BoxDecoration(
-            color: color,
             borderRadius: BorderRadius.circular(30),
           ),
           child:Image.asset(imagePath, fit: BoxFit.cover),
@@ -176,12 +169,7 @@ List<KidsLearningModel> topicList  =[];
           padding: const EdgeInsets.all(15.0),
           child: Text(
             title,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
-              fontFamily: Fonts.beVietnamProRegular,
-              color: MyColor.black,
-            ),
+            style:regularTextStyle(fontSize:16.0, color: color)
           ),
         ),
       ],

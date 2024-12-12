@@ -4,9 +4,9 @@ import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/sized_box.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
 import 'package:cooking_champs/utils/navigators.dart';
+import 'package:cooking_champs/utils/ui_utils.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:scribble/scribble.dart';
 
 import '../../../widgets/global_button.dart';
 
@@ -69,8 +69,6 @@ class _ActivityTwoViewState extends State<ActivityTwoView> {
                               CustomNavigators.popNavigate(context);
                             }
                           });
-
-
                         },
                         child: Icon(Icons.arrow_back_ios,color: MyColor.black,size:28,),
                       ),
@@ -78,7 +76,8 @@ class _ActivityTwoViewState extends State<ActivityTwoView> {
                     ],
                   ),
 
-                  Image.asset(AssetsPath.activityTopImg,height: 105,width:120)
+                  UiUtils.bookReadGirl(MyColor.darkOrange,AssetsPath.bookReadImg)
+                  //Image.asset(AssetsPath.activityTopImg,height: 105,width:120)
                 ],
               ),
             ),
