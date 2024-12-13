@@ -1,5 +1,6 @@
 import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/sized_box.dart';
+import 'package:cooking_champs/views/kids_learning/hygiene/hygiene_quiz_time_view.dart';
 import 'package:cooking_champs/widgets/global_button.dart';
 import 'package:flutter/material.dart';
 import 'package:cooking_champs/constant/assets_path.dart';
@@ -11,7 +12,9 @@ import 'package:mobkit_dashed_border/mobkit_dashed_border.dart';
 class QuizPage extends StatefulWidget {
   final Widget page;
   final Color bgColor;
-  const QuizPage({super.key,required this.page,required this.bgColor});
+  final Color btnColor;
+  final Color btnTextColor;
+  const QuizPage({super.key,required this.page,required this.bgColor,this.btnColor = MyColor.appTheme,this.btnTextColor = MyColor.white});
 
   @override
   State<QuizPage> createState() => _QuizPageState();
@@ -98,13 +101,16 @@ class _QuizPageState extends State<QuizPage> {
       bottomSheet:  Container(
           color:widget.bgColor,
           padding: EdgeInsets.only(left:20,right:20,bottom:20,top: 0),
-          child:GlobalButton(Languages.of(context)!.submit,MyColor.appTheme,MyColor.appTheme, 55,double.infinity,submitOnTap,55,0,0,mediumTextStyle(fontSize:16.0, color:MyColor.white))
+          child:GlobalButton(Languages.of(context)!.submit,widget.btnColor,widget.btnColor, 55,double.infinity,submitOnTap,55,0,0,mediumTextStyle(fontSize:16.0, color:widget.btnTextColor))
       ),
     );
   }
 
   void submitOnTap() {
     Navigator.pop(context);
+    debugPrint(q1Controller.text);
+    debugPrint(q2Controller.text);
+    debugPrint(q2Controller.text);
   }
 
 
@@ -114,8 +120,10 @@ class _QuizPageState extends State<QuizPage> {
 class QuizQuestion extends StatelessWidget {
   final String questionNumber;
   final String questionText;
+  final TextEditingController? controller;
+  final int maxLine;
 
-  const QuizQuestion({super.key, required this.questionNumber, required this.questionText});
+  const QuizQuestion({super.key, required this.questionNumber, required this.questionText,this.controller,this.maxLine = 2 });
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +151,7 @@ class QuizQuestion extends StatelessWidget {
   textField(){
     return Stack(
       children: [
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < maxLine; i++)
           Container(
             margin: EdgeInsets.only(
               top: 4 + (i + 1) * 28,
@@ -161,6 +169,7 @@ class QuizQuestion extends StatelessWidget {
          SizedBox(
           height: 97,
           child: TextField(
+            controller:controller,
             scrollPhysics: NeverScrollableScrollPhysics(),
             decoration: InputDecoration(border: InputBorder.none),
             cursorHeight: 22,
@@ -171,8 +180,9 @@ class QuizQuestion extends StatelessWidget {
               fontSize: 20.0,
             ),
             keyboardType: TextInputType.multiline,
-            expands: true,
-            maxLines: null,
+           // expands: true,
+            maxLines: maxLine,
+            minLines:1,
           ),
         ),
       ],

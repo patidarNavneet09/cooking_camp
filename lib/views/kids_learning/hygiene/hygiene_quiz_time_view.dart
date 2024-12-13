@@ -6,15 +6,14 @@ TextEditingController q2Controller = TextEditingController();
 TextEditingController q3Controller = TextEditingController();
 TextEditingController q4Controller = TextEditingController();
 TextEditingController q5Controller = TextEditingController();
-
-class SafetyQuizTimeView extends StatefulWidget {
-  const SafetyQuizTimeView({super.key});
+class HygieneQuizTimeView extends StatefulWidget {
+  const HygieneQuizTimeView({super.key});
 
   @override
-  State<SafetyQuizTimeView> createState() => _SafetyQuizTimeViewState();
+  State<HygieneQuizTimeView> createState() => _HygieneQuizTimeViewState();
 }
 
-class _SafetyQuizTimeViewState extends State<SafetyQuizTimeView> {
+class _HygieneQuizTimeViewState extends State<HygieneQuizTimeView> {
   @override
   Widget build(BuildContext context) {
     return
@@ -24,30 +23,30 @@ class _SafetyQuizTimeViewState extends State<SafetyQuizTimeView> {
           // Questions
           QuizQuestion(
             questionNumber: "1",
-            questionText: "What should you never do in the kitchen?",
-            controller: q1Controller,
+            questionText: "What is Hygiene another word for?",
+            controller: q1Controller, maxLine:2,
           ),
           QuizQuestion(
             questionNumber: "2",
-            questionText: "Where should handles of pots and pans point?",
+            questionText: "Why is it important to wash your hands with soapy water?",
             controller: q2Controller,
           ),
+
           QuizQuestion(
             questionNumber: "3",
-            questionText: "How should you carry a knife?",
+            questionText: "How must you wear your hair when in the kitchen cooking?",
             controller: q3Controller,
           ),
+
           QuizQuestion(
             questionNumber: "4",
-            questionText:
-            "What should you keep kitchen electrical appliances away from?",
+            questionText: "What can germs do?",
             controller: q4Controller,
           ),
-          QuizQuestion(
+        QuizQuestion(
             questionNumber: "5",
-            questionText:
-            "What is the first thing Cooking Champs must do before they start cooking?",
-            controller: q5Controller,
+            questionText: "What is a germs least favourite TV show?",
+             controller: q5Controller,
           ),
 
         ],

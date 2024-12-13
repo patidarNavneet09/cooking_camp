@@ -28,7 +28,6 @@ class _HygieneChapter4ViewState extends State<HygieneChapter4View> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
 
-
                     UiUtils.buildBoldText("Wash hands clean",fontSize:23.0,color:MyColor.green),
                     hsized20,
                     Image.asset(AssetsPath.washHandClean),

@@ -8,6 +8,7 @@ import 'package:cooking_champs/views/kids_learning/food_energy/food_energy_view.
 import 'package:cooking_champs/views/kids_learning/hygiene/hygiene_chapter1_view.dart';
 import 'package:cooking_champs/views/kids_learning/hygiene/hygine_view.dart';
 import 'package:cooking_champs/views/kids_learning/safty_kitchen_view.dart';
+import 'package:cooking_champs/views/kids_learning/the_basic/the_basic_view.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 import 'package:touch_ripple_effect/touch_ripple_effect.dart';
@@ -77,7 +78,7 @@ List<KidsLearningModel> topicList  =[];
             radius: 80,
             borderRadius: BorderRadius.circular(30),
             onTap: () {
-              if(widget.type == "Food Activity"){
+              if(widget.type == "Food Activity" || widget.type == "Hygiene"){
                 setState(() {
                   pageIndex = 0;
                   tabCheck = "";
@@ -147,7 +148,10 @@ List<KidsLearningModel> topicList  =[];
         CustomNavigators.pushNavigate(FoodEnergyView(), context);
       }else if(index == 2){
         CustomNavigators.pushNavigate(AllAboutHygieneView(), context);
+      }else if(index == 3){
+        CustomNavigators.pushNavigate(TheBasicView(), context);
       }
+      basicCurrentPage = 0;
       hygieneCurrentPage = 0;
       currentPage = 0;
       currentIndex = 0;

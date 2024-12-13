@@ -59,6 +59,7 @@ dependencies:
   flutter_hooks: ^0.20.5
   mobkit_dashed_border: ^0.0.7
   scribble: ^0.10.0+1
+  flutter_drawing_board: ^0.9.5
 
   flutter_localizations:
     sdk: flutter

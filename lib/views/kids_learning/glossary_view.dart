@@ -2,32 +2,36 @@ import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/sized_box.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
+import 'package:cooking_champs/model/static_model/glossary_model.dart';
 import 'package:cooking_champs/utils/ui_utils.dart';
 import 'package:flutter/material.dart';
 
-class FoodGlossaryView extends StatelessWidget {
-  const FoodGlossaryView({super.key});
+List<GlossaryModel> glossaryList = [];
+class GlossaryView extends StatelessWidget {
+  const GlossaryView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       backgroundColor: MyColor.white,
-      appBar:AppBar(
-        backgroundColor:MyColor.white,
-        leading: Padding(
-          padding: const EdgeInsets.only(left:20.0),
-          child: InkWell(
-            onTap:()=> Navigator.pop(context),
-            child: const Icon(Icons.arrow_back_ios, size: 24),
-          ),
-        ),
-        title: Text(
-          Languages.of(context)!.glossary,
-          style: mediumTextStyle(fontSize: 18.0, color: MyColor.black),
-        ) ,
-        centerTitle: false,
-      ),
+      appBar:PreferredSize(preferredSize: Size.fromHeight(70)
+          , child: Padding(padding: EdgeInsets.only(top:50,left:20,right: 20,bottom:20),
+          child: UiUtils.hygieneAppBar(()=> Navigator.pop(context),text:Languages.of(context)!.glossary,color:MyColor.black)),),
+
       body: Padding(
+        padding: EdgeInsets.only(left:20,right:20,bottom:40),
+        child: ListView.builder(
+          itemCount: glossaryList.length,
+          itemBuilder: (context, index) {
+            return  Padding(
+              padding: const EdgeInsets.only(bottom:10.0),
+              child: UiUtils.buildParagraph("","${glossaryList[index].title} : ", glossaryList[index].description,color: MyColor.black),
+            );
+          },
+        ),
+      ),
+
+     /* Padding(
         padding: EdgeInsets.symmetric(horizontal:20),
         child: SingleChildScrollView(
           child: Column(
@@ -69,7 +73,7 @@ class FoodGlossaryView extends StatelessWidget {
             ],
           ),
         ),
-      ),
+      ),*/
     );
   }
 }

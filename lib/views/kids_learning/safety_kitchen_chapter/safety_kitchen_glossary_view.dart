@@ -3,18 +3,17 @@ import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/sized_box.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
-import 'package:cooking_champs/utils/ui_utils.dart';
 import 'package:cooking_champs/views/kids_learning/safty_kitchen_view.dart';
 import 'package:flutter/material.dart';
 
-class GlossaryView extends StatefulWidget {
-  const GlossaryView({super.key});
+class SafetyKitchenGlossaryView extends StatefulWidget {
+  const SafetyKitchenGlossaryView({super.key});
 
   @override
-  State<GlossaryView> createState() => _GlossaryViewState();
+  State<SafetyKitchenGlossaryView> createState() => _SafetyKitchenGlossaryViewState();
 }
 
-class _GlossaryViewState extends State<GlossaryView> {
+class _SafetyKitchenGlossaryViewState extends State<SafetyKitchenGlossaryView> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context);

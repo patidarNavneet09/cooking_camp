@@ -19,20 +19,6 @@ class FoodChapter8View extends StatelessWidget {
             children: [
               hsized40,
               UiUtils().foodEnergyAppBar(() => Navigator.pop(context)),
-              // Back Button & Title
-             /* Row(
-                children: [
-                  InkWell(
-                    onTap: () => Navigator.pop(context),
-                    child: const Icon(Icons.arrow_back_ios, size: 24),
-                  ),
-                  const SizedBox(width: 10),
-                  Text(
-                    "Food is energy",
-                    style: boldTextStyle(fontSize: 18.0, color: MyColor.black),
-                  ),
-                ],
-              ),*/
               hsized20,
 
               // Section Title
@@ -124,12 +110,6 @@ class FoodChapter8View extends StatelessWidget {
     );
   }
 
-  Widget _buildPlainText(String text) {
-    return Text(
-      text,
-      style: mediumTextStyle(fontSize: 15.0, color: MyColor.black),
-    );
-  }
 
   Widget _buildRegularText(String text) {
     return Text(

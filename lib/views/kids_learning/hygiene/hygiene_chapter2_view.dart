@@ -7,11 +7,11 @@ import 'package:cooking_champs/utils/navigators.dart';
 import 'package:cooking_champs/utils/ui_utils.dart';
 import 'package:cooking_champs/views/kids_learning/food_energy/foodRecipeActivityView.dart';
 import 'package:cooking_champs/views/kids_learning/food_energy/food_activity1_view.dart';
-import 'package:cooking_champs/views/kids_learning/food_energy/food_glossary_view.dart';
+import 'package:cooking_champs/views/kids_learning/glossary_view.dart';
 import 'package:cooking_champs/views/kids_learning/food_energy/food_quiz_time_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/activity_one_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/glossary_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/quiz_view.dart';
+import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/safety_kitchen_glossary_view.dart';
+import 'package:cooking_champs/views/kids_learning/quiz_view.dart';
 import 'package:cooking_champs/views/kids_learning/safty_kitchen_view.dart';
 import 'package:flutter/material.dart';
 class HygieneChapter2View extends StatefulWidget {

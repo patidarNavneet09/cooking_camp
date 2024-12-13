@@ -1,3 +1,4 @@
+import 'package:cooking_champs/constant/assets_path.dart';
 import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/utils/ui_utils.dart';
 import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter10_view.dart';
@@ -22,33 +23,39 @@ import 'package:cooking_champs/views/kids_learning/hygiene/hygiene_chapter6_view
 import 'package:cooking_champs/views/kids_learning/hygiene/hygiene_chapter7_view.dart';
 import 'package:cooking_champs/views/kids_learning/hygiene/hygiene_chapter8_view.dart';
 import 'package:cooking_champs/views/kids_learning/hygiene/hygiene_chapter9_view.dart';
+import 'package:cooking_champs/views/kids_learning/the_basic/basic_chapter1_view.dart';
+import 'package:cooking_champs/views/kids_learning/the_basic/basic_chapter2_view.dart';
+import 'package:cooking_champs/views/kids_learning/the_basic/basic_chapter3_view.dart';
+import 'package:cooking_champs/views/kids_learning/the_basic/basic_chapter4_view.dart';
+import 'package:cooking_champs/views/kids_learning/the_basic/basic_chapter5_view.dart';
 import 'package:flutter/material.dart';
 
-int hygieneCurrentPage = 0;
+int basicCurrentPage = 0;
 List<String> skillList = [];
-class AllAboutHygieneView extends StatefulWidget {
-  const AllAboutHygieneView({super.key});
+class TheBasicView extends StatefulWidget {
+  const TheBasicView({super.key});
 
   @override
-  State<AllAboutHygieneView> createState() => _AllAboutHygieneViewState();
+  State<TheBasicView> createState() => _TheBasicViewState();
 }
 
 
 final PageController _pageController = PageController();
 
-class _AllAboutHygieneViewState extends State<AllAboutHygieneView> {
+class _TheBasicViewState extends State<TheBasicView> {
   List<Widget> pageList = [
-    HygieneChapter1View(),
-    HygieneChapter2View(),
-    HygieneChapter3View(),
-    HygieneChapter4View(),
-    HygieneChapter5View(),
-    HygieneChapter6View(),
-    HygieneChapter7View(),
-    HygieneChapter8View(),
-    HygieneChapter9View(),
-    FoodChapter10View(),
-    FoodChapter11View(),
+    BasicChapter1View(),
+    BasicChapter2View(),
+    BasicChapter3View(image:AssetsPath.basicImg1,height:630,),
+    BasicChapter3View(image:AssetsPath.basicImg2,height:590),
+    BasicChapter3View(image:AssetsPath.basicImg3,height:730),
+    BasicChapter3View(image:AssetsPath.basicImg4,height:613),
+    BasicChapter3View(image:AssetsPath.basicImg5,height:640),
+    BasicChapter3View(image:AssetsPath.basicImg6,height:730),
+    BasicChapter3View(image:AssetsPath.basicImg7,height:571),
+    BasicChapter3View(image:AssetsPath.basicImg8,height:400),
+    BasicChapter4View(),
+    BasicChapter5View(),
     FoodChapter12View(),
     FoodChapter14View(),
   ];
@@ -61,13 +68,24 @@ class _AllAboutHygieneViewState extends State<AllAboutHygieneView> {
       backgroundColor: MyColor.orange,
       body: Stack(
         children: [
-          PageView.builder(
-              itemCount: pageList.length,
-              controller: _pageController,
-              onPageChanged: onPageChanged,
-              itemBuilder: (context, int index) {
-                return Container(child: pageList[hygieneCurrentPage]);
-              }),
+          Column(
+            children: [
+              Container(
+                color:basicCurrentPage == 0?MyColor.purple:MyColor.white,
+                padding: const EdgeInsets.only(top:40.0,left:20,right: 20,bottom: 20),
+                child:UiUtils.hygieneAppBar(()=> Navigator.pop(context),text: "The Basic",color: basicCurrentPage == 0?MyColor.white:MyColor.black),
+              ),
+              Expanded(
+                child: PageView.builder(
+                    itemCount: pageList.length,
+                    controller: _pageController,
+                    onPageChanged: onPageChanged,
+                    itemBuilder: (context, int index) {
+                      return Container(child: pageList[basicCurrentPage]);
+                    }),
+              ),
+            ],
+          ),
 
 
           UiUtils.roundedPage()
@@ -96,9 +114,9 @@ class _AllAboutHygieneViewState extends State<AllAboutHygieneView> {
                             children: [
                               SizedBox(
                                 child: _indicatorDotsWidget(
-                                    color: hygieneCurrentPage == i
+                                    color: basicCurrentPage == i
                                         ? MyColor.appTheme
-                                        : hygieneCurrentPage == 2
+                                        : basicCurrentPage == 2
                                         ? MyColor.blueLite1
                                         : const Color.fromARGB(
                                         255, 219, 217, 217),
@@ -131,7 +149,7 @@ class _AllAboutHygieneViewState extends State<AllAboutHygieneView> {
 
   void onPageChanged(int value) {
     setState(() {
-      hygieneCurrentPage = value;
+      basicCurrentPage = value;
     });
   }
 

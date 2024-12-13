@@ -5,8 +5,8 @@ import 'package:cooking_champs/constant/sized_box.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
 import 'package:cooking_champs/utils/navigators.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/activity_one_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/glossary_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/quiz_view.dart';
+import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/safety_kitchen_glossary_view.dart';
+import 'package:cooking_champs/views/kids_learning/quiz_view.dart';
 import 'package:cooking_champs/views/kids_learning/safty_kitchen_view.dart';
 import 'package:flutter/material.dart';
 class FoodEnergyChapter2View extends StatefulWidget {

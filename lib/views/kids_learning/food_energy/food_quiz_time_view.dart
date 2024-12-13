@@ -2,8 +2,14 @@ import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/sized_box.dart';
 import 'package:cooking_champs/utils/ui_utils.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/quiz_view.dart';
+import 'package:cooking_champs/views/kids_learning/quiz_view.dart';
 import 'package:flutter/material.dart';
+
+TextEditingController q1Controller = TextEditingController();
+TextEditingController q2Controller = TextEditingController();
+TextEditingController q3Controller = TextEditingController();
+TextEditingController q4Controller = TextEditingController();
+TextEditingController q5Controller = TextEditingController();
 
 class FoodQuizTimeView extends StatefulWidget {
   const FoodQuizTimeView({super.key});
@@ -23,17 +29,19 @@ class _FoodQuizTimeViewState extends State<FoodQuizTimeView> {
           QuizQuestion(
             questionNumber: "1",
             questionText: "Why do we need food?",
+            controller: q1Controller,
           ),
           QuizQuestion(
             questionNumber: "2",
             questionText: "What should we eat every day?",
+            controller: q1Controller,
           ),
 
 
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              UiUtils.buildMediumText("3. We should eat fast food",fonSize:15.0),
+              UiUtils.buildMediumText("3. We should eat fast food",fontSize:15.0),
               Wrap(
                 children: [
                   answerUI("a) every day?"),
@@ -49,7 +57,7 @@ class _FoodQuizTimeViewState extends State<FoodQuizTimeView> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              UiUtils.buildMediumText("4. Our body needs food to:",fonSize:15.0),
+              UiUtils.buildMediumText("4. Our body needs food to:",fontSize:15.0),
               Wrap(
                 children: [
                   answerUI("a) stay alive	"),
@@ -63,14 +71,14 @@ class _FoodQuizTimeViewState extends State<FoodQuizTimeView> {
           hsized30,
           QuizQuestion(
             questionNumber: "5",
-            questionText:
-            "Nutrients are locked inside the food we eat? True or False?",
+            questionText: "Nutrients are locked inside the food we eat? True or False?",
+            controller: q1Controller,
           ),
 
           QuizQuestion(
             questionNumber: "6",
-            questionText:
-            "We get energy from the sun? True or False?",
+            questionText: "We get energy from the sun? True or False?",
+            controller: q1Controller,
           ),
 
         ],
@@ -80,6 +88,6 @@ class _FoodQuizTimeViewState extends State<FoodQuizTimeView> {
   answerUI(String text){
     return Container(
         padding: EdgeInsets.only(right: 20,top:8,bottom: 5),
-        child: UiUtils.buildRegularText(text,fonSize:14.0));
+        child: UiUtils.buildRegularText(text,fontSize:14.0));
   }
 }

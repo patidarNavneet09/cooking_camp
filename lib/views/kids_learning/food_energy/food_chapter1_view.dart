@@ -3,14 +3,15 @@ import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/sized_box.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
+import 'package:cooking_champs/model/static_model/glossary_model.dart';
 import 'package:cooking_champs/utils/navigators.dart';
 import 'package:cooking_champs/views/kids_learning/food_energy/foodRecipeActivityView.dart';
 import 'package:cooking_champs/views/kids_learning/food_energy/food_activity1_view.dart';
-import 'package:cooking_champs/views/kids_learning/food_energy/food_glossary_view.dart';
+import 'package:cooking_champs/views/kids_learning/glossary_view.dart';
 import 'package:cooking_champs/views/kids_learning/food_energy/food_quiz_time_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/activity_one_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/glossary_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/quiz_view.dart';
+import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/safety_kitchen_glossary_view.dart';
+import 'package:cooking_champs/views/kids_learning/quiz_view.dart';
 import 'package:cooking_champs/views/kids_learning/safty_kitchen_view.dart';
 import 'package:flutter/material.dart';
 List<String> skillList = [];
@@ -105,7 +106,8 @@ class _FoodEnergyChapter1ViewState extends State<FoodEnergyChapter1View> {
                               else if (index == 1) {
                                 CustomNavigators.pushNavigate(FoodRecipeView(recipeName: 'Trail Mix',), context);
                               }else if(index == 2){
-                                CustomNavigators.pushNavigate(FoodGlossaryView(), context);
+                                addGlossaryList();
+                                CustomNavigators.pushNavigate(GlossaryView(), context);
                               }else if(index ==3){
                                 CustomNavigators.pushNavigate(QuizPage(page:FoodQuizTimeView(), bgColor:MyColor.pink), context);
                               }
@@ -125,6 +127,26 @@ class _FoodEnergyChapter1ViewState extends State<FoodEnergyChapter1View> {
       ),
     );
   }
+
+  addGlossaryList(){
+    setState(() {
+      glossaryList = [
+        GlossaryModel("Balanced diet", "The right amount of a variety of food and water. Gives you energy and keeps you healthy."),
+        GlossaryModel("Digest", "When your body changes food into energy."),
+        GlossaryModel("Digestive system", "All the parts of the body that work together to change food to energy."),
+        GlossaryModel("Energy", "Is the power we need to live. Our body needs energy to work. Other types of energy include electrical energy and mechanical energy."),
+        GlossaryModel("Experiment", "Is an activity people do to learn about the world around us."),
+        GlossaryModel("Healthy", "When you are healthy you feel strong and good and are not sick."),
+        GlossaryModel("Hypothesis", "A guess you make about what is going to happen in an experiment before you have done it."),
+        GlossaryModel("Nutrients", "Something in food that helps people, animals, and plants live and grow. If you don’t get enough nutrients, you may feel tired and become sick."),
+        GlossaryModel("Stomach", "The stomach is where food is churned up and changed to energy."),
+        GlossaryModel("Rainbow", "An arc of colours that appears when sunlight passes through bits of water in the air."),
+        GlossaryModel("Variety", "Different types, assortment."),
+      ];
+    });
+  }
+
+
 
   btnUI(String title,int index){
     return Container(

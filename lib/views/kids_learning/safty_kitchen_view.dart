@@ -8,7 +8,7 @@ import 'package:cooking_champs/utils/ui_utils.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/activity_one_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter10_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter11_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/glossary_view.dart';
+import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/safety_kitchen_glossary_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter1_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter2_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter3_view.dart';
@@ -18,7 +18,7 @@ import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapte
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter7_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter8_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/chapter9_view.dart';
-import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/quiz_view.dart';
+import 'package:cooking_champs/views/kids_learning/quiz_view.dart';
 import 'package:cooking_champs/views/kids_learning/safety_kitchen_chapter/safty_quiz_time_view.dart';
 import 'package:flutter/material.dart';
 
@@ -92,7 +92,7 @@ class _SafetyKitchenViewState extends State<SafetyKitchenView> {
                                     CustomNavigators.pushNavigate(ActivityOneView(), context);
                                   }
                                  else if (index == 1) {
-                                    CustomNavigators.pushNavigate(GlossaryView(), context);
+                                    CustomNavigators.pushNavigate(SafetyKitchenGlossaryView(), context);
                                     // setState(() {
                                     //   currentIndex = 11;
                                     // });

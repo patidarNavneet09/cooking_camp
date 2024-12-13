@@ -129,6 +129,36 @@ class AssetsPath {
   static String hygieneChapter3Img = "assets/kids_learning_image/hygieneChapter3Img.png";
   static String hygieneActivity1Img = "assets/kids_learning_image/hygieneActivity1Img.png";
   static String washHandClean = "assets/kids_learning_image/washHandClean.png";
+  static String singingGirl = "assets/kids_learning_image/singingGirl.png";
+  static String hygieneChapter6BoyImg = "assets/kids_learning_image/hygieneChapter6Img1.png";
+  static String hand = "assets/kids_learning_image/hand.png";
+  static String basicChapter1Img = "assets/kids_learning_image/basicChapter1Img.png";
+  static String sheffImg2 = "assets/kids_learning_image/sheffImg2.png";
+  static String basicImg1 = "assets/kids_learning_image/basicImg1.png";
+  static String basicImg2 = "assets/kids_learning_image/basicImg2.png";
+  static String basicImg3 = "assets/kids_learning_image/basicImg3.png";
+  static String basicImg4 = "assets/kids_learning_image/basicImg4.png";
+  static String basicImg5 = "assets/kids_learning_image/basicImg5.png";
+  static String basicImg6 = "assets/kids_learning_image/basicImg6.png";
+  static String basicImg7 = "assets/kids_learning_image/basicImg7.png";
+  static String basicImg8 = "assets/kids_learning_image/basicImg8.png";
+  static String basicChapter4Img = "assets/kids_learning_image/basicChapter4Img.png";
+  static String cookingTechniquesImg1 = "assets/kids_learning_image/cookingTechniquesImg1.png";
+  static String cookingTechniquesImg2 = "assets/kids_learning_image/cookingTechniquesImg2.png";
+  static String cookingTechniquesImg3 = "assets/kids_learning_image/cookingTechniquesImg3.png";
+  static String cookingTechniquesImg4 = "assets/kids_learning_image/cookingTechniquesImg4.png";
+  static String cookingTechniquesImg5 = "assets/kids_learning_image/cookingTechniquesImg5.png";
+  static String cookingTechniquesImg6 = "assets/kids_learning_image/cookingTechniquesImg6.png";
+  static String pans = "assets/kids_learning_image/tools_img/pans.png";
+  static String tongs = "assets/kids_learning_image/tools_img/tongs.png";
+  static String whisk = "assets/kids_learning_image/tools_img/whisk.png";
+  static String woodenSpoon = "assets/kids_learning_image/tools_img/woodenspoon.png";
+  static String apron = "assets/kids_learning_image/tools_img/apron.png";
+  static String colander = "assets/kids_learning_image/tools_img/colander.png";
+  static String fruitCups = "assets/kids_learning_image/fruitCups.png";
+  static String sweetLassi = "assets/kids_learning_image/sweetLassi.png";
+  static String tropoJelly = "assets/kids_learning_image/tropoJelly.png";
+  static String punjabSweetLassi = "assets/kids_learning_image/punjabSweetLassi.png";
 
 
   static String allAboutFruits = "assets/kids_learning_image/allAboutFruits.png";
@@ -147,5 +177,7 @@ class AssetsPath {
   static String spoon = "assets/kids_learning_image/tools_img/spoon.png";
   static String tallGlass = "assets/kids_learning_image/tools_img/tallGlass.png";
   static String blender = "assets/kids_learning_image/tools_img/blender.png";
+  static String cutterBoard = "assets/kids_learning_image/tools_img/cutterBoard.png";
+  static String knife = "assets/kids_learning_image/tools_img/knife.png";
 
 }

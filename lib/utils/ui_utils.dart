@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cooking_champs/constant/assets_path.dart';
 import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
@@ -323,15 +325,16 @@ class UiUtils{
     );
   }
 
-  static Widget buildRegularText(String text,{double fonSize  = 16.0,Color color = MyColor.black}) {
+  static Widget buildRegularText(String text,{double fontSize  = 16.0,Color color = MyColor.black}) {
     return Text(
       text,
-      style:regularTextStyle(fontSize:fonSize, color:color),
+      style:regularTextStyle(fontSize:fontSize, color:color),
     );
   }
-  static Widget buildBoldText(String text,{double fontSize  = 16.0,Color color = MyColor.black}) {
+  static Widget buildBoldText(String text,{double fontSize  = 16.0,Color color = MyColor.black,TextAlign textAlign = TextAlign.start}) {
     return Text(
       text,
+      textAlign: textAlign,
       style: boldTextStyle(fontSize:fontSize, color: color),
     );
   }
@@ -342,10 +345,10 @@ class UiUtils{
       style: semiBoldTextStyle(fontSize:fontSize, color: color),
     );
   }
-  static Widget buildMediumText(String text,{double fonSize  = 16.0,Color color = MyColor.black}) {
+  static Widget buildMediumText(String text,{double fontSize  = 16.0,Color color = MyColor.black}) {
     return Text(
       text,
-      style:mediumTextStyle(fontSize:fonSize, color: color),
+      style:mediumTextStyle(fontSize:fontSize, color: color),
     );
   }
 
@@ -419,6 +422,63 @@ static  Widget buildImage(String path, {double height = 160}) {
     );
   }
 
+
+  /// Joke Section Widget
+  static Widget aboutHygieneBoy(String que,String ans) {
+    return Padding(
+      padding: const EdgeInsets.only(top:10, bottom:10,left:0),
+      child: Stack(
+        children: [
+          Image.asset(AssetsPath.hygieneChapter6BoyImg,height:230,),
+          Align(
+            alignment: Alignment.centerRight,
+            child: Container(
+              width: 250,
+              height: 110,
+
+              padding: const EdgeInsets.only(left:10.0,top:5,right:15,bottom: 5),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(que,
+                      style: semiBoldTextStyle(fontSize: 12.0, color: MyColor.pink)),
+                  hsized8,
+                  Text(ans,
+                      style: semiBoldTextStyle(fontSize: 12.0, color: MyColor.white)),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+  static aboutHygieneBoy1(String q,String ans){
+    return SizedBox(
+      height:207,
+      width:345,
+      child: Stack(
+        children: [
+
+          Image.asset(AssetsPath.hygieneChapter6BoyImg),
+
+          Container(
+            alignment: Alignment.topRight,
+            padding: EdgeInsets.only(top:20),
+            // width:180,
+            child:Column(
+              children: [
+                buildSemiBoldText("Q. What are germs’ least favourite TV shows?",color: MyColor.pink,fontSize:12.0 ),
+                buildSemiBoldText("A. Soap Operas!",color:MyColor.white,fontSize:12.0),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   static extensionBox(String title,{double imgHeight = 127,double rightPadding = 50}){
     return Stack(
       children: [
@@ -469,14 +529,25 @@ static  Widget buildSteps(List<String> steps,{double bottomPadding = 0.0,String 
         .map((entry) => Padding(
           padding:  EdgeInsets.only(bottom:bottomPadding),
           child:buildParagraph(step.isNotEmpty?"":"$step ${entry.key + 1}",step.isNotEmpty?"$step ${entry.key + 1}":"",".${entry.value}",color: MyColor.black,highlightFontSize:16.0,regularFontSize:16.0),
-        //  Text("step${entry.key + 1}. ${entry.value}",
-        //   style:
-        //   regularNormalTextStyle(fontSize: 16.0, color: MyColor.black)
-    //),
         ))
         .toList(),
   );
 }
+
+  static  Widget buildStepsNormal(List<String> steps,{double bottomPadding = 0.0,String step = ""}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: steps
+          .asMap()
+          .entries
+          .map((entry) => Padding(
+        padding:  EdgeInsets.only(bottom:bottomPadding),
+        child:buildNormalText("${step.isNotEmpty?step:""} ${entry.key + 1}. ${entry.value}")
+        ))
+          .toList(),
+    );
+  }
+
   static bookReadGirl(Color color,String img){
     return Stack(
       children: [
