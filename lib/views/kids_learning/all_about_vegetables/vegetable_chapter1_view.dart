@@ -25,14 +25,14 @@ import 'package:cooking_champs/views/kids_learning/the_sense/sense_activity1_vie
 import 'package:cooking_champs/views/kids_learning/the_sense/sense_quiz_time_view.dart';
 import 'package:flutter/material.dart';
 List<String> skillList = [];
-class SenseChapter1View extends StatefulWidget {
-  const SenseChapter1View({super.key});
+class VegetableChapter1View extends StatefulWidget {
+  const VegetableChapter1View({super.key});
 
   @override
-  State<SenseChapter1View> createState() => _SenseChapter1ViewState();
+  State<VegetableChapter1View> createState() => _VegetableChapter1ViewState();
 }
 
-class _SenseChapter1ViewState extends State<SenseChapter1View> {
+class _VegetableChapter1ViewState extends State<VegetableChapter1View> {
 
 
   addSkills() {
@@ -51,13 +51,13 @@ class _SenseChapter1ViewState extends State<SenseChapter1View> {
     addSkills();
     final size = MediaQuery.of(context);
     return  Scaffold(
-      backgroundColor: MyColor.red1,
+      backgroundColor: MyColor.sky,
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal:20.0),
             child: Image.asset(
-                AssetsPath.senseChapter1Img
+                AssetsPath.vegetablesChapter1Img
             ),
           ),
 
@@ -71,10 +71,10 @@ class _SenseChapter1ViewState extends State<SenseChapter1View> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(Languages.of(context)!.whatInside,style:semiBoldTextStyle(fontSize:20.0, color:MyColor.white),),
-                    hsized8,
-                    Text("What’s inside",style:semiBoldTextStyle(fontSize:17.0, color:MyColor.white),),
-                    hsized8,
-                    Text("Our Senses",style:semiBoldTextStyle(fontSize:17.0, color:MyColor.white),),
+
+                    hsized5,
+                    Text("My Vegetable Alphabet",style:mediumTextStyle(fontSize:17.0, color:MyColor.white),),
+                    Text("Poem: Five vegetables a day you say!",style:mediumTextStyle(fontSize:17.0, color:MyColor.white),),
                     hsized15,
 
                     Container(
@@ -130,7 +130,7 @@ class _SenseChapter1ViewState extends State<SenseChapter1View> {
           color: MyColor.white,
           borderRadius: BorderRadius.circular(60)
       ),
-      child: Text(title,style: mediumTextStyle(fontSize:14.0, color:MyColor.red1),),
+      child: Text(title,style: mediumTextStyle(fontSize:14.0, color:MyColor.sky),),
     );
   }
 

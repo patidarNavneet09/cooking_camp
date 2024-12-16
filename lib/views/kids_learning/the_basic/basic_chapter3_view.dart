@@ -19,10 +19,6 @@ class _BasicChapter3ViewState extends State<BasicChapter3View> {
     body:  Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top:50.0,left:20,right: 20,bottom: 20),
-            child:UiUtils.hygieneAppBar(()=> Navigator.pop(context),text: "The Basic",color: MyColor.black),
-          ),
 
           Expanded(
             child: Padding(

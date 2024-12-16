@@ -22,7 +22,7 @@ class _SenseChapter3ViewState extends State<SenseChapter3View> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             UiUtils.buildBoldText("Let’s Look", color: MyColor.red1,fontSize:20.0),
-            hsized20,
+            hsized15,
             buildPageContent(),
             hsized100
           ],

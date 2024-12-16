@@ -166,7 +166,28 @@ class AssetsPath {
   static String lookImg3 = "assets/kids_learning_image/lookImg3.png";
   static String lookImg4 = "assets/kids_learning_image/lookImg4.png";
   static String lookImg5 = "assets/kids_learning_image/lookImg5.png";
-
+  static String senseAppbarImage = "assets/kids_learning_image/senseAppbarImage.png";
+  static String apple = "assets/kids_learning_image/apple.jpg";
+  static String honey = "assets/kids_learning_image/honey.jpeg";
+  static String lemon = "assets/kids_learning_image/lemon.jpg";
+  static String orange = "assets/kids_learning_image/orange.webp";
+  static String banana = "assets/kids_learning_image/banana.png";
+  static String chocolate = "assets/kids_learning_image/chocolate.png";
+  static String milk = "assets/kids_learning_image/milk.png";
+  static String basilPesto = "assets/kids_learning_image/basilPesto.png";
+  static String vegetablesChapter1Img = "assets/kids_learning_image/vegetablesChapter1Img.png";
+  static String vegetablesChapter2Img = "assets/kids_learning_image/vegetablesChapter2Img.png";
+  static String vegetableAlphabetImg1 = "assets/kids_learning_image/vegetableAlphabetImg1.png";
+  static String vegetableAlphabetImg2 = "assets/kids_learning_image/vegetableAlphabetImg2.png";
+  static String vegetableAlphabetImg3 = "assets/kids_learning_image/vegetableAlphabetImg3.png";
+  static String vegetableAlphabetImg4 = "assets/kids_learning_image/vegetableAlphabetImg4.png";
+  static String fruitAlphabetImg1 = "assets/kids_learning_image/fruitAlphabetImg1.png";
+  static String fruitAlphabetImg2 = "assets/kids_learning_image/fruitAlphabetImg2.png";
+  static String fruitAlphabetImg3 = "assets/kids_learning_image/fruitAlphabetImg3.png";
+  static String fruitAlphabetImg4 = "assets/kids_learning_image/fruitAlphabetImg4.png";
+  static String fruitChapter1Img = "assets/kids_learning_image/fruitChapter1Img.png";
+  static String fruitChapter2Img = "assets/kids_learning_image/fruitChapter2Img.png";
+  static String readBookImg1 = "assets/kids_learning_image/readBookImg1.png";
 
   static String allAboutFruits = "assets/kids_learning_image/allAboutFruits.png";
   static String allAboutHygiene = "assets/kids_learning_image/allAboutHygiene.png";
@@ -186,5 +207,6 @@ class AssetsPath {
   static String blender = "assets/kids_learning_image/tools_img/blender.png";
   static String cutterBoard = "assets/kids_learning_image/tools_img/cutterBoard.png";
   static String knife = "assets/kids_learning_image/tools_img/knife.png";
+  static String pestle = "assets/kids_learning_image/pestle.png";
 
 }

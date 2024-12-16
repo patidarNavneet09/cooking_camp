@@ -3,9 +3,9 @@ import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
 import 'package:cooking_champs/utils/navigators.dart';
-import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter1_view.dart';
+import 'package:cooking_champs/views/kids_learning/about_fruit/about_fruit_view.dart';
+import 'package:cooking_champs/views/kids_learning/all_about_vegetables/about_vegetable_view.dart';
 import 'package:cooking_champs/views/kids_learning/food_energy/food_energy_view.dart';
-import 'package:cooking_champs/views/kids_learning/hygiene/hygiene_chapter1_view.dart';
 import 'package:cooking_champs/views/kids_learning/hygiene/hygine_view.dart';
 import 'package:cooking_champs/views/kids_learning/safty_kitchen_view.dart';
 import 'package:cooking_champs/views/kids_learning/the_basic/the_basic_view.dart';
@@ -154,7 +154,12 @@ List<KidsLearningModel> topicList  =[];
       }
       else if(index == 4){
         CustomNavigators.pushNavigate(TheSenseView(), context);
+      }else if(index == 5){
+        CustomNavigators.pushNavigate(AboutVegetableView(), context);
+      }else if(index == 6){
+        CustomNavigators.pushNavigate(AboutFruitView(), context);
       }
+      vegetableCurrentPage = 0;
       senseCurrentPage = 0;
       basicCurrentPage = 0;
       hygieneCurrentPage = 0;

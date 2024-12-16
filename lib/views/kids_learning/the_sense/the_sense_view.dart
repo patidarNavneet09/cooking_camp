@@ -1,13 +1,5 @@
-import 'package:cooking_champs/constant/assets_path.dart';
 import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/utils/ui_utils.dart';
-import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter12_view.dart';
-import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter14_view.dart';
-import 'package:cooking_champs/views/kids_learning/the_basic/basic_chapter1_view.dart';
-import 'package:cooking_champs/views/kids_learning/the_basic/basic_chapter2_view.dart';
-import 'package:cooking_champs/views/kids_learning/the_basic/basic_chapter3_view.dart';
-import 'package:cooking_champs/views/kids_learning/the_basic/basic_chapter4_view.dart';
-import 'package:cooking_champs/views/kids_learning/the_basic/basic_chapter5_view.dart';
 import 'package:cooking_champs/views/kids_learning/the_sense/sense_chapter1_view.dart';
 import 'package:cooking_champs/views/kids_learning/the_sense/sense_chapter2_view.dart';
 import 'package:cooking_champs/views/kids_learning/the_sense/sense_chapter3_view.dart';
@@ -54,6 +46,7 @@ class _TheSenseViewState extends State<TheSenseView> {
                     controller: _pageController,
                     onPageChanged: onPageChanged,
                     itemBuilder: (context, int index) {
+                      senseCurrentPage = index;
                       return Container(child: pageList[senseCurrentPage]);
                     }),
               ),

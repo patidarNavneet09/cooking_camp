@@ -66,6 +66,7 @@ class _AllAboutHygieneViewState extends State<AllAboutHygieneView> {
               controller: _pageController,
               onPageChanged: onPageChanged,
               itemBuilder: (context, int index) {
+                hygieneCurrentPage = index;
                 return Container(child: pageList[hygieneCurrentPage]);
               }),
 

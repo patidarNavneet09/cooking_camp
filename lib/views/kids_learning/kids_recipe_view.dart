@@ -20,7 +20,9 @@ class KidsRecipeView extends StatefulWidget {
   final Color color;
   final String appBarTitle;
 
-  const KidsRecipeView({super.key,required this.recipeName,required this.recipe,this.color = MyColor.green,required this.appBarTitle});
+  const KidsRecipeView(
+      {super.key, required this.recipeName, required this.recipe, this.color = MyColor
+          .green, required this.appBarTitle});
 
   @override
   State<KidsRecipeView> createState() => _KidsRecipeViewState();
@@ -30,17 +32,21 @@ class _KidsRecipeViewState extends State<KidsRecipeView> {
 
 
   String activity = "Activity 2.1";
+
   @override
   void initState() {
     setData();
     super.initState();
   }
 
-  setData(){
+  setData() {
+    setState(() {
+      recipeName = widget.recipeName;
+    });
   }
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: MyColor.white,
       body: Stack(
@@ -49,36 +55,39 @@ class _KidsRecipeViewState extends State<KidsRecipeView> {
             visible: widget.recipeName == "Jelly Fruit cups",
             child: Align(
               alignment: Alignment.bottomRight,
-              child: Image.asset(AssetsPath.maleFemaleSheff,height:173,width:193,),
+              child: Image.asset(
+                AssetsPath.maleFemaleSheff, height: 173, width: 193,),
             ),
           ),
 
           Column(
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 20, right: 20,top: 45),
-                child:Row(
+                padding: EdgeInsets.only(left: 20, right: 20, top: 45),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    UiUtils().foodEnergyAppBar(text:widget.appBarTitle,() => back()),
+                    UiUtils().foodEnergyAppBar(
+                        text: widget.appBarTitle, () => back()),
                     UiUtils.bookReadGirl(widget.color, AssetsPath.sheff)
                   ],
                 ),
               ),
               Expanded(
-                child:    Padding(
+                child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        UiUtils.buildBoldText(widget.recipe.title??"",
-                            fontSize: 23.0, color:widget.color),
+                        UiUtils.buildBoldText(widget.recipe.title ?? "",
+                            fontSize: 23.0, color: widget.color),
 
                         Visibility(
-                          visible:widget.recipe.description!.isNotEmpty,
+                          visible: widget.recipe.description!.isNotEmpty,
                           child: Padding(padding: EdgeInsets.only(top: 10),
-                            child: UiUtils.buildNormalText(widget.recipe.description??"",
+                            child: UiUtils.buildNormalText(
+                                widget.recipe.description ?? "",
                                 fontSize: 16.0, color: MyColor.black),),
                         ),
                         //:SizedBox.shrink(),
@@ -86,7 +95,7 @@ class _KidsRecipeViewState extends State<KidsRecipeView> {
 
                         hsized20,
                         Image.asset(
-                          widget.recipe.image??"",
+                          widget.recipe.image ?? "",
                           height: 200,
                           fit: BoxFit.cover,
                         ),
@@ -94,62 +103,91 @@ class _KidsRecipeViewState extends State<KidsRecipeView> {
                         hsized30,
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
-                          child:Row(
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children:widget.recipe.tools!.map((tool) => Container(
-                                alignment: Alignment.center,
-                                height:86,
-                                width:73,
-                                margin:EdgeInsets.only(right:15,left: 5),
-                                padding:EdgeInsets.symmetric(horizontal:3),
-                                decoration: BoxDecoration(
-                                    color: MyColor.white,
-                                    borderRadius:BorderRadius.circular(23),
-                                    boxShadow:[
-                                      BoxShadow(blurRadius:5,color:MyColor.liteGray.withOpacity(0.60))
-                                    ]
-                                ),
-                                child: Image.asset(tool))).toList(),
+                            children: widget.recipe.tools!.map((tool) =>
+                                Container(
+                                    alignment: Alignment.center,
+                                    height: 86,
+                                    width: 73,
+                                    margin: EdgeInsets.only(right: 15, left: 5),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 3),
+                                    decoration: BoxDecoration(
+                                        color: MyColor.white,
+                                        borderRadius: BorderRadius.circular(23),
+                                        boxShadow: [
+                                          BoxShadow(blurRadius: 5,
+                                              color: MyColor.liteGray
+                                                  .withOpacity(0.60))
+                                        ]
+                                    ),
+                                    child: Image.asset(tool))).toList(),
                           ),
                         ),
 
                         hsized20,
-                        UiUtils.buildBoldText("You Will Need", fontSize: 18.0, color: MyColor.appTheme),
+                        UiUtils.buildBoldText("You Will Need", fontSize: 18.0,
+                            color: MyColor.appTheme),
 
                         hsized10,
-                        UiUtils.buildBulletPoints(widget.recipe.ingredients??[],bottomPadding:5),
+                        UiUtils.buildBulletPoints(
+                            widget.recipe.ingredients ?? [], bottomPadding: 5),
                         // _buildBulletPoints(recipe.ingredients),
 
                         hsized20,
-                        UiUtils.buildBoldText("How To", fontSize: 18.0, color: MyColor.appTheme),
+                        UiUtils.buildBoldText(
+                            "How To", fontSize: 18.0, color: MyColor.appTheme),
 
                         hsized10,
-                        UiUtils.buildSteps(widget.recipe.steps??[],bottomPadding:5,step: "step",),
+                        UiUtils.buildSteps(
+                          widget.recipe.steps ?? [], bottomPadding: 5,
+                          step: "step",),
 
-                        recipeName == "Smoothie"?  Container(
-                          margin: EdgeInsets.only(top:15),
+                        recipeName == "Basil Pesto"
+                            ?
+                        UiUtils.extensionBox(
+                         title:  "Basil Pesto",
+                            titleColor:MyColor.red1,
+                            "While making the pesto use all your senses, smell and feel the basil leaves, taste the pesto. Is the basil sweet or bitter? You can replace the pine nuts with walnuts. Do the walnuts taste different, how?")
+                            : SizedBox.shrink(),
+
+                        recipeName == "Smoothie" ? Container(
+                          margin: EdgeInsets.only(top: 15),
                           width: double.infinity,
-                          decoration:BoxDecoration(
-                              color:MyColor.green,
+                          decoration: BoxDecoration(
+                              color: MyColor.green,
                               borderRadius: BorderRadius.circular(5)
                           ),
-                          padding: EdgeInsets.symmetric(horizontal:15,vertical: 15),
-                          child:Column(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 15),
+                          child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              UiUtils.buildBoldText("FOR SOMETHING DIFFERENT:",color:MyColor.darkYellow,fontSize:15.0),
-                              UiUtils.buildNormalText("Instead of cocoa powder add malt powder or  Replace frozen fruit with fresh fruit and add 3-5 ice cubes while blending and yoghurt in place of milk or Replace milk with almond milk or coconut milk or You may add nuts and seeds of your choice",color:MyColor.white,fontSize:15.0),
+                              UiUtils.buildBoldText("FOR SOMETHING DIFFERENT:",
+                                  color: MyColor.darkYellow, fontSize: 15.0),
+                              UiUtils.buildNormalText(
+                                  "Instead of cocoa powder add malt powder or  Replace frozen fruit with fresh fruit and add 3-5 ice cubes while blending and yoghurt in place of milk or Replace milk with almond milk or coconut milk or You may add nuts and seeds of your choice",
+                                  color: MyColor.white, fontSize: 15.0),
                             ],
                           ),
-                        ):SizedBox.shrink(),
+                        ) : SizedBox.shrink(),
 
                         hsized50,
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal:20.0),
-                          child: GlobalButton(recipeName == "Rainbow Soup"?Languages.of(context)!.submit:Languages.of(context)!.next,MyColor.appTheme,MyColor.appTheme,btnSize55,double.infinity,
-                                  ()=>  setList(),
-                              55,0,0,semiBoldTextStyle(fontSize:18.0, color:MyColor.white)),
-                        ),
+                        GlobalButton(
+                            recipeName == "Rainbow Soup" || recipeName == "Basil Pesto"? Languages.of(
+                                context)!.submit : Languages.of(context)!
+                                .next,
+                            widget.color,
+                            widget.color,
+                            btnSize55,
+                            double.infinity,
+                                () => setList(),
+                            55,
+                            0,
+                            0,
+                            semiBoldTextStyle(
+                                fontSize: 18.0, color: MyColor.white)),
 
                         hsized80,
                         hsized80,
@@ -167,183 +205,38 @@ class _KidsRecipeViewState extends State<KidsRecipeView> {
     );
   }
 
-
-/*
-  setList() {
-    if(recipeName == "Trail Mix"){
-      recipeName = "Smoothie";
-      CustomNavigators.pushNavigate(KidsRecipeView(recipeName: "Smoothie"), context);
-    }else if(recipeName == "Smoothie"){
-      recipeName = "Rainbow Soup";
-      CustomNavigators.pushNavigate(KidsRecipeView(recipeName: "Rainbow Soup"), context);
-    }else if(recipeName == "Rainbow Soup"){
-      recipeName = "Trail Mix";
-      Navigator.pop(context);
-      Navigator.pop(context);
-      Navigator.pop(context);
-    }
-  }
-  smoothieList(){
-    setState(() {
-      activity = "Activity 2.5";
-      recipe = FoodRecipeModel(
-        title: "Recipe: Healthy Fruity Breakfast Smoothie",
-        description:"Smoothies are great for a boost of energy and here’s one to start your day",
-        image:AssetsPath.smoothie, // Example image path
-        tools:[
-          AssetsPath.blender,
-          AssetsPath.spoon,
-          AssetsPath.mug,
-          AssetsPath.tallGlass
-        ] ,
-        ingredients: [
-          "1 Frozen Banana ( Peel and slice the banana before freezing)",
-          "5 frozen strawberries ( Hull the strawberries before freezing)",
-          "1 cup milk",
-          "1 tsp. Cocoa Powder",
-          "1 tsp Honey",
-        ],
-        steps: [
-          "Place the banana and strawberries into the blender.",
-          "Pour in milk, cocoa powder and honey.",
-          "Place the lid on the blender and mix using a high-speed setting.",
-          "Pour in a tall glass and enjoy!",
-        ],
-      );
-    });
-  }
-
-  trailMix(){
-    setState(() {
-      // recipeName = widget.recipeName;
-      activity = "Activity 2.1";
-      recipe = FoodRecipeModel(
-        title: "Recipe: Cooking Champs energy sustaining Carry to school Trail Mix",
-        description: "",
-        image:AssetsPath.mixNuts, // Example image path
-        tools:[
-          AssetsPath.bowlImg,
-          AssetsPath.spoon,
-          AssetsPath.mug,
-          AssetsPath.pot
-        ] ,
-        ingredients: [
-          "1/2 cup raw cashews",
-          "3/4 cup raw almonds",
-          "1/2 cup raw sunflower seeds",
-          "1/2 cup raw pumpkin seeds",
-          "1/2 cup unsweetened raisins",
-          "1/3 cup shaved dried coconut",
-          "1/2 cup chopped dried apples or apricots",
-          "1/2 cup chopped dark chocolate (70% or greater)",
-          "1/2 tsp cinnamon",
-          "Pinch of nutmeg",
-          "Makes 4-5 cups",
-        ],
-        steps: [
-          "Combine all ingredients in a large bowl and mix well.",
-          "Store in an air-tight jar. Or you can store 1/4 cup of the trail mix in small air-tight containers and take as a snack pouch in your bag.",
-          "Will keep for up to 1 month.",
-        ],
-      );
-    });
-  }
-
-  rainbowSoup(){
-    setState(() {
-      // recipeName = widget.recipeName;
-      //recipeName = "Rainbow Soup";
-      activity = "Activity 2.5";
-      recipe = FoodRecipeModel(
-        title: "Recipe: Nonna’s Minestrone Soup - A Rainbow in a Bowl",
-        description: "",
-        image: AssetsPath.rainbowSoup, // Example image path
-        tools: [
-          AssetsPath.blender,
-          AssetsPath.spoon,
-          AssetsPath.mug,
-          AssetsPath.pot,
-        ],
-        ingredients: [
-          "1/4 cup olive oil",
-          "2 large cloves of garlic, minced",
-          "1 onions diced",
-          "2 carrots, cleaned and diced/sliced",
-          "1 stalk celery plus leaves, cleaned and diced/sliced to 1½ cups total",
-          "1 cups fresh green beans,",
-          "1 can tomatoes OR use the same amount of fresh tomatoes, if available",
-          "1 potato medium size,",
-          "2 zucchini, diced with skin left on",
-          "1 cup fresh spinach chopped",
-          "1 cups fresh cabbage, chopped",
-          "1 can cannellini beans, drained and rinsed well",
-          "1 can dark red kidney beans, drained and rinsed well",
-          "1/2 bunch fresh continental parsley, stems removed and chopped (makes about 1/2 cup)",
-          "5 fresh sage leaves chopped",
-          "1 chunk of parmesan rind about 2 cm x 2 cm piece (scrape rind)",
-          "1 litre water",
-          "Salt",
-          "Pepper",
-          "1/2 cups small dry pasta",
-          "1 teaspoon dried thyme",
-          "freshly grated Parmesan cheese for serving"
-        ],
-        steps: [
-          "Dice onions, carrot, celery, potato, zucchini",
-          "Chop spinach, cabbage, parsley, sage, garlic",
-          "Cut fresh green beans in centimetre pieces.",
-          "Drain and rinse Cannellini and kidney beans",
-          "Pour the olive oil into the pot",
-          "Add the chopped onions and minced garlic and dry thyme, cook until clear (careful not to burn the garlic!)",
-          "Add the carrots, celery, potatoes, chopped zucchini, the green beans, spinach and cabbage.",
-          "Stir all ingredients well",
-          "Add the tomatoes and water.",
-          "Add the cannellini, and kidney beans",
-          "Add a chunk of parmesan cheese",
-          "Pour over water"
-              "When the soup begins to boil add dry pasta season with salt and pepper"
-              "Simmer until all the vegetables are soft .",
-          "Serve with fresh bread and sprinkle with freshly grated parmesan cheese .",
-        ],
-      );
-
-    });
-  }
-*/
-
   back() {
-    // setState(() {
-    //   if(recipeName == "Smoothie"){
-    //     debugPrint("Smoothie$recipeName");
-    //     recipeName = "Trail Mix";
-    //   }else if(recipeName == "Rainbow Soup"){
-    //     recipeName = "Smoothie";
-    //   }
-    // });
     Navigator.pop(context);
-
   }
 
   setList() {
-    if(widget.recipeName == "Punjab Sweet Lassi"){
+    if (widget.recipeName == "Punjab Sweet Lassi") {
       CustomNavigators.pushNavigate(BasicActivity5View(), context);
-    }else if(widget.recipeName == "Jelly Fruit cups"){
+    } else if (widget.recipeName == "Jelly Fruit cups") {
       setState(() {
         tropoJellyData();
       });
-      CustomNavigators.pushNavigate(KidsRecipeView(recipeName: "Tropo Jelly", recipe:recipeModel, appBarTitle:"Activity 4.6",color:MyColor.purple), context);
-    }else if(widget.recipeName == "Tropo Jelly"){
+      CustomNavigators.pushNavigate(KidsRecipeView(recipeName: "Tropo Jelly",
+          recipe: recipeModel,
+          appBarTitle: "Activity 4.6",
+          color: MyColor.purple), context);
+    } else if (widget.recipeName == "Tropo Jelly") {
       CustomNavigators.pushNavigate(BasicActivity7View(), context);
+    }else if (widget.recipeName ==  "Basil Pesto") {
+      CustomNavigators.popNavigate(context);
+      //CustomNavigators.pushNavigate(BasicActivity7View(), context);
     }
   }
 }
 
-FoodRecipeModel recipeModel =  FoodRecipeModel();
-sweetLassiData(){
+FoodRecipeModel recipeModel = FoodRecipeModel();
+
+sweetLassiData() {
   recipeModel = FoodRecipeModel(
     title: "Recipe: Sweet Lassi",
     description: "",
-    image: AssetsPath.sweetLassi, // Replace with actual image path
+    image: AssetsPath.sweetLassi,
+    // Replace with actual image path
     tools: [
       AssetsPath.bowlImg, // Example tools
       AssetsPath.spoon,
@@ -370,11 +263,12 @@ sweetLassiData(){
   );
 }
 
-fruitCupsData(){
+fruitCupsData() {
   recipeModel = FoodRecipeModel(
     title: "Recipe: Happy Belly Berry Jelly Fruit Cups",
     description: "",
-    image: AssetsPath.fruitCups, // Replace with actual image path
+    image: AssetsPath.fruitCups,
+    // Replace with actual image path
     tools: [
       AssetsPath.bowlImg, // Example tools
       AssetsPath.spoon,
@@ -398,11 +292,12 @@ fruitCupsData(){
   );
 }
 
-tropoJellyData(){
+tropoJellyData() {
   recipeModel = FoodRecipeModel(
     title: "Recipe: Going Tropo for Jelly!",
     description: "",
-    image: AssetsPath.tropoJelly, // Replace with actual image path
+    image: AssetsPath.tropoJelly,
+    // Replace with actual image path
     tools: [
       AssetsPath.bowlImg, // Example tools
       AssetsPath.spoon,
@@ -422,6 +317,33 @@ tropoJellyData(){
       "Combine the water and gelatine in a medium saucepan then ask an adult to help place over medium heat. Cook, stirring for 2-3 minutes or until the liquid is warm. Add the strawberry juice, apple juice and sugar. Heat over medium heat for 5 minutes until the liquid just comes to the simmer.",
       "Ask an adult to help transfer the mixture to a bowl. Set aside to cool for 30 minutes. Cover and refrigerate for 15 minutes or until jelly is cold.",
       "Wash blueberries and remaining strawberries. Hull and slice the strawberries. Place berries into the base of six glasses. Pour jelly over berries. Cover and refrigerate for a further 4 hours or until completely set. Serve.",
+    ],
+  );
+}
+
+basilPestoData() {
+  recipeModel = FoodRecipeModel(
+    title: "Recipe: Basil Pesto",
+    description: "You can mix this with your favourite pasta or serve as a dip.",
+    image: AssetsPath.basilPesto,
+    // Replace with actual image path
+    tools: [
+      AssetsPath.pestle, // Example tools
+    ],
+    ingredients: [
+      "1 clove of garlic, peeled",
+      "Salt",
+      "Freshly ground black pepper",
+      "A large bunch of fresh basil (leaves only)",
+      "50g pine nuts",
+      "3 tbsp. extra virgin olive oil",
+      "50 g Parmesan cheese, finely grated",
+    ],
+    steps: [
+      "Mash the garlic in a pestle and mortar with a pinch of salt.",
+      "Add the basil leaves and pine nuts and pound to a paste.",
+      "Pound in the extra virgin olive oil and stir in the Parmesan cheese until smooth.",
+      " Have a taste and season with salt and pepper.",
     ],
   );
 }

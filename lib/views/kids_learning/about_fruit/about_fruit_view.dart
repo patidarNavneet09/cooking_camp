@@ -1,41 +1,34 @@
 import 'package:cooking_champs/constant/assets_path.dart';
 import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/utils/ui_utils.dart';
-import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter12_view.dart';
-import 'package:cooking_champs/views/kids_learning/food_energy/food_chapter14_view.dart';
-import 'package:cooking_champs/views/kids_learning/the_basic/basic_chapter1_view.dart';
-import 'package:cooking_champs/views/kids_learning/the_basic/basic_chapter2_view.dart';
-import 'package:cooking_champs/views/kids_learning/the_basic/basic_chapter3_view.dart';
-import 'package:cooking_champs/views/kids_learning/the_basic/basic_chapter4_view.dart';
-import 'package:cooking_champs/views/kids_learning/the_basic/basic_chapter5_view.dart';
+import 'package:cooking_champs/views/kids_learning/about_fruit/fruit_chapter1_view.dart';
+import 'package:cooking_champs/views/kids_learning/about_fruit/fruit_chapter2_view.dart';
+import 'package:cooking_champs/views/kids_learning/about_fruit/fruit_chapter3_view.dart';
+import 'package:cooking_champs/views/kids_learning/all_about_vegetables/vegetable_chapter2_view.dart';
+import 'package:cooking_champs/views/kids_learning/all_about_vegetables/vegetable_chapter3_view.dart';
+import 'package:cooking_champs/views/kids_learning/all_about_vegetables/vegetable_chapter1_view.dart';
 import 'package:flutter/material.dart';
 
-int basicCurrentPage = 0;
+int fruitCurrentPage = 0;
 List<String> skillList = [];
-class TheBasicView extends StatefulWidget {
-  const TheBasicView({super.key});
+class AboutFruitView extends StatefulWidget {
+  const AboutFruitView({super.key});
 
   @override
-  State<TheBasicView> createState() => _TheBasicViewState();
+  State<AboutFruitView> createState() => _AboutFruitViewState();
 }
 
 
 final PageController _pageController = PageController();
 
-class _TheBasicViewState extends State<TheBasicView> {
+class _AboutFruitViewState extends State<AboutFruitView> {
   List<Widget> pageList = [
-    BasicChapter1View(),
-    BasicChapter2View(),
-    BasicChapter3View(image:AssetsPath.basicImg1,height:630,),
-    BasicChapter3View(image:AssetsPath.basicImg2,height:590),
-    BasicChapter3View(image:AssetsPath.basicImg3,height:730),
-    BasicChapter3View(image:AssetsPath.basicImg4,height:613),
-    BasicChapter3View(image:AssetsPath.basicImg5,height:640),
-    BasicChapter3View(image:AssetsPath.basicImg6,height:730),
-    BasicChapter3View(image:AssetsPath.basicImg7,height:571),
-    BasicChapter3View(image:AssetsPath.basicImg8,height:400),
-    BasicChapter4View(),
-    BasicChapter5View(),
+    FruitChapter1View(),
+    FruitChapter2View(),
+    FruitChapter3View(img:AssetsPath.fruitAlphabetImg1,count: "1"),
+    FruitChapter3View(img:AssetsPath.fruitAlphabetImg2,count: "2"),
+    FruitChapter3View(img:AssetsPath.fruitAlphabetImg3,count: "3"),
+    FruitChapter3View(img:AssetsPath.fruitAlphabetImg4,count: "4"),
   ];
 
 
@@ -43,16 +36,15 @@ class _TheBasicViewState extends State<TheBasicView> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context);
     return Scaffold(
-      backgroundColor: MyColor.orange,
+      backgroundColor: MyColor.darkPink,
       body: Stack(
         children: [
           Column(
             children: [
-
               Container(
-                color:basicCurrentPage == 0?MyColor.purple:MyColor.white,
+                color:fruitCurrentPage == 0?MyColor.darkPink:MyColor.white,
                 padding: const EdgeInsets.only(top:50.0,left:20,right: 20,bottom: 20),
-                child:UiUtils.hygieneAppBar(()=> Navigator.pop(context),text: "The Basic",color: basicCurrentPage == 0?MyColor.white:MyColor.black),
+                child:UiUtils.hygieneAppBar(()=> Navigator.pop(context),text: "All About Fruit!",color: fruitCurrentPage == 0?MyColor.white:MyColor.black),
               ),
               Expanded(
                 child: PageView.builder(
@@ -60,8 +52,8 @@ class _TheBasicViewState extends State<TheBasicView> {
                     controller: _pageController,
                     onPageChanged: onPageChanged,
                     itemBuilder: (context, int index) {
-                      basicCurrentPage = index;
-                      return Container(child:pageList[basicCurrentPage]);
+                      fruitCurrentPage = index;
+                      return Container(child: pageList[fruitCurrentPage]);
                     }),
               ),
             ],
@@ -94,9 +86,9 @@ class _TheBasicViewState extends State<TheBasicView> {
                             children: [
                               SizedBox(
                                 child: _indicatorDotsWidget(
-                                    color: basicCurrentPage == i
+                                    color: fruitCurrentPage == i
                                         ? MyColor.appTheme
-                                        : basicCurrentPage == 2
+                                        : fruitCurrentPage == 2
                                         ? MyColor.blueLite1
                                         : const Color.fromARGB(
                                         255, 219, 217, 217),
@@ -129,7 +121,7 @@ class _TheBasicViewState extends State<TheBasicView> {
 
   void onPageChanged(int value) {
     setState(() {
-      basicCurrentPage = value;
+      fruitCurrentPage = value;
     });
   }
 

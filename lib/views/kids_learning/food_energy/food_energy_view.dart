@@ -61,6 +61,7 @@ class _FoodEnergyViewState extends State<FoodEnergyView> {
               controller: _pageController,
               onPageChanged: onPageChanged,
               itemBuilder: (context, int index) {
+                currentPage =index;
                 return Container(child: pageList[currentPage]);
               }),
 

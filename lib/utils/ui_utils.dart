@@ -487,7 +487,7 @@ static  Widget buildImage(String path, {double height = 160}) {
     );
   }
 
-  static extensionBox(String title,{double imgHeight = 127,double rightPadding = 50}){
+  static extensionBox(String des,{String title = "",double imgHeight = 127,double rightPadding = 50,Color titleColor = MyColor.black}){
     return Stack(
       children: [
 
@@ -500,7 +500,14 @@ static  Widget buildImage(String path, {double height = 160}) {
             borderRadius: BorderRadius.circular(11)
           ),
           padding: EdgeInsets.only(right:70,left: 20,top:35,bottom:15),
-          child: Text(title,style:mediumTextStyle(fontSize:13.0, color:MyColor.white),),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(title,style:mediumTextStyle(fontSize:13.0, color:titleColor),),
+              hsized2,
+              Text(des,style:mediumTextStyle(fontSize:13.0, color:MyColor.white),),
+            ],
+          ),
         ),
         Container(
           margin: EdgeInsets.only(top:12),

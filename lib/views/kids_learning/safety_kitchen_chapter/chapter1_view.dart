@@ -3,7 +3,6 @@ import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/my_fonts_style.dart';
 import 'package:cooking_champs/constant/sized_box.dart';
 import 'package:cooking_champs/constant/stringfile.dart/language.dart';
-import 'package:cooking_champs/utils/navigators.dart';
 import 'package:cooking_champs/views/kids_learning/safty_kitchen_view.dart';
 import 'package:flutter/material.dart';
 List<String> skillList = [];
@@ -73,27 +72,10 @@ class _Chapter1ViewState extends State<Chapter1View> {
 
                   hsized20,
 
-                /*  Wrap(
-                    children:List.generate(skillList.length, (index){
-                      return InkWell(
-                        onTap: (){
-                          setState(() {
-                            currentIndex = 11;
-                          });
-                          Navigator.pop(context);
-                        },
-                        child: btnUI(skillList[index],index),
-                      );
-                    }),
-                  ),*/
-
                 ],
               ),
             ),
           ),
-         /* Align(
-              alignment: Alignment.bottomRight,
-              child: Image.asset(AssetsPath.cornerBg,height:120,width:120,))*/
         ],
       ),
     );

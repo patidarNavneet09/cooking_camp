@@ -71,6 +71,7 @@ class _SafetyKitchenViewState extends State<SafetyKitchenView> {
               controller: _pageController,
               onPageChanged: onPageChanged,
               itemBuilder: (context, int index) {
+                currentIndex = index;
                 return Container(child: pageList[currentIndex]);
               }),
           currentIndex == 0

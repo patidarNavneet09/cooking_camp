@@ -1,9 +1,7 @@
 import 'package:cooking_champs/constant/assets_path.dart';
 import 'package:cooking_champs/constant/my_color.dart';
 import 'package:cooking_champs/constant/sized_box.dart';
-import 'package:cooking_champs/utils/navigators.dart';
 import 'package:cooking_champs/utils/ui_utils.dart';
-import 'package:cooking_champs/views/kids_learning/kids_learning_view.dart';
 import 'package:flutter/material.dart';
 
 class BasicChapter2View extends StatelessWidget {
@@ -16,12 +14,6 @@ class BasicChapter2View extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top:50.0,left:20,right: 20,bottom: 20),
-            child:UiUtils.hygieneAppBar(()=> Navigator.pop(context)
-            ,text: "The Basic",color: MyColor.black),
-          ),
-
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal:20.0),
