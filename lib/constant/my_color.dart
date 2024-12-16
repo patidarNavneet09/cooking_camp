@@ -48,6 +48,7 @@ class MyColor {
   static const darkSky = Color(0xff00AEEF);
   static const green = Color(0xff48B776);
   static const darkYellow = Color(0xffFFCC38);
+  static const darkYellow2 = Color(0xffFFBE00);
   static const darkBlue = Color(0xff005E89);
 }
 

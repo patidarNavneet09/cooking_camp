@@ -373,16 +373,24 @@ class UiUtils{
   }
 
      // Helper Widgets
-  static Widget buildParagraph(String prefix, String highlight, String suffix,{Color color =MyColor.pink, double highlightFontSize = 15.0,double regularFontSize = 14.0 }) {
+  static Widget buildParagraph(String prefix, String highlight, String suffix,{Color color =MyColor.pink,Color regularColor =MyColor.black, double highlightFontSize = 15.0,double regularFontSize = 14.0, String highlight1 = "",String prefix1 ="", String highlight2 = "",String prefix2 ="", }) {
     return RichText(
       text: TextSpan(
-        style: regularTextStyle(fontSize:regularFontSize, color: MyColor.black),
+        style: regularTextStyle(fontSize:regularFontSize,color:regularColor),
         children: [
           TextSpan(text: prefix),
           TextSpan(
               text: highlight,
               style: boldTextStyle(fontSize:highlightFontSize, color:color)),
           TextSpan(text: suffix),
+          TextSpan(
+              text: highlight1,
+              style: boldTextStyle(fontSize:highlightFontSize, color:color)),
+          TextSpan(text: prefix1),
+          TextSpan(
+              text: highlight2,
+              style: boldTextStyle(fontSize:highlightFontSize, color:color)),
+          TextSpan(text: prefix2),
         ],
       ),
     );

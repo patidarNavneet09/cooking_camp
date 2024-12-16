@@ -159,6 +159,13 @@ class AssetsPath {
   static String sweetLassi = "assets/kids_learning_image/sweetLassi.png";
   static String tropoJelly = "assets/kids_learning_image/tropoJelly.png";
   static String punjabSweetLassi = "assets/kids_learning_image/punjabSweetLassi.png";
+  static String senseChapter1Img = "assets/kids_learning_image/senseChapter1Img.png";
+  static String senseChapter2Img = "assets/kids_learning_image/senseChapter2Img.png";
+  static String lookImg1 = "assets/kids_learning_image/lookImg1.png";
+  static String lookImg2 = "assets/kids_learning_image/lookImg2.png";
+  static String lookImg3 = "assets/kids_learning_image/lookImg3.png";
+  static String lookImg4 = "assets/kids_learning_image/lookImg4.png";
+  static String lookImg5 = "assets/kids_learning_image/lookImg5.png";
 
 
   static String allAboutFruits = "assets/kids_learning_image/allAboutFruits.png";

@@ -9,6 +9,7 @@ import 'package:cooking_champs/views/kids_learning/hygiene/hygiene_chapter1_view
 import 'package:cooking_champs/views/kids_learning/hygiene/hygine_view.dart';
 import 'package:cooking_champs/views/kids_learning/safty_kitchen_view.dart';
 import 'package:cooking_champs/views/kids_learning/the_basic/the_basic_view.dart';
+import 'package:cooking_champs/views/kids_learning/the_sense/the_sense_view.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 import 'package:touch_ripple_effect/touch_ripple_effect.dart';
@@ -151,6 +152,10 @@ List<KidsLearningModel> topicList  =[];
       }else if(index == 3){
         CustomNavigators.pushNavigate(TheBasicView(), context);
       }
+      else if(index == 4){
+        CustomNavigators.pushNavigate(TheSenseView(), context);
+      }
+      senseCurrentPage = 0;
       basicCurrentPage = 0;
       hygieneCurrentPage = 0;
       currentPage = 0;

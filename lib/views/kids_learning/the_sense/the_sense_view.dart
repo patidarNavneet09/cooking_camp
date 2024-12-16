@@ -8,36 +8,29 @@ import 'package:cooking_champs/views/kids_learning/the_basic/basic_chapter2_view
 import 'package:cooking_champs/views/kids_learning/the_basic/basic_chapter3_view.dart';
 import 'package:cooking_champs/views/kids_learning/the_basic/basic_chapter4_view.dart';
 import 'package:cooking_champs/views/kids_learning/the_basic/basic_chapter5_view.dart';
+import 'package:cooking_champs/views/kids_learning/the_sense/sense_chapter1_view.dart';
+import 'package:cooking_champs/views/kids_learning/the_sense/sense_chapter2_view.dart';
+import 'package:cooking_champs/views/kids_learning/the_sense/sense_chapter3_view.dart';
 import 'package:flutter/material.dart';
 
-int basicCurrentPage = 0;
+int senseCurrentPage = 0;
 List<String> skillList = [];
-class TheBasicView extends StatefulWidget {
-  const TheBasicView({super.key});
+class TheSenseView extends StatefulWidget {
+  const TheSenseView({super.key});
 
   @override
-  State<TheBasicView> createState() => _TheBasicViewState();
+  State<TheSenseView> createState() => _TheSenseViewState();
 }
 
 
 final PageController _pageController = PageController();
 
-class _TheBasicViewState extends State<TheBasicView> {
+class _TheSenseViewState extends State<TheSenseView> {
   List<Widget> pageList = [
-    BasicChapter1View(),
-    BasicChapter2View(),
-    BasicChapter3View(image:AssetsPath.basicImg1,height:630,),
-    BasicChapter3View(image:AssetsPath.basicImg2,height:590),
-    BasicChapter3View(image:AssetsPath.basicImg3,height:730),
-    BasicChapter3View(image:AssetsPath.basicImg4,height:613),
-    BasicChapter3View(image:AssetsPath.basicImg5,height:640),
-    BasicChapter3View(image:AssetsPath.basicImg6,height:730),
-    BasicChapter3View(image:AssetsPath.basicImg7,height:571),
-    BasicChapter3View(image:AssetsPath.basicImg8,height:400),
-    BasicChapter4View(),
-    BasicChapter5View(),
-    FoodChapter12View(),
-    FoodChapter14View(),
+    SenseChapter1View(),
+    SenseChapter2View(),
+    SenseChapter3View(),
+    SenseChapter3View(),
   ];
 
 
@@ -51,9 +44,9 @@ class _TheBasicViewState extends State<TheBasicView> {
           Column(
             children: [
               Container(
-                color:basicCurrentPage == 0?MyColor.purple:MyColor.white,
-                padding: const EdgeInsets.only(top:40.0,left:20,right: 20,bottom: 20),
-                child:UiUtils.hygieneAppBar(()=> Navigator.pop(context),text: "The Basic",color: basicCurrentPage == 0?MyColor.white:MyColor.black),
+                color:senseCurrentPage == 0?MyColor.red1:MyColor.white,
+                padding: const EdgeInsets.only(top:45.0,left:20,right: 20,bottom: 20),
+                child:UiUtils.hygieneAppBar(()=> Navigator.pop(context),text: "The Sense",color: senseCurrentPage == 0?MyColor.white:MyColor.black),
               ),
               Expanded(
                 child: PageView.builder(
@@ -61,7 +54,7 @@ class _TheBasicViewState extends State<TheBasicView> {
                     controller: _pageController,
                     onPageChanged: onPageChanged,
                     itemBuilder: (context, int index) {
-                      return Container(child: pageList[basicCurrentPage]);
+                      return Container(child: pageList[senseCurrentPage]);
                     }),
               ),
             ],
@@ -94,9 +87,9 @@ class _TheBasicViewState extends State<TheBasicView> {
                             children: [
                               SizedBox(
                                 child: _indicatorDotsWidget(
-                                    color: basicCurrentPage == i
+                                    color: senseCurrentPage == i
                                         ? MyColor.appTheme
-                                        : basicCurrentPage == 2
+                                        : senseCurrentPage == 2
                                         ? MyColor.blueLite1
                                         : const Color.fromARGB(
                                         255, 219, 217, 217),
@@ -129,7 +122,7 @@ class _TheBasicViewState extends State<TheBasicView> {
 
   void onPageChanged(int value) {
     setState(() {
-      basicCurrentPage = value;
+      senseCurrentPage = value;
     });
   }
 
